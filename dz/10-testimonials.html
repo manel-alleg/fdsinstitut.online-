@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FDS Institut — Témoignages</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Montserrat:wght@700;900&family=JetBrains+Mono:wght@400&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased}
+body{background:#030712;color:#fff;font-family:'Poppins',sans-serif}
+h2{font-family:'Montserrat',sans-serif;letter-spacing:-.02em}
+:root{--orange:#f97316;--ink:#15233c}
+::selection{background:var(--orange);color:var(--ink)}
+.label-mono{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+
+section{max-width:80rem;margin:0 auto;padding:4rem 1.5rem 5rem}
+@media(min-width:1024px){section{padding:5rem 3rem}}
+.header{max-width:32rem;margin-bottom:3rem}
+.eyebrow{color:var(--orange);margin-bottom:.75rem}
+h2{font-size:clamp(2.25rem,6vw,3.75rem);font-weight:900;line-height:.95;color:#fff}
+.grid{display:grid;gap:1.25rem;grid-template-columns:1fr}
+@media(min-width:768px){.grid{grid-template-columns:repeat(3,1fr)}}
+.card{border-radius:2rem;padding:1.75rem;transition:transform .3s}
+.card:hover{transform:translateY(-4px)}
+.card-0,.card-2{background:rgba(255,255,255,.04);color:#fff;border:1px solid rgba(255,255,255,.1)}
+.card-0:hover,.card-2:hover{border-color:rgba(249,115,22,.4)}
+.card-1{background:var(--orange);color:var(--ink);box-shadow:0 25px 70px -20px rgba(249,115,22,.55)}
+.stars{font-size:1.125rem;margin-bottom:.75rem}
+.card-0 .stars,.card-2 .stars{color:var(--orange)}
+.card-1 .stars{color:var(--ink)}
+.quote{line-height:1.7;font-weight:500}
+.card-0 .quote,.card-2 .quote{color:rgba(255,255,255,.9)}
+.card-1 .quote{color:var(--ink)}
+.author{display:flex;align-items:center;gap:.75rem;margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid}
+.card-0 .author,.card-2 .author{border-color:rgba(255,255,255,.1)}
+.card-1 .author{border-color:rgba(21,35,60,.2)}
+.avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0}
+.card-0 .avatar,.card-2 .avatar{background:rgba(255,255,255,.1)}
+.card-1 .avatar{background:var(--ink)}
+.name{font-family:'Montserrat',sans-serif;font-weight:900;font-size:.9375rem}
+.role{font-size:.75rem;margin-top:.125rem}
+.card-0 .role,.card-2 .role{color:rgba(255,255,255,.5)}
+.card-1 .role{color:rgba(21,35,60,.7)}
+</style>
+</head>
+<body>
+<section>
+  <div class="header">
+    <p class="label-mono eyebrow">— Ils l'ont fait</p>
+    <h2>De vrais étudiants. De vrais résultats.</h2>
+  </div>
+  <div class="grid">
+    <div class="card card-0">
+      <div class="stars">★★★★★</div>
+      <p class="quote">"Le meilleur rapport qualité/prix. J'ai eu mon B1 en 4 mois pour partir étudier."</p>
+      <div class="author"><div class="avatar">🇩🇿</div><div><div class="name">Yacine B.</div><div class="role">Alger · B1 obtenu</div></div></div>
+    </div>
+    <div class="card card-1">
+      <div class="stars">★★★★★</div>
+      <p class="quote">"Les profs sont à l'écoute, et le paiement par BaridiMob c'était parfait."</p>
+      <div class="author"><div class="avatar">🇩🇿</div><div><div class="name">Lina M.</div><div class="role">Oran · A2</div></div></div>
+    </div>
+    <div class="card card-2">
+      <div class="stars">★★★★★</div>
+      <p class="quote">"Réservé un lundi, commencé le jeudi. Aucun blabla, du concret."</p>
+      <div class="author"><div class="avatar">🇩🇿</div><div><div class="name">Karim S.</div><div class="role">Constantine · A1→B1</div></div></div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FDS Institut — Trust Partners</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Montserrat:wght@700;900&family=JetBrains+Mono:wght@400&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased}
+body{background:#030712;color:#fff;font-family:'Poppins',sans-serif}
+h2,h3{font-family:'Montserrat',sans-serif;letter-spacing:-.02em}
+:root{--orange:#f97316;--ink:#15233c}
+::selection{background:var(--orange);color:var(--ink)}
+.label-mono{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+
+section{max-width:80rem;margin:0 auto;padding:4rem 1.5rem 5rem}
+@media(min-width:1024px){section{padding:5rem 3rem}}
+
+.header{max-width:32rem;margin-bottom:3rem}
+.eyebrow{color:var(--orange);margin-bottom:.75rem}
+h2{font-size:clamp(2.25rem,5vw,3rem);font-weight:900;line-height:.95;color:#fff}
+.muted{color:rgba(255,255,255,.3)}
+
+.grid{display:grid;gap:1.25rem;grid-template-columns:1fr}
+@media(min-width:640px){.grid{grid-template-columns:repeat(3,1fr)}}
+
+.card{
+  border-radius:2rem;padding:2rem;border:1px solid;
+  transition:transform .3s,border-color .3s;
+}
+.card:hover{transform:translateY(-4px)}
+.card-0,.card-2{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.1)}
+.card-0:hover,.card-2:hover{border-color:rgba(255,255,255,.2)}
+.card-1{background:rgba(249,115,22,.1);border-color:rgba(249,115,22,.3)}
+.card-1:hover{border-color:rgba(249,115,22,.6)}
+
+.logo-badge{
+  width:56px;height:56px;border-radius:1rem;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.125rem;
+  margin-bottom:1.25rem;
+}
+.card-0 .logo-badge,.card-2 .logo-badge{background:rgba(255,255,255,.1);color:#fff}
+.card-1 .logo-badge{background:var(--orange);color:var(--ink)}
+
+h3{font-size:1.25rem;font-weight:900;color:#fff;margin-bottom:.25rem}
+.tagline{color:var(--orange);margin-bottom:.75rem}
+.desc{font-size:.875rem;color:rgba(255,255,255,.55);line-height:1.7}
+.card-line{
+  margin-top:1.25rem;height:1px;width:2rem;
+  background:rgba(255,255,255,.15);
+  transition:width .5s ease,background .5s ease;
+}
+.card:hover .card-line{width:100%;background:var(--orange)}
+</style>
+</head>
+<body>
+<section>
+  <div class="header">
+    <p class="label-mono eyebrow">— Proven quality</p>
+    <h2>Proven standards.<br><span class="muted">By design.</span></h2>
+  </div>
+
+  <div class="grid">
+    <div class="card card-0">
+      <div class="logo-badge">H</div>
+      <h3>Hueber Verlag</h3>
+      <p class="label-mono tagline">Official Curriculum Partner</p>
+      <p class="desc">Our curriculum uses Hueber-certified materials — the gold standard in German language publishing since 1961.</p>
+      <div class="card-line"></div>
+    </div>
+    <div class="card card-1">
+      <div class="logo-badge">F</div>
+      <h3>Fintiba</h3>
+      <p class="label-mono tagline">Blocked Account Ready</p>
+      <p class="desc">Heading to Germany to study? We partner with Fintiba to simplify your blocked account and visa financial proof.</p>
+      <div class="card-line"></div>
+    </div>
+    <div class="card card-2">
+      <div class="logo-badge">CE</div>
+      <h3>CEFR / CECRL</h3>
+      <p class="label-mono tagline">European Framework Compliant</p>
+      <p class="desc">All our levels (A1→C2) strictly follow the Common European Framework — recognized by Goethe, TestDaF and telc.</p>
+      <div class="card-line"></div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FDS Institut — Ticker (Global)</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased}
+body{background:#030712;color:#fff;overflow:hidden}
+:root{--orange:#f97316;--ink:#15233c}
+::selection{background:var(--orange);color:var(--ink)}
+
+.ticker-wrap{
+  border-top:1px solid rgba(255,255,255,.05);
+  border-bottom:1px solid rgba(255,255,255,.05);
+  background:rgba(0,0,0,.4);
+  padding:1rem 0;overflow:hidden;
+}
+.marquee{display:flex;gap:3rem;width:max-content;animation:marquee 35s linear infinite;will-change:transform}
+@keyframes marquee{to{transform:translateX(-50%)}}
+.item{
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:clamp(1.25rem,3vw,1.5rem);letter-spacing:-.025em;
+  white-space:nowrap;color:rgba(255,255,255,.8);
+}
+.diamond{color:var(--orange);margin:0 1.25rem}
+</style>
+</head>
+<body>
+<div class="ticker-wrap">
+  <div class="marquee" id="m"></div>
+</div>
+<script>
+const words=['A1 → C2','Live online','Certified teachers','European standards','Worldwide','Lifetime replays','Small cohorts','14-day money-back'];
+const all=[...words,...words,...words];
+const m=document.getElementById('m');
+all.forEach(w=>{
+  const s=document.createElement('span');
+  s.className='item';
+  s.innerHTML=w+'<span class="diamond">◆</span>';
+  m.appendChild(s);
+});
+</script>
+</body>
+</html>

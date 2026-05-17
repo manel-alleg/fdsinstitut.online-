@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FDS Institut — Comparison</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Montserrat:wght@700;900&family=JetBrains+Mono:wght@400&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased}
+body{background:#030712;color:#fff;font-family:'Poppins',sans-serif}
+h2{font-family:'Montserrat',sans-serif;letter-spacing:-.02em}
+:root{--orange:#f97316;--ink:#15233c}
+::selection{background:var(--orange);color:var(--ink)}
+.label-mono{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+
+section{max-width:72rem;margin:0 auto;padding:4rem 1.5rem 5rem}
+@media(min-width:1024px){section{padding:5rem 3rem}}
+
+.header{max-width:32rem;margin-bottom:3rem}
+.eyebrow{color:var(--orange);margin-bottom:.75rem}
+h2{font-size:clamp(2.25rem,6vw,3.75rem);font-weight:900;line-height:.95;color:#fff;margin-bottom:1.25rem}
+.sub{color:rgba(255,255,255,.55);font-size:1.125rem;line-height:1.6}
+
+.table{
+  border-radius:2rem;overflow:hidden;
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);
+  backdrop-filter:blur(24px);
+}
+.table-head{
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  background:rgba(0,0,0,.4);padding:1.25rem 1.5rem;align-items:center;
+}
+@media(min-width:640px){.table-head{padding:1.5rem}}
+.head-label{color:rgba(255,255,255,.5)}
+.head-us span{
+  display:inline-block;background:var(--orange);color:var(--ink);
+  font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  padding:.25rem .75rem;border-radius:9999px;
+}
+.head-them{text-align:center;color:rgba(255,255,255,.4)}
+
+.row{
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  padding:1.25rem 1.5rem;align-items:center;
+  border-top:1px solid rgba(255,255,255,.05);
+  font-size:.875rem;
+}
+@media(min-width:640px){.row{font-size:1rem;padding:1.5rem}}
+.row-even{background:rgba(255,255,255,.01)}
+.row-label{font-weight:600;color:rgba(255,255,255,.9)}
+.row-us{
+  text-align:center;
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  color:var(--orange);font-size:1rem;
+}
+@media(min-width:640px){.row-us{font-size:1.125rem}}
+.row-them{text-align:center;color:rgba(255,255,255,.4);text-decoration:line-through;text-decoration-color:rgba(239,68,68,.6)}
+
+.footnote{font-size:.75rem;color:rgba(255,255,255,.3);margin-top:1rem;text-align:center;font-style:italic}
+</style>
+</head>
+<body>
+<section>
+  <div class="header">
+    <p class="label-mono eyebrow">— Comparison</p>
+    <h2>How we stack up.</h2>
+    <p class="sub">Same European standards. Different reality.</p>
+  </div>
+
+  <div class="table">
+    <div class="table-head label-mono">
+      <div class="head-label">What</div>
+      <div class="head-us" style="text-align:center"><span>FDS Institut</span></div>
+      <div class="head-them">Goethe-Institut</div>
+    </div>
+
+    <div class="row row-even">
+      <div class="row-label">Group course / month</div>
+      <div class="row-us">€125</div>
+      <div class="row-them">€379+</div>
+    </div>
+    <div class="row">
+      <div class="row-label">Time before you start</div>
+      <div class="row-us">Within 7 days</div>
+      <div class="row-them">4–8 weeks waitlist</div>
+    </div>
+    <div class="row row-even">
+      <div class="row-label">Schedule</div>
+      <div class="row-us">Asia / MENA / EU friendly</div>
+      <div class="row-them">Local timezone only</div>
+    </div>
+    <div class="row">
+      <div class="row-label">Replays of every class</div>
+      <div class="row-us">Yes, lifetime</div>
+      <div class="row-them">Rarely</div>
+    </div>
+    <div class="row row-even">
+      <div class="row-label">Direct WhatsApp support</div>
+      <div class="row-us">Yes</div>
+      <div class="row-them">No</div>
+    </div>
+  </div>
+  <p class="footnote">Indicative comparison. Public sources.</p>
+</section>
+</body>
+</html>

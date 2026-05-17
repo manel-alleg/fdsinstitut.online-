@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FDS Institut — Final CTA</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Montserrat:wght@700;900&family=JetBrains+Mono:wght@400&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased}
+body{background:#030712;color:#fff;font-family:'Poppins',sans-serif}
+h2{font-family:'Montserrat',sans-serif;letter-spacing:-.02em}
+a{color:inherit;text-decoration:none}
+:root{--orange:#f97316;--ink:#15233c}
+::selection{background:var(--orange);color:var(--ink)}
+.label-mono{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+
+section{padding:4rem 1.5rem 5rem}
+@media(min-width:1024px){section{padding:5rem 3rem}}
+
+.block{
+  position:relative;max-width:60rem;margin:0 auto;
+  border-radius:2.5rem;background:var(--orange);
+  padding:3rem 2rem;text-align:center;overflow:hidden;
+}
+@media(min-width:640px){.block{padding:5rem}}
+
+.noise{
+  position:absolute;inset:0;opacity:.2;pointer-events:none;
+  background:
+    radial-gradient(circle at 20% 20%,#030712 0,transparent 50%),
+    radial-gradient(circle at 80% 80%,#030712 0,transparent 50%);
+}
+
+h2{
+  position:relative;
+  font-size:clamp(2.5rem,10vw,4.5rem);
+  font-weight:900;color:var(--ink);line-height:.92;letter-spacing:-.04em;
+  margin-bottom:1.25rem;
+}
+.sub{position:relative;font-size:1.125rem;color:rgba(21,35,60,.8);max-width:30rem;margin:0 auto 2rem;line-height:1.6}
+.cta-btn{
+  position:relative;display:inline-flex;align-items:center;gap:.75rem;
+  border-radius:9999px;background:var(--ink);color:var(--orange);
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  padding:1rem 2rem;font-size:1rem;
+  box-shadow:0 12px 40px -12px rgba(21,35,60,.4);
+  transition:transform .2s;
+}
+.cta-btn:hover{transform:scale(1.05)}
+.assurance{position:relative;margin-top:1.25rem;color:rgba(21,35,60,.6)}
+</style>
+</head>
+<body>
+<section>
+  <div class="block">
+    <div class="noise"></div>
+    <h2>Your German starts this week.</h2>
+    <p class="sub">No waitlists. No paperwork mountain.</p>
+    <a href="#enroll" class="cta-btn">Reserve my seat <span>→</span></a>
+    <p class="label-mono assurance">No card required · Cancel anytime</p>
+  </div>
+</section>
+</body>
+</html>

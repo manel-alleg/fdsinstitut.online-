@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FDS Institut — Urgency Bar</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=JetBrains+Mono:wght@400&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased}
+body{background:#030712;color:#fff;font-family:'Montserrat',sans-serif}
+:root{--orange:#f97316;--ink:#15233c}
+::selection{background:var(--orange);color:var(--ink)}
+
+.urgency{
+  background:var(--orange);
+  color:var(--ink);
+  text-align:center;
+  padding:.625rem 1rem;
+  font-weight:700;
+  font-size:.8125rem;
+  letter-spacing:.06em;
+}
+@media(min-width:640px){.urgency{font-size:.875rem}}
+
+.urgency-inner{display:inline-flex;align-items:center;gap:.5rem}
+.pulse{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--ink);
+  animation:pulse-ring 2s ease-out infinite;
+}
+@keyframes pulse-ring{
+  0%{box-shadow:0 0 0 0 rgba(21,35,60,.6)}
+  100%{box-shadow:0 0 0 14px transparent}
+}
+</style>
+</head>
+<body>
+<div class="urgency">
+  <span class="urgency-inner">
+    <span class="pulse"></span>
+    New cohort starts this week — only a few seats left
+  </span>
+</div>
+</body>
+</html>
