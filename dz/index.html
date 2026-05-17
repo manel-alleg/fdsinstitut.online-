@@ -10,862 +10,1006 @@
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
 :root{
   --orange:#FF7900;
-  --orange-solid:#FF9100;
-  --orange-light:#EDB458;
-  --orange-03:#FFB700;
+  --orange-2:#FF9100;
   --blue:#00304E;
-  --blue-2:#0023E8;
-  --moodle:#F27F22;
-  --black:#111111;
+  --black:#111;
   --gray-50:#F7F8FA;
   --gray-100:#F0F1F3;
   --gray-200:#E2E3E5;
   --gray-500:#6B7280;
-  --white:#FFFFFF;
+  --moodle:#F27F22;
 }
-html{scroll-behavior:smooth}
-body{font-family:'Montserrat',sans-serif;color:var(--black);background:var(--white);-webkit-font-smoothing:antialiased}
-h1,h2,h3,h4,h5{font-family:'Sora',sans-serif}
-button,a{cursor:pointer}
-a{text-decoration:none;color:inherit}
-img{display:block;max-width:100%}
+body{font-family:'Montserrat',sans-serif;color:var(--black);background:#fff;line-height:1.6;overflow-x:hidden}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes marquee{to{transform:translateX(-50%)}}
+@keyframes pulseDot{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes slideUp{from{transform:translateY(100%);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes spin45{to{transform:rotate(45deg)}}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.reveal.in{opacity:1;transform:none}
+.reveal-d1{transition-delay:.1s}
+.reveal-d2{transition-delay:.2s}
+.reveal-d3{transition-delay:.3s}
+.reveal-d4{transition-delay:.4s}
+
+/* ── TYPOGRAPHY ── */
+h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
+.label-font{font-family:'Nunito',sans-serif}
+.accent{color:var(--orange)}
+.eyebrow{font-family:'Nunito',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:.75rem;display:block}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-family:'Montserrat',sans-serif;font-weight:600;font-size:.9rem;padding:.75rem 1.5rem;border-radius:10px;border:2px solid transparent;cursor:pointer;transition:all .2s;text-decoration:none;white-space:nowrap}
+.btn-orange{background:var(--orange);color:#fff;border-color:var(--orange)}
+.btn-orange:hover{background:var(--orange-2);border-color:var(--orange-2);transform:translateY(-1px);box-shadow:0 6px 20px rgba(255,121,0,.35)}
+.btn-outline-white{background:transparent;color:#fff;border-color:rgba(255,255,255,.6)}
+.btn-outline-white:hover{background:rgba(255,255,255,.1);border-color:#fff}
+.btn-outline-dark{background:transparent;color:var(--blue);border-color:var(--gray-200)}
+.btn-outline-dark:hover{border-color:var(--orange);color:var(--orange)}
+.btn-moodle{background:var(--moodle);color:#fff;border-color:var(--moodle)}
+.btn-moodle:hover{background:#e06e15;border-color:#e06e15;transform:translateY(-1px)}
+.btn-white{background:#fff;color:var(--blue);border-color:#fff}
+.btn-white:hover{background:var(--gray-50)}
+.btn-lg{font-size:1rem;padding:.9rem 2rem;border-radius:12px}
+.btn-full{width:100%;justify-content:center}
 
 /* ── URGENCY BAR ── */
-#urgency-bar{background:var(--orange);color:#fff;text-align:center;padding:9px 16px;font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;letter-spacing:.3px;display:flex;align-items:center;justify-content:center;gap:8px}
-.blink-dot{width:7px;height:7px;border-radius:50%;background:#fff;display:inline-block;animation:blink 1.2s ease-in-out infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+#urgency-bar{background:var(--orange);padding:.6rem 1rem;text-align:center;font-family:'Nunito',sans-serif;font-weight:700;font-size:.82rem;color:#fff;letter-spacing:.04em;display:flex;align-items:center;justify-content:center;gap:.6rem}
+.pulse-dot{width:8px;height:8px;border-radius:50%;background:#fff;animation:pulseDot 1.4s ease-in-out infinite;flex-shrink:0}
 
 /* ── NAV ── */
-#main-nav{background:var(--white);border-bottom:1px solid var(--gray-200);position:sticky;top:0;z-index:100;padding:0 24px}
-.nav-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:62px}
-.nav-logo{display:flex;align-items:baseline;gap:6px}
-.nav-logo-mark{font-family:'Sora',sans-serif;font-weight:800;font-size:22px;color:var(--black)}
-.nav-logo-mark span{color:var(--orange)}
-.nav-logo-sub{font-family:'Nunito',sans-serif;font-size:10px;font-weight:700;color:var(--gray-500);letter-spacing:1.5px;text-transform:uppercase}
-.nav-right{display:flex;align-items:center;gap:12px}
-.nav-badge{font-family:'Nunito',sans-serif;font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--gray-500);background:var(--gray-50);border:1px solid var(--gray-200);border-radius:9999px;padding:5px 12px}
-.nav-switcher{font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;color:var(--white);background:var(--black);border-radius:9999px;padding:7px 16px;transition:opacity .2s}
-.nav-switcher:hover{opacity:.8}
-
-/* ── SECTION HELPERS ── */
-.section-label{font-family:'Nunito',sans-serif;font-size:11px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--orange);margin-bottom:10px}
-.section-container{max-width:1120px;margin:0 auto;padding:0 24px}
+#nav{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1.5px solid var(--gray-200);height:64px;display:flex;align-items:center}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.nav-logo{display:flex;align-items:center;gap:.6rem;text-decoration:none}
+.logo-text{font-family:'Sora',sans-serif;font-weight:800;font-size:1.5rem;color:var(--blue);line-height:1}
+.logo-dot{color:var(--orange)}
+.nav-badge{font-family:'Nunito',sans-serif;font-weight:700;font-size:.65rem;background:var(--gray-100);color:var(--blue);padding:.2rem .5rem;border-radius:6px;letter-spacing:.06em}
+.nav-actions{display:flex;align-items:center;gap:.75rem}
+.nav-intl{font-family:'Montserrat',sans-serif;font-weight:600;font-size:.85rem;color:var(--blue);text-decoration:none;display:flex;align-items:center;gap:.3rem;border:1.5px solid var(--gray-200);padding:.45rem 1rem;border-radius:8px;transition:all .2s}
+.nav-intl:hover{border-color:var(--orange);color:var(--orange)}
+.nav-cta{font-size:.85rem;padding:.5rem 1.1rem;border-radius:8px}
 
 /* ── HERO ── */
-#hero{padding:96px 24px 80px;text-align:center;background:var(--white)}
-.hero-inner{max-width:760px;margin:0 auto}
-.hero-eyebrow{display:inline-block;font-family:'Nunito',sans-serif;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:9999px;padding:6px 16px;color:var(--gray-500);margin-bottom:28px}
-#hero h1{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(38px,6vw,68px);line-height:1.1;margin-bottom:22px;color:var(--black)}
-#hero h1 span.dot{color:var(--orange)}
-.hero-sub{font-family:'Montserrat',sans-serif;font-weight:500;font-size:17px;line-height:1.7;color:var(--gray-500);max-width:560px;margin:0 auto 32px}
-.trust-pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:24px}
-.pill{font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;border-radius:9999px;padding:7px 15px;display:inline-block}
-.pill-orange{background:var(--orange);color:#fff}
-.pill-outline{border:1.5px solid var(--gray-200);color:var(--black);background:transparent}
-.star-row{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:36px}
-.stars{display:flex;gap:2px}
-.stars svg{width:16px;height:16px;fill:var(--orange-03);stroke:none}
-.star-text{font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;color:var(--black)}
-.star-sub{font-family:'Nunito',sans-serif;font-size:12px;color:var(--gray-500)}
-.hero-stats{display:flex;justify-content:center;gap:48px;margin-bottom:40px;flex-wrap:wrap}
+#hero{scroll-margin-top:64px;background:var(--gray-50);padding:5rem 1.5rem 4rem}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 480px;gap:3.5rem;align-items:center}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:#fff;border:1.5px solid var(--gray-200);border-radius:100px;padding:.35rem .8rem .35rem .5rem;font-family:'Nunito',sans-serif;font-weight:700;font-size:.75rem;color:var(--black);margin-bottom:1.25rem}
+.green-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;animation:pulseDot 1.4s ease-in-out infinite;flex-shrink:0}
+.hero-h1{font-size:clamp(3rem,6vw,5rem);font-weight:800;color:var(--black);margin-bottom:1.25rem}
+.hero-sub{font-size:1.05rem;color:var(--gray-500);max-width:480px;margin-bottom:1.75rem;line-height:1.7}
+.trust-pills{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.75rem}
+.trust-pill{display:flex;align-items:center;gap:.6rem;font-family:'Nunito',sans-serif;font-weight:600;font-size:.85rem;color:var(--black)}
+.trust-pill svg{flex-shrink:0}
+.hero-divider{border:none;border-top:1.5px solid var(--gray-200);margin:1.5rem 0}
+.avatar-row{display:flex;align-items:center;gap:.75rem}
+.avatar-stack{display:flex}
+.avatar-stack .av{width:36px;height:36px;border-radius:50%;border:2.5px solid #fff;background:var(--blue);color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:.65rem;display:flex;align-items:center;justify-content:center;margin-left:-10px}
+.avatar-stack .av:first-child{margin-left:0}
+.avatar-stack .av:nth-child(2){background:#FF7900}
+.avatar-stack .av:nth-child(3){background:#22c55e}
+.avatar-stack .av:nth-child(4){background:#7c3aed}
+.avatar-row-text{font-family:'Nunito',sans-serif;font-weight:700;font-size:.8rem;color:var(--gray-500)}
+.avatar-row-text strong{color:var(--black);display:block;font-size:.9rem}
+
+/* ── FORM CARD ── */
+.form-card{background:#fff;border:1.5px solid var(--gray-200);border-radius:24px;padding:2rem;box-shadow:0 8px 40px rgba(0,48,78,.08);width:100%}
+.form-card-label{font-family:'Nunito',sans-serif;font-weight:800;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:1rem;display:block}
+.form-dots{display:flex;gap:.4rem;margin-bottom:1.5rem}
+.form-dot{width:32px;height:4px;border-radius:4px;background:var(--gray-200);transition:all .3s}
+.form-dot.active{background:var(--orange)}
+.form-dot.done{background:var(--orange);opacity:.4}
+.form-step{display:none}
+.form-step.active{display:block}
+.step-q{font-family:'Sora',sans-serif;font-weight:700;font-size:1rem;color:var(--blue);margin-bottom:1rem}
+.option-list{display:flex;flex-direction:column;gap:.5rem}
+.opt-card{border:1.5px solid var(--gray-200);border-radius:12px;padding:.7rem 1rem;cursor:pointer;transition:all .18s;display:flex;align-items:center;justify-content:space-between;font-family:'Montserrat',sans-serif;font-weight:500;font-size:.88rem;color:var(--black)}
+.opt-card:hover{border-color:var(--orange);background:#fff9f5}
+.opt-card.selected{border-color:var(--orange);background:#fff3e8;font-weight:600;color:var(--blue)}
+.opt-badge{font-family:'Nunito',sans-serif;font-weight:800;font-size:.72rem;background:var(--gray-100);color:var(--orange);padding:.18rem .5rem;border-radius:6px;white-space:nowrap}
+.opt-card.selected .opt-badge{background:var(--orange);color:#fff}
+.step-back{display:inline-flex;align-items:center;gap:.3rem;font-family:'Montserrat',sans-serif;font-weight:600;font-size:.8rem;color:var(--gray-500);border:none;background:none;cursor:pointer;padding:.3rem 0;margin-top:.75rem;transition:color .2s}
+.step-back:hover{color:var(--blue)}
+.form-fields{display:flex;flex-direction:column;gap:.75rem}
+.form-field label{font-family:'Nunito',sans-serif;font-weight:700;font-size:.75rem;color:var(--blue);display:block;margin-bottom:.3rem}
+.form-field input{width:100%;border:1.5px solid var(--gray-200);border-radius:10px;padding:.65rem .9rem;font-family:'Montserrat',sans-serif;font-size:.9rem;color:var(--black);outline:none;transition:border-color .2s}
+.form-field input:focus{border-color:var(--orange)}
+.form-field input::placeholder{color:var(--gray-500)}
+.form-step-4-meta{font-family:'Nunito',sans-serif;font-weight:600;font-size:.73rem;color:var(--gray-500);text-align:center;margin-top:.6rem}
+.form-success{display:none;text-align:center;padding:1rem 0}
+.form-success .success-icon{margin:0 auto 1rem;width:64px;height:64px;border-radius:50%;background:#dcfce7;display:flex;align-items:center;justify-content:center}
+.form-success h3{font-family:'Sora',sans-serif;font-weight:700;font-size:1.1rem;color:var(--blue);margin-bottom:.6rem}
+.form-success p{font-family:'Montserrat',sans-serif;font-size:.85rem;color:var(--gray-500);margin-bottom:.5rem}
+.form-success a{color:var(--orange);font-weight:600;font-size:.82rem}
+
+/* ── STATS BAR ── */
+#stats{background:var(--blue);padding:3.5rem 1.5rem}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
 .stat-item{text-align:center}
-.stat-num{font-family:'Sora',sans-serif;font-weight:800;font-size:28px;color:var(--black)}
-.stat-label{font-family:'Nunito',sans-serif;font-size:12px;font-weight:600;color:var(--gray-500);margin-top:2px}
-.hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.btn-primary{font-family:'Sora',sans-serif;font-weight:700;font-size:15px;background:var(--orange);color:#fff;border:none;border-radius:9999px;padding:14px 28px;transition:opacity .2s}
-.btn-primary:hover{opacity:.88}
-.btn-outline{font-family:'Sora',sans-serif;font-weight:700;font-size:15px;background:transparent;color:var(--black);border:2px solid var(--gray-200);border-radius:9999px;padding:13px 26px;transition:border-color .2s,color .2s;display:inline-block}
-.btn-outline:hover{border-color:var(--black)}
+.stat-num{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(2rem,4vw,2.75rem);color:#fff;line-height:1;margin-bottom:.35rem}
+.stat-label{font-family:'Nunito',sans-serif;font-weight:600;font-size:.8rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.06em}
 
-/* ── MOODLE SECTION ── */
-#moodle-section{background:var(--gray-50);border-top:1px solid var(--gray-200);border-bottom:1px solid var(--gray-200);padding:64px 24px;text-align:center}
-#moodle-section h2{font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(24px,3.5vw,34px);margin:20px 0 12px}
-#moodle-section p{font-family:'Montserrat',sans-serif;font-size:16px;color:var(--gray-500);margin-bottom:28px}
-.btn-moodle{font-family:'Sora',sans-serif;font-weight:700;font-size:15px;background:var(--moodle);color:#fff;border:none;border-radius:9999px;padding:14px 28px;display:inline-block;transition:opacity .2s}
-.btn-moodle:hover{opacity:.88}
-.moodle-note{font-family:'Nunito',sans-serif;font-size:12px;font-weight:600;color:var(--gray-500);margin-top:12px}
+/* ── IMAGE SECTION ── */
+#image-section{min-height:480px;position:relative;display:flex;align-items:center;background:url('https://images.pexels.com/photos/4144923/pexels-photo-4144923.jpeg?auto=compress&cs=tinysrgb&w=1400') center/cover no-repeat}
+.image-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,48,78,.92) 0%,rgba(0,48,78,.5) 60%,rgba(0,48,78,.05) 100%)}
+.image-content{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:4rem 1.5rem;max-width:600px}
+.image-eyebrow-line{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
+.orange-line{width:36px;height:3px;background:var(--orange);border-radius:2px}
+.image-eyebrow-line span{font-family:'Nunito',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--orange)}
+.image-content h2{font-size:clamp(1.6rem,3.5vw,2.5rem);font-weight:800;color:#fff;margin-bottom:1rem}
+.image-content p{font-size:1rem;color:rgba(255,255,255,.8);margin-bottom:1.75rem;line-height:1.7}
 
-/* ── VALUE STACK ── */
-#value{padding:80px 24px;background:var(--white)}
-#value .section-head{text-align:center;margin-bottom:48px}
-#value h2{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(26px,4vw,42px)}
-.value-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1120px;margin:0 auto}
-.value-card{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:12px;padding:28px 24px}
-.value-icon{width:42px;height:42px;background:var(--orange);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;margin-bottom:18px}
-.value-icon svg{width:22px;height:22px}
-.value-card h3{font-family:'Sora',sans-serif;font-weight:700;font-size:16px;margin-bottom:6px}
-.value-card p{font-family:'Montserrat',sans-serif;font-size:14px;color:var(--gray-500);line-height:1.6}
+/* ── FEATURES ── */
+#features{background:#fff;padding:5rem 1.5rem}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:3rem}
+.section-header h2{font-size:clamp(1.6rem,3vw,2.25rem);font-weight:800;color:var(--blue);margin-top:.5rem}
+.features-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.feat-card{border:1.5px solid var(--gray-200);border-radius:20px;padding:2rem;transition:all .25s}
+.feat-card:hover{border-color:var(--orange);box-shadow:0 8px 32px rgba(255,121,0,.12);transform:translateY(-4px)}
+.feat-icon{width:48px;height:48px;border-radius:14px;background:#fff3e8;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem}
+.feat-card h3{font-family:'Sora',sans-serif;font-weight:700;font-size:1rem;color:var(--blue);margin-bottom:.5rem}
+.feat-card p{font-size:.88rem;color:var(--gray-500);line-height:1.6}
+
+/* ── MOODLE ── */
+#moodle{background:var(--gray-50);padding:5rem 1.5rem}
+.moodle-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
+.moodle-left h2{font-size:clamp(1.5rem,2.5vw,2.1rem);font-weight:800;color:var(--blue);margin:1rem 0 .75rem}
+.moodle-left p{font-size:.95rem;color:var(--gray-500);margin-bottom:1.5rem;line-height:1.7}
+.moodle-checks{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.75rem}
+.moodle-check{display:flex;align-items:center;gap:.6rem;font-family:'Nunito',sans-serif;font-weight:700;font-size:.88rem;color:var(--blue)}
+.moodle-img-wrap{position:relative;border-radius:20px;overflow:hidden;height:340px}
+.moodle-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+.moodle-badge{position:absolute;bottom:1rem;left:1rem;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);border-radius:10px;padding:.45rem .8rem;display:flex;align-items:center;gap:.5rem;font-family:'Nunito',sans-serif;font-weight:700;font-size:.75rem;color:#fff}
 
 /* ── PRICING ── */
-#pricing{padding:80px 24px;background:var(--gray-50);border-top:1px solid var(--gray-200)}
-#pricing .section-head{text-align:center;margin-bottom:14px}
-#pricing h2{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(26px,4vw,42px)}
-.pricing-sub{font-family:'Montserrat',sans-serif;font-size:15px;color:var(--gray-500);text-align:center;max-width:600px;margin:10px auto 48px}
-.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1000px;margin:0 auto}
-.price-card{background:var(--white);border:1.5px solid var(--gray-200);border-radius:20px;padding:32px 28px;position:relative;display:flex;flex-direction:column}
-.price-card.highlight{border-color:var(--orange);background:var(--orange)}
-.price-badge{font-family:'Nunito',sans-serif;font-size:11px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;background:var(--white);color:var(--orange);border-radius:9999px;padding:5px 13px;display:inline-block;margin-bottom:18px;width:fit-content}
-.price-card h3{font-family:'Sora',sans-serif;font-weight:700;font-size:20px;margin-bottom:6px}
-.price-card.highlight h3{color:#fff}
-.price-amount{font-family:'Sora',sans-serif;font-weight:800;font-size:32px;margin-bottom:4px}
-.price-card.highlight .price-amount{color:#fff}
-.price-period{font-family:'Nunito',sans-serif;font-size:13px;color:var(--gray-500);margin-bottom:24px}
-.price-card.highlight .price-period{color:rgba(255,255,255,.75)}
-.price-features{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px;flex:1}
-.price-features li{font-family:'Montserrat',sans-serif;font-size:14px;color:var(--black);display:flex;align-items:center;gap:8px}
-.price-card.highlight .price-features li{color:#fff}
-.price-features li::before{content:'';width:16px;height:16px;border-radius:50%;background:var(--orange);flex-shrink:0;display:inline-block}
-.price-card.highlight .price-features li::before{background:rgba(255,255,255,.4)}
-.btn-price-primary{font-family:'Sora',sans-serif;font-weight:700;font-size:15px;background:var(--orange);color:#fff;border:none;border-radius:9999px;padding:13px 24px;width:100%;transition:opacity .2s}
-.btn-price-primary:hover{opacity:.88}
-.btn-price-highlight{font-family:'Sora',sans-serif;font-weight:700;font-size:15px;background:#fff;color:var(--orange);border:none;border-radius:9999px;padding:13px 24px;width:100%;transition:opacity .2s}
-.btn-price-highlight:hover{opacity:.9}
-
-/* ── COMPARISON TABLE ── */
-#compare{padding:80px 24px;background:var(--white)}
-#compare .section-head{text-align:center;margin-bottom:48px}
-#compare h2{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(26px,4vw,42px)}
-.compare-wrap{max-width:780px;margin:0 auto}
-.compare-table{width:100%;border-collapse:collapse}
-.compare-table th{font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;padding:14px 20px;text-align:left;border-bottom:2px solid var(--gray-200)}
-.compare-table th.fds-col{text-align:center}
-.compare-table th.other-col{text-align:center;color:var(--gray-500)}
-.fds-pill{font-family:'Nunito',sans-serif;font-size:12px;font-weight:800;background:var(--orange);color:#fff;border-radius:9999px;padding:4px 12px;display:inline-block}
-.compare-table td{font-family:'Montserrat',sans-serif;font-size:14px;padding:14px 20px;border-bottom:1px solid var(--gray-200);vertical-align:middle}
-.compare-table td.fds-val{text-align:center;font-weight:600;color:var(--black)}
-.compare-table td.other-val{text-align:center;color:var(--gray-500)}
-.compare-table tr:last-child td{border-bottom:none}
-.compare-table tr:nth-child(even) td{background:var(--gray-50)}
-.compare-note{font-family:'Nunito',sans-serif;font-size:12px;color:var(--gray-500);text-align:center;margin-top:16px}
-
-/* ── TRUST PARTNERS ── */
-#trust{padding:64px 24px;background:var(--gray-50);border-top:1px solid var(--gray-200)}
-#trust .section-head{text-align:center;margin-bottom:40px}
-#trust h2{font-family:'Sora',sans-serif;font-weight:700;font-size:24px}
-.trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:780px;margin:0 auto}
-.trust-card{background:var(--white);border:1px solid var(--gray-200);border-radius:12px;padding:28px 24px;text-align:center}
-.trust-avatar{width:52px;height:52px;border-radius:12px;background:var(--blue);color:#fff;font-family:'Sora',sans-serif;font-weight:800;font-size:18px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
-.trust-card h3{font-family:'Sora',sans-serif;font-weight:700;font-size:15px;margin-bottom:6px}
-.trust-card p{font-family:'Montserrat',sans-serif;font-size:13px;color:var(--gray-500)}
+#pricing{background:#fff;padding:5rem 1.5rem}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1200px;margin:0 auto}
+.price-card{border:1.5px solid var(--gray-200);border-radius:24px;padding:2rem;display:flex;flex-direction:column;position:relative}
+.price-card.highlight{border-color:var(--orange);box-shadow:0 8px 40px rgba(255,121,0,.18)}
+.pop-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--orange);color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:.7rem;padding:.25rem .75rem;border-radius:100px;white-space:nowrap;letter-spacing:.04em}
+.price-plan{font-family:'Nunito',sans-serif;font-weight:800;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-500);margin-bottom:.75rem}
+.price-amount{font-family:'Sora',sans-serif;font-weight:800;font-size:2rem;color:var(--blue);line-height:1;margin-bottom:.2rem}
+.price-amount span{font-size:.9rem;font-weight:600;color:var(--gray-500)}
+.price-period{font-family:'Nunito',sans-serif;font-weight:600;font-size:.75rem;color:var(--gray-500);margin-bottom:1.5rem}
+.price-features{list-style:none;display:flex;flex-direction:column;gap:.55rem;margin-bottom:1.75rem;flex:1}
+.price-features li{display:flex;align-items:flex-start;gap:.5rem;font-size:.85rem;color:var(--black);line-height:1.5}
+.price-features li svg{flex-shrink:0;margin-top:2px}
+.pricing-assurance{text-align:center;margin-top:1.75rem;font-family:'Nunito',sans-serif;font-weight:700;font-size:.8rem;color:var(--gray-500)}
+.pricing-payment{text-align:center;margin-top:.5rem;font-family:'Nunito',sans-serif;font-weight:600;font-size:.78rem;color:var(--gray-500)}
 
 /* ── TESTIMONIALS ── */
-#testimonials{padding:80px 24px;background:var(--white)}
-#testimonials .section-head{text-align:center;margin-bottom:48px}
-#testimonials h2{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(24px,3.5vw,38px)}
-.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1000px;margin:0 auto}
-.testi-card{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:20px;padding:28px 24px}
-.testi-card.highlight-blue{background:var(--blue);border-color:var(--blue)}
-.testi-top{display:flex;align-items:center;gap:12px;margin-bottom:16px}
-.testi-avatar{width:44px;height:44px;border-radius:50%;background:var(--orange);color:#fff;font-family:'Sora',sans-serif;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.testi-card.highlight-blue .testi-avatar{background:rgba(255,255,255,.15)}
-.testi-name{font-family:'Sora',sans-serif;font-weight:700;font-size:15px}
-.testi-card.highlight-blue .testi-name{color:#fff}
-.testi-loc{font-family:'Nunito',sans-serif;font-size:12px;font-weight:600;color:var(--gray-500)}
-.testi-card.highlight-blue .testi-loc{color:rgba(255,255,255,.6)}
-.testi-text{font-family:'Montserrat',sans-serif;font-size:14px;line-height:1.65;color:var(--black)}
-.testi-card.highlight-blue .testi-text{color:rgba(255,255,255,.9)}
+#testimonials{background:var(--gray-50);padding:5rem 1.5rem}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1200px;margin:0 auto}
+.testi-card{border-radius:20px;padding:1.75rem;display:flex;flex-direction:column;gap:1rem}
+.testi-card.light{background:#fff;border:1.5px solid var(--gray-200)}
+.testi-card.dark{background:var(--blue);border:1.5px solid var(--blue)}
+.testi-stars{display:flex;gap:.15rem}
+.testi-quote{font-size:.9rem;line-height:1.65;flex:1}
+.testi-card.light .testi-quote{color:var(--black)}
+.testi-card.dark .testi-quote{color:rgba(255,255,255,.85)}
+.testi-author{display:flex;align-items:center;gap:.75rem}
+.testi-av{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;font-weight:800;font-size:.75rem;flex-shrink:0}
+.av-orange{background:#fff3e8;color:var(--orange)}
+.av-glass{background:rgba(255,255,255,.15);color:#fff}
+.testi-name{font-family:'Nunito',sans-serif;font-weight:800;font-size:.88rem}
+.testi-card.light .testi-name{color:var(--blue)}
+.testi-card.dark .testi-name{color:#fff}
+.testi-meta{font-family:'Montserrat',sans-serif;font-size:.75rem}
+.testi-card.light .testi-meta{color:var(--gray-500)}
+.testi-card.dark .testi-meta{color:rgba(255,255,255,.5)}
 
 /* ── GUARANTEE ── */
-#guarantee{padding:64px 24px;background:var(--gray-50);border-top:1px solid var(--gray-200);text-align:center}
-.guarantee-inner{max-width:520px;margin:0 auto}
-.guarantee-icon{width:56px;height:56px;background:var(--orange);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;margin:0 auto 20px}
-.guarantee-icon svg{width:28px;height:28px}
-#guarantee h2{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(20px,3vw,28px);margin-bottom:10px}
-#guarantee p{font-family:'Montserrat',sans-serif;font-size:15px;color:var(--gray-500);margin-bottom:28px;line-height:1.6}
+#guarantee{background:linear-gradient(135deg,#FF7900 0%,#FF9100 100%);padding:4rem 1.5rem;text-align:center}
+#guarantee h2{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(1.5rem,3vw,2.25rem);color:#fff;margin:1.25rem 0 .75rem}
+#guarantee p{font-size:1rem;color:rgba(255,255,255,.88);margin-bottom:1.75rem;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.7}
+.shield-icon{margin:0 auto .5rem;display:flex;justify-content:center}
 
 /* ── FAQ ── */
-#faq{padding:80px 24px;background:var(--white)}
-#faq .section-head{text-align:center;margin-bottom:48px}
-#faq h2{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(26px,4vw,42px)}
-.faq-list{max-width:720px;margin:0 auto}
-.faq-item{border-bottom:1px solid var(--gray-200)}
-.faq-q{width:100%;background:none;border:none;text-align:left;padding:20px 0;font-family:'Sora',sans-serif;font-weight:600;font-size:16px;color:var(--black);display:flex;justify-content:space-between;align-items:center;gap:16px}
-.faq-q svg{flex-shrink:0;transition:transform .25s;color:var(--orange)}
-.faq-item.open .faq-q svg{transform:rotate(180deg)}
-.faq-a{font-family:'Montserrat',sans-serif;font-size:14px;line-height:1.7;color:var(--gray-500);padding-bottom:18px;display:none}
-.faq-item.open .faq-a{display:block}
+#faq{background:var(--gray-50);padding:5rem 1.5rem}
+.faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:.75rem}
+.faq-item{background:#fff;border:1.5px solid var(--gray-200);border-radius:16px;overflow:hidden;transition:border-color .2s}
+.faq-item.open{border-color:var(--orange)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.25rem;cursor:pointer;gap:1rem}
+.faq-q-text{font-family:'Sora',sans-serif;font-weight:700;font-size:.92rem;color:var(--blue)}
+.faq-icon{width:24px;height:24px;flex-shrink:0;border:1.5px solid var(--gray-200);border-radius:6px;display:flex;align-items:center;justify-content:center;transition:all .25s}
+.faq-item.open .faq-icon{border-color:var(--orange);background:var(--orange);transform:rotate(45deg)}
+.faq-item.open .faq-icon svg path,.faq-item.open .faq-icon svg line{stroke:#fff}
+.faq-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s}
+.faq-item.open .faq-body{grid-template-rows:1fr}
+.faq-body-inner{overflow:hidden}
+.faq-a{padding:0 1.25rem 1.1rem;font-size:.88rem;color:var(--gray-500);line-height:1.7}
 
 /* ── FINAL CTA ── */
-#final-cta{padding:96px 24px;background:var(--blue);text-align:center}
-#final-cta h2{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(28px,4vw,46px);color:#fff;margin-bottom:12px}
-#final-cta p{font-family:'Montserrat',sans-serif;font-size:16px;color:rgba(255,255,255,.7);margin-bottom:36px}
-.btn-cta-white{font-family:'Sora',sans-serif;font-weight:700;font-size:16px;background:#fff;color:var(--blue);border:none;border-radius:9999px;padding:16px 36px;transition:opacity .2s}
-.btn-cta-white:hover{opacity:.9}
-.cta-note{font-family:'Nunito',sans-serif;font-size:12px;font-weight:600;color:rgba(255,255,255,.5);margin-top:14px}
+#final-cta{background:var(--blue);padding:5rem 1.5rem;text-align:center}
+#final-cta h2{font-size:clamp(1.8rem,4vw,3rem);font-weight:800;color:#fff;margin-bottom:1rem}
+#final-cta p{font-size:1rem;color:rgba(255,255,255,.7);margin-bottom:2rem;max-width:480px;margin-left:auto;margin-right:auto}
+.final-btns{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap}
 
 /* ── FOOTER ── */
-#footer{padding:56px 24px 32px;background:var(--white);border-top:1px solid var(--gray-200)}
-.footer-inner{max-width:1120px;margin:0 auto}
-.footer-cols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
-.footer-brand p{font-family:'Montserrat',sans-serif;font-size:14px;color:var(--gray-500);margin-top:10px;line-height:1.6;max-width:240px}
-.footer-col h4{font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;color:var(--gray-500);margin-bottom:14px}
-.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
-.footer-col ul li a{font-family:'Montserrat',sans-serif;font-size:14px;color:var(--black);transition:color .2s}
-.footer-col ul li a:hover{color:var(--orange)}
-.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:24px;border-top:1px solid var(--gray-200);flex-wrap:wrap;gap:8px}
-.footer-bottom p{font-family:'Nunito',sans-serif;font-size:12px;font-weight:600;color:var(--gray-500)}
-.footer-secure{font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;color:var(--gray-500);display:flex;align-items:center;gap:5px}
+#footer{background:#fff;border-top:1.5px solid var(--gray-200);padding:3rem 1.5rem 1.5rem}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;padding-bottom:2rem;border-bottom:1px solid var(--gray-200);margin-bottom:1.5rem}
+.footer-brand-name{font-family:'Sora',sans-serif;font-weight:800;font-size:1.4rem;color:var(--blue);margin-bottom:.35rem}
+.footer-tagline{font-size:.82rem;color:var(--gray-500);margin-bottom:.75rem}
+.footer-copy{font-size:.75rem;color:var(--gray-500)}
+.footer-col h4{font-family:'Nunito',sans-serif;font-weight:800;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:.75rem}
+.footer-nav{list-style:none;display:flex;flex-direction:column;gap:.4rem}
+.footer-nav a,.footer-nav button{font-size:.85rem;color:var(--gray-500);text-decoration:none;font-family:'Montserrat',sans-serif;background:none;border:none;cursor:pointer;padding:0;transition:color .2s;text-align:left}
+.footer-nav a:hover,.footer-nav button:hover{color:var(--orange)}
+.footer-contact-item{display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:var(--gray-500);margin-bottom:.4rem;text-decoration:none}
+.footer-contact-item:hover{color:var(--orange)}
+.footer-bottom{text-align:center;font-size:.75rem;color:var(--gray-500)}
 
-/* ── MODAL ── */
-#enroll-modal{display:none;position:fixed;inset:0;z-index:999;align-items:center;justify-content:center;padding:16px}
-#enroll-modal.active{display:flex}
-.modal-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.45)}
-.modal-box{position:relative;background:#fff;border-radius:20px;width:100%;max-width:500px;padding:36px 32px 32px;max-height:90vh;overflow-y:auto}
-.modal-close{position:absolute;top:16px;right:16px;background:none;border:none;font-size:22px;color:var(--gray-500);line-height:1;padding:4px 8px;border-radius:8px;transition:background .2s}
-.modal-close:hover{background:var(--gray-100)}
-.modal-tag{font-family:'Nunito',sans-serif;font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--orange);background:rgba(255,121,0,.09);border-radius:9999px;padding:5px 12px;display:inline-block;margin-bottom:14px}
-.modal-box h2{font-family:'Sora',sans-serif;font-weight:800;font-size:22px;margin-bottom:4px}
-.modal-sub{font-family:'Montserrat',sans-serif;font-size:14px;color:var(--gray-500);margin-bottom:20px}
-.modal-steps{display:flex;gap:6px;margin-bottom:28px}
-.step-dot{height:4px;flex:1;border-radius:9999px;background:var(--gray-200);transition:background .3s}
-.step-dot.active{background:var(--orange)}
-.step-label{font-family:'Nunito',sans-serif;font-size:11px;font-weight:700;color:var(--gray-500);margin-bottom:16px;text-align:center}
-.modal-step{display:none}
-.modal-step.active{display:block}
-.modal-q{font-family:'Sora',sans-serif;font-weight:700;font-size:16px;margin-bottom:16px;color:var(--black)}
-.option-grid{display:flex;flex-direction:column;gap:8px}
-.opt-btn{width:100%;background:var(--gray-50);border:1.5px solid var(--gray-200);border-radius:12px;padding:14px 16px;text-align:left;display:flex;align-items:center;gap:10px;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:500;color:var(--black);transition:border-color .2s,background .2s}
-.opt-btn:hover,.opt-btn.selected{border-color:var(--orange);background:rgba(255,121,0,.05)}
-.opt-btn .opt-badge{font-family:'Nunito',sans-serif;font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;background:var(--orange);color:#fff;border-radius:9999px;padding:2px 8px;margin-left:auto;flex-shrink:0}
-.opt-btn .opt-icon{width:34px;height:34px;background:var(--gray-100);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--orange)}
-.opt-btn .opt-icon svg{width:17px;height:17px}
-.opt-info{flex:1}
-.opt-name{font-weight:600;font-size:14px}
-.opt-price{font-family:'Nunito',sans-serif;font-size:12px;font-weight:600;color:var(--gray-500)}
-.form-group{margin-bottom:14px}
-.form-group label{display:block;font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;color:var(--black);margin-bottom:6px}
-.form-group input{width:100%;border:1.5px solid var(--gray-200);border-radius:10px;padding:12px 14px;font-family:'Montserrat',sans-serif;font-size:14px;color:var(--black);outline:none;transition:border-color .2s}
-.form-group input:focus{border-color:var(--orange)}
-.modal-nav{display:flex;align-items:center;justify-content:space-between;margin-top:20px;gap:10px}
-.btn-back{font-family:'Sora',sans-serif;font-weight:600;font-size:14px;background:none;border:none;color:var(--gray-500);padding:10px 0}
-.btn-back:hover{color:var(--black)}
-.btn-next{font-family:'Sora',sans-serif;font-weight:700;font-size:15px;background:var(--orange);color:#fff;border:none;border-radius:9999px;padding:13px 24px;flex:1;transition:opacity .2s}
-.btn-next:hover{opacity:.88}
-.modal-footer{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:18px;font-family:'Nunito',sans-serif;font-size:12px;font-weight:600;color:var(--gray-500)}
+/* ── MOBILE STICKY CTA ── */
+#mobile-cta{position:fixed;bottom:0;left:0;right:0;z-index:200;background:#fff;border-top:1.5px solid var(--gray-200);padding:.75rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+@media(min-width:1024px){#mobile-cta{display:none}}
+.mobile-cta-text-price{font-family:'Sora',sans-serif;font-weight:800;font-size:1rem;color:var(--blue)}
+.mobile-cta-text-sub{font-family:'Nunito',sans-serif;font-weight:600;font-size:.75rem;color:var(--gray-500)}
 
 /* ── SUCCESS BANNER ── */
-#success-banner{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--blue);color:#fff;border-radius:9999px;padding:14px 24px;font-family:'Nunito',sans-serif;font-size:14px;font-weight:700;display:none;align-items:center;gap:8px;z-index:1000;white-space:nowrap;box-shadow:0 4px 24px rgba(0,0,0,.18)}
-#success-banner.show{display:flex}
-
-/* ── STICKY MOBILE CTA ── */
-#mobile-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;padding:16px;background:var(--orange)}
-#mobile-cta button{width:100%;font-family:'Sora',sans-serif;font-weight:700;font-size:16px;background:none;border:none;color:#fff;padding:0}
+#success-banner{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%) translateY(120%);z-index:500;background:var(--blue);color:#fff;border-radius:100px;padding:.75rem 1.5rem;display:flex;align-items:center;gap:.65rem;font-family:'Nunito',sans-serif;font-weight:700;font-size:.85rem;box-shadow:0 8px 32px rgba(0,0,0,.2);white-space:nowrap;transition:transform .4s cubic-bezier(.34,1.56,.64,1),opacity .4s}
+#success-banner.show{transform:translateX(-50%) translateY(0);animation:none}
 
 /* ── RESPONSIVE ── */
 @media(max-width:1023px){
-  #mobile-cta{display:block}
-  .value-grid{grid-template-columns:repeat(2,1fr)}
-  .pricing-grid{grid-template-columns:1fr;max-width:400px}
-  .trust-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-inner{grid-template-columns:1fr;gap:2.5rem}
+  .moodle-inner{grid-template-columns:1fr;gap:2rem}
+  .features-grid{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:1fr}
+  .price-card.highlight{order:-1}
   .testi-grid{grid-template-columns:1fr}
-  .footer-cols{grid-template-columns:1fr 1fr}
-  .footer-brand{grid-column:1/-1}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .footer-inner{grid-template-columns:1fr;gap:1.5rem}
+  .nav-intl{display:none}
+  #hero{padding:3.5rem 1.25rem 3rem}
+  body{padding-bottom:72px}
 }
-@media(min-width:1024px){
-  #mobile-cta{display:none}
-}
-@media(max-width:640px){
-  #hero{padding:64px 16px 56px}
-  .hero-stats{gap:28px}
-  .value-grid{grid-template-columns:1fr}
-  .trust-grid{grid-template-columns:1fr}
-  .footer-cols{grid-template-columns:1fr}
-  .modal-box{padding:28px 20px 24px}
-  .compare-table td,.compare-table th{padding:12px 10px;font-size:13px}
-  .nav-badge{display:none}
+@media(max-width:600px){
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .hero-h1{font-size:2.6rem}
+  .form-card{padding:1.5rem}
+  #final-cta{padding:3.5rem 1.25rem}
+  .final-btns{flex-direction:column}
+  .final-btns .btn{width:100%;justify-content:center}
 }
 </style>
 </head>
 <body>
 
-<!-- ── 1. URGENCY BAR ── -->
+<!-- ── URGENCY BAR ── -->
 <div id="urgency-bar">
-  <span class="blink-dot"></span>
-  Nouvelle session — places limitées · Démarrage cette semaine
+  <div class="pulse-dot"></div>
+  Nouvelles inscriptions ouvertes &nbsp;·&nbsp; Places limitées &nbsp;·&nbsp; Inscrivez-vous en 2 minutes
 </div>
 
-<!-- ── 2. STICKY NAV ── -->
-<nav id="main-nav">
+<!-- ── NAV ── -->
+<nav id="nav">
   <div class="nav-inner">
-    <a href="/" class="nav-logo">
-      <span class="nav-logo-mark">FDS<span>.</span></span>
-      <span class="nav-logo-sub">Institut</span>
+    <a href="#" class="nav-logo">
+      <span class="logo-text">FDS<span class="logo-dot">.</span></span>
+      <span class="nav-badge">ALGÉRIE · A1–C2</span>
     </a>
-    <div class="nav-right">
-      <span class="nav-badge">100% en ligne · A1–C2 · Algérie</span>
-      <a href="../global/index.html" class="nav-switcher">International</a>
+    <div class="nav-actions">
+      <a href="../global/index.html" class="nav-intl">
+        International
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <button class="btn btn-orange nav-cta" onclick="scrollToHero()">Réserver ma place</button>
     </div>
   </div>
 </nav>
 
-<!-- ── 3. HERO ── -->
+<!-- ── HERO ── -->
 <section id="hero">
   <div class="hero-inner">
-    <div class="hero-eyebrow">A1 → C2 · Cours en ligne</div>
-    <h1>Apprenez l'allemand.<br>Depuis l'Algérie<span class="dot">.</span></h1>
-    <p class="hero-sub">Cours en direct avec des professeurs certifiés. Tarifs pensés pour l'Algérie. Démarrage cette semaine.</p>
-    <div class="trust-pills">
-      <span class="pill pill-orange">+3 200 étudiants algériens</span>
-      <span class="pill pill-outline">94% de réussite</span>
-      <span class="pill pill-outline">CCP · Edahabia · BaridiMob</span>
-    </div>
-    <div class="star-row">
-      <div class="stars">
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    <!-- LEFT -->
+    <div class="hero-left">
+      <div class="hero-eyebrow reveal">
+        <span class="green-dot"></span>
+        Inscriptions ouvertes · En ligne
       </div>
-      <span class="star-text">4.9 / 5</span>
-      <span class="star-sub">1 200+ avis vérifiés</span>
-    </div>
-    <div class="hero-stats">
-      <div class="stat-item">
-        <div class="stat-num">12k+</div>
-        <div class="stat-label">Étudiants</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">94%</div>
-        <div class="stat-label">Réussite</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">A1→C2</div>
-        <div class="stat-label">Tous niveaux</div>
-      </div>
-    </div>
-    <div class="hero-ctas">
-      <button class="btn-primary" onclick="openModal()">Réserver ma place</button>
-      <a href="https://elearning.fdsinstitut.com" target="_blank" class="btn-outline">Aperçu plateforme</a>
-    </div>
-  </div>
-</section>
-
-<!-- ── 4. MOODLE PREVIEW ── -->
-<section id="moodle-section">
-  <div class="section-container" style="max-width:640px">
-    <img src="https://assets.zyrosite.com/tPWPZ3kEpjHdFO9F/moodle-1-740x380-s84vr5GqRxP3NUXr.png" alt="Moodle" style="height:36px;margin:0 auto 20px"/>
-    <h2>Testez avant d'acheter.</h2>
-    <p>Accédez à un cours complet en mode visiteur — sans compte, sans engagement.</p>
-    <a href="https://elearning.fdsinstitut.com" target="_blank" class="btn-moodle">Accès Visiteur →</a>
-    <p class="moodle-note">Aucun compte requis</p>
-  </div>
-</section>
-
-<!-- ── 5. VALUE STACK ── -->
-<section id="value">
-  <div class="section-container">
-    <div class="section-head">
-      <div class="section-label">Ce qui est inclus</div>
-      <h2>Tout pour réussir.</h2>
-    </div>
-    <div class="value-grid">
-      <div class="value-card">
-        <div class="value-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      <h1 class="hero-h1 reveal reveal-d1">Apprenez<br>l'allemand<span class="accent">.</span></h1>
+      <p class="hero-sub reveal reveal-d2">Cours en direct avec des professeurs certifiés. Petits groupes, feedback humain, replays à vie. De A1 à C2.</p>
+      <div class="trust-pills reveal reveal-d3">
+        <div class="trust-pill">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          +3 200 étudiants algériens
         </div>
-        <h3>Test de niveau offert</h3>
-        <p>Sachez où vous en êtes.</p>
+        <div class="trust-pill">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#FF7900" stroke="#FF7900" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          4.9 / 5 avis vérifiés
+        </div>
+        <div class="trust-pill">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF7900" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Remboursé 14 jours
+        </div>
       </div>
-      <div class="value-card">
-        <div class="value-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg>
+      <hr class="hero-divider reveal reveal-d4"/>
+      <div class="avatar-row reveal reveal-d4">
+        <div class="avatar-stack">
+          <div class="av">AK</div>
+          <div class="av">SM</div>
+          <div class="av">LB</div>
+          <div class="av">YM</div>
+        </div>
+        <div class="avatar-row-text">
+          <strong>400+ nouveaux étudiants</strong>
+          rejoignent FDS ce mois
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT — FORM CARD -->
+    <div class="form-card reveal reveal-d2">
+      <span class="form-card-label">Inscription en 2 min</span>
+      <div class="form-dots">
+        <div class="form-dot active"></div>
+        <div class="form-dot"></div>
+        <div class="form-dot"></div>
+        <div class="form-dot"></div>
+      </div>
+
+      <div class="form-steps-wrap">
+        <!-- STEP 1 -->
+        <div class="form-step active" data-step="1">
+          <p class="step-q">Quel type de cours vous convient ?</p>
+          <div class="option-list">
+            <div class="opt-card" onclick="selectOpt(this,'type','groupe')">
+              <span>Cours en groupe</span>
+              <span class="opt-badge">7 500 DA/mois</span>
+            </div>
+            <div class="opt-card" onclick="selectOpt(this,'type','autonome')">
+              <span>Cours autonome</span>
+              <span class="opt-badge">9 900 DA/mois</span>
+            </div>
+            <div class="opt-card" onclick="selectOpt(this,'type','intensif')">
+              <span>Cours intensif</span>
+              <span class="opt-badge">32 000 DA/mois</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="form-step" data-step="2">
+          <p class="step-q">Quel est votre niveau actuel ?</p>
+          <div class="option-list">
+            <div class="opt-card" onclick="selectOpt(this,'niveau','A1')">A1 — Débutant complet</div>
+            <div class="opt-card" onclick="selectOpt(this,'niveau','A2')">A2 — Faux débutant</div>
+            <div class="opt-card" onclick="selectOpt(this,'niveau','B1')">B1 — Intermédiaire</div>
+            <div class="opt-card" onclick="selectOpt(this,'niveau','B2')">B2 — Niveau avancé</div>
+            <div class="opt-card" onclick="selectOpt(this,'niveau','C1C2')">C1 / C2 — Expert</div>
+            <div class="opt-card" onclick="selectOpt(this,'niveau','inconnu')">Je ne sais pas encore</div>
+          </div>
+          <button class="step-back" onclick="goBack()">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            Retour
+          </button>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="form-step" data-step="3">
+          <p class="step-q">Quel est votre objectif ?</p>
+          <div class="option-list">
+            <div class="opt-card" onclick="selectOpt(this,'objectif','etudes')">Études en Allemagne</div>
+            <div class="opt-card" onclick="selectOpt(this,'objectif','visa')">Visa / Immigration</div>
+            <div class="opt-card" onclick="selectOpt(this,'objectif','pro')">Évolution professionnelle</div>
+            <div class="opt-card" onclick="selectOpt(this,'objectif','examen')">Préparation examen (TestDaF...)</div>
+            <div class="opt-card" onclick="selectOpt(this,'objectif','voyage')">Voyages et culture</div>
+          </div>
+          <button class="step-back" onclick="goBack()">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            Retour
+          </button>
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="form-step" data-step="4">
+          <p class="step-q">Presque là — réservez votre place</p>
+          <form onsubmit="submitForm(event)">
+            <div class="form-fields">
+              <div class="form-field">
+                <label for="f-prenom">Prénom</label>
+                <input type="text" id="f-prenom" placeholder="Votre prénom" required/>
+              </div>
+              <div class="form-field">
+                <label for="f-email">Email</label>
+                <input type="email" id="f-email" placeholder="votre@email.com" required/>
+              </div>
+              <div class="form-field">
+                <label for="f-tel">Téléphone</label>
+                <input type="tel" id="f-tel" placeholder="+213 ..." required/>
+              </div>
+              <div class="form-field">
+                <label for="f-wilaya">Wilaya</label>
+                <input type="text" id="f-wilaya" placeholder="Votre wilaya"/>
+              </div>
+              <button type="submit" class="btn btn-orange btn-full" style="margin-top:.25rem">
+                Recevoir mon lien de paiement
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+            </div>
+            <p class="form-step-4-meta">Sans engagement · Annulation libre</p>
+          </form>
+          <button class="step-back" onclick="goBack()">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            Retour
+          </button>
+        </div>
+      </div>
+
+      <!-- SUCCESS STATE -->
+      <div class="form-success">
+        <div class="success-icon">
+          <svg width="32" height="32" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>Votre demande est envoyée !</h3>
+        <p>Consultez votre boîte mail sous 24h pour recevoir votre lien de paiement personnel.</p>
+        <p>Besoin d'aide ? <a href="mailto:online@fdsinstitut.com">online@fdsinstitut.com</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS BAR ── -->
+<section id="stats">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <div class="stat-num" data-count="12000" data-suffix="k+">0</div>
+      <div class="stat-label">Étudiants</div>
+    </div>
+    <div class="stat-item reveal reveal-d1">
+      <div class="stat-num" data-count="94" data-suffix="%">0</div>
+      <div class="stat-label">Taux de réussite</div>
+    </div>
+    <div class="stat-item reveal reveal-d2">
+      <div class="stat-num" style="font-size:clamp(1.6rem,3vw,2.2rem)">A1→C2</div>
+      <div class="stat-label">Tous niveaux</div>
+    </div>
+    <div class="stat-item reveal reveal-d3">
+      <div class="stat-num" data-count="49" data-suffix="★" data-decimal="1">0</div>
+      <div class="stat-label">Note moyenne</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── IMAGE SECTION ── -->
+<section id="image-section">
+  <div class="image-overlay"></div>
+  <div class="image-content reveal">
+    <div class="image-eyebrow-line">
+      <div class="orange-line"></div>
+      <span>En direct · Chaque semaine</span>
+    </div>
+    <h2>De vrais profs. Du vrai allemand. De vrais résultats.</h2>
+    <p>Aucun contenu préenregistré. Chaque cours est en direct, interactif, et enregistré pour une relecture à vie.</p>
+    <button class="btn btn-white btn-lg" onclick="scrollToHero()">Réserver un cours d'essai</button>
+  </div>
+</section>
+
+<!-- ── FEATURES ── -->
+<section id="features">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="eyebrow">Pourquoi FDS</span>
+      <h2>Tout ce qu'il faut. Rien de superflu.</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feat-card reveal">
+        <div class="feat-icon">
+          <svg width="24" height="24" fill="none" stroke="#FF7900" stroke-width="2" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        <h3>Cours en direct avec de vrais profs</h3>
+        <p>Petits groupes de 8 max, formateurs certifiés DAAD. Interaction réelle, progression garantie.</p>
+      </div>
+      <div class="feat-card reveal reveal-d1">
+        <div class="feat-icon">
+          <svg width="24" height="24" fill="none" stroke="#FF7900" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
         </div>
         <h3>Replays à vie</h3>
-        <p>Manqué un cours ? Pas grave.</p>
+        <p>Chaque cours enregistré et disponible dans votre espace Moodle. Révisez à votre rythme, pour toujours.</p>
       </div>
-      <div class="value-card">
-        <div class="value-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>
+      <div class="feat-card reveal reveal-d2">
+        <div class="feat-icon">
+          <svg width="24" height="24" fill="none" stroke="#FF7900" stroke-width="2" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg>
         </div>
-        <h3>Profs natifs certifiés</h3>
-        <p>Min. 5 ans d'expérience.</p>
+        <h3>Formateurs certifiés</h3>
+        <p>Tous nos profs sont certifiés et spécialisés dans la préparation aux examens officiels allemands.</p>
       </div>
-      <div class="value-card">
-        <div class="value-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <div class="feat-card reveal reveal-d3">
+        <div class="feat-icon">
+          <svg width="24" height="24" fill="none" stroke="#FF7900" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         </div>
         <h3>Support WhatsApp</h3>
-        <p>Réponse rapide, 7j/7.</p>
+        <p>Accès direct à votre professeur entre les séances. Questions, exercices, encouragements — toujours disponible.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── 6. PRICING ── -->
+<!-- ── MOODLE PREVIEW ── -->
+<section id="moodle">
+  <div class="moodle-inner">
+    <div class="moodle-left reveal">
+      <img src="https://assets.zyrosite.com/tPWPZ3kEpjHdFO9F/moodle-1-740x380-s84vr5GqRxP3NUXr.png" alt="Moodle" style="height:56px;width:auto;margin-bottom:.5rem"/>
+      <h2>Votre classe, accessible 24h/24.</h2>
+      <p>Tous vos cours en direct, replays, exercices et certificats — en un seul endroit, propulsé par Moodle.</p>
+      <div class="moodle-checks">
+        <div class="moodle-check">
+          <svg width="18" height="18" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          Séances en direct HD via Zoom
+        </div>
+        <div class="moodle-check">
+          <svg width="18" height="18" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          Accès replay à vie
+        </div>
+        <div class="moodle-check">
+          <svg width="18" height="18" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          Certificat à la fin du parcours
+        </div>
+      </div>
+      <button class="btn btn-moodle btn-lg" onclick="window.open('https://elearning.fdsinstitut.com','_blank')">
+        Accéder à la plateforme
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+    </div>
+    <div class="reveal reveal-d2">
+      <div class="moodle-img-wrap">
+        <img src="https://images.pexels.com/photos/5905902/pexels-photo-5905902.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Étudiant sur plateforme en ligne"/>
+        <div class="moodle-badge">
+          <span class="green-dot"></span>
+          En direct · 24 étudiants connectés
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING ── -->
 <section id="pricing">
-  <div class="section-container">
-    <div class="section-head">
-      <div class="section-label">Tarifs</div>
-      <h2>Des tarifs pensés pour vous.</h2>
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="eyebrow">Tarifs</span>
+      <h2>Des tarifs pensés pour l'Algérie.</h2>
     </div>
-    <p class="pricing-sub">Tous les programmes incluent un test de niveau, un certificat et l'accès à notre plateforme.</p>
     <div class="pricing-grid">
-      <div class="price-card">
-        <h3>Auto-apprentissage</h3>
-        <div class="price-amount">9 900 DA</div>
-        <div class="price-period">Accès 3 mois</div>
+      <!-- Autonome -->
+      <div class="price-card reveal">
+        <div class="price-plan">Autonome</div>
+        <div class="price-amount">9 900 <span>DA</span></div>
+        <div class="price-period">/ mois</div>
         <ul class="price-features">
-          <li>+70h de contenu</li>
-          <li>Vidéos · audios · exercices</li>
-          <li>Mobile + ordinateur</li>
-          <li>Niveaux A1 → C1</li>
+          <li>
+            <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Accès plateforme Moodle
+          </li>
+          <li>
+            <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Supports de cours complets
+          </li>
+          <li>
+            <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Replays à vie
+          </li>
+          <li>
+            <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Support par email
+          </li>
         </ul>
-        <button class="btn-price-primary" onclick="openModal()">Commencer</button>
+        <button class="btn btn-outline-dark btn-full" onclick="scrollToHero()">Commencer</button>
       </div>
-      <div class="price-card highlight">
-        <div class="price-badge">Le plus choisi</div>
-        <h3>Cours en groupe</h3>
-        <div class="price-amount">7 500 DA</div>
-        <div class="price-period">par mois</div>
+
+      <!-- Groupe — HIGHLIGHT -->
+      <div class="price-card highlight reveal reveal-d1">
+        <div class="pop-badge">Le plus populaire</div>
+        <div class="price-plan">Cours en groupe</div>
+        <div class="price-amount">7 500 <span>DA</span></div>
+        <div class="price-period">/ mois</div>
         <ul class="price-features">
-          <li>Cours live en ligne</li>
-          <li>Petits groupes (max 12)</li>
-          <li>Professeurs certifiés</li>
-          <li>Tous niveaux A1 → C2</li>
+          <li>
+            <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Tout du plan Autonome
+          </li>
+          <li>
+            <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Cours en direct 3×/semaine
+          </li>
+          <li>
+            <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Groupe de 8 étudiants max
+          </li>
+          <li>
+            <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Support WhatsApp direct
+          </li>
+          <li>
+            <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Rapport de progression mensuel
+          </li>
         </ul>
-        <button class="btn-price-highlight" onclick="openModal()">Choisir</button>
+        <button class="btn btn-orange btn-full" onclick="scrollToHero()">Réserver ma place</button>
       </div>
-      <div class="price-card">
-        <h3>Intensif</h3>
-        <div class="price-amount">32 000 DA</div>
-        <div class="price-period">programme complet</div>
+
+      <!-- Intensif -->
+      <div class="price-card reveal reveal-d2">
+        <div class="price-plan">Intensif</div>
+        <div class="price-amount">32 000 <span>DA</span></div>
+        <div class="price-period">/ mois</div>
         <ul class="price-features">
-          <li>75 leçons structurées</li>
-          <li>Live + sessions async</li>
-          <li>Prêt pour les examens</li>
-          <li>Accès mentor personnel</li>
+          <li>
+            <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Tout du plan Groupe
+          </li>
+          <li>
+            <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Cours quotidiens (5×/semaine)
+          </li>
+          <li>
+            <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Coaching individuel 1-à-1
+          </li>
+          <li>
+            <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Suivi prioritaire
+          </li>
+          <li>
+            <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Garantie réussite examen
+          </li>
         </ul>
-        <button class="btn-price-primary" onclick="openModal()">Formation intensive</button>
+        <button class="btn btn-outline-dark btn-full" onclick="scrollToHero()">Commencer</button>
       </div>
     </div>
+
+    <p class="pricing-assurance reveal" style="margin-top:2rem">Remboursé 14 jours · Aucune carte requise · Annulation libre</p>
+    <p class="pricing-payment reveal reveal-d1">Paiement : CCP · Edahabia · BaridiMob · Virement</p>
   </div>
 </section>
 
-<!-- ── 7. COMPARISON TABLE ── -->
-<section id="compare">
-  <div class="section-container">
-    <div class="section-head">
-      <div class="section-label">Comparaison</div>
-      <h2>Pourquoi FDS ?</h2>
-    </div>
-    <div class="compare-wrap">
-      <table class="compare-table">
-        <thead>
-          <tr>
-            <th>Critère</th>
-            <th class="fds-col"><span class="fds-pill">FDS Institut</span></th>
-            <th class="other-col">Institut Classique</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Cours mensuel</td>
-            <td class="fds-val">7 500 DA</td>
-            <td class="other-val">45 000 DA+</td>
-          </tr>
-          <tr>
-            <td>Délai avant de commencer</td>
-            <td class="fds-val">Sous 7 jours</td>
-            <td class="other-val">Liste d'attente</td>
-          </tr>
-          <tr>
-            <td>Format</td>
-            <td class="fds-val">100% en ligne</td>
-            <td class="other-val">Présentiel uniquement</td>
-          </tr>
-          <tr>
-            <td>Paiement local</td>
-            <td class="fds-val">CCP · Edahabia · BaridiMob</td>
-            <td class="other-val">Non disponible</td>
-          </tr>
-          <tr>
-            <td>Support</td>
-            <td class="fds-val">WhatsApp direct</td>
-            <td class="other-val">Email uniquement</td>
-          </tr>
-        </tbody>
-      </table>
-      <p class="compare-note">Comparaison à titre indicatif.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ── 8. TRUST PARTNERS ── -->
-<section id="trust">
-  <div class="section-container">
-    <div class="section-head">
-      <div class="section-label">Partenaires</div>
-      <h2>Des partenaires de confiance.</h2>
-    </div>
-    <div class="trust-grid">
-      <div class="trust-card">
-        <div class="trust-avatar">H</div>
-        <h3>Hueber</h3>
-        <p>Partenaire pédagogique officiel</p>
-      </div>
-      <div class="trust-card">
-        <div class="trust-avatar">F</div>
-        <h3>Fintiba</h3>
-        <p>Compte bloqué facilité</p>
-      </div>
-      <div class="trust-card">
-        <div class="trust-avatar">CE</div>
-        <h3>CEFR / CECRL</h3>
-        <p>Conforme au cadre européen</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── 9. TESTIMONIALS ── -->
+<!-- ── TESTIMONIALS ── -->
 <section id="testimonials">
-  <div class="section-container">
-    <div class="section-head">
-      <h2>De vrais étudiants. De vrais résultats.</h2>
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="eyebrow">Témoignages</span>
+      <h2>Ce qu'ils disent de FDS.</h2>
     </div>
     <div class="testi-grid">
-      <div class="testi-card">
-        <div class="testi-top">
-          <div class="testi-avatar">YB</div>
+      <!-- Card 1 -->
+      <div class="testi-card light reveal">
+        <div class="testi-stars">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#FF7900"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#FF7900"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#FF7900"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#FF7900"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#FF7900"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="testi-quote">"FDS m'a aidée à réussir le TestDaF du premier coup. Les cours en direct font toute la différence — un vrai prof qui vous connaît, ça change tout."</p>
+        <div class="testi-author">
+          <div class="testi-av av-orange">SB</div>
           <div>
-            <div class="testi-name">Yacine B.</div>
-            <div class="testi-loc">Alger · B1 obtenu</div>
+            <div class="testi-name">Sara B.</div>
+            <div class="testi-meta">TestDaF B2 · Alger</div>
           </div>
         </div>
-        <p class="testi-text">"Le meilleur rapport qualité/prix. J'ai eu mon B1 en 4 mois pour partir étudier."</p>
       </div>
-      <div class="testi-card highlight-blue">
-        <div class="testi-top">
-          <div class="testi-avatar">LM</div>
+
+      <!-- Card 2 -->
+      <div class="testi-card dark reveal reveal-d1">
+        <div class="testi-stars">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="testi-quote">"En 3 mois je suis passé de A2 à B2. Le rythme et la qualité des profs sont incroyables. Je n'ai jamais progressé aussi vite."</p>
+        <div class="testi-author">
+          <div class="testi-av av-glass">KM</div>
           <div>
-            <div class="testi-name">Lina M.</div>
-            <div class="testi-loc">Oran · A2</div>
+            <div class="testi-name">Karim M.</div>
+            <div class="testi-meta">Cours en groupe · Oran</div>
           </div>
         </div>
-        <p class="testi-text">"Les profs sont à l'écoute, et le paiement par BaridiMob c'était parfait."</p>
       </div>
-      <div class="testi-card">
-        <div class="testi-top">
-          <div class="testi-avatar">KS</div>
+
+      <!-- Card 3 -->
+      <div class="testi-card light reveal reveal-d2">
+        <div class="testi-stars">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#FF7900"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#FF7900"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#FF7900"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#FF7900"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#FF7900"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="testi-quote">"Le meilleur rapport qualité/prix pour apprendre l'allemand depuis l'Algérie. Vraiment. J'ai essayé d'autres plateformes — aucune comparaison."</p>
+        <div class="testi-author">
+          <div class="testi-av av-orange">LA</div>
           <div>
-            <div class="testi-name">Karim S.</div>
-            <div class="testi-loc">Constantine · A1 → B1</div>
+            <div class="testi-name">Lina A.</div>
+            <div class="testi-meta">Intensif · Constantine</div>
           </div>
         </div>
-        <p class="testi-text">"Réservé un lundi, commencé le jeudi. Aucun blabla, du concret."</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── 10. GUARANTEE ── -->
+<!-- ── GUARANTEE ── -->
 <section id="guarantee">
-  <div class="guarantee-inner">
-    <div class="guarantee-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-    </div>
-    <h2>Garantie 14 jours, satisfait ou remboursé.</h2>
-    <p>Essayez sans risque. Si ce n'est pas pour vous, on vous rembourse — sans question.</p>
-    <button class="btn-primary" onclick="openModal()">Réserver</button>
+  <div class="shield-icon">
+    <svg width="64" height="64" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
   </div>
+  <h2>Satisfait ou remboursé — 14 jours.</h2>
+  <p>Essayez un cours sans risque. Remboursement intégral si vous n'êtes pas convaincu — sans question, sans délai.</p>
+  <button class="btn btn-white btn-lg" onclick="scrollToHero()">Commencer sans risque</button>
 </section>
 
-<!-- ── 11. FAQ ── -->
+<!-- ── FAQ ── -->
 <section id="faq">
-  <div class="section-container">
-    <div class="section-head">
-      <div class="section-label">FAQ</div>
-      <h2>Vos questions, nos réponses.</h2>
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="eyebrow">Questions fréquentes</span>
+      <h2>Questions fréquentes.</h2>
     </div>
     <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Les certificats sont-ils reconnus ?
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="faq-a">Nos certificats suivent les standards CEFR (A1–C2). Nous vous préparons aussi aux examens officiels Goethe / TestDaF en centre agréé.</div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Quel niveau faut-il pour commencer ?</span>
+          <div class="faq-icon">
+            <svg width="14" height="14" fill="none" stroke="#6B7280" stroke-width="2" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </div>
+        </div>
+        <div class="faq-body">
+          <div class="faq-body-inner">
+            <p class="faq-a">Nous accueillons de A1 (débutant total) à C2. Notre test de placement gratuit vous oriente automatiquement dans le bon groupe dès votre inscription.</p>
+          </div>
+        </div>
       </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Comment payer depuis l'Algérie ?
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="faq-a">CCP, BaridiMob, Edahabia, ou virement bancaire local. Pas besoin de carte internationale.</div>
+
+      <div class="faq-item reveal reveal-d1">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Comment se déroulent les cours en direct ?</span>
+          <div class="faq-icon">
+            <svg width="14" height="14" fill="none" stroke="#6B7280" stroke-width="2" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </div>
+        </div>
+        <div class="faq-body">
+          <div class="faq-body-inner">
+            <p class="faq-a">3 fois par semaine sur Zoom, 90 minutes par séance. Tous les enregistrements sont disponibles dans votre espace Moodle dès la fin du cours.</p>
+          </div>
+        </div>
       </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Si je rate un cours ?
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="faq-a">Tous les cours sont enregistrés. Accès aux replays + résumé écrit pendant toute la durée du programme.</div>
+
+      <div class="faq-item reveal reveal-d2">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Puis-je mettre en pause ou annuler ?</span>
+          <div class="faq-icon">
+            <svg width="14" height="14" fill="none" stroke="#6B7280" stroke-width="2" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </div>
+        </div>
+        <div class="faq-body">
+          <div class="faq-body-inner">
+            <p class="faq-a">Oui — pause jusqu'à 1 mois ou annulation avec 7 jours de préavis. Aucune pénalité, aucune frais cachés.</p>
+          </div>
+        </div>
       </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Quel matériel faut-il ?
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="faq-a">Juste un navigateur web. Mobile ou ordinateur. Aucun logiciel à installer.</div>
+
+      <div class="faq-item reveal reveal-d3">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Proposez-vous la préparation aux examens ?</span>
+          <div class="faq-icon">
+            <svg width="14" height="14" fill="none" stroke="#6B7280" stroke-width="2" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </div>
+        </div>
+        <div class="faq-body">
+          <div class="faq-body-inner">
+            <p class="faq-a">Oui. Nous proposons des parcours dédiés TestDaF, Goethe-Zertifikat, telc et DSH avec des formateurs spécialisés dans chaque certification.</p>
+          </div>
+        </div>
       </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Puis-je changer de formule ?
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="faq-a">Oui. Vous pouvez passer à une autre formule à tout moment. Le solde non utilisé est reporté.</div>
+
+      <div class="faq-item reveal reveal-d4">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Quels modes de paiement acceptez-vous ?</span>
+          <div class="faq-icon">
+            <svg width="14" height="14" fill="none" stroke="#6B7280" stroke-width="2" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </div>
+        </div>
+        <div class="faq-body">
+          <div class="faq-body-inner">
+            <p class="faq-a">CCP, Edahabia, BaridiMob et virement bancaire. Tous les prix sont affichés en dinars algériens (DA). Aucune carte internationale requise.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── 12. FINAL CTA ── -->
+<!-- ── FINAL CTA ── -->
 <section id="final-cta">
-  <h2>Votre allemand commence cette semaine.</h2>
-  <p>Pas de liste d'attente. Pas de paperasse.</p>
-  <button class="btn-cta-white" onclick="openModal()">Je réserve ma place</button>
-  <div class="cta-note">Pas de carte requise · Annulation libre</div>
+  <div class="section-inner">
+    <h2 class="reveal">Prêt à parler<br><span class="accent">allemand</span> ?</h2>
+    <p class="reveal reveal-d1">Rejoignez +3 200 étudiants algériens qui apprennent l'allemand en direct avec FDS Institut.</p>
+    <div class="final-btns reveal reveal-d2">
+      <button class="btn btn-orange btn-lg" onclick="scrollToHero()">Réserver ma place</button>
+      <a href="https://elearning.fdsinstitut.com" target="_blank" class="btn btn-outline-white btn-lg">
+        Voir la plateforme
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
 </section>
 
-<!-- ── 13. FOOTER ── -->
+<!-- ── FOOTER ── -->
 <footer id="footer">
   <div class="footer-inner">
-    <div class="footer-cols">
-      <div class="footer-brand">
-        <div class="nav-logo">
-          <span class="nav-logo-mark">FDS<span style="color:var(--orange)">.</span></span>
-          <span class="nav-logo-sub">Institut</span>
-        </div>
-        <p>Cours d'allemand en ligne pour le monde entier et l'Algérie.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Navigation</h4>
-        <ul>
-          <li><a href="/">Accueil</a></li>
-          <li><a href="#">Algérie</a></li>
-          <li><a href="../global/index.html">International</a></li>
-          <li><a href="#pricing">Tarifs</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="mailto:online@fdsinstitut.com">online@fdsinstitut.com</a></li>
-          <li><a href="https://fdsinstitut.com" target="_blank" rel="noopener">fdsinstitut.com ↗</a></li>
-          <li><a href="https://elearning.fdsinstitut.com" target="_blank" rel="noopener">elearning.fdsinstitut.com ↗</a></li>
-        </ul>
-      </div>
+    <div>
+      <div class="footer-brand-name">FDS<span class="logo-dot">.</span></div>
+      <div class="footer-tagline">École d'allemand en ligne. Est. Alger.</div>
+      <div class="footer-copy">&copy; 2026 FDS Institut. Tous droits réservés.</div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2026 FDS Institut · Tous droits réservés</p>
-      <div class="footer-secure">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        Plateforme sécurisée
-      </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul class="footer-nav">
+        <li><a href="#pricing">Tarifs</a></li>
+        <li><a href="https://elearning.fdsinstitut.com" target="_blank">Plateforme</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><button onclick="scrollToHero()">Cours d'essai</button></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="mailto:online@fdsinstitut.com" class="footer-contact-item">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        online@fdsinstitut.com
+      </a>
+      <a href="https://fdsinstitut.com" target="_blank" class="footer-contact-item">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        fdsinstitut.com
+        <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
     </div>
   </div>
+  <div class="footer-bottom">Tous les cours sont dispensés en ligne · Accessibles depuis l'Algérie</div>
 </footer>
 
-<!-- ── 14. MODAL ── -->
-<div id="enroll-modal" role="dialog" aria-modal="true" aria-label="Réserver votre place">
-  <div class="modal-backdrop" onclick="closeModal()"></div>
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeModal()" aria-label="Fermer">&#x2715;</button>
-    <div class="modal-tag">Sans CB · Sans engagement</div>
-    <h2>Réservez votre place</h2>
-    <p class="modal-sub">60 secondes. Sans paiement.</p>
-    <div class="modal-steps" id="step-dots">
-      <div class="step-dot active"></div>
-      <div class="step-dot"></div>
-      <div class="step-dot"></div>
-      <div class="step-dot"></div>
-    </div>
-    <div class="step-label" id="step-label-text">Programme</div>
-
-    <!-- Step 1: Programme -->
-    <div class="modal-step active" id="modal-step-1">
-      <div class="modal-q">Quel programme vous correspond ?</div>
-      <div class="option-grid">
-        <button class="opt-btn" onclick="selectOpt(this,'step1')">
-          <div class="opt-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <div class="opt-info">
-            <div class="opt-name">Cours en groupe</div>
-            <div class="opt-price">7 500 DA / mois</div>
-          </div>
-          <span class="opt-badge">Le + populaire</span>
-        </button>
-        <button class="opt-btn" onclick="selectOpt(this,'step1')">
-          <div class="opt-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-          </div>
-          <div class="opt-info">
-            <div class="opt-name">Auto-apprentissage</div>
-            <div class="opt-price">9 900 DA / accès 3 mois</div>
-          </div>
-        </button>
-        <button class="opt-btn" onclick="selectOpt(this,'step1')">
-          <div class="opt-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          </div>
-          <div class="opt-info">
-            <div class="opt-name">Intensif</div>
-            <div class="opt-price">32 000 DA / 75 leçons</div>
-          </div>
-        </button>
-      </div>
-      <div class="modal-nav">
-        <span></span>
-        <button class="btn-next" onclick="goStep(2)">Continuer →</button>
-      </div>
-    </div>
-
-    <!-- Step 2: Niveau -->
-    <div class="modal-step" id="modal-step-2">
-      <div class="modal-q">Votre niveau d'allemand ?</div>
-      <div class="option-grid">
-        <button class="opt-btn" onclick="selectOpt(this,'step2')">A1 — Débutant</button>
-        <button class="opt-btn" onclick="selectOpt(this,'step2')">A2</button>
-        <button class="opt-btn" onclick="selectOpt(this,'step2')">B1</button>
-        <button class="opt-btn" onclick="selectOpt(this,'step2')">B2</button>
-        <button class="opt-btn" onclick="selectOpt(this,'step2')">C1</button>
-        <button class="opt-btn" onclick="selectOpt(this,'step2')">Je ne sais pas encore</button>
-      </div>
-      <div class="modal-nav">
-        <button class="btn-back" onclick="goStep(1)">← Retour</button>
-        <button class="btn-next" onclick="goStep(3)">Continuer →</button>
-      </div>
-    </div>
-
-    <!-- Step 3: Objectif -->
-    <div class="modal-step" id="modal-step-3">
-      <div class="modal-q">Pourquoi l'allemand ?</div>
-      <div class="option-grid">
-        <button class="opt-btn" onclick="selectOpt(this,'step3')">
-          <div class="opt-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-          </div>
-          Étudier en Allemagne
-        </button>
-        <button class="opt-btn" onclick="selectOpt(this,'step3')">
-          <div class="opt-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-          </div>
-          Travail / Visa
-        </button>
-        <button class="opt-btn" onclick="selectOpt(this,'step3')">
-          <div class="opt-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          </div>
-          Passer Goethe / TestDaF
-        </button>
-        <button class="opt-btn" onclick="selectOpt(this,'step3')">
-          <div class="opt-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          </div>
-          Personnel / Voyage
-        </button>
-      </div>
-      <div class="modal-nav">
-        <button class="btn-back" onclick="goStep(2)">← Retour</button>
-        <button class="btn-next" onclick="goStep(4)">Continuer →</button>
-      </div>
-    </div>
-
-    <!-- Step 4: Coordonnées -->
-    <div class="modal-step" id="modal-step-4">
-      <div class="modal-q">Une dernière étape.</div>
-      <div class="form-group">
-        <label for="f-name">Nom complet</label>
-        <input type="text" id="f-name" placeholder="Votre nom" autocomplete="name"/>
-      </div>
-      <div class="form-group">
-        <label for="f-email">Email</label>
-        <input type="email" id="f-email" placeholder="votre@email.com" autocomplete="email"/>
-      </div>
-      <div class="form-group">
-        <label for="f-phone">Téléphone (WhatsApp)</label>
-        <input type="tel" id="f-phone" placeholder="+213 6xx xxx xxx" autocomplete="tel"/>
-      </div>
-      <div class="modal-nav">
-        <button class="btn-back" onclick="goStep(3)">← Retour</button>
-        <button class="btn-next" onclick="submitForm()">Réserver ma place</button>
-      </div>
-    </div>
-
-    <div class="modal-footer">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      Données sécurisées · Réponse sous 24h
-    </div>
-  </div>
-</div>
-
-<!-- ── 15. SUCCESS BANNER ── -->
-<div id="success-banner">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-  Nous vous répondrons dans les 24 heures.
-</div>
-
-<!-- ── 16. STICKY MOBILE CTA ── -->
+<!-- ── MOBILE STICKY CTA ── -->
 <div id="mobile-cta">
-  <button onclick="openModal()">Réserver ma place</button>
+  <div>
+    <div class="mobile-cta-text-price">Dès 7 500 DA/mois</div>
+    <div class="mobile-cta-text-sub">Commencez aujourd'hui</div>
+  </div>
+  <button class="btn btn-orange" onclick="scrollToHero()">Réserver →</button>
+</div>
+
+<!-- ── SUCCESS BANNER ── -->
+<div id="success-banner">
+  <svg width="18" height="18" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+  Formulaire envoyé ! Lien de paiement sous 24h.
 </div>
 
 <script>
-// ── Modal ──
-function openModal(){
-  document.getElementById('enroll-modal').classList.add('active');
-  document.body.style.overflow='hidden';
-}
-function closeModal(){
-  document.getElementById('enroll-modal').classList.remove('active');
-  document.body.style.overflow='';
-}
-document.addEventListener('keydown',function(e){
-  if(e.key==='Escape') closeModal();
-});
+/* ── FORM LOGIC ── */
+let curStep = 1;
+let ans = {};
 
-// ── Step navigation ──
-var stepLabels=['Programme','Niveau','Objectif','Vos coordonnées'];
-var currentStep=1;
-function goStep(n){
-  document.getElementById('modal-step-'+currentStep).classList.remove('active');
-  currentStep=n;
-  document.getElementById('modal-step-'+currentStep).classList.add('active');
-  var dots=document.querySelectorAll('#step-dots .step-dot');
-  dots.forEach(function(d,i){d.classList.toggle('active',i<n);});
-  document.getElementById('step-label-text').textContent=stepLabels[n-1];
-}
-
-// ── Option selection ──
-function selectOpt(el,group){
-  var siblings=el.closest('.option-grid').querySelectorAll('.opt-btn');
-  siblings.forEach(function(s){s.classList.remove('selected');});
+function selectOpt(el, key, val) {
+  el.closest('.option-list').querySelectorAll('.opt-card').forEach(function(c){ c.classList.remove('selected'); });
   el.classList.add('selected');
+  ans[key] = val;
+  setTimeout(function(){ goStep(curStep + 1); }, 320);
 }
 
-// ── Submit ──
-function submitForm(){
-  closeModal();
+function goStep(n) {
+  document.querySelectorAll('.form-step').forEach(function(s){ s.classList.remove('active'); });
+  var t = document.querySelector('.form-step[data-step="' + n + '"]');
+  if (t) { t.classList.add('active'); curStep = n; updateDots(n); }
+}
+
+function updateDots(n) {
+  document.querySelectorAll('.form-dot').forEach(function(d, i) {
+    d.classList.remove('active', 'done');
+    if (i + 1 < n) d.classList.add('done');
+    else if (i + 1 === n) d.classList.add('active');
+  });
+}
+
+function submitForm(e) {
+  e.preventDefault();
+  document.querySelector('.form-steps-wrap').style.display = 'none';
+  document.querySelector('.form-success').style.display = 'block';
   showBanner();
 }
 
-// ── Success banner ──
-function showBanner(){
-  var b=document.getElementById('success-banner');
+function showBanner() {
+  var b = document.getElementById('success-banner');
   b.classList.add('show');
-  setTimeout(function(){b.classList.remove('show');},6000);
+  setTimeout(function(){ b.classList.remove('show'); }, 6000);
 }
 
-// ── FAQ accordion ──
-function toggleFaq(btn){
-  var item=btn.closest('.faq-item');
-  var isOpen=item.classList.contains('open');
-  document.querySelectorAll('.faq-item.open').forEach(function(i){i.classList.remove('open');});
-  if(!isOpen) item.classList.add('open');
+function goBack() {
+  if (curStep > 1) goStep(curStep - 1);
 }
+
+function scrollToHero() {
+  document.getElementById('hero').scrollIntoView({ behavior: 'smooth' });
+}
+
+/* ── FAQ ACCORDION ── */
+function toggleFaq(el) {
+  var item = el.closest('.faq-item');
+  var isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(function(i){ i.classList.remove('open'); });
+  if (!isOpen) item.classList.add('open');
+}
+
+/* ── REVEAL (IntersectionObserver) ── */
+(function() {
+  var revealEls = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(function(el){ observer.observe(el); });
+})();
+
+/* ── STAT COUNTERS ── */
+(function() {
+  var statEls = document.querySelectorAll('[data-count]');
+  if (!statEls.length) return;
+  if (!('IntersectionObserver' in window)) {
+    statEls.forEach(function(el) {
+      var count = parseInt(el.dataset.count, 10);
+      var suffix = el.dataset.suffix || '';
+      var decimal = el.dataset.decimal ? parseInt(el.dataset.decimal, 10) : 0;
+      if (el.dataset.count === '12000') { el.textContent = '12k+'; return; }
+      if (decimal) { el.textContent = (count / Math.pow(10, decimal)).toFixed(decimal) + suffix; }
+      else { el.textContent = count + suffix; }
+    });
+    return;
+  }
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (!entry.isIntersecting) return;
+      var el = entry.target;
+      observer.unobserve(el);
+      var target = parseInt(el.dataset.count, 10);
+      var suffix = el.dataset.suffix || '';
+      var decimal = el.dataset.decimal ? parseInt(el.dataset.decimal, 10) : 0;
+      var duration = 1600;
+      var start = null;
+      function step(ts) {
+        if (!start) start = ts;
+        var progress = Math.min((ts - start) / duration, 1);
+        var ease = 1 - Math.pow(1 - progress, 3);
+        var val = target * ease;
+        if (el.dataset.count === '12000') {
+          el.textContent = Math.round(val / 1000) + 'k+';
+        } else if (decimal) {
+          el.textContent = (val / Math.pow(10, decimal)).toFixed(decimal) + suffix;
+        } else {
+          el.textContent = Math.round(val) + suffix;
+        }
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }, { threshold: 0.3 });
+  statEls.forEach(function(el){ observer.observe(el); });
+})();
 </script>
 </body>
 </html>
