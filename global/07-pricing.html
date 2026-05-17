@@ -1,141 +1,297 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FDS Institut — Pricing</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Montserrat:wght@700;900&family=JetBrains+Mono:wght@400&display=swap');
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-font-smoothing:antialiased}
-body{background:#030712;color:#fff;font-family:'Poppins',sans-serif}
-h2,h3{font-family:'Montserrat',sans-serif;letter-spacing:-.02em}
-a{text-decoration:none}
-:root{--orange:#f97316;--ink:#15233c}
-::selection{background:var(--orange);color:var(--ink)}
-.label-mono{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FDS Institut — Pricing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Montserrat:wght@400;500&family=Nunito:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; }
 
-section{max-width:80rem;margin:0 auto;padding:4rem 1.5rem 5rem}
-@media(min-width:1024px){section{padding:5rem 3rem}}
+    :root {
+      --orange: #FF7900;
+      --blue: #00304E;
+      --gray-50: #F7F8FA;
+      --gray-200: #E2E3E5;
+      --gray-500: #6B7280;
+      --black: #111;
+    }
 
-.header{max-width:32rem;margin-bottom:3rem}
-.eyebrow{color:var(--orange);margin-bottom:.75rem}
-h2{font-size:clamp(2.25rem,6vw,3.75rem);font-weight:900;line-height:.95;color:#fff;margin-bottom:1.25rem}
-.sub{color:rgba(255,255,255,.55);font-size:1.125rem;line-height:1.6}
+    body {
+      background: #fff;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--black);
+    }
 
-.grid{display:grid;gap:1.25rem;grid-template-columns:1fr}
-@media(min-width:768px){.grid{grid-template-columns:repeat(3,1fr)}}
+    .pricing-section {
+      background: var(--gray-50);
+      padding: 4rem 1.5rem 5rem;
+    }
 
-.card{
-  position:relative;border-radius:2rem;padding:2rem;
-  transition:transform .3s;
-}
-.card:hover{transform:translateY(-8px)}
+    @media (min-width: 1024px) {
+      .pricing-section { padding: 5rem 3rem; }
+    }
 
-.card-default{background:rgba(255,255,255,.04);color:#fff;border:1px solid rgba(255,255,255,.1)}
-.card-default:hover{border-color:rgba(249,115,22,.4)}
-.card-highlight{
-  background:var(--orange);color:var(--ink);
-  box-shadow:0 25px 70px -20px rgba(249,115,22,.55);
-}
-@media(min-width:768px){.card-highlight{transform:scale(1.03)}.card-highlight:hover{transform:scale(1.03) translateY(-8px)}}
+    .pricing-inner {
+      max-width: 80rem;
+      margin: 0 auto;
+    }
 
-.badge{
-  position:absolute;top:-.75rem;left:50%;transform:translateX(-50%);
-  background:var(--ink);color:var(--orange);
-  font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;
-  padding:.25rem .75rem;border-radius:9999px;white-space:nowrap;
-}
+    .label {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 10px;
+    }
 
-h3{font-size:1.5rem;font-weight:900;margin-bottom:.25rem}
-.tagline{font-size:.875rem;margin-bottom:1.5rem}
-.card-default .tagline{color:rgba(255,255,255,.5)}
-.card-highlight .tagline{color:rgba(21,35,60,.7)}
+    h2 {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.625rem, 3vw, 2.25rem);
+      color: var(--black);
+      margin-bottom: 3rem;
+      max-width: 32rem;
+    }
 
-.price-row{display:flex;align-items:baseline;gap:.5rem;margin-bottom:1.5rem}
-.price{font-family:'Montserrat',sans-serif;font-weight:900;font-size:2.5rem;letter-spacing:-.03em}
-.per{font-size:.875rem}
-.card-default .per{color:rgba(255,255,255,.5)}
-.card-highlight .per{color:rgba(21,35,60,.7)}
+    .cards {
+      display: grid;
+      gap: 1.25rem;
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
 
-.features{list-style:none;display:grid;gap:.75rem;margin-bottom:2rem}
-.feat{display:flex;gap:.5rem;font-size:.875rem;align-items:flex-start}
-.check{font-weight:900}
-.card-default .check{color:var(--orange)}
-.card-highlight .check{color:var(--ink)}
+    @media (min-width: 768px) {
+      .cards { grid-template-columns: repeat(3, 1fr); }
+    }
 
-.cta-btn{
-  display:block;text-align:center;border-radius:9999px;
-  font-family:'Montserrat',sans-serif;font-weight:900;
-  font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;
-  padding:1rem 1.5rem;transition:transform .2s;
-}
-.cta-btn:hover{transform:scale(1.02)}
-.cta-default{background:var(--orange);color:var(--ink)}
-.cta-highlight{background:var(--ink);color:var(--orange)}
-</style>
+    .card {
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      border-radius: 20px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: box-shadow 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    }
+
+    .card.highlight {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: #fff;
+      transform: scale(1.03);
+      box-shadow: 0 8px 40px rgba(255,121,0,0.22);
+    }
+
+    .card-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .card-name {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 1.0625rem;
+    }
+
+    .badge-popular {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 0.6875rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: var(--blue);
+      color: #fff;
+      border-radius: 9999px;
+      padding: 3px 10px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .price {
+      font-family: 'Sora', sans-serif;
+      font-weight: 800;
+      font-size: 2.25rem;
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    .price-period {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 600;
+      font-size: 0.8125rem;
+      color: var(--gray-500);
+      margin-top: 4px;
+    }
+
+    .card.highlight .price-period { color: rgba(255,255,255,0.75); }
+
+    .features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .features li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.875rem;
+    }
+
+    .check-icon {
+      flex-shrink: 0;
+      color: var(--orange);
+      display: inline-flex;
+    }
+
+    .card.highlight .check-icon { color: #fff; }
+
+    .btn {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 0.9375rem;
+      border-radius: 9999px;
+      padding: 13px 20px;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+      transition: opacity 0.2s;
+      display: block;
+      width: 100%;
+    }
+
+    .btn-orange {
+      background: var(--orange);
+      color: #fff;
+    }
+
+    .btn-orange:hover { opacity: 0.88; }
+
+    .btn-white {
+      background: #fff;
+      color: var(--orange);
+    }
+
+    .btn-white:hover { opacity: 0.9; }
+  </style>
 </head>
 <body>
-<section>
-  <div class="header">
-    <p class="label-mono eyebrow">— Pricing</p>
-    <h2>Pricing that respects your time.</h2>
-    <p class="sub">All programs include placement test, certificate of completion, and access to our learning platform.</p>
-  </div>
+  <section class="pricing-section">
+    <div class="pricing-inner">
+      <p class="label">Pricing</p>
+      <h2>Pricing that respects your time.</h2>
 
-  <div class="grid">
-    <!-- Self-Paced -->
-    <div class="card card-default">
-      <h3>Self-Paced</h3>
-      <p class="tagline">Learn at your rhythm</p>
-      <div class="price-row">
-        <span class="price">€149</span>
-        <span class="per">3 months access</span>
-      </div>
-      <ul class="features">
-        <li class="feat"><span class="check">✓</span> 70+ hours interactive</li>
-        <li class="feat"><span class="check">✓</span> Videos · audio · drills</li>
-        <li class="feat"><span class="check">✓</span> Mobile + desktop</li>
-        <li class="feat"><span class="check">✓</span> A1 → C1 levels</li>
-      </ul>
-      <a href="#enroll" class="cta-btn cta-default">Start now →</a>
-    </div>
+      <div class="cards">
 
-    <!-- Group (highlight) -->
-    <div class="card card-highlight">
-      <span class="badge">★ Most popular</span>
-      <h3>Group Course</h3>
-      <p class="tagline">Live with classmates</p>
-      <div class="price-row">
-        <span class="price">€125</span>
-        <span class="per">per month</span>
-      </div>
-      <ul class="features">
-        <li class="feat"><span class="check">✓</span> Live online classes</li>
-        <li class="feat"><span class="check">✓</span> Small cohorts (max 12)</li>
-        <li class="feat"><span class="check">✓</span> Certified teachers</li>
-        <li class="feat"><span class="check">✓</span> All levels A1 → C2</li>
-      </ul>
-      <a href="#enroll" class="cta-btn cta-highlight">Choose →</a>
-    </div>
+        <!-- Self-Paced -->
+        <div class="card">
+          <div class="card-head">
+            <span class="card-name">Self-Paced</span>
+          </div>
+          <div>
+            <div class="price">&euro;149</div>
+            <div class="price-period">/ 3 months</div>
+          </div>
+          <ul class="features">
+            <li>
+              <span class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              70+ interactive hours
+            </li>
+            <li>
+              <span class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              Videos &middot; audio &middot; drills
+            </li>
+            <li>
+              <span class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              Mobile + desktop
+            </li>
+            <li>
+              <span class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              A1 &rarr; C1
+            </li>
+          </ul>
+          <button class="btn btn-orange">Start now</button>
+        </div>
 
-    <!-- Intensive -->
-    <div class="card card-default">
-      <h3>Intensive</h3>
-      <p class="tagline">75 lessons total</p>
-      <div class="price-row">
-        <span class="price">€490</span>
-        <span class="per">full program</span>
+        <!-- Group Course (highlight) -->
+        <div class="card highlight">
+          <div class="card-head">
+            <span class="card-name">Group Course</span>
+            <span class="badge-popular">Most popular</span>
+          </div>
+          <div>
+            <div class="price">&euro;125</div>
+            <div class="price-period">/ month</div>
+          </div>
+          <ul class="features">
+            <li>
+              <span class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              Live online classes
+            </li>
+            <li>
+              <span class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              Small cohorts max 12
+            </li>
+            <li>
+              <span class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              Certified teachers
+            </li>
+            <li>
+              <span class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              All levels A1 &rarr; C2
+            </li>
+          </ul>
+          <button class="btn btn-white">Choose this plan</button>
+        </div>
+
+        <!-- Intensive -->
+        <div class="card">
+          <div class="card-head">
+            <span class="card-name">Intensive</span>
+          </div>
+          <div>
+            <div class="price">&euro;490</div>
+            <div class="price-period">/ full program</div>
+          </div>
+          <ul class="features">
+            <li>
+              <span class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              75 structured lessons
+            </li>
+            <li>
+              <span class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              Live + async
+            </li>
+            <li>
+              <span class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              Exam-ready
+            </li>
+            <li>
+              <span class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              Personal mentor
+            </li>
+          </ul>
+          <button class="btn btn-orange">Go intensive</button>
+        </div>
+
       </div>
-      <ul class="features">
-        <li class="feat"><span class="check">✓</span> 75 structured lessons</li>
-        <li class="feat"><span class="check">✓</span> Live + async sessions</li>
-        <li class="feat"><span class="check">✓</span> Exam-ready curriculum</li>
-        <li class="feat"><span class="check">✓</span> Personal mentor access</li>
-      </ul>
-      <a href="#enroll" class="cta-btn cta-default">Go intensive →</a>
     </div>
-  </div>
-</section>
+  </section>
 </body>
 </html>
