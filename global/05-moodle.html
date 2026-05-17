@@ -1,87 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FDS Institut — Platform Preview</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Montserrat:wght@700;900&family=JetBrains+Mono:wght@400&display=swap');
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-font-smoothing:antialiased}
-body{background:#030712;color:#fff;font-family:'Poppins',sans-serif}
-h2{font-family:'Montserrat',sans-serif;letter-spacing:-.02em}
-a{color:inherit;text-decoration:none}
-:root{--orange:#f97316;--ink:#15233c}
-::selection{background:var(--orange);color:var(--ink)}
-.label-mono{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FDS Institut — Platform Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700&family=Montserrat:wght@400;500&family=Nunito:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; }
 
-section{padding:3.5rem 1.5rem 4rem}
-@media(min-width:1024px){section{padding:4rem 3rem}}
+    :root {
+      --orange: #FF7900;
+      --blue: #00304E;
+      --gray-50: #F7F8FA;
+      --gray-200: #E2E3E5;
+      --gray-500: #6B7280;
+      --black: #111;
+    }
 
-.card{
-  max-width:72rem;margin:0 auto;
-  position:relative;border-radius:2rem;overflow:hidden;
-  border:1px solid rgba(255,255,255,.1);
-  background:rgba(255,255,255,.03);
-  backdrop-filter:blur(24px);
-}
-.card-glow{
-  position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(to left,rgba(249,115,22,.1),transparent);
-}
-.card-inner{
-  position:relative;display:flex;flex-direction:column;
-  align-items:center;gap:2rem;padding:2rem 2.5rem;
-}
-@media(min-width:1024px){
-  .card-inner{flex-direction:row;padding:3rem}
-}
+    body {
+      background: #fff;
+      font-family: 'Montserrat', sans-serif;
+    }
 
-.icon-block{
-  flex-shrink:0;width:80px;height:80px;border-radius:1rem;
-  background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.3);
-  display:flex;align-items:center;justify-content:center;font-size:2.5rem;
-}
+    .moodle-section {
+      background: var(--gray-50);
+      border-top: 1px solid var(--gray-200);
+      border-bottom: 1px solid var(--gray-200);
+      padding: 64px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
 
-.text-block{flex:1;text-align:center}
-@media(min-width:1024px){.text-block{text-align:left}}
-.eyebrow{color:var(--orange);margin-bottom:.5rem}
-h2{font-size:clamp(1.5rem,4vw,2.25rem);font-weight:900;line-height:1.1;color:#fff}
-.desc{margin-top:.75rem;color:rgba(255,255,255,.55);line-height:1.7;max-width:36rem}
-@media(min-width:640px){.desc{font-size:1rem}}
+    .moodle-logo {
+      height: 36px;
+      width: auto;
+      display: block;
+      margin-bottom: 24px;
+    }
 
-.cta-block{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:.75rem}
-.cta-btn{
-  display:inline-flex;align-items:center;gap:.75rem;
-  border-radius:9999px;background:var(--orange);color:var(--ink);
-  font-family:'Montserrat',sans-serif;font-weight:900;
-  padding:1rem 2rem;font-size:.9375rem;
-  box-shadow:0 25px 70px -20px rgba(249,115,22,.55);
-  transition:transform .3s;
-}
-.cta-btn:hover{transform:scale(1.05)}
-.no-account{color:rgba(255,255,255,.3)}
-</style>
+    h2 {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      color: var(--black);
+      margin-bottom: 10px;
+    }
+
+    .desc {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      color: var(--gray-500);
+      max-width: 400px;
+      line-height: 1.65;
+      margin-bottom: 28px;
+    }
+
+    .btn-moodle {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 0.9375rem;
+      background: #F27F22;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 13px 28px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: opacity 0.2s;
+      margin-bottom: 10px;
+    }
+
+    .btn-moodle:hover { opacity: 0.88; }
+
+    .no-account {
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.78125rem;
+      font-weight: 600;
+      color: var(--gray-500);
+    }
+  </style>
 </head>
 <body>
-<section>
-  <div class="card">
-    <div class="card-glow"></div>
-    <div class="card-inner">
-      <div class="icon-block">🎓</div>
-      <div class="text-block">
-        <p class="label-mono eyebrow">— Free preview</p>
-        <h2>Try before you buy.</h2>
-        <p class="desc">Access a full demo course in Visitor Mode — no account, no commitment. See exactly what you're getting before you enroll.</p>
-      </div>
-      <div class="cta-block">
-        <a href="https://moodle.fdsinstitut.online" target="_blank" rel="noopener noreferrer" class="cta-btn">
-          Preview Platform →
-        </a>
-        <span class="label-mono no-account">No account needed</span>
-      </div>
-    </div>
-  </div>
-</section>
+  <section class="moodle-section">
+    <img
+      class="moodle-logo"
+      src="https://assets.zyrosite.com/tPWPZ3kEpjHdFO9F/moodle-1-740x380-s84vr5GqRxP3NUXr.png"
+      alt="Moodle"
+    >
+    <h2>Try before you buy.</h2>
+    <p class="desc">Access a full demo course — no account, no commitment.</p>
+    <a
+      class="btn-moodle"
+      href="https://elearning.fdsinstitut.com"
+      target="_blank"
+      rel="noopener"
+    >Preview Platform &rarr;</a>
+    <span class="no-account">No account needed</span>
+  </section>
 </body>
 </html>

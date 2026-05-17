@@ -3,38 +3,56 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FDS Institut — Barre urgence</title>
+<title>Urgence — FDS Institut DZ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Montserrat:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap');
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-font-smoothing:antialiased}
-body{background:#030712;color:#fff;font-family:'Montserrat',sans-serif}
-:root{--orange:#f97316;--ink:#15233c}
-::selection{background:var(--orange);color:var(--ink)}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --orange: #FF7900;
+    --blue: #00304E;
+    --gray-50: #F7F8FA;
+    --gray-200: #E2E3E5;
+    --gray-500: #6B7280;
+    --black: #111;
+  }
+  body { font-family: 'Montserrat', sans-serif; background: #fff; }
 
-.urgency{
-  background:var(--orange);color:var(--ink);
-  text-align:center;padding:.625rem 1rem;
-  font-weight:700;font-size:.8125rem;letter-spacing:.06em;
-}
-@media(min-width:640px){.urgency{font-size:.875rem}}
-.urgency-inner{display:inline-flex;align-items:center;gap:.5rem}
-.pulse{
-  width:8px;height:8px;border-radius:50%;background:var(--ink);
-  animation:pulse-ring 2s ease-out infinite;
-}
-@keyframes pulse-ring{
-  0%{box-shadow:0 0 0 0 rgba(21,35,60,.6)}
-  100%{box-shadow:0 0 0 14px transparent}
-}
+  .urgency-bar {
+    background: var(--orange);
+    color: #fff;
+    text-align: center;
+    padding: 10px 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .blink-dot {
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: blink 1.2s ease-in-out infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.15; }
+  }
 </style>
 </head>
 <body>
-<div class="urgency">
-  <span class="urgency-inner">
-    <span class="pulse"></span>
-    Nouvelle session — places limitées · Démarrage cette semaine
-  </span>
-</div>
+  <div class="urgency-bar">
+    <span class="blink-dot"></span>
+    <span>Nouvelle session — places limitées &nbsp;&middot;&nbsp; Démarrage cette semaine</span>
+  </div>
 </body>
 </html>

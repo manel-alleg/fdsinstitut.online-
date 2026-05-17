@@ -3,100 +3,253 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FDS Institut — Tarifs (DZ)</title>
+<title>Tarifs — FDS Institut DZ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Montserrat:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Montserrat:wght@700;900&family=JetBrains+Mono:wght@400&display=swap');
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-font-smoothing:antialiased}
-body{background:#030712;color:#fff;font-family:'Poppins',sans-serif}
-h2,h3{font-family:'Montserrat',sans-serif;letter-spacing:-.02em}
-a{text-decoration:none}
-:root{--orange:#f97316;--ink:#15233c}
-::selection{background:var(--orange);color:var(--ink)}
-.label-mono{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --orange: #FF7900;
+    --blue: #00304E;
+    --gray-50: #F7F8FA;
+    --gray-200: #E2E3E5;
+    --gray-500: #6B7280;
+    --black: #111;
+  }
+  body { font-family: 'Montserrat', sans-serif; background: var(--gray-50); color: var(--black); }
 
-section{max-width:80rem;margin:0 auto;padding:4rem 1.5rem 5rem}
-@media(min-width:1024px){section{padding:5rem 3rem}}
-.header{max-width:32rem;margin-bottom:3rem}
-.eyebrow{color:var(--orange);margin-bottom:.75rem}
-h2{font-size:clamp(2.25rem,6vw,3.75rem);font-weight:900;line-height:.95;color:#fff;margin-bottom:1.25rem}
-.sub{color:rgba(255,255,255,.55);font-size:1.125rem;line-height:1.6}
+  .section {
+    background: var(--gray-50);
+    padding: 80px 24px;
+    max-width: 1120px;
+    margin: 0 auto;
+  }
 
-.grid{display:grid;gap:1.25rem;grid-template-columns:1fr}
-@media(min-width:768px){.grid{grid-template-columns:repeat(3,1fr)}}
-.card{position:relative;border-radius:2rem;padding:2rem;transition:transform .3s}
-.card:hover{transform:translateY(-8px)}
-.card-default{background:rgba(255,255,255,.04);color:#fff;border:1px solid rgba(255,255,255,.1)}
-.card-default:hover{border-color:rgba(249,115,22,.4)}
-.card-highlight{background:var(--orange);color:var(--ink);box-shadow:0 25px 70px -20px rgba(249,115,22,.55)}
-@media(min-width:768px){.card-highlight{transform:scale(1.03)}.card-highlight:hover{transform:scale(1.03) translateY(-8px)}}
-.badge{position:absolute;top:-.75rem;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--orange);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:.25rem .75rem;border-radius:9999px;white-space:nowrap}
-h3{font-size:1.5rem;font-weight:900;margin-bottom:.25rem}
-.tagline{font-size:.875rem;margin-bottom:1.5rem}
-.card-default .tagline{color:rgba(255,255,255,.5)}
-.card-highlight .tagline{color:rgba(21,35,60,.7)}
-.price-row{display:flex;align-items:baseline;gap:.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
-.price{font-family:'Montserrat',sans-serif;font-weight:900;font-size:2rem;letter-spacing:-.03em}
-.per{font-size:.875rem}
-.card-default .per{color:rgba(255,255,255,.5)}
-.card-highlight .per{color:rgba(21,35,60,.7)}
-.features{list-style:none;display:grid;gap:.75rem;margin-bottom:2rem}
-.feat{display:flex;gap:.5rem;font-size:.875rem;align-items:flex-start}
-.check{font-weight:900}
-.card-default .check{color:var(--orange)}
-.card-highlight .check{color:var(--ink)}
-.cta-btn{display:block;text-align:center;border-radius:9999px;font-family:'Montserrat',sans-serif;font-weight:900;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;padding:1rem 1.5rem;transition:transform .2s}
-.cta-btn:hover{transform:scale(1.02)}
-.cta-default{background:var(--orange);color:var(--ink)}
-.cta-highlight{background:var(--ink);color:var(--orange)}
+  .section-label {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--orange);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  h2 {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(1.875rem, 4vw, 2.625rem);
+    font-weight: 700;
+    color: var(--blue);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 48px;
+    max-width: 480px;
+  }
+
+  .grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  @media (min-width: 768px) {
+    .grid { grid-template-columns: repeat(3, 1fr); align-items: center; }
+  }
+
+  .card {
+    background: #fff;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 18px;
+    padding: 32px 28px;
+    position: relative;
+    transition: box-shadow 0.2s;
+  }
+
+  .card:hover { box-shadow: 0 6px 32px rgba(0,0,0,0.08); }
+
+  .card-highlight {
+    background: var(--orange);
+    border-color: var(--orange);
+    color: #fff;
+    transform: scale(1.03);
+  }
+
+  .card-highlight:hover { box-shadow: 0 8px 40px rgba(255,121,0,0.35); }
+
+  .badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--blue);
+    color: #fff;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  .card-name {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.1875rem;
+    font-weight: 700;
+    color: var(--blue);
+    margin-bottom: 4px;
+  }
+
+  .card-highlight .card-name { color: #fff; }
+
+  .card-sub {
+    font-size: 0.8125rem;
+    color: var(--gray-500);
+    margin-bottom: 20px;
+  }
+
+  .card-highlight .card-sub { color: rgba(255,255,255,0.75); }
+
+  .price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+
+  .price {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--blue);
+    letter-spacing: -0.03em;
+  }
+
+  .card-highlight .price { color: #fff; }
+
+  .per {
+    font-size: 0.8125rem;
+    color: var(--gray-500);
+  }
+
+  .card-highlight .per { color: rgba(255,255,255,0.75); }
+
+  .features {
+    list-style: none;
+    display: grid;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .feat {
+    display: flex;
+    gap: 10px;
+    font-size: 0.875rem;
+    align-items: flex-start;
+    color: var(--black);
+  }
+
+  .card-highlight .feat { color: #fff; }
+
+  .check {
+    color: var(--orange);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .card-highlight .check { color: #fff; }
+
+  .cta-btn {
+    display: block;
+    text-align: center;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    padding: 13px 20px;
+    text-decoration: none;
+    transition: opacity 0.15s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .cta-default {
+    background: var(--orange);
+    color: #fff;
+  }
+
+  .cta-default:hover { opacity: 0.88; }
+
+  .cta-highlight {
+    background: #fff;
+    color: var(--orange);
+    font-weight: 700;
+  }
+
+  .cta-highlight:hover { opacity: 0.9; }
 </style>
 </head>
 <body>
-<section>
-  <div class="header">
-    <p class="label-mono eyebrow">— Tarifs</p>
+  <section class="section">
+    <p class="section-label">Tarifs</p>
     <h2>Des tarifs pensés pour vous.</h2>
-    <p class="sub">Tous nos programmes incluent un test de niveau, un certificat de fin et l'accès à notre plateforme.</p>
-  </div>
-  <div class="grid">
-    <div class="card card-default">
-      <h3>Auto-apprentissage</h3>
-      <p class="tagline">À votre rythme</p>
-      <div class="price-row"><span class="price">9 900 DA</span><span class="per">Accès 3 mois</span></div>
-      <ul class="features">
-        <li class="feat"><span class="check">✓</span> +70h de contenu</li>
-        <li class="feat"><span class="check">✓</span> Vidéos · audios · exercices</li>
-        <li class="feat"><span class="check">✓</span> Mobile + ordinateur</li>
-        <li class="feat"><span class="check">✓</span> Niveaux A1 → C1</li>
-      </ul>
-      <a href="#enroll" class="cta-btn cta-default">Commencer →</a>
+    <div class="grid">
+
+      <div class="card">
+        <div class="card-name">Auto-apprentissage</div>
+        <div class="card-sub">À votre rythme</div>
+        <div class="price-row">
+          <span class="price">9&nbsp;900 DA</span>
+          <span class="per">Accès 3 mois</span>
+        </div>
+        <ul class="features">
+          <li class="feat"><span class="check">&#10003;</span> +70h de contenu</li>
+          <li class="feat"><span class="check">&#10003;</span> Vidéos &middot; audios &middot; exercices</li>
+          <li class="feat"><span class="check">&#10003;</span> Mobile + ordinateur</li>
+          <li class="feat"><span class="check">&#10003;</span> Niveaux A1 &rarr; C1</li>
+        </ul>
+        <button class="cta-btn cta-default" onclick="alert('Modal')">Commencer</button>
+      </div>
+
+      <div class="card card-highlight">
+        <span class="badge">Le plus choisi</span>
+        <div class="card-name">Cours en groupe</div>
+        <div class="card-sub">En direct avec vos camarades</div>
+        <div class="price-row">
+          <span class="price">7&nbsp;500 DA</span>
+          <span class="per">par mois</span>
+        </div>
+        <ul class="features">
+          <li class="feat"><span class="check">&#10003;</span> Cours live en ligne</li>
+          <li class="feat"><span class="check">&#10003;</span> Petits groupes max 12</li>
+          <li class="feat"><span class="check">&#10003;</span> Profs certifiés</li>
+          <li class="feat"><span class="check">&#10003;</span> Tous niveaux A1 &rarr; C2</li>
+        </ul>
+        <button class="cta-btn cta-highlight" onclick="alert('Modal')">Choisir</button>
+      </div>
+
+      <div class="card">
+        <div class="card-name">Intensif</div>
+        <div class="card-sub">Programme complet</div>
+        <div class="price-row">
+          <span class="price">32&nbsp;000 DA</span>
+          <span class="per">programme complet</span>
+        </div>
+        <ul class="features">
+          <li class="feat"><span class="check">&#10003;</span> 75 leçons structurées</li>
+          <li class="feat"><span class="check">&#10003;</span> Live + sessions async</li>
+          <li class="feat"><span class="check">&#10003;</span> Prêt pour les examens</li>
+          <li class="feat"><span class="check">&#10003;</span> Accès à un mentor</li>
+        </ul>
+        <button class="cta-btn cta-default" onclick="alert('Modal')">Formation intensive</button>
+      </div>
+
     </div>
-    <div class="card card-highlight">
-      <span class="badge">★ Le plus choisi</span>
-      <h3>Cours en groupe</h3>
-      <p class="tagline">En direct avec vos camarades</p>
-      <div class="price-row"><span class="price">7 500 DA</span><span class="per">par mois</span></div>
-      <ul class="features">
-        <li class="feat"><span class="check">✓</span> Cours live en ligne</li>
-        <li class="feat"><span class="check">✓</span> Petits groupes (max 12)</li>
-        <li class="feat"><span class="check">✓</span> Professeurs certifiés</li>
-        <li class="feat"><span class="check">✓</span> Tous niveaux A1 → C2</li>
-      </ul>
-      <a href="#enroll" class="cta-btn cta-highlight">Choisir →</a>
-    </div>
-    <div class="card card-default">
-      <h3>Intensif</h3>
-      <p class="tagline">75 leçons au total</p>
-      <div class="price-row"><span class="price">32 000 DA</span><span class="per">programme complet</span></div>
-      <ul class="features">
-        <li class="feat"><span class="check">✓</span> 75 leçons structurées</li>
-        <li class="feat"><span class="check">✓</span> Live + sessions async</li>
-        <li class="feat"><span class="check">✓</span> Prêt pour les examens</li>
-        <li class="feat"><span class="check">✓</span> Accès à un mentor personnel</li>
-      </ul>
-      <a href="#enroll" class="cta-btn cta-default">Formation intensive →</a>
-    </div>
-  </div>
-</section>
+  </section>
 </body>
 </html>

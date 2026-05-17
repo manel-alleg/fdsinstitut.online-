@@ -1,62 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FDS Institut — Ticker</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-font-smoothing:antialiased}
-body{background:#030712;color:#fff;overflow:hidden}
-:root{--orange:#f97316}
-::selection{background:var(--orange);color:#15233c}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FDS Institut — Ticker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; }
 
-.ticker-wrap{
-  position:relative;
-  border-top:1px solid rgba(255,255,255,.05);
-  border-bottom:1px solid rgba(255,255,255,.05);
-  background:rgba(0,0,0,.4);
-  padding:1.25rem 0;
-  overflow:hidden;
-}
-.marquee{
-  display:flex;
-  gap:3rem;
-  width:max-content;
-  animation:marquee 35s linear infinite;
-  will-change:transform;
-}
-@keyframes marquee{to{transform:translateX(-50%)}}
+    :root {
+      --orange: #FF7900;
+      --gray-200: #E2E3E5;
+      --gray-500: #6B7280;
+    }
 
-.item{
-  font-family:'Montserrat',sans-serif;
-  font-weight:900;
-  font-size:clamp(1.25rem,3vw,1.5rem);
-  letter-spacing:-.025em;
-  white-space:nowrap;
-  color:rgba(255,255,255,.8);
-  display:flex;
-  align-items:center;
-  gap:1.25rem;
-}
-.diamond{color:var(--orange)}
-</style>
+    body {
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .ticker-wrap {
+      border-top: 1px solid var(--gray-200);
+      border-bottom: 1px solid var(--gray-200);
+      padding: 1rem 0;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .marquee {
+      display: flex;
+      gap: 0;
+      width: max-content;
+      animation: marquee 32s linear infinite;
+      will-change: transform;
+    }
+
+    @keyframes marquee {
+      to { transform: translateX(-50%); }
+    }
+
+    .marquee-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      font-size: 0.8125rem;
+      letter-spacing: 0.04em;
+      color: var(--gray-500);
+      white-space: nowrap;
+      padding: 0 1rem;
+    }
+
+    /* SVG diamond separator */
+    .diamond-sep {
+      display: inline-flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .diamond-sep svg {
+      width: 7px;
+      height: 7px;
+    }
+  </style>
 </head>
 <body>
-<div class="ticker-wrap">
-  <div class="marquee" id="m"></div>
-</div>
-<script>
-const words = ['Deutsch lernen','A1 → C2','Live online','TestDaF ready','Goethe Zertifikat','FDS Institut'];
-const all = [...words,...words,...words];
-const m = document.getElementById('m');
-all.forEach(w=>{
-  const span = document.createElement('span');
-  span.className = 'item';
-  span.innerHTML = w + ' <span class="diamond">◆</span>';
-  m.appendChild(span);
-});
-</script>
+  <div class="ticker-wrap" role="marquee" aria-label="FDS Institut highlights">
+    <div class="marquee" id="marquee"></div>
+  </div>
+
+  <script>
+    const words = [
+      'Deutsch lernen',
+      'A1 → C2',
+      'Live online',
+      'TestDaF ready',
+      'Goethe Zertifikat',
+      'FDS Institut'
+    ];
+
+    // Repeat 6x so -50% translateX creates a seamless loop
+    const all = [...words, ...words, ...words, ...words, ...words, ...words];
+    const m = document.getElementById('marquee');
+
+    const diamondSVG = '<svg viewBox="0 0 8 8" fill="#FF7900" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="4,0 8,4 4,8 0,4"/></svg>';
+
+    all.forEach(function (word) {
+      const span = document.createElement('span');
+      span.className = 'marquee-item';
+      span.innerHTML = word + '<span class="diamond-sep">' + diamondSVG + '</span>';
+      m.appendChild(span);
+    });
+  </script>
 </body>
 </html>
