@@ -6,23 +6,25 @@
   <title>FDS Institut — Nav</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700;800&family=Montserrat:wght@400;500;600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { -webkit-font-smoothing: antialiased; }
 
     :root {
       --orange: #FF7900;
+      --orange-2: #FF9100;
       --blue: #00304E;
-      --black: #111;
       --gray-50: #F7F8FA;
       --gray-200: #E2E3E5;
       --gray-500: #6B7280;
+      --black: #111;
     }
 
     body {
       font-family: 'Montserrat', sans-serif;
       background: #fff;
+      color: var(--black);
     }
 
     a { color: inherit; text-decoration: none; }
@@ -34,127 +36,213 @@
       background: #fff;
       border-bottom: 1px solid var(--gray-200);
       height: 64px;
+    }
+
+    .nav-inner {
+      max-width: 80rem;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      height: 100%;
       display: flex;
       align-items: center;
-      padding: 0 2rem;
       justify-content: space-between;
+      gap: 1rem;
     }
 
     @media (min-width: 1024px) {
-      nav { padding: 0 3rem; }
+      .nav-inner { padding: 0 3rem; }
     }
 
-    /* Logo */
-    .nav-logo {
+    /* ── Logo ── */
+    .nav-left {
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1px;
-      line-height: 1;
+      align-items: center;
+      gap: 0.75rem;
     }
 
-    .logo-fds {
+    .logo {
       font-family: 'Sora', sans-serif;
       font-weight: 800;
       font-size: 1.375rem;
-      color: var(--black);
+      color: var(--blue);
       letter-spacing: -0.03em;
+      display: inline-flex;
+      align-items: center;
       line-height: 1;
     }
 
-    .logo-fds .dot {
-      color: var(--orange);
+    .logo-dot {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      background: var(--orange);
+      border-radius: 50%;
+      margin-left: 1px;
+      margin-bottom: 3px;
+      flex-shrink: 0;
     }
 
-    .logo-institut {
+    .logo-badge {
       font-family: 'Nunito', sans-serif;
       font-weight: 700;
-      font-size: 0.55rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
+      font-size: 0.6875rem;
       color: var(--gray-500);
-      line-height: 1;
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: 9999px;
+      padding: 3px 10px;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      display: none;
     }
 
-    @media (max-width: 480px) {
-      .logo-institut { display: none; }
+    @media (min-width: 640px) {
+      .logo-badge { display: inline-flex; align-items: center; }
     }
 
-    /* Right side */
+    /* ── Right ── */
     .nav-right {
       display: flex;
       align-items: center;
-      gap: 1.25rem;
+      gap: 0.625rem;
     }
 
+    /* Outlined nav buttons */
+    .nav-btn {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 0.8125rem;
+      color: var(--blue);
+      border: 1.5px solid var(--blue);
+      border-radius: 9999px;
+      padding: 6px 16px;
+      background: #fff;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-btn:hover {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    /* Orange reserve button */
+    .nav-btn-reserve {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 0.8125rem;
+      color: #fff;
+      background: var(--orange);
+      border: 1.5px solid var(--orange);
+      border-radius: 9999px;
+      padding: 6px 18px;
+      cursor: pointer;
+      transition: background 0.2s ease, opacity 0.15s;
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-btn-reserve:hover {
+      background: var(--orange-2);
+      border-color: var(--orange-2);
+    }
+
+    /* Berlin clock */
     .berlin-clock {
       font-family: 'Nunito', sans-serif;
       font-weight: 700;
       font-size: 0.75rem;
       color: var(--gray-500);
       letter-spacing: 0.04em;
+      white-space: nowrap;
+      display: none;
     }
 
-    @media (max-width: 480px) {
-      .berlin-clock { display: none; }
+    @media (min-width: 640px) {
+      .berlin-clock { display: inline; }
     }
 
-    .status-pill {
-      display: flex;
+    /* Enrolling pill */
+    .enrolling-pill {
+      display: none;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.35rem;
       background: var(--gray-50);
       border: 1px solid var(--gray-200);
-      border-radius: 999px;
-      padding: 0.3rem 0.8rem 0.3rem 0.6rem;
+      border-radius: 9999px;
+      padding: 4px 10px 4px 8px;
       font-family: 'Nunito', sans-serif;
       font-weight: 700;
-      font-size: 0.7rem;
+      font-size: 0.6875rem;
       color: var(--black);
       letter-spacing: 0.02em;
       white-space: nowrap;
     }
 
-    .blink-dot {
+    @media (min-width: 640px) {
+      .enrolling-pill { display: inline-flex; }
+    }
+
+    .pulse-dot {
       width: 7px;
       height: 7px;
       border-radius: 50%;
       background: #22c55e;
       flex-shrink: 0;
-      animation: blink 1.8s ease-in-out infinite;
+      animation: pulseDot 1.8s ease-in-out infinite;
     }
 
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50%       { opacity: 0.2; }
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.35; transform: scale(0.85); }
     }
   </style>
 </head>
 <body>
-  <nav>
-    <a href="../index.html" class="nav-logo" aria-label="FDS Institut home">
-      <span class="logo-fds">FDS<span class="dot">.</span></span>
-      <span class="logo-institut">Institut</span>
-    </a>
+  <nav role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
 
-    <div class="nav-right">
-      <span class="berlin-clock" id="berlinClock" aria-live="polite" aria-label="Berlin time">Berlin --:--</span>
-      <div class="status-pill">
-        <div class="blink-dot" aria-hidden="true"></div>
-        Enrolling now
+      <!-- Left: logo + badge -->
+      <div class="nav-left">
+        <a href="../index.html" class="logo" aria-label="FDS Institut home">
+          FDS<span class="logo-dot" aria-hidden="true"></span>
+        </a>
+        <span class="logo-badge">GLOBAL &middot; A1&ndash;C2</span>
       </div>
+
+      <!-- Right: links + clock + pill -->
+      <div class="nav-right">
+        <span class="berlin-clock" id="berlinClock" aria-live="polite" aria-label="Berlin time">Berlin --:--</span>
+
+        <span class="enrolling-pill">
+          <span class="pulse-dot" aria-hidden="true"></span>
+          Enrolling now
+        </span>
+
+        <a href="../dz/index.html" class="nav-btn">DZ</a>
+        <a href="../global/index.html" class="nav-btn">Global</a>
+        <a href="#hero" class="nav-btn-reserve" onclick="if(window.scrollToHero){event.preventDefault();scrollToHero();}">Reserve</a>
+      </div>
+
     </div>
   </nav>
 
   <script>
     function updateClock() {
-      const time = new Date().toLocaleTimeString('de-DE', {
+      const time = new Intl.DateTimeFormat('de-DE', {
         timeZone: 'Europe/Berlin',
         hour: '2-digit',
         minute: '2-digit',
         hour12: false
-      });
-      document.getElementById('berlinClock').textContent = 'Berlin ' + time;
+      }).format(new Date());
+      const el = document.getElementById('berlinClock');
+      if (el) el.textContent = 'Berlin ' + time;
     }
     updateClock();
     setInterval(updateClock, 30000);

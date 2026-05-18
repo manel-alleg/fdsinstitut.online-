@@ -3,21 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FDS Institut — Why Two Doors</title>
+  <title>FDS Institut — Features</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700;800&family=Montserrat:wght@400;500;600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { -webkit-font-smoothing: antialiased; }
 
     :root {
       --orange: #FF7900;
+      --orange-2: #FF9100;
       --blue: #00304E;
-      --black: #111;
       --gray-50: #F7F8FA;
       --gray-200: #E2E3E5;
       --gray-500: #6B7280;
+      --black: #111;
     }
 
     body {
@@ -26,137 +27,464 @@
       color: var(--black);
     }
 
-    /* ── Section ── */
-    section {
+    a { color: inherit; text-decoration: none; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-6px); }
+    }
+
+    /* ── Section wrapper ── */
+    .features-section {
       max-width: 80rem;
       margin: 0 auto;
-      padding: 5rem 1.5rem;
+      padding: 5rem 1.5rem 6rem;
     }
 
     @media (min-width: 1024px) {
-      section { padding: 7rem 3rem; }
+      .features-section { padding: 7rem 3rem 8rem; }
     }
 
-    /* Section label */
+    /* ── Section header ── */
     .section-label {
       font-family: 'Nunito', sans-serif;
       font-weight: 800;
-      font-size: 0.7rem;
+      font-size: 0.6875rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--orange);
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
     }
 
-    /* H2 */
-    h2 {
+    .section-title {
       font-family: 'Sora', sans-serif;
-      font-weight: 700;
-      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 800;
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
       letter-spacing: -0.03em;
-      line-height: 1.0;
+      line-height: 1.05;
       color: var(--black);
-      max-width: 36rem;
+      margin-bottom: 3.5rem;
+    }
+
+    /* ── Portal cards ── */
+    .portal-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: 1fr;
       margin-bottom: 4rem;
     }
 
-    /* ── Grid ── */
-    .grid {
+    @media (min-width: 768px) {
+      .portal-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .portal-card {
+      border-radius: 24px;
+      padding: 2.5rem 2rem 2rem;
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* DZ card */
+    .portal-dz {
+      background: var(--orange);
+    }
+
+    .portal-dz:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 56px -12px rgba(255, 121, 0, 0.45);
+    }
+
+    /* INT card */
+    .portal-intl {
+      background: #fff;
+      border: 1.5px solid var(--gray-200);
+    }
+
+    .portal-intl:hover {
+      transform: translateY(-3px);
+      border-color: var(--orange);
+      box-shadow: 0 12px 40px -10px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Portal badge */
+    .portal-badge {
+      display: inline-flex;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 0.6875rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: 9999px;
+      padding: 4px 12px;
+      margin-bottom: 1.5rem;
+    }
+
+    .portal-dz .portal-badge {
+      background: rgba(0, 0, 0, 0.14);
+      color: rgba(0, 0, 0, 0.65);
+    }
+
+    .portal-intl .portal-badge {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    /* Portal heading */
+    .portal-heading {
+      font-family: 'Sora', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.625rem, 3.5vw, 2.25rem);
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 0.5rem;
+    }
+
+    .portal-dz .portal-heading { color: #fff; }
+    .portal-intl .portal-heading { color: var(--blue); }
+
+    /* Portal price */
+    .portal-price {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .portal-dz .portal-price { color: rgba(255, 255, 255, 0.82); }
+    .portal-intl .portal-price { color: var(--gray-500); }
+
+    /* Feature lines */
+    .portal-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 2rem;
+    }
+
+    .portal-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      font-size: 0.9375rem;
+    }
+
+    .portal-dz .portal-features li { color: rgba(255, 255, 255, 0.9); }
+    .portal-intl .portal-features li { color: var(--black); }
+
+    .check-icon {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+    }
+
+    .portal-dz .check-icon {
+      background: rgba(0, 0, 0, 0.14);
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .portal-intl .check-icon {
+      background: rgba(255, 121, 0, 0.1);
+      color: var(--orange);
+    }
+
+    /* Portal CTA */
+    .portal-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 0.875rem;
+      border-radius: 12px;
+      padding: 12px 22px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+    }
+
+    .portal-cta:hover {
+      transform: translateY(-2px);
+    }
+
+    .portal-dz .portal-cta {
+      background: #fff;
+      color: var(--orange);
+    }
+
+    .portal-dz .portal-cta:hover {
+      box-shadow: 0 6px 24px rgba(255, 255, 255, 0.4);
+    }
+
+    .portal-intl .portal-cta {
+      background: #fff;
+      color: var(--blue);
+      border: 1.5px solid var(--blue);
+    }
+
+    .portal-intl .portal-cta:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+
+    /* ── Small feature grid ── */
+    .feat-grid {
       display: grid;
-      gap: 1.5rem;
+      gap: 1.25rem;
+      grid-template-columns: 1fr 1fr;
+      margin-bottom: 4rem;
+    }
+
+    @media (min-width: 768px) {
+      .feat-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .feat-card {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: 16px;
+      padding: 1.5rem 1.25rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .feat-card:hover {
+      border-color: var(--orange);
+      box-shadow: 0 4px 20px rgba(255, 121, 0, 0.08);
+    }
+
+    .feat-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(255, 121, 0, 0.08);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      color: var(--orange);
+    }
+
+    .feat-title {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 0.9375rem;
+      color: var(--black);
+      margin-bottom: 0.35rem;
+      letter-spacing: -0.01em;
+    }
+
+    .feat-desc {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      font-size: 0.8125rem;
+      color: var(--gray-500);
+      line-height: 1.6;
+    }
+
+    /* ── Photo row ── */
+    .photo-row {
+      display: grid;
+      gap: 1rem;
       grid-template-columns: 1fr;
     }
 
     @media (min-width: 640px) {
-      .grid { grid-template-columns: repeat(3, 1fr); }
+      .photo-row { grid-template-columns: repeat(3, 1fr); }
     }
 
-    /* ── Card ── */
-    .card {
+    .photo-item {
       position: relative;
-      padding: 2rem;
-      border: 1.5px solid var(--gray-200);
       border-radius: 20px;
-      background: #fff;
-      transition: border-color 0.25s ease,
-                  box-shadow 0.25s ease;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
     }
 
-    .card:hover {
-      border-color: var(--orange);
-      box-shadow: 0 8px 32px -8px rgba(255, 121, 0, 0.12);
-    }
-
-    .card-num {
-      font-family: 'Nunito', sans-serif;
-      font-weight: 800;
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      color: var(--orange);
-      margin-bottom: 1rem;
-    }
-
-    .card-title {
-      font-family: 'Sora', sans-serif;
-      font-weight: 700;
-      font-size: clamp(1.125rem, 2.5vw, 1.5rem);
-      letter-spacing: -0.025em;
-      color: var(--black);
-      margin-bottom: 0.75rem;
-    }
-
-    .card-desc {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 500;
-      font-size: 0.9375rem;
-      line-height: 1.7;
-      color: var(--gray-500);
-    }
-
-    /* Animated underline */
-    .card-line {
-      margin-top: 1.5rem;
-      height: 2px;
-      width: 2rem;
-      background: var(--orange);
-      border-radius: 2px;
-      transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .card:hover .card-line {
+    .photo-item img {
       width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .photo-item:hover img {
+      transform: scale(1.04);
+    }
+
+    .photo-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.25rem 1rem 0.875rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 100%);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 0.8125rem;
+      color: #fff;
+      letter-spacing: 0.02em;
     }
   </style>
 </head>
 <body>
-  <section>
-    <p class="section-label">Why two doors</p>
-    <h2>Same classroom.<br>Fairer pricing.</h2>
+  <section class="features-section">
 
-    <div class="grid">
+    <!-- Header -->
+    <p class="section-label">Why FDS Institut</p>
+    <h2 class="section-title">Same great school.<br>Fairer pricing.</h2>
 
-      <div class="card">
-        <div class="card-num">01</div>
-        <h3 class="card-title">Live with humans</h3>
-        <p class="card-desc">Real teachers, small groups, voices not bots.</p>
-        <div class="card-line"></div>
+    <!-- Portal cards -->
+    <div class="portal-grid">
+
+      <!-- DZ card -->
+      <div class="portal-card portal-dz">
+        <span class="portal-badge">DZ</span>
+        <h3 class="portal-heading">Je suis en Alg&eacute;rie</h3>
+        <p class="portal-price">D&egrave;s 7 500 DA / mois</p>
+        <ul class="portal-features">
+          <li>
+            <span class="check-icon" aria-hidden="true">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5l2 2.2 4-4"/></svg>
+            </span>
+            CCP &middot; Edahabia &middot; BaridiMob
+          </li>
+          <li>
+            <span class="check-icon" aria-hidden="true">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5l2 2.2 4-4"/></svg>
+            </span>
+            Cours en direct
+          </li>
+          <li>
+            <span class="check-icon" aria-hidden="true">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5l2 2.2 4-4"/></svg>
+            </span>
+            &Eacute;quipe locale
+          </li>
+        </ul>
+        <a href="../dz/index.html" class="portal-cta">
+          D&eacute;marrer maintenant
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
       </div>
 
-      <div class="card">
-        <div class="card-num">02</div>
-        <h3 class="card-title">Built for exams</h3>
-        <p class="card-desc">Goethe &amp; TestDaF prep baked into every level.</p>
-        <div class="card-line"></div>
-      </div>
-
-      <div class="card">
-        <div class="card-num">03</div>
-        <h3 class="card-title">Pay where you live</h3>
-        <p class="card-desc">DA in Algeria, EUR everywhere else. No FX games.</p>
-        <div class="card-line"></div>
+      <!-- INT card -->
+      <div class="portal-card portal-intl">
+        <span class="portal-badge">INT</span>
+        <h3 class="portal-heading">I&rsquo;m based abroad</h3>
+        <p class="portal-price">From &euro;85 / month</p>
+        <ul class="portal-features">
+          <li>
+            <span class="check-icon" aria-hidden="true">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5l2 2.2 4-4"/></svg>
+            </span>
+            Card &middot; PayPal &middot; Transfer
+          </li>
+          <li>
+            <span class="check-icon" aria-hidden="true">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5l2 2.2 4-4"/></svg>
+            </span>
+            Live in German
+          </li>
+          <li>
+            <span class="check-icon" aria-hidden="true">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5l2 2.2 4-4"/></svg>
+            </span>
+            CEFR-aligned
+          </li>
+        </ul>
+        <a href="../global/index.html" class="portal-cta">
+          Get started
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
       </div>
 
     </div>
+
+    <!-- 4-col feature grid -->
+    <div class="feat-grid">
+
+      <div class="feat-card">
+        <div class="feat-icon" aria-hidden="true">
+          <!-- Graduation cap -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg>
+        </div>
+        <p class="feat-title">Live teachers</p>
+        <p class="feat-desc">Certified, small groups.</p>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-icon" aria-hidden="true">
+          <!-- Replay / rewind -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.46"/></svg>
+        </div>
+        <p class="feat-title">Lifetime replays</p>
+        <p class="feat-desc">Recorded, yours forever.</p>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-icon" aria-hidden="true">
+          <!-- Shield -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <p class="feat-title">Money-back</p>
+        <p class="feat-desc">14-day no-questions guarantee.</p>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-icon" aria-hidden="true">
+          <!-- Globe -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <p class="feat-title">Worldwide</p>
+        <p class="feat-desc">Join from anywhere.</p>
+      </div>
+
+    </div>
+
+    <!-- Photo row -->
+    <div class="photo-row">
+
+      <div class="photo-item">
+        <img
+          src="https://images.pexels.com/photos/4144923/pexels-photo-4144923.jpeg?auto=compress&cs=tinysrgb&w=600"
+          alt="Students in a live online class"
+          loading="lazy"
+        />
+        <div class="photo-caption">Live sessions</div>
+      </div>
+
+      <div class="photo-item">
+        <img
+          src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600"
+          alt="Team collaboration"
+          loading="lazy"
+        />
+        <div class="photo-caption">Small groups</div>
+      </div>
+
+      <div class="photo-item">
+        <img
+          src="https://images.pexels.com/photos/5905902/pexels-photo-5905902.jpeg?auto=compress&cs=tinysrgb&w=600"
+          alt="Student studying online"
+          loading="lazy"
+        />
+        <div class="photo-caption">Learn at your pace</div>
+      </div>
+
+    </div>
+
   </section>
 </body>
 </html>

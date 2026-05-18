@@ -15,6 +15,7 @@
       --orange: #FF7900;
       --gray-200: #E2E3E5;
       --gray-500: #6B7280;
+      --black: #111;
     }
 
     body {
@@ -25,46 +26,40 @@
     .ticker-wrap {
       border-top: 1px solid var(--gray-200);
       border-bottom: 1px solid var(--gray-200);
-      padding: 1rem 0;
-      overflow: hidden;
       background: #fff;
+      padding: 14px 0;
+      overflow: hidden;
     }
 
     .marquee {
       display: flex;
-      gap: 0;
       width: max-content;
-      animation: marquee 32s linear infinite;
+      animation: marquee 34s linear infinite;
       will-change: transform;
     }
 
     @keyframes marquee {
-      to { transform: translateX(-50%); }
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
     }
 
     .marquee-item {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 1rem;
       font-family: 'Montserrat', sans-serif;
       font-weight: 500;
-      font-size: 0.8125rem;
-      letter-spacing: 0.04em;
-      color: var(--gray-500);
+      font-size: 0.875rem;
+      letter-spacing: 0.02em;
+      color: var(--black);
       white-space: nowrap;
-      padding: 0 1rem;
+      padding: 0 0.75rem;
     }
 
-    /* SVG diamond separator */
     .diamond-sep {
       display: inline-flex;
       align-items: center;
+      margin: 0 0.75rem;
       flex-shrink: 0;
-    }
-
-    .diamond-sep svg {
-      width: 7px;
-      height: 7px;
     }
   </style>
 </head>
@@ -75,21 +70,23 @@
 
   <script>
     const words = [
-      'Deutsch lernen',
+      'Sprich Deutsch',
       'A1 → C2',
       'Live online',
       'TestDaF ready',
       'Goethe Zertifikat',
-      'FDS Institut'
+      'FDS Institut',
+      '12 000+ étudiants',
+      'Depuis Alger'
     ];
 
-    // Repeat 6x so -50% translateX creates a seamless loop
-    const all = [...words, ...words, ...words, ...words, ...words, ...words];
+    const diamondSVG = '<svg width="7" height="7" viewBox="0 0 8 8" fill="#FF7900" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="4,0 8,4 4,8 0,4"/></svg>';
+
+    // Double the set so translateX(-50%) creates a seamless loop
+    const full = [...words, ...words, ...words, ...words, ...words, ...words];
     const m = document.getElementById('marquee');
 
-    const diamondSVG = '<svg viewBox="0 0 8 8" fill="#FF7900" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="4,0 8,4 4,8 0,4"/></svg>';
-
-    all.forEach(function (word) {
+    full.forEach(function(word) {
       const span = document.createElement('span');
       span.className = 'marquee-item';
       span.innerHTML = word + '<span class="diamond-sep">' + diamondSVG + '</span>';

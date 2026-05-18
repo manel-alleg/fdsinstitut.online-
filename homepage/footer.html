@@ -6,7 +6,7 @@
   <title>FDS Institut — Footer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { -webkit-font-smoothing: antialiased; }
@@ -14,94 +14,208 @@
     :root {
       --orange: #FF7900;
       --blue: #00304E;
-      --black: #111;
       --gray-50: #F7F8FA;
       --gray-200: #E2E3E5;
       --gray-500: #6B7280;
+      --black: #111;
     }
 
     body {
+      font-family: 'Montserrat', sans-serif;
       background: #fff;
-      font-family: 'Nunito', sans-serif;
+      color: var(--black);
     }
 
     a { color: inherit; text-decoration: none; }
 
+    /* ── Footer ── */
     footer {
       background: #fff;
       border-top: 1px solid var(--gray-200);
-      padding: 2.5rem 1.5rem;
-    }
-
-    @media (min-width: 1024px) {
-      footer { padding: 2.5rem 3rem; }
     }
 
     .footer-inner {
       max-width: 80rem;
       margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
+      padding: 3.5rem 1.5rem 2.5rem;
     }
 
-    .copy {
+    @media (min-width: 1024px) {
+      .footer-inner { padding: 4rem 3rem 2.5rem; }
+    }
+
+    /* ── 3-col grid ── */
+    .footer-grid {
+      display: grid;
+      gap: 2.5rem;
+      grid-template-columns: 1fr;
+      margin-bottom: 3rem;
+    }
+
+    @media (min-width: 768px) {
+      .footer-grid { grid-template-columns: 2fr 1fr 1fr; }
+    }
+
+    /* ── Brand column ── */
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      font-family: 'Sora', sans-serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--blue);
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+      line-height: 1;
+    }
+
+    .logo-dot {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      background: var(--orange);
+      border-radius: 50%;
+      margin-left: 2px;
+      margin-bottom: 3px;
+      flex-shrink: 0;
+    }
+
+    .brand-tagline {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      font-size: 0.875rem;
+      color: var(--gray-500);
+      line-height: 1.6;
+      margin-bottom: 0.5rem;
+    }
+
+    .brand-copy {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      color: var(--gray-500);
+      letter-spacing: 0.01em;
+    }
+
+    /* ── Nav / Contact columns ── */
+    .col-heading {
       font-family: 'Nunito', sans-serif;
       font-weight: 700;
       font-size: 0.6875rem;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
       color: var(--gray-500);
+      margin-bottom: 1rem;
     }
 
     .footer-links {
       display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 1.25rem;
+      flex-direction: column;
+      gap: 0.55rem;
     }
 
     .footer-links a {
-      font-family: 'Nunito', sans-serif;
-      font-weight: 700;
-      font-size: 0.6875rem;
-      letter-spacing: 0.04em;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      font-size: 0.9rem;
       color: var(--gray-500);
-      transition: color 0.2s ease;
+      transition: color 0.15s ease;
       display: inline-flex;
       align-items: center;
-      gap: 0.2rem;
+      gap: 0.25rem;
     }
 
     .footer-links a:hover {
       color: var(--orange);
     }
 
-    /* External link arrow icon */
     .ext-icon {
       display: inline-block;
-      width: 10px;
-      height: 10px;
+      width: 11px;
+      height: 11px;
       flex-shrink: 0;
+    }
+
+    /* ── Bottom bar ── */
+    .footer-bottom {
+      border-top: 1px solid var(--gray-200);
+      padding-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-bottom-text {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 0.6875rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      text-align: center;
+    }
+
+    .footer-bottom-sep {
+      margin: 0 0.5rem;
+      color: var(--gray-200);
     }
   </style>
 </head>
 <body>
   <footer>
     <div class="footer-inner">
-      <span class="copy">&#169; 2026 FDS Institut &middot; Deutsch, gemacht f&uuml;r dich.</span>
 
-      <div class="footer-links">
-        <a href="mailto:online@fdsinstitut.com">online@fdsinstitut.com</a>
-        <a href="https://www.fdsinstitut.com" target="_blank" rel="noopener noreferrer">
-          fdsinstitut.com
-          <!-- External link SVG -->
-          <svg class="ext-icon" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M1 9L9 1M9 1H4M9 1v5"/>
-          </svg>
-        </a>
+      <!-- 3-col grid -->
+      <div class="footer-grid">
+
+        <!-- Brand column -->
+        <div>
+          <a href="../index.html" class="logo" aria-label="FDS Institut home">
+            FDS<span class="logo-dot" aria-hidden="true"></span>
+          </a>
+          <p class="brand-tagline">Online German school. Est. Algiers.</p>
+          <p class="brand-copy">&copy; 2026 FDS Institut</p>
+        </div>
+
+        <!-- Navigation column -->
+        <div>
+          <p class="col-heading">Navigation</p>
+          <div class="footer-links">
+            <a href="#pricing">Pricing</a>
+            <a href="https://elearning.fdsinstitut.com" target="_blank" rel="noopener noreferrer">Platform
+              <svg class="ext-icon" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 9L9 1M9 1H4M9 1v5"/></svg>
+            </a>
+            <a href="#faq">FAQ</a>
+            <a href="../dz/index.html">Algeria</a>
+            <a href="../global/index.html">International</a>
+          </div>
+        </div>
+
+        <!-- Contact column -->
+        <div>
+          <p class="col-heading">Contact</p>
+          <div class="footer-links">
+            <a href="mailto:online@fdsinstitut.com">online@fdsinstitut.com</a>
+            <a href="https://fdsinstitut.com" target="_blank" rel="noopener noreferrer">
+              fdsinstitut.com
+              <svg class="ext-icon" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 9L9 1M9 1H4M9 1v5"/></svg>
+            </a>
+          </div>
+        </div>
+
       </div>
+
+      <!-- Bottom bar -->
+      <div class="footer-bottom">
+        <p class="footer-bottom-text">
+          All sessions online
+          <span class="footer-bottom-sep" aria-hidden="true">&middot;</span>
+          Algeria
+          <span class="footer-bottom-sep" aria-hidden="true">&middot;</span>
+          Worldwide
+        </p>
+      </div>
+
     </div>
   </footer>
 </body>
