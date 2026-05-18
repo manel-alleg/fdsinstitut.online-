@@ -3,391 +3,1422 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FDS Institut — Online German Courses · Worldwide & Algeria</title>
-<meta name="description" content="Live online German courses A1–C2. Choose your path: Algeria pricing in DZD or international in EUR.">
+<title>FDS Institut — Learn German Online | A1 to C2 | Algeria & International</title>
+<meta name="description" content="Online German classes for everyone. A1 to C2. Live sessions with certified teachers. Prices in DA for Algeria, EUR internationally. Enroll in 2 minutes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap');
-
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
-body{background:#fff;color:#111;font-family:'Montserrat',sans-serif;overflow-x:hidden}
-h1,h2,h3,h4,h5{font-family:'Sora',sans-serif;letter-spacing:-.025em}
-a{color:inherit;text-decoration:none}
-img{max-width:100%;display:block}
-::selection{background:#FF7900;color:#fff}
-
-:root{
-  --orange:#FF7900;
-  --orange-solid:#FF9100;
-  --blue:#00304E;
-  --black:#111111;
-  --gray-50:#F7F8FA;
-  --gray-100:#F0F1F3;
-  --gray-200:#E2E3E5;
-  --gray-500:#6B7280;
+/* ─── TOKENS ─── */
+:root {
+  --orange: #FF7900;
+  --orange-2: #FF9100;
+  --blue: #00304E;
+  --black: #111;
+  --gray-50: #F7F8FA;
+  --gray-100: #F0F1F3;
+  --gray-200: #E2E3E5;
+  --gray-500: #6B7280;
+  --moodle: #F27F22;
 }
 
-/* ── NAV ── */
-nav{
-  position:sticky;top:0;z-index:100;
-  background:#fff;border-bottom:1px solid var(--gray-200);
-}
-.nav-inner{
-  max-width:80rem;margin:0 auto;
-  padding:.875rem 1.5rem;
-  display:flex;align-items:center;justify-content:space-between;
-}
-@media(min-width:1024px){.nav-inner{padding:.875rem 3rem}}
-.logo{
-  font-family:'Sora',sans-serif;font-weight:800;
-  font-size:1.375rem;letter-spacing:-.04em;color:var(--black);
-}
-.logo-dot{color:var(--orange)}
-.logo-sub{
-  font-family:'Nunito',sans-serif;font-size:10px;font-weight:700;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--gray-200);
-  margin-left:.5rem;display:none;
-}
-@media(min-width:640px){.logo-sub{display:inline}}
-.nav-right{display:flex;align-items:center;gap:.75rem}
-.nav-status{
-  display:none;
-  font-family:'Nunito',sans-serif;font-size:11px;font-weight:700;
-  letter-spacing:.1em;text-transform:uppercase;color:var(--gray-500);
-}
-@media(min-width:768px){.nav-status{display:flex;align-items:center;gap:.375rem}}
-.status-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;animation:blink 2s ease-in-out infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+/* ─── RESET ─── */
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { background: #fff; color: var(--black); font-family: 'Montserrat', sans-serif; overflow-x: hidden; line-height: 1.6; }
+h1,h2,h3,h4 { font-family: 'Sora', sans-serif; letter-spacing: -.025em; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; font-family: inherit; border: none; background: none; }
+img { max-width: 100%; display: block; }
+input, textarea, select { font-family: 'Montserrat', sans-serif; }
 
-/* ── HERO ── */
-.hero{
-  min-height:calc(100vh - 57px);
-  display:flex;align-items:center;
-  padding:4rem 1.5rem 5rem;
-}
-@media(min-width:1024px){.hero{padding:5rem 3rem}}
-.hero-inner{
-  max-width:80rem;margin:0 auto;width:100%;
-  display:grid;gap:4rem;align-items:center;
-  grid-template-columns:1fr;
-}
-@media(min-width:1024px){.hero-inner{grid-template-columns:1fr 1fr;gap:6rem}}
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes marquee { to { transform: translateX(-50%); } }
+@keyframes pulseDot { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+@keyframes slideUp { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-/* LEFT */
-.hero-left{}
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:.5rem;
-  background:var(--gray-50);border:1px solid var(--gray-200);
-  border-radius:9999px;padding:.375rem 1rem;
-  font-family:'Nunito',sans-serif;font-size:.8125rem;font-weight:700;
-  color:var(--gray-500);margin-bottom:1.75rem;
+/* ─── REVEAL ─── */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
+.reveal.in { opacity: 1; transform: none; }
+.reveal-d1.in { transition-delay: .1s; }
+.reveal-d2.in { transition-delay: .2s; }
+.reveal-d3.in { transition-delay: .3s; }
+.reveal-d4.in { transition-delay: .4s; }
+
+/* ─── UTILS ─── */
+.container { max-width: 80rem; margin: 0 auto; padding: 0 1.5rem; }
+.container-sm { max-width: 48rem; margin: 0 auto; padding: 0 1.5rem; }
+.accent { color: var(--orange); }
+
+/* ─── BUTTONS ─── */
+.btn { display: inline-flex; align-items: center; gap: .5rem; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: .9rem; border-radius: 10px; padding: .75rem 1.5rem; transition: all .2s ease; cursor: pointer; border: 2px solid transparent; white-space: nowrap; }
+.btn-orange { background: var(--orange); color: #fff; border-color: var(--orange); }
+.btn-orange:hover { background: var(--orange-2); border-color: var(--orange-2); transform: translateY(-1px); box-shadow: 0 8px 20px -4px rgba(255,121,0,.4); }
+.btn-outline-white { background: transparent; color: #fff; border-color: rgba(255,255,255,.6); }
+.btn-outline-white:hover { background: rgba(255,255,255,.1); border-color: #fff; }
+.btn-outline-dark { background: transparent; color: var(--blue); border-color: var(--gray-200); }
+.btn-outline-dark:hover { border-color: var(--blue); }
+.btn-white-orange { background: #fff; color: var(--orange); font-weight: 700; border-color: #fff; }
+.btn-white-orange:hover { background: var(--gray-50); }
+.btn-moodle { background: var(--moodle); color: #fff; border-color: var(--moodle); padding: 1rem 2.25rem; font-size: 1rem; }
+.btn-moodle:hover { background: #d96e15; border-color: #d96e15; transform: translateY(-1px); }
+.btn-lg { padding: 1rem 2rem; font-size: 1rem; border-radius: 12px; }
+.btn-full { width: 100%; justify-content: center; }
+
+/* ─── EYEBROW ─── */
+.eyebrow { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; }
+.eyebrow-orange { color: var(--orange); }
+
+/* ═══════════════════════════════════
+   1. URGENCY BAR
+═══════════════════════════════════ */
+.urgency-bar {
+  background: var(--orange);
+  color: #fff;
+  text-align: center;
+  padding: .6rem 1.5rem;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: .82rem;
+  letter-spacing: .03em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
 }
-.eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--orange)}
-h1{
-  font-size:clamp(2.75rem,8vw,5rem);
-  font-weight:800;line-height:.95;letter-spacing:-.04em;
-  color:var(--black);margin-bottom:1.5rem;
-}
-h1 .accent{color:var(--orange)}
-.hero-sub{
-  font-size:1.0625rem;color:var(--gray-500);
-  max-width:32rem;line-height:1.7;margin-bottom:2.5rem;
-}
-.hero-stats{
-  display:flex;flex-wrap:wrap;gap:2rem;
-  padding-top:2rem;border-top:1px solid var(--gray-200);
-}
-.stat-n{font-family:'Sora',sans-serif;font-weight:700;font-size:1.625rem;color:var(--black)}
-.stat-l{
-  font-family:'Nunito',sans-serif;font-size:11px;font-weight:700;
-  letter-spacing:.08em;text-transform:uppercase;color:var(--gray-500);margin-top:.25rem;
+.pulse-dot {
+  width: 8px; height: 8px; border-radius: 50%; background: #fff;
+  display: inline-block; flex-shrink: 0;
+  animation: pulseDot 1.4s ease infinite;
 }
 
-/* RIGHT — dual doors */
-.hero-right{}
-.portal-hint{
-  font-family:'Nunito',sans-serif;font-size:11px;font-weight:700;
-  letter-spacing:.1em;text-transform:uppercase;color:var(--gray-500);
-  margin-bottom:.875rem;
+/* ═══════════════════════════════════
+   2. STICKY NAV
+═══════════════════════════════════ */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: #fff; border-bottom: 1px solid var(--gray-200);
+  height: 64px; display: flex; align-items: center;
 }
-.doors{display:flex;flex-direction:column;gap:1rem}
-
-.door{
-  display:block;border-radius:1.25rem;padding:1.75rem 2rem;
-  transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s;
-  cursor:pointer;
+.nav-inner {
+  width: 100%; max-width: 80rem; margin: 0 auto; padding: 0 1.5rem;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
 }
-.door:hover{transform:translateY(-3px)}
-.door:active{transform:scale(.98)}
-
-.door-dz{
-  background:var(--orange);
-  box-shadow:0 4px 32px rgba(255,121,0,.2);
+.nav-brand { display: flex; align-items: center; gap: .75rem; }
+.nav-logo {
+  font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.45rem;
+  color: var(--blue); letter-spacing: -.04em; line-height: 1;
 }
-.door-dz:hover{box-shadow:0 12px 40px rgba(255,121,0,.35)}
-
-.door-intl{
-  background:#fff;
-  border:1.5px solid var(--gray-200);
+.nav-logo span { color: var(--orange); }
+.nav-badge {
+  font-family: 'Nunito', sans-serif; font-weight: 800; font-size: .65rem;
+  letter-spacing: .1em; text-transform: uppercase;
+  background: var(--gray-100); color: var(--blue); padding: .25rem .6rem; border-radius: 999px;
 }
-.door-intl:hover{border-color:var(--orange);box-shadow:0 4px 24px rgba(0,0,0,.06)}
-
-.door-inner{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
-
-.door-tag{
-  font-family:'Nunito',sans-serif;font-size:11px;font-weight:700;
-  letter-spacing:.1em;text-transform:uppercase;
-  display:flex;align-items:center;gap:.375rem;margin-bottom:.875rem;
+.nav-actions { display: flex; align-items: center; gap: .75rem; }
+.nav-link {
+  font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: .85rem;
+  color: var(--blue); border: 1.5px solid var(--gray-200); padding: .45rem .9rem;
+  border-radius: 8px; transition: all .2s; display: flex; align-items: center; gap: .35rem; cursor: pointer;
 }
-.door-dz .door-tag{color:rgba(255,255,255,.7)}
-.door-intl .door-tag{color:var(--gray-500)}
-.tag-flag{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:20px;height:14px;border-radius:3px;
-  font-family:'Nunito',sans-serif;font-size:9px;font-weight:800;letter-spacing:.05em;
-}
-.door-dz .tag-flag{background:rgba(255,255,255,.25);color:#fff}
-.door-intl .tag-flag{background:var(--blue);color:#fff}
+.nav-link:hover { border-color: var(--orange); color: var(--orange); }
 
-.door-heading{
-  font-family:'Sora',sans-serif;font-weight:800;
-  font-size:clamp(1.625rem,4vw,2.25rem);line-height:1;margin-bottom:.625rem;
+/* ═══════════════════════════════════
+   3. HERO
+═══════════════════════════════════ */
+#hero {
+  scroll-margin-top: 64px; background: var(--gray-50); padding: 5rem 1.5rem 4rem;
 }
-.door-dz .door-heading{color:#fff}
-.door-intl .door-heading{color:var(--black)}
-
-.door-desc{font-size:.875rem;font-weight:500;max-width:14rem;line-height:1.5}
-.door-dz .door-desc{color:rgba(255,255,255,.75)}
-.door-intl .door-desc{color:var(--gray-500)}
-
-.door-price{text-align:right;flex-shrink:0}
-.door-from{
-  font-family:'Nunito',sans-serif;font-size:10px;font-weight:700;
-  letter-spacing:.1em;text-transform:uppercase;margin-bottom:.25rem;
+.hero-inner {
+  max-width: 80rem; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
 }
-.door-dz .door-from{color:rgba(255,255,255,.6)}
-.door-intl .door-from{color:var(--gray-500)}
-.door-amount{font-family:'Sora',sans-serif;font-weight:800;font-size:1.375rem;white-space:nowrap}
-.door-dz .door-amount{color:#fff}
-.door-intl .door-amount{color:var(--black)}
-
-.door-cta{
-  display:flex;align-items:center;justify-content:space-between;
-  margin-top:1.5rem;
-  font-family:'Sora',sans-serif;font-weight:700;font-size:.8125rem;
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-family: 'Nunito', sans-serif; font-weight: 800; font-size: .75rem;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--blue);
+  background: #fff; border: 1.5px solid var(--gray-200); border-radius: 999px;
+  padding: .35rem .9rem; margin-bottom: 1.5rem;
 }
-.door-dz .door-cta{color:#fff}
-.door-intl .door-cta{color:var(--black)}
-.door-intl:hover .door-cta{color:var(--orange)}
-
-.cta-arrow{
-  display:flex;align-items:center;justify-content:center;
-  width:32px;height:32px;border-radius:50%;
-  flex-shrink:0;transition:transform .3s;
+.green-dot {
+  width: 8px; height: 8px; border-radius: 50%; background: #22c55e;
+  display: inline-block; animation: pulseDot 1.4s ease infinite;
 }
-.door:hover .cta-arrow{transform:translateX(4px)}
-.door-dz .cta-arrow{background:rgba(255,255,255,.2);color:#fff}
-.door-intl .cta-arrow{background:var(--gray-50);color:var(--black)}
-.door-intl:hover .cta-arrow{background:var(--orange);color:#fff}
-
-.assurance{
-  display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;
-  font-family:'Nunito',sans-serif;font-size:11px;font-weight:700;
-  letter-spacing:.06em;text-transform:uppercase;color:var(--gray-500);
-  margin-top:.875rem;justify-content:center;
+.hero-h1 {
+  font-size: clamp(3.5rem, 7vw, 6rem); font-weight: 800; color: var(--black);
+  line-height: 1.0; letter-spacing: -.04em; margin-bottom: 1.25rem;
 }
-@media(min-width:1024px){.assurance{justify-content:flex-start}}
-
-/* ── WHY SECTION ── */
-.why{
-  background:var(--gray-50);border-top:1px solid var(--gray-200);
-  padding:5rem 1.5rem;
+.hero-sub {
+  font-size: 1.05rem; font-weight: 500; color: var(--gray-500);
+  line-height: 1.6; margin-bottom: 2rem; max-width: 36ch;
 }
-@media(min-width:1024px){.why{padding:5rem 3rem}}
-.why-inner{max-width:80rem;margin:0 auto}
-.section-label{
-  font-family:'Nunito',sans-serif;font-size:11px;font-weight:800;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:.75rem;
+.trust-pills { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 2rem; }
+.trust-pill {
+  display: inline-flex; align-items: center; gap: .4rem;
+  font-family: 'Nunito', sans-serif; font-weight: 700; font-size: .78rem;
+  color: var(--black); background: #fff; border: 1.5px solid var(--gray-200);
+  border-radius: 999px; padding: .35rem .8rem;
 }
-.section-title{
-  font-size:clamp(1.625rem,4vw,2.25rem);font-weight:700;
-  line-height:1.1;letter-spacing:-.025em;color:var(--black);margin-bottom:3rem;
+.trust-pill svg { color: var(--orange); flex-shrink: 0; }
+
+/* ─── HERO PHOTOS ─── */
+.hero-photos { display: flex; margin-bottom: 1.5rem; }
+.hero-photo-card {
+  width: 56px; height: 56px; border-radius: 14px; overflow: hidden;
+  border: 2.5px solid #fff; margin-left: -10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.12); transition: transform .25s;
 }
-.section-title .muted{color:var(--gray-200)}
+.hero-photo-card:first-child { margin-left: 0; }
+.hero-photo-card:hover { transform: translateY(-4px) scale(1.08); z-index: 1; }
+.hero-photo-card img { width: 100%; height: 100%; object-fit: cover; }
 
-.feat-grid{display:grid;gap:1.5rem;grid-template-columns:1fr}
-@media(min-width:640px){.feat-grid{grid-template-columns:repeat(3,1fr)}}
-
-.feat-card{padding:1.75rem;border-radius:1.25rem;background:#fff;border:1.5px solid var(--gray-200);transition:border-color .2s,box-shadow .2s}
-.feat-card:hover{border-color:var(--orange);box-shadow:0 4px 24px rgba(255,121,0,.07)}
-.feat-num{font-family:'Nunito',sans-serif;font-size:11px;font-weight:800;color:var(--orange);margin-bottom:.75rem;letter-spacing:.1em}
-.feat-name{font-family:'Sora',sans-serif;font-weight:700;font-size:1.0625rem;color:var(--black);margin-bottom:.5rem}
-.feat-desc{font-size:.875rem;color:var(--gray-500);line-height:1.65}
-.feat-line{margin-top:1.25rem;height:2px;width:2rem;background:var(--gray-200);border-radius:9999px;transition:width .4s ease,background .4s}
-.feat-card:hover .feat-line{width:100%;background:var(--orange)}
-
-/* ── FOOTER ── */
-footer{border-top:1px solid var(--gray-200);padding:2.5rem 1.5rem}
-@media(min-width:1024px){footer{padding:2.5rem 3rem}}
-.foot-inner{
-  max-width:80rem;margin:0 auto;
-  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;
+.social-proof {
+  display: flex; align-items: center; gap: .75rem;
+  padding-top: 1.5rem; border-top: 1px solid var(--gray-200);
 }
-.foot-copy{font-family:'Nunito',sans-serif;font-size:.8125rem;font-weight:600;color:var(--gray-500)}
-.foot-links{display:flex;flex-wrap:wrap;gap:.875rem}
-.foot-links a{font-family:'Nunito',sans-serif;font-size:.8125rem;font-weight:600;color:var(--gray-500);transition:color .2s}
-.foot-links a:hover{color:var(--orange)}
+.avatar-stack { display: flex; }
+.avatar-item {
+  width: 36px; height: 36px; border-radius: 50%; background: var(--orange);
+  color: #fff; font-family: 'Sora', sans-serif; font-weight: 700; font-size: .7rem;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid var(--gray-50); margin-left: -8px; flex-shrink: 0;
+}
+.avatar-item:first-child { margin-left: 0; }
+.social-text { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: .8rem; color: var(--gray-500); line-height: 1.4; }
+.social-text strong { color: var(--black); }
+
+/* ─── FORM CARD ─── */
+.form-card {
+  background: #fff; border: 1.5px solid var(--gray-200); border-radius: 24px;
+  box-shadow: 0 24px 60px -12px rgba(0,0,0,.12); padding: 2rem;
+}
+.form-card-label {
+  font-family: 'Nunito', sans-serif; font-weight: 800; font-size: .65rem;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--gray-500);
+  margin-bottom: 1rem; display: block;
+}
+.form-dots { display: flex; gap: .4rem; margin-bottom: 1.5rem; }
+.form-dot {
+  height: 6px; border-radius: 999px; background: var(--gray-200);
+  transition: all .3s ease; width: 24px;
+}
+.form-dot.active { background: var(--orange); width: 40px; }
+.form-dot.done { background: var(--orange); opacity: .4; }
+
+.form-step { display: none; }
+.form-step.active { display: block; }
+
+.step-question {
+  font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.05rem;
+  color: var(--black); margin-bottom: 1rem; line-height: 1.3;
+}
+
+/* ─── LOCATION CARDS (Step 1) ─── */
+.loc-options { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-top: .25rem; }
+.loc-card {
+  border: 1.5px solid var(--gray-200); border-radius: 14px; padding: 1.25rem 1rem;
+  cursor: pointer; transition: all .2s ease; text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: .5rem; background: #fff;
+}
+.loc-card:hover { border-color: var(--orange); background: #fffaf5; }
+.loc-card.selected { border-color: var(--orange); background: #fff7ef; }
+.loc-icon {
+  width: 52px; height: 52px; border-radius: 50%; background: var(--gray-100);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.loc-card.selected .loc-icon { background: rgba(255,121,0,.12); }
+.dz-badge-circle {
+  width: 30px; height: 30px; border-radius: 50%; background: var(--blue);
+  color: #fff; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: .72rem;
+  display: flex; align-items: center; justify-content: center;
+}
+.loc-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: .95rem; color: var(--black); }
+.loc-card.selected .loc-title { color: var(--orange); }
+.loc-sub { font-family: 'Nunito', sans-serif; font-weight: 600; font-size: .68rem; color: var(--gray-500); line-height: 1.4; }
+
+/* ─── OPTION CARDS (Steps 2-4) ─── */
+.option-list { display: flex; flex-direction: column; gap: .5rem; }
+.opt-card {
+  display: flex; align-items: center; justify-content: space-between; gap: .75rem;
+  padding: .8rem 1rem; border: 1.5px solid var(--gray-200); border-radius: 12px;
+  cursor: pointer; transition: all .2s ease;
+  font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: .9rem;
+  color: var(--black); background: #fff; text-align: left; width: 100%;
+}
+.opt-card:hover { border-color: var(--orange); background: #fffaf5; }
+.opt-card.selected { border-color: var(--orange); background: #fff7ef; color: var(--orange); }
+.opt-badge {
+  font-family: 'Nunito', sans-serif; font-weight: 800; font-size: .7rem;
+  background: var(--gray-100); color: var(--gray-500);
+  padding: .2rem .55rem; border-radius: 999px; white-space: nowrap; flex-shrink: 0;
+}
+.opt-card.selected .opt-badge { background: #ffead6; color: var(--orange); }
+
+.form-back {
+  background: none; border: none; font-family: 'Montserrat', sans-serif; font-weight: 600;
+  font-size: .8rem; color: var(--gray-500); cursor: pointer; margin-top: .75rem;
+  display: flex; align-items: center; gap: .3rem; padding: 0;
+}
+.form-back:hover { color: var(--black); }
+
+.form-field-group { display: flex; flex-direction: column; gap: .65rem; margin-bottom: 1rem; }
+.form-input {
+  width: 100%; border: 1.5px solid var(--gray-200); border-radius: 10px; padding: .85rem 1rem;
+  font-family: 'Montserrat', sans-serif; font-size: .9rem; font-weight: 500;
+  color: var(--black); outline: none; transition: border-color .2s; background: #fff;
+}
+.form-input:focus { border-color: var(--orange); }
+.form-input::placeholder { color: var(--gray-500); }
+
+.form-note {
+  font-family: 'Nunito', sans-serif; font-weight: 600; font-size: .73rem;
+  color: var(--gray-500); text-align: center; margin-top: .5rem;
+}
+
+.form-success { display: none; text-align: center; padding: 1.5rem 0; }
+.success-circle {
+  width: 72px; height: 72px; border-radius: 50%; background: #f0fdf4;
+  display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem;
+}
+.success-title { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.5rem; color: var(--black); margin-bottom: .5rem; }
+.success-sub { font-size: .9rem; color: var(--gray-500); margin-bottom: .75rem; line-height: 1.5; }
+.success-help { font-size: .78rem; color: var(--gray-500); }
+.success-help a { color: var(--orange); font-weight: 600; }
+
+/* ═══════════════════════════════════
+   4. STATS BAR
+═══════════════════════════════════ */
+.stats-bar { background: var(--blue); padding: 4rem 1.5rem; }
+.stats-grid {
+  max-width: 80rem; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+}
+.stat-item { text-align: center; }
+.stat-number {
+  font-family: 'Sora', sans-serif; font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3rem); color: #fff; line-height: 1; margin-bottom: .4rem;
+}
+.stat-label {
+  font-family: 'Nunito', sans-serif; font-weight: 700; font-size: .8rem;
+  color: rgba(255,255,255,.5); letter-spacing: .05em; text-transform: uppercase;
+}
+
+/* ═══════════════════════════════════
+   5. IMAGE SECTION
+═══════════════════════════════════ */
+.image-section {
+  position: relative; min-height: 480px; display: flex; align-items: center; overflow: hidden;
+}
+.image-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background-image: url('https://images.pexels.com/photos/4144923/pexels-photo-4144923.jpeg?auto=compress&cs=tinysrgb&w=1400');
+  background-size: cover; background-position: center;
+}
+.image-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(90deg, rgba(0,48,78,.92) 0%, rgba(0,48,78,.5) 60%, rgba(0,48,78,.05) 100%);
+}
+.image-content {
+  position: relative; z-index: 2; max-width: 80rem;
+  margin: 0 auto; padding: 5rem 1.5rem; width: 100%;
+}
+.image-content-inner { max-width: 540px; }
+.image-eyebrow-line { display: flex; align-items: center; gap: .75rem; margin-bottom: 1.25rem; }
+.orange-line { width: 32px; height: 3px; background: var(--orange); border-radius: 2px; }
+.image-eyebrow-text {
+  font-family: 'Nunito', sans-serif; font-weight: 800; font-size: .72rem;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--orange);
+}
+.image-h2 { font-size: clamp(1.75rem, 4vw, 3rem); font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 1rem; }
+.image-sub { font-size: .95rem; color: rgba(255,255,255,.8); line-height: 1.65; margin-bottom: 2rem; max-width: 38ch; }
+
+/* ═══════════════════════════════════
+   6. VIDEO SECTION
+═══════════════════════════════════ */
+.video-section { padding: 5rem 1.5rem; background: var(--gray-50); }
+@media(min-width:1024px) { .video-section { padding: 6rem 3rem; } }
+.video-inner { max-width: 64rem; margin: 0 auto; }
+.section-eyebrow {
+  font-family: 'Nunito', sans-serif; font-weight: 800; font-size: .72rem;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--orange);
+  display: block; margin-bottom: .75rem;
+}
+.section-title { font-size: clamp(1.6rem, 3vw, 2.25rem); font-weight: 800; color: var(--black); line-height: 1.15; }
+.video-card { border-radius: 20px; overflow: hidden; box-shadow: 0 32px 80px -16px rgba(0,0,0,.18); }
+.video-thumb { position: relative; cursor: pointer; aspect-ratio: 16/9; overflow: hidden; }
+.video-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.video-thumb:hover img { transform: scale(1.03); }
+.video-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.1) 0%, rgba(0,0,0,.5) 100%); }
+.play-btn {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 80px; height: 80px; border-radius: 50%; background: var(--orange); color: #fff;
+  border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 32px rgba(255,121,0,.5); transition: transform .25s, box-shadow .25s; padding-left: 4px;
+}
+.video-thumb:hover .play-btn { transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 12px 40px rgba(255,121,0,.6); }
+.video-caption {
+  position: absolute; bottom: 1.25rem; left: 1.25rem;
+  background: rgba(0,0,0,.6); backdrop-filter: blur(8px);
+  color: #fff; border-radius: 999px; padding: .4rem 1rem;
+  font-family: 'Nunito', sans-serif; font-weight: 700; font-size: .75rem;
+  display: flex; align-items: center; gap: .5rem;
+}
+.video-cap-dot { width: 7px; height: 7px; border-radius: 50%; background: #EF4444; animation: pulseDot 1.4s ease infinite; }
+
+/* ═══════════════════════════════════
+   7. FEATURES / WHY FDS
+═══════════════════════════════════ */
+.features-section { background: #fff; padding: 6rem 1.5rem; }
+.section-header { text-align: center; margin-bottom: 3.5rem; }
+.section-h2 { font-size: clamp(1.6rem, 3vw, 2.25rem); font-weight: 800; color: var(--black); line-height: 1.15; margin-top: .5rem; }
+.section-sub { font-size: 1rem; color: var(--gray-500); margin-top: .75rem; line-height: 1.6; max-width: 44ch; margin-left: auto; margin-right: auto; }
+
+/* Portal cards */
+.portals-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 3.5rem; }
+.portal-card {
+  border-radius: 24px; padding: 2.5rem 2rem;
+  display: flex; flex-direction: column; position: relative; overflow: hidden;
+}
+.portal-card.dz { background: var(--orange); color: #fff; }
+.portal-card.intl { background: #fff; border: 1.5px solid var(--gray-200); }
+.portal-badge {
+  display: inline-flex; font-family: 'Nunito', sans-serif; font-weight: 800;
+  font-size: .65rem; letter-spacing: .1em; text-transform: uppercase;
+  padding: .3rem .75rem; border-radius: 999px; margin-bottom: 1.25rem; width: fit-content;
+}
+.portal-card.dz .portal-badge { background: rgba(0,0,0,.2); color: #fff; }
+.portal-card.intl .portal-badge { background: var(--blue); color: #fff; }
+.portal-card h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: .5rem; line-height: 1.15; }
+.portal-card.dz h3 { color: #fff; }
+.portal-card.intl h3 { color: var(--blue); }
+.portal-price { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.25rem; margin-bottom: 1.25rem; }
+.portal-card.dz .portal-price { color: rgba(255,255,255,.9); }
+.portal-card.intl .portal-price { color: var(--orange); }
+.portal-features { list-style: none; display: flex; flex-direction: column; gap: .55rem; margin-bottom: 1.75rem; flex: 1; }
+.portal-features li {
+  display: flex; align-items: center; gap: .5rem;
+  font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: .88rem;
+}
+.portal-card.dz .portal-features li { color: rgba(255,255,255,.9); }
+.portal-card.intl .portal-features li { color: var(--black); }
+.portal-card.dz .portal-features li svg { color: rgba(255,255,255,.8); }
+.portal-card.intl .portal-features li svg { color: #22c55e; }
+.portal-cta-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  width: 100%; padding: 1rem 2rem; font-family: 'Montserrat', sans-serif; font-weight: 700;
+  font-size: 1rem; border-radius: 12px; cursor: pointer; transition: all .2s; border: none;
+  margin-bottom: .75rem;
+}
+.portal-card.dz .portal-cta-btn { background: rgba(0,0,0,.2); color: #fff; }
+.portal-card.dz .portal-cta-btn:hover { background: rgba(0,0,0,.35); transform: translateY(-1px); }
+.portal-card.intl .portal-cta-btn { background: var(--orange); color: #fff; }
+.portal-card.intl .portal-cta-btn:hover { background: var(--orange-2); transform: translateY(-1px); box-shadow: 0 8px 20px -4px rgba(255,121,0,.4); }
+.portal-link { font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: .82rem; display: block; text-align: center; }
+.portal-card.dz .portal-link { color: rgba(255,255,255,.75); }
+.portal-card.dz .portal-link:hover { color: #fff; }
+.portal-card.intl .portal-link { color: var(--gray-500); }
+.portal-card.intl .portal-link:hover { color: var(--orange); }
+.portal-deco {
+  position: absolute; bottom: -40px; right: -40px; width: 160px; height: 160px;
+  border-radius: 50%; border: 3px solid rgba(255,255,255,.15); pointer-events: none;
+}
+
+/* Mini feature grid */
+.mini-features { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+.mini-feat { padding: 1.75rem 1.5rem; border: 1.5px solid var(--gray-200); border-radius: 20px; transition: all .25s ease; }
+.mini-feat:hover { border-color: var(--orange); box-shadow: 0 16px 40px -8px rgba(255,121,0,.15); transform: translateY(-4px); }
+.mini-feat-icon {
+  width: 48px; height: 48px; background: #fff7ef; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; color: var(--orange);
+}
+.mini-feat-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: .98rem; color: var(--black); margin-bottom: .4rem; }
+.mini-feat-desc { font-size: .85rem; color: var(--gray-500); line-height: 1.55; }
+
+/* ═══════════════════════════════════
+   8. MOODLE PREVIEW
+═══════════════════════════════════ */
+.moodle-section { background: linear-gradient(135deg, #FFF8F4 0%, #FFF3E8 40%, #F7F8FA 100%); padding: 6rem 1.5rem; }
+.moodle-inner { max-width: 80rem; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.moodle-logo-box {
+  display: inline-block; background: #fff; border: 1.5px solid var(--gray-200);
+  border-radius: 16px; padding: .75rem 1.5rem; margin-bottom: 1.75rem; box-shadow: 0 4px 16px rgba(0,0,0,.06);
+}
+.moodle-h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; color: var(--black); margin-bottom: .75rem; line-height: 1.2; }
+.moodle-sub { font-size: .95rem; color: var(--gray-500); line-height: 1.65; }
+.moodle-checks { display: flex; flex-direction: column; gap: .75rem; margin: 1.5rem 0 2rem; }
+.moodle-check { display: flex; align-items: center; gap: .6rem; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: .9rem; color: var(--black); }
+.moodle-check svg { color: #22c55e; flex-shrink: 0; }
+.moodle-stats {
+  display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.75rem;
+  padding: 1rem 1.25rem; background: rgba(255,121,0,.06); border-radius: 12px; border: 1px solid rgba(255,121,0,.15);
+}
+.moodle-stat { display: flex; flex-direction: column; }
+.moodle-stat-num { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.375rem; color: var(--orange); line-height: 1; }
+.moodle-stat-lbl { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; color: var(--gray-500); margin-top: .2rem; }
+.moodle-card-wrap { position: relative; border-radius: 20px; overflow: visible; height: 400px; }
+.moodle-card-wrap img { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; }
+.moodle-live-badge {
+  position: absolute; bottom: 1.25rem; left: 1.25rem; background: #fff; border-radius: 12px;
+  padding: .6rem 1rem; display: flex; align-items: center; gap: .5rem;
+  font-family: 'Nunito', sans-serif; font-weight: 800; font-size: .75rem; color: var(--black);
+  box-shadow: 0 8px 24px -4px rgba(0,0,0,.18);
+}
+.moodle-ring { position: absolute; bottom: -24px; right: -24px; width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--orange); opacity: .25; pointer-events: none; }
+
+/* ═══════════════════════════════════
+   9. TESTIMONIALS
+═══════════════════════════════════ */
+.testimonials { background: var(--gray-50); padding: 6rem 1.5rem; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
+.testi-card { border-radius: 24px; padding: 2rem; border: 1.5px solid var(--gray-200); background: #fff; display: flex; flex-direction: column; }
+.testi-card.dark { background: var(--blue); border-color: var(--blue); }
+.testi-stars { display: flex; gap: .15rem; margin-bottom: 1rem; color: #F59E0B; }
+.testi-quote { font-size: .9rem; line-height: 1.65; color: var(--black); margin-bottom: 1.5rem; flex: 1; }
+.testi-card.dark .testi-quote { color: rgba(255,255,255,.85); }
+.testi-author { display: flex; align-items: center; gap: .75rem; }
+.testi-avatar { width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Sora', sans-serif; font-weight: 700; font-size: .75rem; flex-shrink: 0; overflow: hidden; }
+.testi-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.testi-avatar-orange { background: var(--orange); color: #fff; }
+.testi-avatar-glass { background: rgba(255,255,255,.15); color: #fff; border: 1.5px solid rgba(255,255,255,.3); }
+.testi-name { font-family: 'Sora', sans-serif; font-weight: 700; font-size: .9rem; color: var(--black); margin-bottom: .15rem; }
+.testi-card.dark .testi-name { color: #fff; }
+.testi-meta { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: .72rem; color: var(--gray-500); }
+.testi-card.dark .testi-meta { color: rgba(255,255,255,.5); }
+
+/* ═══════════════════════════════════
+   10. GUARANTEE
+═══════════════════════════════════ */
+.guarantee { background: linear-gradient(135deg, #FF7900 0%, #FF9100 100%); padding: 4rem 1.5rem; }
+.guarantee-inner { max-width: 80rem; margin: 0 auto; display: flex; align-items: center; gap: 2.5rem; }
+.guarantee-icon { flex-shrink: 0; }
+.guarantee-text { flex: 1; }
+.guarantee-title { font-family: 'Sora', sans-serif; font-weight: 800; font-size: clamp(1.25rem, 2.5vw, 1.75rem); color: #fff; margin-bottom: .4rem; line-height: 1.15; }
+.guarantee-sub { font-size: .95rem; color: rgba(255,255,255,.85); line-height: 1.5; }
+.guarantee-action { flex-shrink: 0; }
+
+/* ═══════════════════════════════════
+   11. FAQ
+═══════════════════════════════════ */
+.faq-section { background: var(--gray-50); padding: 6rem 1.5rem; }
+.faq-list { margin-top: 3rem; display: flex; flex-direction: column; }
+.faq-item { border-bottom: 1px solid var(--gray-200); }
+.faq-item:first-child { border-top: 1px solid var(--gray-200); }
+.faq-q { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.25rem 0; cursor: pointer; font-family: 'Sora', sans-serif; font-weight: 700; font-size: .95rem; color: var(--black); user-select: none; }
+.faq-icon { width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid var(--gray-200); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.1rem; font-weight: 400; color: var(--gray-500); transition: all .25s ease; line-height: 1; }
+.faq-item.open .faq-icon { transform: rotate(45deg); border-color: var(--orange); color: var(--orange); }
+.faq-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease; }
+.faq-item.open .faq-body { grid-template-rows: 1fr; }
+.faq-body-inner { overflow: hidden; }
+.faq-a { font-size: .9rem; color: var(--gray-500); line-height: 1.7; padding-bottom: 1.25rem; }
+
+/* ═══════════════════════════════════
+   12. FINAL CTA
+═══════════════════════════════════ */
+.final-cta { background: var(--blue); padding: 7rem 1.5rem; text-align: center; }
+.final-cta-inner { max-width: 44rem; margin: 0 auto; }
+.final-cta-h2 { font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 1rem; }
+.final-cta-sub { font-size: 1rem; color: rgba(255,255,255,.7); line-height: 1.6; margin-bottom: 2.5rem; }
+.final-cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+/* ═══════════════════════════════════
+   13. FOOTER
+═══════════════════════════════════ */
+.footer { background: #fff; border-top: 1px solid var(--gray-200); padding: 3.5rem 1.5rem 0; }
+.footer-inner { max-width: 80rem; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; }
+.footer-brand-logo { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.35rem; color: var(--blue); letter-spacing: -.04em; margin-bottom: .5rem; }
+.footer-brand-logo span { color: var(--orange); }
+.footer-brand-sub { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: .78rem; color: var(--gray-500); margin-bottom: .35rem; }
+.footer-copy { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: .72rem; color: var(--gray-500); margin-top: .75rem; }
+.footer-nav-title, .footer-contact-title { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--black); margin-bottom: 1rem; }
+.footer-links { display: flex; flex-direction: column; gap: .55rem; }
+.footer-link { font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: .85rem; color: var(--gray-500); cursor: pointer; transition: color .2s; }
+.footer-link:hover { color: var(--black); }
+.footer-contact-items { display: flex; flex-direction: column; gap: .6rem; }
+.footer-contact-item { display: flex; align-items: center; gap: .5rem; font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: .85rem; color: var(--gray-500); }
+.footer-contact-item a { color: var(--gray-500); transition: color .2s; }
+.footer-contact-item a:hover { color: var(--orange); }
+.footer-bottom { border-top: 1px solid var(--gray-200); padding: 1rem 1.5rem; max-width: 80rem; margin: 0 auto; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: .72rem; color: var(--gray-500); text-align: center; }
+
+/* ═══════════════════════════════════
+   14. MOBILE STICKY CTA
+═══════════════════════════════════ */
+.mobile-cta {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0; background: #fff;
+  border-top: 1px solid var(--gray-200); padding: .75rem 1.25rem; z-index: 200;
+  align-items: center; justify-content: space-between; gap: 1rem;
+  box-shadow: 0 -8px 30px -4px rgba(0,0,0,.1);
+}
+.mobile-cta-text { display: flex; flex-direction: column; }
+.mobile-cta-price { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: .72rem; color: var(--gray-500); }
+.mobile-cta-label { font-family: 'Sora', sans-serif; font-weight: 700; font-size: .9rem; color: var(--black); }
+
+/* ═══════════════════════════════════
+   15. SUCCESS BANNER
+═══════════════════════════════════ */
+#success-banner {
+  position: fixed; bottom: 2rem; left: 50%;
+  transform: translateX(-50%) translateY(120%);
+  background: var(--blue); color: #fff; border-radius: 999px;
+  padding: .85rem 1.75rem; display: flex; align-items: center; gap: .65rem;
+  font-family: 'Nunito', sans-serif; font-weight: 700; font-size: .85rem;
+  white-space: nowrap; z-index: 9999;
+  box-shadow: 0 12px 40px -6px rgba(0,48,78,.4);
+  transition: transform .4s ease, opacity .4s ease; opacity: 0;
+}
+#success-banner.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+/* ═══════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════ */
+@media (max-width: 1023px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .moodle-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .portals-grid { grid-template-columns: 1fr; }
+  .mini-features { grid-template-columns: repeat(2, 1fr); }
+  .testimonials-grid { grid-template-columns: 1fr; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .guarantee-inner { flex-direction: column; text-align: center; }
+  .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .mobile-cta { display: flex; }
+  body { padding-bottom: 72px; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .nav-link { display: none; }
+}
+@media (max-width: 600px) {
+  .mini-features { grid-template-columns: 1fr; }
+  .hero-h1 { font-size: clamp(2.75rem, 10vw, 4rem); }
+  .nav-badge { display: none; }
+  .final-cta-btns { flex-direction: column; align-items: center; }
+  #success-banner { white-space: normal; text-align: center; border-radius: 16px; left: 1rem; right: 1rem; transform: translateY(120%); width: auto; }
+  #success-banner.show { transform: translateY(0); }
+  .loc-options { grid-template-columns: 1fr; }
+  .form-card { padding: 1.5rem; }
+}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
+<!-- ═══ 1. URGENCY BAR ═══ -->
+<div class="urgency-bar" role="banner">
+  <span class="pulse-dot"></span>
+  New cohort starting Monday &nbsp;·&nbsp; Limited spots &nbsp;·&nbsp; Enroll in 2 minutes
+</div>
+
+<!-- ═══ 2. STICKY NAV ═══ -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
-    <a href="/" class="logo">FDS<span class="logo-dot">.</span><span class="logo-sub">INSTITUT</span></a>
-    <div class="nav-right">
-      <div class="nav-status">
-        <span class="status-dot"></span>
-        Enrolling now
-      </div>
+    <div class="nav-brand">
+      <div class="nav-logo">FDS<span>.</span></div>
+      <div class="nav-badge">GLOBAL &nbsp;·&nbsp; A1–C2</div>
+    </div>
+    <div class="nav-actions">
+      <a href="../dz/index.html" class="nav-link" aria-label="Visit Algeria page">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9"/></svg>
+        DZ Algeria
+      </a>
+      <a href="../global/index.html" class="nav-link" aria-label="Visit International page">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        International
+      </a>
+      <button class="btn btn-orange" onclick="scrollToHero()">Reserve</button>
     </div>
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
+<!-- ═══ 3. HERO ═══ -->
+<section id="hero">
   <div class="hero-inner">
 
-    <!-- LEFT -->
+    <!-- LEFT: text -->
     <div class="hero-left">
-      <div class="hero-eyebrow">
-        <span class="eyebrow-dot"></span>
-        <span style="font-family:'Nunito',sans-serif">Est. Alger · Taught worldwide</span>
+      <div class="hero-eyebrow reveal">
+        <span class="green-dot"></span>
+        Enrolling now &nbsp;·&nbsp; Online &nbsp;·&nbsp; Worldwide
       </div>
-      <h1>Sprich<br>Deutsch<span class="accent">.</span></h1>
-      <p class="hero-sub">Online German classes built by teachers, not platforms. A1 to C2, live with humans, priced for where you actually live.</p>
-      <div class="hero-stats">
-        <div>
-          <div class="stat-n">12k+</div>
-          <div class="stat-l">Students</div>
+      <h1 class="hero-h1 reveal reveal-d1">Sprich<br>Deutsch<span class="accent">.</span></h1>
+      <p class="hero-sub reveal reveal-d2">Online German classes for everyone. A1 to C2. Live sessions, certified teachers, prices adapted to where you live.</p>
+      <div class="trust-pills reveal reveal-d3">
+        <div class="trust-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          +12 000 students
         </div>
-        <div>
-          <div class="stat-n">4.9
-            <svg style="display:inline;vertical-align:middle;color:#FF7900" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </div>
-          <div class="stat-l">Avg Rating</div>
+        <div class="trust-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          4.9 rating
         </div>
-        <div>
-          <div class="stat-n">A1→C2</div>
-          <div class="stat-l">All Levels</div>
+        <div class="trust-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          14-day guarantee
+        </div>
+      </div>
+      <div class="hero-photos reveal reveal-d4">
+        <div class="hero-photo-card">
+          <img src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Student">
+        </div>
+        <div class="hero-photo-card">
+          <img src="https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Student">
+        </div>
+        <div class="hero-photo-card">
+          <img src="https://images.pexels.com/photos/1438072/pexels-photo-1438072.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Student">
+        </div>
+        <div class="hero-photo-card">
+          <img src="https://images.pexels.com/photos/4144101/pexels-photo-4144101.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Student">
+        </div>
+      </div>
+      <div class="social-proof reveal reveal-d4">
+        <div class="avatar-stack" aria-hidden="true">
+          <div class="avatar-item">AL</div>
+          <div class="avatar-item">MR</div>
+          <div class="avatar-item">SK</div>
+        </div>
+        <div class="social-text">
+          <strong>Join 400+ new students</strong> this month
         </div>
       </div>
     </div>
 
-    <!-- RIGHT — doors -->
-    <div class="hero-right">
-      <p class="portal-hint">Choose your portal</p>
-      <div class="doors">
+    <!-- RIGHT: Form Card -->
+    <div class="hero-right reveal reveal-d2">
+      <div class="form-card" role="form" aria-label="Enrollment form">
+        <div class="form-card-label">ENROLL NOW &nbsp;·&nbsp; 2 MINUTES</div>
+        <div class="form-dots" aria-label="Step progress" role="progressbar">
+          <div class="form-dot active"></div>
+          <div class="form-dot"></div>
+          <div class="form-dot"></div>
+          <div class="form-dot"></div>
+          <div class="form-dot"></div>
+        </div>
 
-        <!-- Algeria -->
-        <a href="dz/index.html" class="door door-dz">
-          <div class="door-inner">
-            <div>
-              <div class="door-tag">
-                <span class="tag-flag">DZ</span>
-                Algérie
+        <div class="form-steps-wrap">
+
+          <!-- Step 1: Location -->
+          <div class="form-step active" data-step="1">
+            <div class="step-question">Where are you based?</div>
+            <div class="loc-options">
+              <div class="loc-card" onclick="selectLocation(this,'dz')" role="button" tabindex="0" aria-label="Select Algeria">
+                <div class="loc-icon">
+                  <div class="dz-badge-circle">DZ</div>
+                </div>
+                <div class="loc-title">Algeria</div>
+                <div class="loc-sub">Prices in DA · CCP · Edahabia · BaridiMob</div>
               </div>
-              <h3 class="door-heading">Je suis en<br>Algérie</h3>
-              <p class="door-desc">CCP, BaridiMob, Edahabia. Cours en ligne, prix local.</p>
-            </div>
-            <div class="door-price">
-              <p class="door-from">From</p>
-              <p class="door-amount">7 500 DA</p>
-            </div>
-          </div>
-          <div class="door-cta">
-            <span>Commencer</span>
-            <span class="cta-arrow">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </span>
-          </div>
-        </a>
-
-        <!-- International -->
-        <a href="global/index.html" class="door door-intl">
-          <div class="door-inner">
-            <div>
-              <div class="door-tag">
-                <span class="tag-flag">INT</span>
-                International
+              <div class="loc-card" onclick="selectLocation(this,'intl')" role="button" tabindex="0" aria-label="Select International">
+                <div class="loc-icon">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <div class="loc-title">International</div>
+                <div class="loc-sub">Prices in EUR · Card · Transfer · PayPal</div>
               </div>
-              <h3 class="door-heading">I'm based<br>abroad</h3>
-              <p class="door-desc">Live online. EUR pricing. MENA, Asia, Europe timezones.</p>
-            </div>
-            <div class="door-price">
-              <p class="door-from">From</p>
-              <p class="door-amount">€125</p>
             </div>
           </div>
-          <div class="door-cta">
-            <span>Get started</span>
-            <span class="cta-arrow">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </span>
-          </div>
-        </a>
 
-      </div>
-      <div class="assurance">
-        <span>No card required</span>
-        <span>·</span>
-        <span>14-day money-back</span>
-        <span>·</span>
-        <span>Trial class free</span>
+          <!-- Step 2: Class type -->
+          <div class="form-step" data-step="2">
+            <div class="step-question">What type of class fits you best?</div>
+            <div class="option-list">
+              <button class="opt-card" onclick="selectOpt(this,'type','group')" type="button">
+                Group Classes
+                <span class="opt-badge price-badge">€125/mo</span>
+              </button>
+              <button class="opt-card" onclick="selectOpt(this,'type','self')" type="button">
+                Self-Paced
+                <span class="opt-badge price-badge">€85/mo</span>
+              </button>
+              <button class="opt-card" onclick="selectOpt(this,'type','intensive')" type="button">
+                Intensive
+                <span class="opt-badge price-badge">€290/mo</span>
+              </button>
+            </div>
+            <button class="form-back" onclick="goBack()" type="button" aria-label="Go back">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+              Back
+            </button>
+          </div>
+
+          <!-- Step 3: Level -->
+          <div class="form-step" data-step="3">
+            <div class="step-question">What's your current German level?</div>
+            <div class="option-list">
+              <button class="opt-card" onclick="selectOpt(this,'level','a1')" type="button">A1</button>
+              <button class="opt-card" onclick="selectOpt(this,'level','a2')" type="button">A2</button>
+              <button class="opt-card" onclick="selectOpt(this,'level','b1')" type="button">B1</button>
+              <button class="opt-card" onclick="selectOpt(this,'level','b2')" type="button">B2</button>
+              <button class="opt-card" onclick="selectOpt(this,'level','c1c2')" type="button">C1-C2</button>
+              <button class="opt-card" onclick="selectOpt(this,'level','unsure')" type="button">Not sure</button>
+            </div>
+            <button class="form-back" onclick="goBack()" type="button" aria-label="Go back">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+              Back
+            </button>
+          </div>
+
+          <!-- Step 4: Goal -->
+          <div class="form-step" data-step="4">
+            <div class="step-question">What's your main goal?</div>
+            <div class="option-list">
+              <button class="opt-card" onclick="selectOpt(this,'goal','study')" type="button">Study in Germany</button>
+              <button class="opt-card" onclick="selectOpt(this,'goal','work')" type="button">Work &amp; Career</button>
+              <button class="opt-card" onclick="selectOpt(this,'goal','visa')" type="button">Visa &amp; Immigration</button>
+              <button class="opt-card" onclick="selectOpt(this,'goal','exam')" type="button">Exam prep</button>
+              <button class="opt-card" onclick="selectOpt(this,'goal','travel')" type="button">Travel &amp; culture</button>
+            </div>
+            <button class="form-back" onclick="goBack()" type="button" aria-label="Go back">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+              Back
+            </button>
+          </div>
+
+          <!-- Step 5: Contact -->
+          <div class="form-step" data-step="5">
+            <div class="step-question">Reserve your spot</div>
+            <form onsubmit="submitForm(event)" novalidate>
+              <div class="form-field-group">
+                <input class="form-input" type="text" id="f-firstname" placeholder="First name" required aria-label="First name">
+                <input class="form-input" type="email" id="f-email" placeholder="Email address" required aria-label="Email address">
+                <input class="form-input" type="tel" id="f-phone" placeholder="+1 234 567 890" required aria-label="Phone number">
+                <input id="field-wilaya" class="form-input loc-dz" placeholder="Your wilaya" aria-label="Wilaya" style="display:none">
+                <input id="field-country" class="form-input loc-intl" placeholder="Your country" aria-label="Country" style="display:none">
+              </div>
+              <button class="btn btn-orange btn-full btn-lg" type="submit">Get my payment link &nbsp;→</button>
+            </form>
+            <p class="form-note">No commitment &nbsp;·&nbsp; Free cancellation</p>
+            <button class="form-back" onclick="goBack()" type="button" aria-label="Go back">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+              Back
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Success state -->
+        <div class="form-success" role="status" aria-live="polite">
+          <div class="success-circle">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="success-title">You're in!</div>
+          <p class="success-sub">Check your inbox within 24 hours for your personal payment link.</p>
+          <p class="success-help">Need help? <a href="mailto:online@fdsinstitut.com">online@fdsinstitut.com</a></p>
+        </div>
+
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- WHY TWO DOORS -->
-<section class="why">
-  <div class="why-inner">
-    <p class="section-label">Why two doors</p>
-    <h2 class="section-title">Same classroom.<br><span class="muted">Fairer pricing.</span></h2>
-    <div class="feat-grid">
-      <div class="feat-card">
-        <div class="feat-num">01</div>
-        <h3 class="feat-name">Live with humans</h3>
-        <p class="feat-desc">Real teachers, small groups, voices not bots.</p>
-        <div class="feat-line"></div>
+<!-- ═══ 4. STATS BAR ═══ -->
+<section class="stats-bar" aria-label="Key statistics">
+  <div class="stats-grid">
+    <div class="stat-item reveal">
+      <div class="stat-number" data-count="12000" data-suffix="k+">0</div>
+      <div class="stat-label">Students</div>
+    </div>
+    <div class="stat-item reveal reveal-d1">
+      <div class="stat-number" data-count="94" data-suffix="%">0</div>
+      <div class="stat-label">Pass rate</div>
+    </div>
+    <div class="stat-item reveal reveal-d2">
+      <div class="stat-number" data-static="A1→C2">A1→C2</div>
+      <div class="stat-label">All levels</div>
+    </div>
+    <div class="stat-item reveal reveal-d3">
+      <div class="stat-number" data-static="4.9★">4.9★</div>
+      <div class="stat-label">Rating</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 5. IMAGE SECTION ═══ -->
+<section class="image-section" aria-label="About FDS Institut">
+  <div class="image-bg" role="img" aria-label="Students in a live German class"></div>
+  <div class="image-overlay" aria-hidden="true"></div>
+  <div class="image-content">
+    <div class="image-content-inner">
+      <div class="image-eyebrow-line reveal">
+        <div class="orange-line"></div>
+        <span class="image-eyebrow-text">Live online &nbsp;·&nbsp; Every week</span>
       </div>
-      <div class="feat-card">
-        <div class="feat-num">02</div>
-        <h3 class="feat-name">Built for exams</h3>
-        <p class="feat-desc">Goethe & TestDaF prep baked into every level.</p>
-        <div class="feat-line"></div>
+      <h2 class="image-h2 reveal reveal-d1">Learn German the right way.</h2>
+      <p class="image-sub reveal reveal-d2">No pre-recorded content. Every session is live, interactive, and recorded for lifetime replay.</p>
+      <button class="btn btn-outline-white btn-lg reveal reveal-d3" onclick="scrollToHero()">Reserve your free trial</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 6. VIDEO SECTION ═══ -->
+<section class="video-section reveal">
+  <div class="video-inner">
+    <div style="text-align:center;max-width:36rem;margin:0 auto 3rem;">
+      <span class="section-eyebrow">Watch</span>
+      <h2 class="section-title">See a live class in action.</h2>
+      <p style="color:var(--gray-500);font-size:1rem;margin-top:.75rem;line-height:1.65">90 minutes. Small group. Real teacher. This is FDS.</p>
+    </div>
+    <div class="video-card" id="video-card">
+      <div class="video-thumb" id="video-thumb" onclick="loadVideo()">
+        <img src="https://images.pexels.com/photos/4778667/pexels-photo-4778667.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Live German class preview">
+        <div class="video-overlay"></div>
+        <button class="play-btn" aria-label="Play video">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </button>
+        <div class="video-caption">
+          <span class="video-cap-dot"></span>
+          Live session recording &nbsp;·&nbsp; B1 Group &nbsp;·&nbsp; 8 students
+        </div>
       </div>
-      <div class="feat-card">
-        <div class="feat-num">03</div>
-        <h3 class="feat-name">Pay where you live</h3>
-        <p class="feat-desc">DA in Algeria, EUR everywhere else. No FX games.</p>
-        <div class="feat-line"></div>
+      <div id="video-frame" style="display:none;aspect-ratio:16/9;width:100%;">
+        <iframe id="yt-frame" width="100%" height="100%" src="" frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen style="border-radius:20px;display:block;"></iframe>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="foot-inner">
-    <span class="foot-copy">© 2026 FDS Institut · Deutsch, gemacht für dich.</span>
-    <div class="foot-links">
-      <a href="mailto:online@fdsinstitut.com">online@fdsinstitut.com</a>
-      <a href="https://www.fdsinstitut.com" target="_blank" rel="noopener noreferrer">fdsinstitut.com ↗</a>
+<!-- ═══ 7. FEATURES — WHY FDS (two portals + mini grid) ═══ -->
+<section class="features-section" aria-labelledby="features-heading">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow eyebrow-orange reveal">Why FDS</span>
+      <h2 class="section-h2 reveal reveal-d1" id="features-heading">Same great school. Fairer pricing.</h2>
+      <p class="section-sub reveal reveal-d2">One curriculum, two payment structures — designed for where you actually live.</p>
+    </div>
+
+    <div class="portals-grid">
+
+      <!-- Algeria portal -->
+      <div class="portal-card dz reveal">
+        <div class="portal-badge">DZ</div>
+        <h3>Je suis en Algérie</h3>
+        <div class="portal-price">Dès 7 500 DA / mois</div>
+        <ul class="portal-features">
+          <li>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            CCP · Edahabia · BaridiMob
+          </li>
+          <li>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Cours en direct en français
+          </li>
+          <li>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Équipe locale &amp; support DZ
+          </li>
+        </ul>
+        <button class="portal-cta-btn" onclick="startDZ()">Commencer en Algérie &nbsp;→</button>
+        <a href="../dz/index.html" class="portal-link">or visit full DZ page →</a>
+        <div class="portal-deco" aria-hidden="true"></div>
+      </div>
+
+      <!-- International portal -->
+      <div class="portal-card intl reveal reveal-d1">
+        <div class="portal-badge">INT</div>
+        <h3>I'm based abroad</h3>
+        <div class="portal-price">From €85 / month</div>
+        <ul class="portal-features">
+          <li>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Card · PayPal · Transfer
+          </li>
+          <li>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Live classes in German
+          </li>
+          <li>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            CEFR-aligned curriculum
+          </li>
+        </ul>
+        <button class="portal-cta-btn" onclick="startIntl()">Start internationally &nbsp;→</button>
+        <a href="../global/index.html" class="portal-link">or visit full Global page →</a>
+      </div>
+
+    </div>
+
+    <!-- Mini feature grid -->
+    <div class="mini-features">
+      <div class="mini-feat reveal">
+        <div class="mini-feat-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        <div class="mini-feat-title">Live with real teachers</div>
+        <p class="mini-feat-desc">Small groups, certified instructors. Personal feedback every session.</p>
+      </div>
+      <div class="mini-feat reveal reveal-d1">
+        <div class="mini-feat-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+        </div>
+        <div class="mini-feat-title">Lifetime replays</div>
+        <p class="mini-feat-desc">Every session recorded, forever.</p>
+      </div>
+      <div class="mini-feat reveal reveal-d2">
+        <div class="mini-feat-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        </div>
+        <div class="mini-feat-title">14-day money-back</div>
+        <p class="mini-feat-desc">Try risk-free, refund if unsatisfied.</p>
+      </div>
+      <div class="mini-feat reveal reveal-d3">
+        <div class="mini-feat-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div class="mini-feat-title">Worldwide access</div>
+        <p class="mini-feat-desc">From Algeria to Germany and beyond.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ 8. MOODLE PREVIEW ═══ -->
+<section class="moodle-section" aria-labelledby="moodle-heading">
+  <div class="moodle-inner">
+    <div>
+      <div class="moodle-logo reveal">
+        <div class="moodle-logo-box">
+          <img src="https://assets.zyrosite.com/tPWPZ3kEpjHdFO9F/moodle-1-740x380-s84vr5GqRxP3NUXr.png" alt="Moodle LMS" style="height:88px;width:auto;display:block;">
+        </div>
+      </div>
+      <h2 class="moodle-h2 reveal reveal-d1" id="moodle-heading">Your classroom, accessible 24/7.</h2>
+      <p class="moodle-sub reveal reveal-d2">All your live sessions, replays, exercises, and certificates — in one place, powered by Moodle.</p>
+      <div class="moodle-checks reveal reveal-d3">
+        <div class="moodle-check">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          HD live sessions via Zoom
+        </div>
+        <div class="moodle-check">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          Lifetime replay access
+        </div>
+        <div class="moodle-check">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          Certificate on completion
+        </div>
+      </div>
+      <div class="moodle-stats reveal reveal-d4">
+        <div class="moodle-stat">
+          <span class="moodle-stat-num">12 000+</span>
+          <span class="moodle-stat-lbl">Enrolled students</span>
+        </div>
+        <div class="moodle-stat">
+          <span class="moodle-stat-num">40+</span>
+          <span class="moodle-stat-lbl">Live courses</span>
+        </div>
+        <div class="moodle-stat">
+          <span class="moodle-stat-num">98%</span>
+          <span class="moodle-stat-lbl">Satisfaction</span>
+        </div>
+      </div>
+      <button class="btn btn-moodle reveal reveal-d4" onclick="window.open('https://elearning.fdsinstitut.com','_blank')">
+        Open the platform &nbsp;→
+      </button>
+    </div>
+    <div class="reveal reveal-d2">
+      <div class="moodle-card-wrap">
+        <img src="https://images.pexels.com/photos/5905902/pexels-photo-5905902.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Student attending a live German class online" loading="lazy">
+        <div class="moodle-live-badge">
+          <span class="green-dot" aria-hidden="true"></span>
+          Live now &nbsp;·&nbsp; 24 students online
+        </div>
+        <div class="moodle-ring" aria-hidden="true"></div>
+      </div>
     </div>
   </div>
+</section>
+
+<!-- ═══ 9. TESTIMONIALS ═══ -->
+<section class="testimonials" aria-labelledby="testimonials-heading">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow eyebrow-orange reveal">Student stories</span>
+      <h2 class="section-h2 reveal reveal-d1" id="testimonials-heading">Results that speak for themselves.</h2>
+    </div>
+    <div class="testimonials-grid">
+
+      <div class="testi-card reveal">
+        <div class="testi-stars" aria-label="5 stars">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="testi-quote">"FDS helped me pass the TestDaF on my first attempt. The live sessions made all the difference — the teacher knew exactly where I was struggling."</p>
+        <div class="testi-author">
+          <div class="testi-avatar testi-avatar-orange"><img src="https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Sarah K."></div>
+          <div>
+            <div class="testi-name">Sarah K.</div>
+            <div class="testi-meta">TestDaF B2 &nbsp;·&nbsp; Germany</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card dark reveal reveal-d1">
+        <div class="testi-stars" aria-label="5 stars">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="testi-quote">"After 3 months I went from A2 to B2. The structure and teacher quality are exceptional. I finally feel confident speaking German with colleagues."</p>
+        <div class="testi-author">
+          <div class="testi-avatar testi-avatar-glass"><img src="https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Karim M."></div>
+          <div>
+            <div class="testi-name">Karim M.</div>
+            <div class="testi-meta">Group Class &nbsp;·&nbsp; Algeria</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal reveal-d2">
+        <div class="testi-stars" aria-label="5 stars">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="testi-quote">"The most structured online German school I've found. Worth every euro. My visa interview was in German and I handled it with full confidence."</p>
+        <div class="testi-author">
+          <div class="testi-avatar testi-avatar-orange"><img src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Amira B."></div>
+          <div>
+            <div class="testi-name">Amira B.</div>
+            <div class="testi-meta">Intensive &nbsp;·&nbsp; UK</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 10. GUARANTEE ═══ -->
+<section class="guarantee" aria-labelledby="guarantee-heading">
+  <div class="guarantee-inner">
+    <div class="guarantee-icon" aria-hidden="true">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+    </div>
+    <div class="guarantee-text">
+      <h2 class="guarantee-title" id="guarantee-heading">14-day money-back guarantee.</h2>
+      <p class="guarantee-sub">Try a class risk-free. Full refund if you're not satisfied — no questions asked.</p>
+    </div>
+    <div class="guarantee-action">
+      <button class="btn btn-white-orange btn-lg" onclick="scrollToHero()">Start risk-free &nbsp;→</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 11. FAQ ═══ -->
+<section class="faq-section" aria-labelledby="faq-heading">
+  <div class="container-sm">
+    <div class="section-header">
+      <span class="eyebrow eyebrow-orange reveal">FAQ</span>
+      <h2 class="section-h2 reveal reveal-d1" id="faq-heading">Frequently asked questions.</h2>
+    </div>
+    <div class="faq-list" role="list">
+
+      <div class="faq-item reveal" role="listitem">
+        <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
+          Do you have classes for complete beginners?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p class="faq-a">Yes. A1 is our most popular starting level. No prior German knowledge needed.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item reveal reveal-d1" role="listitem">
+        <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
+          How do live sessions work?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p class="faq-a">3x per week on Zoom, 90 min, max 8 students. All sessions recorded to your Moodle library.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item reveal reveal-d2" role="listitem">
+        <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
+          Are prices different for Algeria and abroad?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p class="faq-a">Yes — same curriculum, same teachers, adapted pricing. Algerian students pay in DA via local payment methods.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item reveal reveal-d3" role="listitem">
+        <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
+          Can I try before paying?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p class="faq-a">Yes. First trial class is free. Book it through the form above.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item reveal reveal-d4" role="listitem">
+        <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
+          What payment methods do you accept?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p class="faq-a">Algeria: CCP, Edahabia, BaridiMob. International: credit card, bank transfer, PayPal.</p>
+        </div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 12. FINAL CTA ═══ -->
+<section class="final-cta" aria-labelledby="final-cta-heading">
+  <div class="final-cta-inner">
+    <h2 class="final-cta-h2 reveal" id="final-cta-heading">Ready to speak<br><span class="accent">German</span>?</h2>
+    <p class="final-cta-sub reveal reveal-d1">Join 12,000+ students. Live classes. Real teachers. Proven results.</p>
+    <div class="final-cta-btns reveal reveal-d2">
+      <button class="btn btn-orange btn-lg" onclick="scrollToHero()">Reserve my seat</button>
+      <button class="btn btn-outline-white btn-lg" onclick="window.open('https://elearning.fdsinstitut.com','_blank')">Visit the platform &nbsp;→</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 13. FOOTER ═══ -->
+<footer class="footer" role="contentinfo">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand-logo">FDS<span>.</span></div>
+      <div class="footer-brand-sub">Online German school. Algeria &amp; Worldwide.</div>
+      <div class="footer-copy">&copy; 2026 FDS Institut. All rights reserved.</div>
+    </div>
+    <div>
+      <div class="footer-nav-title">Navigation</div>
+      <div class="footer-links">
+        <span class="footer-link" onclick="scrollToHero()" role="button" tabindex="0">Pricing</span>
+        <span class="footer-link" onclick="window.open('https://elearning.fdsinstitut.com','_blank')" role="button" tabindex="0">Platform</span>
+        <span class="footer-link" onclick="document.querySelector('.faq-section').scrollIntoView({behavior:'smooth'})" role="button" tabindex="0">FAQ</span>
+        <a href="../dz/index.html" class="footer-link">Algeria</a>
+        <a href="../global/index.html" class="footer-link">International</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-contact-title">Contact</div>
+      <div class="footer-contact-items">
+        <div class="footer-contact-item">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:online@fdsinstitut.com">online@fdsinstitut.com</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <a href="https://fdsinstitut.com" target="_blank" rel="noopener">
+            fdsinstitut.com
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline;margin-left:3px;vertical-align:middle;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">All sessions online &nbsp;·&nbsp; Algeria &nbsp;·&nbsp; Worldwide</div>
 </footer>
+
+<!-- ═══ 14. MOBILE STICKY CTA ═══ -->
+<div class="mobile-cta" role="complementary" aria-label="Quick enrollment">
+  <div class="mobile-cta-text">
+    <span class="mobile-cta-price">From €85 or 7 500 DA</span>
+    <span class="mobile-cta-label">Start today</span>
+  </div>
+  <button class="btn btn-orange" onclick="scrollToHero()">Reserve &nbsp;→</button>
+</div>
+
+<!-- ═══ 15. SUCCESS BANNER ═══ -->
+<div id="success-banner" role="status" aria-live="polite" aria-atomic="true">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+  Application sent! You'll receive your payment link within 24 hours.
+</div>
+
+<!-- ═══ JAVASCRIPT ═══ -->
+<script>
+/* ─── Form state ─── */
+let curStep = 1;
+let ans = {};
+
+/* ─── Location selector (Step 1) ─── */
+function selectLocation(el, loc) {
+  document.querySelectorAll('.loc-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  ans.location = loc;
+  setTimeout(() => goStep(2), 300);
+}
+
+/* ─── Generic option selector (Steps 2, 3, 4) ─── */
+function selectOpt(el, key, val) {
+  el.closest('.option-list').querySelectorAll('.opt-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  ans[key] = val;
+  setTimeout(() => goStep(curStep + 1), 320);
+}
+
+/* ─── Navigate to step n ─── */
+function goStep(n) {
+  // Update price badges when entering step 2
+  if (n === 2 && ans.location) {
+    const isDZ = ans.location === 'dz';
+    const prices = isDZ
+      ? ['7 500 DA/mo', '9 900 DA/mo', '32 000 DA/mo']
+      : ['€125/mo', '€85/mo', '€290/mo'];
+    document.querySelectorAll('.price-badge').forEach((b, i) => {
+      if (prices[i] !== undefined) b.textContent = prices[i];
+    });
+  }
+
+  // Show/hide location field when entering step 5
+  if (n === 5) showLocationField();
+
+  document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+  const target = document.querySelector(`.form-step[data-step="${n}"]`);
+  if (target) {
+    target.classList.add('active');
+    curStep = n;
+    updateDots(n);
+  }
+}
+
+/* ─── Show correct location-specific input ─── */
+function showLocationField() {
+  document.querySelectorAll('.loc-dz').forEach(el => {
+    el.style.display = ans.location === 'dz' ? 'block' : 'none';
+  });
+  document.querySelectorAll('.loc-intl').forEach(el => {
+    el.style.display = ans.location === 'intl' ? 'block' : 'none';
+  });
+}
+
+/* ─── Update progress dots ─── */
+function updateDots(n) {
+  document.querySelectorAll('.form-dot').forEach((d, i) => {
+    d.classList.remove('active', 'done');
+    if (i + 1 < n) d.classList.add('done');
+    else if (i + 1 === n) d.classList.add('active');
+  });
+}
+
+/* ─── Back ─── */
+function goBack() {
+  if (curStep > 1) goStep(curStep - 1);
+}
+
+/* ─── Submit ─── */
+function submitForm(e) {
+  e.preventDefault();
+  document.querySelector('.form-steps-wrap').style.display = 'none';
+  document.querySelector('.form-success').style.display = 'block';
+  showBanner();
+}
+
+/* ─── Success banner ─── */
+function showBanner() {
+  const b = document.getElementById('success-banner');
+  b.classList.add('show');
+  setTimeout(() => b.classList.remove('show'), 6000);
+}
+
+/* ─── Scroll to hero ─── */
+function scrollToHero() {
+  document.getElementById('hero').scrollIntoView({ behavior: 'smooth' });
+}
+
+/* ─── Portal CTA helpers — scroll + pre-select location ─── */
+function startDZ() {
+  scrollToHero();
+  setTimeout(() => {
+    ans.location = 'dz';
+    const cards = document.querySelectorAll('.loc-card');
+    cards.forEach(c => c.classList.remove('selected'));
+    if (cards[0]) cards[0].classList.add('selected');
+  }, 600);
+}
+
+function startIntl() {
+  scrollToHero();
+  setTimeout(() => {
+    ans.location = 'intl';
+    const cards = document.querySelectorAll('.loc-card');
+    cards.forEach(c => c.classList.remove('selected'));
+    if (cards[1]) cards[1].classList.add('selected');
+  }, 600);
+}
+
+/* ─── Video load ─── */
+function loadVideo() {
+  document.getElementById('video-thumb').style.display = 'none';
+  document.getElementById('video-frame').style.display = 'block';
+  document.getElementById('yt-frame').src = 'https://www.youtube.com/embed/?autoplay=1&rel=0';
+}
+
+/* ─── FAQ accordion ─── */
+function toggleFaq(qEl) {
+  const item = qEl.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => {
+    i.classList.remove('open');
+    i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+  });
+  if (!isOpen) {
+    item.classList.add('open');
+    qEl.setAttribute('aria-expanded', 'true');
+  }
+}
+
+/* ─── Keyboard support ─── */
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter' || e.key === ' ') {
+    const t = e.target;
+    if (t.classList.contains('faq-q')) { e.preventDefault(); toggleFaq(t); }
+    if (t.classList.contains('loc-card')) { e.preventDefault(); t.click(); }
+  }
+});
+
+/* ─── Reveal animations ─── */
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); revealObs.unobserve(e.target); }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+/* ─── Stats counters ─── */
+function animateCounter(el, target, suffix) {
+  const duration = 1800;
+  const start = performance.now();
+  const isLarge = target >= 1000;
+  function update(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = Math.round(eased * target);
+    if (isLarge) {
+      el.textContent = (current / 1000).toFixed(current >= 1000 ? 0 : 1) + 'k+';
+    } else {
+      el.textContent = current + suffix;
+    }
+    if (progress < 1) requestAnimationFrame(update);
+    else el.textContent = isLarge ? Math.round(target / 1000) + 'k+' : target + suffix;
+  }
+  requestAnimationFrame(update);
+}
+
+const statsObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const el = e.target;
+      const count = parseInt(el.dataset.count, 10);
+      const suffix = el.dataset.suffix || '';
+      if (!isNaN(count)) animateCounter(el, count, suffix);
+      statsObs.unobserve(el);
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.stat-number[data-count]').forEach(el => statsObs.observe(el));
+</script>
 
 </body>
 </html>
