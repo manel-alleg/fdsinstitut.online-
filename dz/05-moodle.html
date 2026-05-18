@@ -1,129 +1,215 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aperçu plateforme — FDS Institut DZ</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Montserrat:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --orange: #FF7900;
-    --blue: #00304E;
-    --gray-50: #F7F8FA;
-    --gray-200: #E2E3E5;
-    --gray-500: #6B7280;
-    --black: #111;
-  }
-  body { font-family: 'Montserrat', sans-serif; background: var(--gray-50); color: var(--black); }
-
-  .section {
-    background: var(--gray-50);
-    padding: 72px 24px;
-  }
-
-  .card {
-    max-width: 860px;
-    margin: 0 auto;
-    background: #fff;
-    border: 1.5px solid var(--gray-200);
-    border-radius: 20px;
-    padding: 40px 48px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 24px;
-  }
-
-  @media (min-width: 768px) {
-    .card {
-      flex-direction: row;
-      align-items: center;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aperçu plateforme — FDS Institut DZ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; }
+    :root {
+      --orange: #FF7900;
+      --orange-2: #FF9100;
+      --blue: #00304E;
+      --moodle: #F27F22;
+      --gray-50: #F7F8FA;
+      --gray-200: #E2E3E5;
+      --gray-500: #6B7280;
+      --black: #111;
     }
-  }
+    body { background: #fff; font-family: 'Montserrat', sans-serif; color: var(--black); }
 
-  .card-body { flex: 1; }
+    @keyframes pulseDot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.85)} }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
 
-  .moodle-logo {
-    height: 36px;
-    width: auto;
-    display: block;
-    margin-bottom: 20px;
-  }
+    .moodle-section {
+      background: linear-gradient(135deg, #FFF8F4 0%, #FFF3E8 40%, #F7F8FA 100%);
+      padding: 5rem 1.5rem;
+    }
 
-  .card-title {
-    font-family: 'Sora', sans-serif;
-    font-size: clamp(1.375rem, 3vw, 1.875rem);
-    font-weight: 700;
-    color: var(--blue);
-    letter-spacing: -0.02em;
-    margin-bottom: 10px;
-  }
+    .moodle-inner {
+      max-width: 80rem; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center;
+    }
+    @media (min-width: 1024px) { .moodle-inner { grid-template-columns: 1fr 1fr; gap: 5rem; } }
 
-  .card-desc {
-    font-size: 0.9375rem;
-    color: var(--gray-500);
-    line-height: 1.65;
-    max-width: 440px;
-  }
+    .moodle-logo-box {
+      display: inline-block; background: #fff;
+      border: 1.5px solid var(--gray-200); border-radius: 16px;
+      padding: .875rem 1.75rem; margin-bottom: 1.75rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,.07);
+    }
+    .moodle-logo-box img { height: 88px; width: auto; display: block; }
 
-  .card-cta {
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
+    h2 {
+      font-family: 'Sora', sans-serif; font-weight: 800;
+      font-size: clamp(1.75rem, 4vw, 2.5rem); letter-spacing: -.03em;
+      line-height: 1.1; color: var(--black); margin-bottom: 1rem;
+    }
 
-  .btn-visitor {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.9375rem;
-    font-weight: 600;
-    background: #F27F22;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    padding: 14px 28px;
-    text-decoration: none;
-    display: inline-block;
-    white-space: nowrap;
-    transition: opacity 0.15s;
-  }
+    .desc { font-size: 1rem; color: var(--gray-500); line-height: 1.7; margin-bottom: 1.75rem; max-width: 28rem; }
 
-  .btn-visitor:hover { opacity: 0.88; }
+    .checks { display: flex; flex-direction: column; gap: .625rem; margin-bottom: 1.75rem; }
+    .check-item {
+      display: flex; align-items: center; gap: .625rem;
+      font-weight: 600; font-size: .9rem; color: var(--black);
+    }
+    .check-item svg { color: var(--orange); flex-shrink: 0; }
 
-  .no-account {
-    font-family: 'Nunito', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--gray-500);
-    text-align: center;
-  }
+    .moodle-stats {
+      display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem;
+      padding: 1rem 1.25rem; background: rgba(255,121,0,.07);
+      border-radius: 14px; border: 1px solid rgba(255,121,0,.18);
+    }
+    .moodle-stat { display: flex; flex-direction: column; }
+    .moodle-stat-num {
+      font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.375rem;
+      color: var(--orange); line-height: 1;
+    }
+    .moodle-stat-lbl {
+      font-family: 'Nunito', sans-serif; font-weight: 700; font-size: .68rem;
+      letter-spacing: .07em; text-transform: uppercase; color: var(--gray-500); margin-top: .2rem;
+    }
 
-  @media (max-width: 767px) {
-    .card { padding: 32px 28px; }
-    .card-cta { align-items: flex-start; }
-  }
-</style>
+    .btn-moodle {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem;
+      background: var(--moodle); color: #fff; border: none; border-radius: 12px;
+      padding: 1rem 2.25rem; cursor: pointer; text-decoration: none;
+      transition: opacity .15s, transform .2s; box-shadow: 0 8px 24px rgba(242,127,34,.35);
+    }
+    .btn-moodle:hover { opacity: .9; transform: translateY(-2px); }
+
+    .moodle-visual { position: relative; }
+
+    .moodle-img-card {
+      border-radius: 20px; overflow: hidden;
+      box-shadow: 0 32px 80px -12px rgba(0,0,0,.18); position: relative;
+    }
+    .moodle-img-card img { width: 100%; height: 420px; object-fit: cover; display: block; }
+
+    .moodle-img-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(0,48,78,.75) 100%);
+    }
+
+    .moodle-live-badge {
+      position: absolute; top: 1.25rem; left: 1.25rem;
+      background: #fff; border-radius: 999px; padding: .45rem 1rem;
+      display: flex; align-items: center; gap: .5rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,.12);
+      font-family: 'Nunito', sans-serif; font-weight: 800; font-size: .75rem; color: var(--black);
+    }
+    .live-dot { width: 8px; height: 8px; border-radius: 50%; background: #22C55E; animation: pulseDot 1.4s ease infinite; }
+
+    .moodle-img-caption { position: absolute; bottom: 1.5rem; left: 1.5rem; right: 1.5rem; color: #fff; }
+    .moodle-img-caption-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.125rem; margin-bottom: .35rem; }
+    .moodle-img-caption-sub { font-family: 'Nunito', sans-serif; font-weight: 600; font-size: .8rem; color: rgba(255,255,255,.8); }
+
+    .moodle-float-card {
+      position: absolute; bottom: -1.5rem; right: -1rem;
+      background: #fff; border-radius: 16px; padding: 1rem 1.25rem;
+      box-shadow: 0 12px 40px rgba(0,0,0,.14);
+      display: flex; align-items: center; gap: .75rem;
+      animation: float 4s ease-in-out infinite;
+    }
+    @media (max-width: 640px) { .moodle-float-card { display: none; } }
+
+    .float-card-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--orange), var(--orange-2,#FF9100));
+      display: flex; align-items: center; justify-content: center; color: #fff; flex-shrink: 0;
+    }
+    .float-card-num { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.125rem; color: var(--black); line-height: 1; }
+    .float-card-lbl { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: .7rem; color: var(--gray-500); letter-spacing: .04em; }
+
+    .moodle-ring { position: absolute; top: -20px; right: -20px; width: 100px; height: 100px; border-radius: 50%; border: 3px solid var(--orange); opacity: .2; pointer-events: none; animation: float 6s 1s ease-in-out infinite; }
+    .moodle-ring-2 { position: absolute; bottom: 40px; left: -30px; width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--moodle); opacity: .25; pointer-events: none; }
+  </style>
 </head>
 <body>
-  <section class="section">
-    <div class="card">
-      <div class="card-body">
-        <img
-          class="moodle-logo"
-          src="https://assets.zyrosite.com/tPWPZ3kEpjHdFO9F/moodle-1-740x380-s84vr5GqRxP3NUXr.png"
-          alt="Moodle"
-        >
-        <h2 class="card-title">Testez avant d'acheter.</h2>
-        <p class="card-desc">Accédez à un cours complet en mode visiteur &mdash; sans compte, sans engagement.</p>
+  <section class="moodle-section">
+    <div class="moodle-inner">
+
+      <!-- LEFT: text -->
+      <div class="moodle-text">
+        <div class="moodle-logo-box">
+          <img src="https://assets.zyrosite.com/tPWPZ3kEpjHdFO9F/moodle-1-740x380-s84vr5GqRxP3NUXr.png" alt="Moodle LMS">
+        </div>
+
+        <h2>Votre classe,<br>accessible 24h/24.</h2>
+        <p class="desc">Tous vos cours en direct, replays, exercices, quiz et certificats — en un seul endroit, propulsé par Moodle. Accessible depuis n'importe quel appareil, à tout moment.</p>
+
+        <div class="checks">
+          <div class="check-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Séances HD en direct via Zoom, enregistrées instantanément
+          </div>
+          <div class="check-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Accès replay à vie — pour toujours
+          </div>
+          <div class="check-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Exercices notés, quiz et outils de vocabulaire
+          </div>
+          <div class="check-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Certificat de fin de niveau à chaque palier
+          </div>
+        </div>
+
+        <div class="moodle-stats">
+          <div class="moodle-stat">
+            <span class="moodle-stat-num">3 200+</span>
+            <span class="moodle-stat-lbl">Étudiants actifs</span>
+          </div>
+          <div class="moodle-stat">
+            <span class="moodle-stat-num">40+</span>
+            <span class="moodle-stat-lbl">Cours disponibles</span>
+          </div>
+          <div class="moodle-stat">
+            <span class="moodle-stat-num">98%</span>
+            <span class="moodle-stat-lbl">Satisfaction</span>
+          </div>
+        </div>
+
+        <a class="btn-moodle" href="https://elearning.fdsinstitut.com" target="_blank" rel="noopener">
+          Accéder à la plateforme
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
       </div>
-      <div class="card-cta">
-        <a class="btn-visitor" href="https://elearning.fdsinstitut.com" target="_blank" rel="noopener">Accès Visiteur &rarr;</a>
-        <span class="no-account">Aucun compte requis</span>
+
+      <!-- RIGHT: image card -->
+      <div class="moodle-visual">
+        <div class="moodle-ring"></div>
+        <div class="moodle-ring-2"></div>
+        <div class="moodle-img-card">
+          <img src="https://images.pexels.com/photos/5905902/pexels-photo-5905902.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Étudiant sur la plateforme FDS">
+          <div class="moodle-img-overlay"></div>
+          <div class="moodle-live-badge">
+            <span class="live-dot"></span>
+            24 étudiants connectés
+          </div>
+          <div class="moodle-img-caption">
+            <div class="moodle-img-caption-title">Séance en direct · Groupe B1</div>
+            <div class="moodle-img-caption-sub">Zoom + Moodle · Lun / Mer / Ven</div>
+          </div>
+        </div>
+        <div class="moodle-float-card">
+          <div class="float-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg>
+          </div>
+          <div>
+            <div class="float-card-num">∞</div>
+            <div class="float-card-lbl">Replays à vie</div>
+          </div>
+        </div>
       </div>
+
     </div>
   </section>
 </body>
