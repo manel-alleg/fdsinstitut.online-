@@ -1,173 +1,170 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pied de page — FDS Institut DZ</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Montserrat:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Pied de page — FDS Institut</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Montserrat:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"/>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --orange: #FF7900;
-    --blue: #00304E;
-    --gray-50: #F7F8FA;
-    --gray-200: #E2E3E5;
-    --gray-500: #6B7280;
-    --black: #111;
-  }
-  body { font-family: 'Montserrat', sans-serif; background: #fff; color: var(--black); }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --orange:#FF7900;
+  --blue:#00304E;
+  --black:#111;
+  --gray-50:#F7F8FA;
+  --gray-200:#E2E3E5;
+  --gray-500:#6B7280;
+}
+body{font-family:'Montserrat',sans-serif;color:var(--black);background:#fff;line-height:1.6}
+footer{
+  background:#fff;
+  border-top:1.5px solid var(--gray-200);
+  padding:3rem 1.5rem 1.5rem;
+}
+.footer-inner{
+  max-width:1200px;
+  margin:0 auto;
+}
+.footer-cols{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2rem;
+  padding-bottom:2rem;
+  border-bottom:1px solid var(--gray-200);
+  margin-bottom:1.5rem;
+}
 
-  footer {
-    background: #fff;
-    border-top: 1.5px solid var(--gray-200);
-    padding: 56px 24px 32px;
-  }
+/* BRAND COL */
+.footer-brand{}
+.footer-logo{display:flex;align-items:center;gap:.3rem;margin-bottom:.5rem;text-decoration:none}
+.logo-text{font-family:'Sora',sans-serif;font-weight:800;font-size:1.5rem;color:var(--blue);line-height:1}
+.logo-dot{color:var(--orange)}
+.footer-tagline{font-size:.83rem;color:var(--gray-500);margin-bottom:.2rem;line-height:1.5}
+.footer-est{font-size:.78rem;color:var(--gray-500);margin-bottom:.9rem}
+.footer-copy{font-size:.75rem;color:var(--gray-500)}
 
-  .inner { max-width: 1120px; margin: 0 auto; }
+/* NAV COL */
+.footer-col{}
+.footer-col-heading{
+  font-family:'Nunito',sans-serif;
+  font-weight:800;
+  font-size:.75rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--blue);
+  margin-bottom:.85rem;
+}
+.footer-nav{list-style:none;display:flex;flex-direction:column;gap:.45rem}
+.footer-nav a,.footer-nav button{
+  font-size:.85rem;
+  color:var(--gray-500);
+  text-decoration:none;
+  font-family:'Montserrat',sans-serif;
+  font-weight:500;
+  background:none;
+  border:none;
+  cursor:pointer;
+  padding:0;
+  transition:color .2s;
+  text-align:left;
+  display:inline-block;
+}
+.footer-nav a:hover,.footer-nav button:hover{color:var(--orange)}
 
-  .top {
-    display: grid;
-    gap: 40px;
-    grid-template-columns: 1fr;
-    margin-bottom: 40px;
-  }
+/* CONTACT COL */
+.footer-contact-item{
+  display:flex;
+  align-items:center;
+  gap:.5rem;
+  font-size:.85rem;
+  color:var(--gray-500);
+  margin-bottom:.5rem;
+  text-decoration:none;
+  font-family:'Montserrat',sans-serif;
+  font-weight:500;
+  transition:color .2s;
+}
+.footer-contact-item:hover{color:var(--orange)}
+.footer-contact-item svg{flex-shrink:0;opacity:.6}
+.footer-contact-item:hover svg{opacity:1}
 
-  @media (min-width: 640px) {
-    .top { grid-template-columns: 1.5fr 1fr 1fr; }
-  }
+/* BOTTOM */
+.footer-bottom{
+  text-align:center;
+  font-size:.75rem;
+  color:var(--gray-500);
+  font-family:'Nunito',sans-serif;
+  font-weight:600;
+  letter-spacing:.02em;
+}
 
-  .brand-logo {
-    font-family: 'Sora', sans-serif;
-    font-weight: 700;
-    font-size: 1.5rem;
-    color: var(--blue);
-    letter-spacing: -0.03em;
-    margin-bottom: 10px;
-    display: block;
-  }
-
-  .brand-logo .dot { color: var(--orange); }
-
-  .brand-desc {
-    font-size: 0.875rem;
-    color: var(--gray-500);
-    line-height: 1.65;
-    max-width: 240px;
-  }
-
-  .col-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 0.6875rem;
-    font-weight: 700;
-    color: var(--gray-500);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-    display: block;
-  }
-
-  .link-list { list-style: none; display: grid; gap: 10px; }
-
-  .link-list a {
-    font-size: 0.875rem;
-    color: var(--black);
-    text-decoration: none;
-    transition: color 0.15s;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-  }
-
-  .link-list a:hover { color: var(--orange); }
-
-  .ext-arrow {
-    font-size: 0.75rem;
-    color: var(--gray-500);
-  }
-
-  .bottom {
-    border-top: 1px solid var(--gray-200);
-    padding-top: 24px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-  }
-
-  .copy {
-    font-family: 'Nunito', sans-serif;
-    font-size: 0.8125rem;
-    font-weight: 600;
-    color: var(--gray-500);
-  }
-
-  .secure {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 0.8125rem;
-    font-weight: 600;
-    color: var(--gray-500);
-  }
-
-  .secure-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--orange);
-    flex-shrink: 0;
-  }
+@media(max-width:860px){
+  .footer-cols{grid-template-columns:1fr;gap:2rem}
+}
+@media(max-width:600px){
+  footer{padding:2.5rem 1.25rem 1.25rem}
+}
 </style>
 </head>
 <body>
-  <footer>
-    <div class="inner">
-      <div class="top">
-        <div>
-          <span class="brand-logo">FDS<span class="dot">.</span></span>
-          <p class="brand-desc">Cours d'allemand en ligne pour le monde entier et l'Algérie.</p>
-        </div>
-        <div>
-          <span class="col-label">Navigation</span>
-          <ul class="link-list">
-            <li><a href="/">Accueil</a></li>
-            <li><a href="#">Algérie</a></li>
-            <li><a href="../global/index.html">International</a></li>
-            <li><a href="#pricing">Tarifs</a></li>
-          </ul>
-        </div>
-        <div>
-          <span class="col-label">Contact</span>
-          <ul class="link-list">
-            <li><a href="mailto:online@fdsinstitut.com">online@fdsinstitut.com</a></li>
-            <li>
-              <a href="https://www.fdsinstitut.com" target="_blank" rel="noopener">
-                fdsinstitut.com
-                <span class="ext-arrow">&#8599;</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://elearning.fdsinstitut.com" target="_blank" rel="noopener">
-                elearning.fdsinstitut.com
-                <span class="ext-arrow">&#8599;</span>
-              </a>
-            </li>
-          </ul>
-        </div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-cols">
+
+      <!-- BRAND -->
+      <div class="footer-brand">
+        <a href="#" class="footer-logo">
+          <span class="logo-text">FDS<span class="logo-dot">.</span></span>
+        </a>
+        <p class="footer-tagline">École d'allemand en ligne.</p>
+        <p class="footer-est">Est. Alger.</p>
+        <p class="footer-copy">&copy; 2026 FDS Institut. Tous droits réservés.</p>
       </div>
 
-      <div class="bottom">
-        <span class="copy">&copy; 2026 FDS Institut &middot; Tous droits réservés</span>
-        <span class="secure">
-          <span class="secure-dot"></span>
-          Plateforme sécurisée
-        </span>
+      <!-- NAVIGATION -->
+      <div class="footer-col">
+        <div class="footer-col-heading">Navigation</div>
+        <ul class="footer-nav">
+          <li><a href="#pricing">Tarifs</a></li>
+          <li><a href="https://elearning.fdsinstitut.com" target="_blank" rel="noopener noreferrer">Plateforme</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><button onclick="openModal()">Cours d'essai</button></li>
+        </ul>
       </div>
+
+      <!-- CONTACT -->
+      <div class="footer-col">
+        <div class="footer-col-heading">Contact</div>
+        <a href="mailto:online@fdsinstitut.com" class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          online@fdsinstitut.com
+        </a>
+        <a href="https://fdsinstitut.com" target="_blank" rel="noopener noreferrer" class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          fdsinstitut.com
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left:.1rem;opacity:.6"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+      </div>
+
     </div>
-  </footer>
+
+    <div class="footer-bottom">
+      Tous les cours sont dispensés en ligne &nbsp;·&nbsp; Accessibles depuis l'Algérie
+    </div>
+  </div>
+</footer>
+
+<script>
+function openModal(){
+  if(window.parent&&window.parent.openModal){
+    window.parent.openModal();
+  } else {
+    var hero=document.getElementById('hero');
+    if(hero){hero.scrollIntoView({behavior:'smooth'});}
+  }
+}
+</script>
 </body>
 </html>

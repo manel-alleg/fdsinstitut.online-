@@ -1,255 +1,267 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tarifs — FDS Institut DZ</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Montserrat:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Tarifs — FDS Institut · Algérie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Montserrat:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"/>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --orange: #FF7900;
-    --blue: #00304E;
-    --gray-50: #F7F8FA;
-    --gray-200: #E2E3E5;
-    --gray-500: #6B7280;
-    --black: #111;
-  }
-  body { font-family: 'Montserrat', sans-serif; background: var(--gray-50); color: var(--black); }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --orange:#FF7900;
+  --orange-2:#FF9100;
+  --blue:#00304E;
+  --black:#111;
+  --gray-50:#F7F8FA;
+  --gray-100:#F0F1F3;
+  --gray-200:#E2E3E5;
+  --gray-500:#6B7280;
+  --moodle:#F27F22;
+}
+body{font-family:'Montserrat',sans-serif;color:var(--black);background:#fff;line-height:1.6;overflow-x:hidden}
 
-  .section {
-    background: var(--gray-50);
-    padding: 80px 24px;
-    max-width: 1120px;
-    margin: 0 auto;
-  }
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.reveal.in{opacity:1;transform:none}
+.reveal-d1{transition-delay:.1s}
+.reveal-d2{transition-delay:.2s}
 
-  .section-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--orange);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 14px;
-  }
+h2{font-family:'Sora',sans-serif;line-height:1.12}
+.eyebrow{
+  font-family:'Nunito',sans-serif;font-weight:700;font-size:.78rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--orange);
+  margin-bottom:.75rem;display:block;
+}
 
-  h2 {
-    font-family: 'Sora', sans-serif;
-    font-size: clamp(1.875rem, 4vw, 2.625rem);
-    font-weight: 700;
-    color: var(--blue);
-    letter-spacing: -0.03em;
-    line-height: 1.1;
-    margin-bottom: 48px;
-    max-width: 480px;
-  }
+/* ── PRICING ── */
+#pricing{
+  background:var(--gray-50);
+  padding:5rem 1.5rem;
+}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:3rem}
+.section-header h2{
+  font-size:clamp(1.6rem,3vw,2.25rem);
+  font-weight:800;
+  color:var(--blue);
+  margin-top:.5rem;
+}
+.pricing-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;
+}
+.price-card{
+  border:1.5px solid var(--gray-200);
+  border-radius:24px;
+  padding:2rem;
+  display:flex;
+  flex-direction:column;
+  position:relative;
+  background:#fff;
+  transition:box-shadow .25s,transform .25s;
+}
+.price-card:hover{
+  box-shadow:0 8px 32px rgba(0,0,0,.08);
+  transform:translateY(-3px);
+}
+.price-card.highlight{
+  border-color:var(--orange);
+  box-shadow:0 8px 40px rgba(255,121,0,.18);
+}
+.pop-badge{
+  position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+  background:var(--orange);color:#fff;
+  font-family:'Nunito',sans-serif;font-weight:800;font-size:.7rem;
+  padding:.25rem .75rem;border-radius:100px;white-space:nowrap;letter-spacing:.04em;
+}
+.price-plan{
+  font-family:'Nunito',sans-serif;font-weight:800;font-size:.8rem;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--gray-500);
+  margin-bottom:.75rem;
+}
+.price-amount{
+  font-family:'Sora',sans-serif;font-weight:800;font-size:2rem;
+  color:var(--blue);line-height:1;margin-bottom:.2rem;
+}
+.price-amount span{font-size:.9rem;font-weight:600;color:var(--gray-500)}
+.price-period{
+  font-family:'Nunito',sans-serif;font-weight:600;font-size:.75rem;
+  color:var(--gray-500);margin-bottom:1.5rem;
+}
+.price-features{
+  list-style:none;display:flex;flex-direction:column;
+  gap:.55rem;margin-bottom:1.75rem;flex:1;
+}
+.price-features li{
+  display:flex;align-items:flex-start;gap:.5rem;
+  font-size:.85rem;color:var(--black);line-height:1.5;
+}
+.price-features li svg{flex-shrink:0;margin-top:2px}
 
-  .grid {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: 1fr;
-    align-items: start;
-  }
+/* BUTTONS */
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:'Montserrat',sans-serif;font-weight:600;font-size:.9rem;
+  padding:.75rem 1.5rem;border-radius:10px;border:2px solid transparent;
+  cursor:pointer;transition:all .2s;text-decoration:none;white-space:nowrap;
+}
+.btn-orange{background:var(--orange);color:#fff;border-color:var(--orange)}
+.btn-orange:hover{background:var(--orange-2);border-color:var(--orange-2);transform:translateY(-1px);box-shadow:0 6px 20px rgba(255,121,0,.35)}
+.btn-outline-dark{background:transparent;color:var(--blue);border-color:var(--gray-200)}
+.btn-outline-dark:hover{border-color:var(--orange);color:var(--orange)}
+.btn-full{width:100%;justify-content:center}
 
-  @media (min-width: 768px) {
-    .grid { grid-template-columns: repeat(3, 1fr); align-items: center; }
-  }
+/* PRICING FOOTER */
+.pricing-assurance{
+  text-align:center;margin-top:1.75rem;
+  font-family:'Nunito',sans-serif;font-weight:700;font-size:.8rem;color:var(--gray-500);
+}
+.pricing-payment{
+  text-align:center;margin-top:.5rem;
+  font-family:'Nunito',sans-serif;font-weight:600;font-size:.78rem;color:var(--gray-500);
+}
+.pricing-payment span{
+  display:inline-flex;align-items:center;gap:.35rem;
+}
 
-  .card {
-    background: #fff;
-    border: 1.5px solid var(--gray-200);
-    border-radius: 18px;
-    padding: 32px 28px;
-    position: relative;
-    transition: box-shadow 0.2s;
-  }
-
-  .card:hover { box-shadow: 0 6px 32px rgba(0,0,0,0.08); }
-
-  .card-highlight {
-    background: var(--orange);
-    border-color: var(--orange);
-    color: #fff;
-    transform: scale(1.03);
-  }
-
-  .card-highlight:hover { box-shadow: 0 8px 40px rgba(255,121,0,0.35); }
-
-  .badge {
-    position: absolute;
-    top: -14px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--blue);
-    color: #fff;
-    font-family: 'Nunito', sans-serif;
-    font-size: 0.6875rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 4px 14px;
-    border-radius: 999px;
-    white-space: nowrap;
-  }
-
-  .card-name {
-    font-family: 'Sora', sans-serif;
-    font-size: 1.1875rem;
-    font-weight: 700;
-    color: var(--blue);
-    margin-bottom: 4px;
-  }
-
-  .card-highlight .card-name { color: #fff; }
-
-  .card-sub {
-    font-size: 0.8125rem;
-    color: var(--gray-500);
-    margin-bottom: 20px;
-  }
-
-  .card-highlight .card-sub { color: rgba(255,255,255,0.75); }
-
-  .price-row {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 24px;
-  }
-
-  .price {
-    font-family: 'Sora', sans-serif;
-    font-size: 1.875rem;
-    font-weight: 700;
-    color: var(--blue);
-    letter-spacing: -0.03em;
-  }
-
-  .card-highlight .price { color: #fff; }
-
-  .per {
-    font-size: 0.8125rem;
-    color: var(--gray-500);
-  }
-
-  .card-highlight .per { color: rgba(255,255,255,0.75); }
-
-  .features {
-    list-style: none;
-    display: grid;
-    gap: 10px;
-    margin-bottom: 28px;
-  }
-
-  .feat {
-    display: flex;
-    gap: 10px;
-    font-size: 0.875rem;
-    align-items: flex-start;
-    color: var(--black);
-  }
-
-  .card-highlight .feat { color: #fff; }
-
-  .check {
-    color: var(--orange);
-    font-weight: 700;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-
-  .card-highlight .check { color: #fff; }
-
-  .cta-btn {
-    display: block;
-    text-align: center;
-    border-radius: 10px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 0.9375rem;
-    padding: 13px 20px;
-    text-decoration: none;
-    transition: opacity 0.15s;
-    cursor: pointer;
-    border: none;
-  }
-
-  .cta-default {
-    background: var(--orange);
-    color: #fff;
-  }
-
-  .cta-default:hover { opacity: 0.88; }
-
-  .cta-highlight {
-    background: #fff;
-    color: var(--orange);
-    font-weight: 700;
-  }
-
-  .cta-highlight:hover { opacity: 0.9; }
+@media(max-width:1023px){
+  .pricing-grid{grid-template-columns:1fr}
+  .price-card.highlight{order:-1}
+}
 </style>
 </head>
 <body>
-  <section class="section">
-    <p class="section-label">Tarifs</p>
-    <h2>Des tarifs pensés pour vous.</h2>
-    <div class="grid">
 
-      <div class="card">
-        <div class="card-name">Auto-apprentissage</div>
-        <div class="card-sub">À votre rythme</div>
-        <div class="price-row">
-          <span class="price">9&nbsp;900 DA</span>
-          <span class="per">Accès 3 mois</span>
-        </div>
-        <ul class="features">
-          <li class="feat"><span class="check">&#10003;</span> +70h de contenu</li>
-          <li class="feat"><span class="check">&#10003;</span> Vidéos &middot; audios &middot; exercices</li>
-          <li class="feat"><span class="check">&#10003;</span> Mobile + ordinateur</li>
-          <li class="feat"><span class="check">&#10003;</span> Niveaux A1 &rarr; C1</li>
+<section id="pricing">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="eyebrow">Tarifs</span>
+      <h2>Des tarifs pensés pour l'Algérie.</h2>
+    </div>
+    <div class="pricing-grid">
+
+      <!-- Autonome -->
+      <div class="price-card reveal">
+        <div class="price-plan">Autonome</div>
+        <div class="price-amount">9 900 <span>DA</span></div>
+        <div class="price-period">/ mois</div>
+        <ul class="price-features">
+          <li>
+            <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Accès complet à la plateforme Moodle
+          </li>
+          <li>
+            <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Supports de cours complets
+          </li>
+          <li>
+            <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Replays à vie
+          </li>
+          <li>
+            <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Exercices interactifs &amp; quiz
+          </li>
+          <li>
+            <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Support par email
+          </li>
         </ul>
-        <button class="cta-btn cta-default" onclick="alert('Modal')">Commencer</button>
+        <button class="btn btn-outline-dark btn-full" onclick="scrollToHero()">Commencer</button>
       </div>
 
-      <div class="card card-highlight">
-        <span class="badge">Le plus choisi</span>
-        <div class="card-name">Cours en groupe</div>
-        <div class="card-sub">En direct avec vos camarades</div>
-        <div class="price-row">
-          <span class="price">7&nbsp;500 DA</span>
-          <span class="per">par mois</span>
-        </div>
-        <ul class="features">
-          <li class="feat"><span class="check">&#10003;</span> Cours live en ligne</li>
-          <li class="feat"><span class="check">&#10003;</span> Petits groupes max 12</li>
-          <li class="feat"><span class="check">&#10003;</span> Profs certifiés</li>
-          <li class="feat"><span class="check">&#10003;</span> Tous niveaux A1 &rarr; C2</li>
+      <!-- Groupe — HIGHLIGHT -->
+      <div class="price-card highlight reveal reveal-d1">
+        <div class="pop-badge">Le plus populaire</div>
+        <div class="price-plan">Cours en groupe</div>
+        <div class="price-amount">7 500 <span>DA</span></div>
+        <div class="price-period">/ mois</div>
+        <ul class="price-features">
+          <li>
+            <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Tout du plan Autonome
+          </li>
+          <li>
+            <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Cours en direct 3&times;/semaine
+          </li>
+          <li>
+            <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Groupe de 8 étudiants max
+          </li>
+          <li>
+            <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Support WhatsApp direct
+          </li>
+          <li>
+            <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Rapport de progression mensuel
+          </li>
         </ul>
-        <button class="cta-btn cta-highlight" onclick="alert('Modal')">Choisir</button>
+        <button class="btn btn-orange btn-full" onclick="scrollToHero()">Réserver ma place</button>
       </div>
 
-      <div class="card">
-        <div class="card-name">Intensif</div>
-        <div class="card-sub">Programme complet</div>
-        <div class="price-row">
-          <span class="price">32&nbsp;000 DA</span>
-          <span class="per">programme complet</span>
-        </div>
-        <ul class="features">
-          <li class="feat"><span class="check">&#10003;</span> 75 leçons structurées</li>
-          <li class="feat"><span class="check">&#10003;</span> Live + sessions async</li>
-          <li class="feat"><span class="check">&#10003;</span> Prêt pour les examens</li>
-          <li class="feat"><span class="check">&#10003;</span> Accès à un mentor</li>
+      <!-- Intensif -->
+      <div class="price-card reveal reveal-d2">
+        <div class="price-plan">Intensif</div>
+        <div class="price-amount">32 000 <span>DA</span></div>
+        <div class="price-period">/ mois</div>
+        <ul class="price-features">
+          <li>
+            <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Tout du plan Groupe
+          </li>
+          <li>
+            <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Cours quotidiens (5&times;/semaine)
+          </li>
+          <li>
+            <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Coaching individuel 1-à-1
+          </li>
+          <li>
+            <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Suivi prioritaire &amp; plan personnalisé
+          </li>
+          <li>
+            <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Garantie réussite examen
+          </li>
         </ul>
-        <button class="cta-btn cta-default" onclick="alert('Modal')">Formation intensive</button>
+        <button class="btn btn-outline-dark btn-full" onclick="scrollToHero()">Commencer</button>
       </div>
 
     </div>
-  </section>
+
+    <p class="pricing-payment">
+      <svg width="16" height="16" fill="none" stroke="var(--gray-500)" stroke-width="2" viewBox="0 0 24 24" style="margin-right:.25rem;vertical-align:middle"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      Paiement : CCP &nbsp;·&nbsp; Edahabia &nbsp;·&nbsp; BaridiMob &nbsp;·&nbsp; Virement
+    </p>
+    <p class="pricing-assurance">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:.3rem"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Remboursé 14 jours &nbsp;·&nbsp; Aucune carte requise &nbsp;·&nbsp; Annulation libre
+    </p>
+  </div>
+</section>
+
+<script>
+function scrollToHero(){
+  var hero=document.getElementById('hero');
+  if(hero){hero.scrollIntoView({behavior:'smooth'});}
+  else{window.location.href='#hero';}
+}
+function openModal(){scrollToHero();}
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!els.length) return;
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){if(en.isIntersecting)en.target.classList.add('in')});
+  },{threshold:.12});
+  els.forEach(function(el){io.observe(el)});
+})();
+</script>
 </body>
 </html>
