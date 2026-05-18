@@ -1,297 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FDS Institut — Pricing</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Montserrat:wght@400;500&family=Nunito:wght@600;700&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { -webkit-font-smoothing: antialiased; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FDS Institut — Pricing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange: #FF7900;
+  --orange-2: #FF9100;
+  --blue: #00304E;
+  --black: #111;
+  --gray-50: #F7F8FA;
+  --gray-100: #F0F1F3;
+  --gray-200: #E2E3E5;
+  --gray-500: #6B7280;
+  --moodle: #F27F22;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { background: var(--gray-50); color: var(--black); font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+h2 { font-family: 'Sora', sans-serif; letter-spacing: -.025em; }
+button { cursor: pointer; font-family: inherit; border: none; background: none; }
+ul { list-style: none; }
 
-    :root {
-      --orange: #FF7900;
-      --blue: #00304E;
-      --gray-50: #F7F8FA;
-      --gray-200: #E2E3E5;
-      --gray-500: #6B7280;
-      --black: #111;
-    }
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
+.reveal.in { opacity: 1; transform: none; }
+.reveal-d1.in { transition-delay: .1s; }
+.reveal-d2.in { transition-delay: .2s; }
+.reveal-d3.in { transition-delay: .3s; }
 
-    body {
-      background: #fff;
-      font-family: 'Montserrat', sans-serif;
-      color: var(--black);
-    }
+.container { max-width: 80rem; margin: 0 auto; padding: 0 1.5rem; }
+.eyebrow { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gray-500); }
+.eyebrow-orange { color: var(--orange); }
 
-    .pricing-section {
-      background: var(--gray-50);
-      padding: 4rem 1.5rem 5rem;
-    }
+.btn { display: inline-flex; align-items: center; gap: .5rem; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: .9rem; border-radius: 10px; padding: .75rem 1.5rem; transition: all .2s ease; cursor: pointer; border: none; white-space: nowrap; }
+.btn-orange { background: var(--orange); color: #fff; }
+.btn-orange:hover { background: var(--orange-2); transform: translateY(-1px); box-shadow: 0 8px 20px -4px rgba(255,121,0,.4); }
+.btn-outline-dark { background: transparent; color: var(--blue); border: 1.5px solid var(--gray-200); }
+.btn-outline-dark:hover { border-color: var(--blue); }
+.btn-full { width: 100%; justify-content: center; }
 
-    @media (min-width: 1024px) {
-      .pricing-section { padding: 5rem 3rem; }
-    }
+/* ─── PRICING ─── */
+.pricing {
+  background: var(--gray-50);
+  padding: 6rem 1.5rem;
+}
+.section-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+.section-header .eyebrow { margin-bottom: .75rem; display: block; }
+.section-h2 {
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  font-weight: 800;
+  color: var(--black);
+  line-height: 1.15;
+}
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+}
+.price-card {
+  border: 1.5px solid var(--gray-200);
+  border-radius: 24px;
+  padding: 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: #fff;
+}
+.price-card.featured {
+  border-color: var(--orange);
+  box-shadow: 0 24px 60px -12px rgba(255,121,0,.2);
+}
+.price-badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--orange);
+  color: #fff;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: .7rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: .3rem .85rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.price-name {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: .75rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--gray-500);
+  margin-bottom: .75rem;
+}
+.price-amount {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: 2.5rem;
+  color: var(--black);
+  line-height: 1;
+  margin-bottom: .25rem;
+}
+.price-amount span {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--gray-500);
+}
+.price-desc {
+  font-size: .85rem;
+  color: var(--gray-500);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--gray-200);
+}
+.price-features { display: flex; flex-direction: column; gap: .6rem; margin-bottom: 2rem; flex: 1; }
+.price-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: .5rem;
+  font-size: .85rem;
+  color: var(--black);
+  font-weight: 500;
+}
+.price-feature svg { color: var(--orange); flex-shrink: 0; margin-top: 2px; }
+.pricing-assurance {
+  text-align: center;
+  margin-top: 2rem;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: .8rem;
+  color: var(--gray-500);
+}
 
-    .pricing-inner {
-      max-width: 80rem;
-      margin: 0 auto;
-    }
-
-    .label {
-      font-family: 'Nunito', sans-serif;
-      font-weight: 700;
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--orange);
-      margin-bottom: 10px;
-    }
-
-    h2 {
-      font-family: 'Sora', sans-serif;
-      font-weight: 700;
-      font-size: clamp(1.625rem, 3vw, 2.25rem);
-      color: var(--black);
-      margin-bottom: 3rem;
-      max-width: 32rem;
-    }
-
-    .cards {
-      display: grid;
-      gap: 1.25rem;
-      grid-template-columns: 1fr;
-      align-items: start;
-    }
-
-    @media (min-width: 768px) {
-      .cards { grid-template-columns: repeat(3, 1fr); }
-    }
-
-    .card {
-      background: #fff;
-      border: 1px solid var(--gray-200);
-      border-radius: 20px;
-      padding: 32px 28px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      transition: box-shadow 0.2s;
-    }
-
-    .card:hover {
-      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
-    }
-
-    .card.highlight {
-      background: var(--orange);
-      border-color: var(--orange);
-      color: #fff;
-      transform: scale(1.03);
-      box-shadow: 0 8px 40px rgba(255,121,0,0.22);
-    }
-
-    .card-head {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 10px;
-    }
-
-    .card-name {
-      font-family: 'Sora', sans-serif;
-      font-weight: 700;
-      font-size: 1.0625rem;
-    }
-
-    .badge-popular {
-      font-family: 'Nunito', sans-serif;
-      font-weight: 700;
-      font-size: 0.6875rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      background: var(--blue);
-      color: #fff;
-      border-radius: 9999px;
-      padding: 3px 10px;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-
-    .price {
-      font-family: 'Sora', sans-serif;
-      font-weight: 800;
-      font-size: 2.25rem;
-      line-height: 1;
-      letter-spacing: -0.03em;
-    }
-
-    .price-period {
-      font-family: 'Nunito', sans-serif;
-      font-weight: 600;
-      font-size: 0.8125rem;
-      color: var(--gray-500);
-      margin-top: 4px;
-    }
-
-    .card.highlight .price-period { color: rgba(255,255,255,0.75); }
-
-    .features {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      flex: 1;
-    }
-
-    .features li {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.875rem;
-    }
-
-    .check-icon {
-      flex-shrink: 0;
-      color: var(--orange);
-      display: inline-flex;
-    }
-
-    .card.highlight .check-icon { color: #fff; }
-
-    .btn {
-      font-family: 'Nunito', sans-serif;
-      font-weight: 700;
-      font-size: 0.9375rem;
-      border-radius: 9999px;
-      padding: 13px 20px;
-      border: none;
-      cursor: pointer;
-      text-align: center;
-      transition: opacity 0.2s;
-      display: block;
-      width: 100%;
-    }
-
-    .btn-orange {
-      background: var(--orange);
-      color: #fff;
-    }
-
-    .btn-orange:hover { opacity: 0.88; }
-
-    .btn-white {
-      background: #fff;
-      color: var(--orange);
-    }
-
-    .btn-white:hover { opacity: 0.9; }
-  </style>
+@media (max-width: 1023px) {
+  .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
+}
+</style>
 </head>
 <body>
-  <section class="pricing-section">
-    <div class="pricing-inner">
-      <p class="label">Pricing</p>
-      <h2>Pricing that respects your time.</h2>
 
-      <div class="cards">
-
-        <!-- Self-Paced -->
-        <div class="card">
-          <div class="card-head">
-            <span class="card-name">Self-Paced</span>
-          </div>
-          <div>
-            <div class="price">&euro;149</div>
-            <div class="price-period">/ 3 months</div>
-          </div>
-          <ul class="features">
-            <li>
-              <span class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-              70+ interactive hours
-            </li>
-            <li>
-              <span class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-              Videos &middot; audio &middot; drills
-            </li>
-            <li>
-              <span class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-              Mobile + desktop
-            </li>
-            <li>
-              <span class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-              A1 &rarr; C1
-            </li>
-          </ul>
-          <button class="btn btn-orange">Start now</button>
-        </div>
-
-        <!-- Group Course (highlight) -->
-        <div class="card highlight">
-          <div class="card-head">
-            <span class="card-name">Group Course</span>
-            <span class="badge-popular">Most popular</span>
-          </div>
-          <div>
-            <div class="price">&euro;125</div>
-            <div class="price-period">/ month</div>
-          </div>
-          <ul class="features">
-            <li>
-              <span class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-              Live online classes
-            </li>
-            <li>
-              <span class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-              Small cohorts max 12
-            </li>
-            <li>
-              <span class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-              Certified teachers
-            </li>
-            <li>
-              <span class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-              All levels A1 &rarr; C2
-            </li>
-          </ul>
-          <button class="btn btn-white">Choose this plan</button>
-        </div>
-
-        <!-- Intensive -->
-        <div class="card">
-          <div class="card-head">
-            <span class="card-name">Intensive</span>
-          </div>
-          <div>
-            <div class="price">&euro;490</div>
-            <div class="price-period">/ full program</div>
-          </div>
-          <ul class="features">
-            <li>
-              <span class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-              75 structured lessons
-            </li>
-            <li>
-              <span class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-              Live + async
-            </li>
-            <li>
-              <span class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-              Exam-ready
-            </li>
-            <li>
-              <span class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-              Personal mentor
-            </li>
-          </ul>
-          <button class="btn btn-orange">Go intensive</button>
-        </div>
-
-      </div>
+<!-- ═══ 8. PRICING ═══ -->
+<section class="pricing" aria-labelledby="pricing-heading">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow eyebrow-orange reveal">Pricing</span>
+      <h2 class="section-h2 reveal reveal-d1" id="pricing-heading">Transparent pricing. No surprises.</h2>
     </div>
-  </section>
+    <div class="pricing-grid">
+
+      <!-- Self-Paced -->
+      <div class="price-card reveal">
+        <div class="price-name">Self-Paced</div>
+        <div class="price-amount">€85<span>/month</span></div>
+        <p class="price-desc">Study at your own pace. Full platform access with all course materials.</p>
+        <ul class="price-features">
+          <li class="price-feature">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Platform access
+          </li>
+          <li class="price-feature">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            All course materials
+          </li>
+          <li class="price-feature">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Unlimited replays
+          </li>
+          <li class="price-feature">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Email support
+          </li>
+        </ul>
+        <button class="btn btn-outline-dark btn-full" onclick="scrollToHero()" aria-label="Get started with Self-Paced plan">Get started →</button>
+      </div>
+
+      <!-- Group Classes — FEATURED -->
+      <div class="price-card featured reveal reveal-d1">
+        <div class="price-badge">Most Popular</div>
+        <div class="price-name">Group Classes</div>
+        <div class="price-amount">€125<span>/month</span></div>
+        <p class="price-desc">Live sessions 3× per week. The most popular and effective path to fluency.</p>
+        <ul class="price-features">
+          <li class="price-feature">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Everything in Self-Paced
+          </li>
+          <li class="price-feature">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Live sessions 3×/week
+          </li>
+          <li class="price-feature">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Small groups (max 8)
+          </li>
+          <li class="price-feature">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            WhatsApp support
+          </li>
+          <li class="price-feature">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Monthly progress report
+          </li>
+        </ul>
+        <button class="btn btn-orange btn-full" onclick="scrollToHero()" aria-label="Get started with Group Classes plan">Reserve my spot →</button>
+      </div>
+
+      <!-- Intensive -->
+      <div class="price-card reveal reveal-d2">
+        <div class="price-name">Intensive</div>
+        <div class="price-amount">€290<span>/month</span></div>
+        <p class="price-desc">Daily live sessions. The fastest track to fluency and exam readiness.</p>
+        <ul class="price-features">
+          <li class="price-feature">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Everything in Group
+          </li>
+          <li class="price-feature">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Daily live sessions
+          </li>
+          <li class="price-feature">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            1-on-1 weekly coaching
+          </li>
+          <li class="price-feature">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Priority scheduling
+          </li>
+          <li class="price-feature">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Exam prep guarantee
+          </li>
+        </ul>
+        <button class="btn btn-outline-dark btn-full" onclick="scrollToHero()" aria-label="Get started with Intensive plan">Get started →</button>
+      </div>
+
+    </div>
+    <p class="pricing-assurance reveal">14-day money-back &nbsp;·&nbsp; No card to start &nbsp;·&nbsp; Cancel anytime</p>
+  </div>
+</section>
+
+<script>
+function scrollToHero() {
+  const hero = document.getElementById('hero');
+  if (hero) {
+    hero.scrollIntoView({ behavior: 'smooth' });
+  } else {
+    window.location.href = '#hero';
+  }
+}
+
+function openModal() {
+  scrollToHero();
+}
+
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+</script>
 </body>
 </html>

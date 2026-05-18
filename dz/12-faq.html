@@ -1,185 +1,214 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FAQ — FDS Institut DZ</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Montserrat:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>FAQ — FDS Institut</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Montserrat:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"/>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --orange: #FF7900;
-    --blue: #00304E;
-    --gray-50: #F7F8FA;
-    --gray-200: #E2E3E5;
-    --gray-500: #6B7280;
-    --black: #111;
-  }
-  body { font-family: 'Montserrat', sans-serif; background: #fff; color: var(--black); }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --orange:#FF7900;
+  --blue:#00304E;
+  --black:#111;
+  --gray-50:#F7F8FA;
+  --gray-200:#E2E3E5;
+  --gray-500:#6B7280;
+}
+body{font-family:'Montserrat',sans-serif;color:var(--black);background:var(--gray-50);line-height:1.6}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.reveal.in{opacity:1;transform:none}
+.reveal-d1{transition-delay:.1s}
+section{padding:5rem 1.5rem}
+.section-inner{max-width:800px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:3rem}
+.eyebrow{font-family:'Nunito',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:.75rem;display:block}
+h2{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(1.6rem,3vw,2.25rem);color:var(--blue)}
+.accent{color:var(--orange)}
 
-  .section {
-    background: #fff;
-    padding: 80px 24px;
-    max-width: 720px;
-    margin: 0 auto;
-  }
+.faq-list{display:flex;flex-direction:column;gap:.75rem}
 
-  .section-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--orange);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 14px;
-  }
+.faq-item{
+  background:#fff;
+  border:1.5px solid var(--gray-200);
+  border-radius:16px;
+  overflow:hidden;
+  transition:border-color .2s;
+}
+.faq-item.open{border-color:var(--orange)}
 
-  h2 {
-    font-family: 'Sora', sans-serif;
-    font-size: clamp(1.875rem, 4vw, 2.625rem);
-    font-weight: 700;
-    color: var(--blue);
-    letter-spacing: -0.03em;
-    line-height: 1.1;
-    margin-bottom: 48px;
-  }
+.faq-q{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:1.1rem 1.25rem;
+  cursor:pointer;
+  gap:1rem;
+  user-select:none;
+}
+.faq-q-text{
+  font-family:'Sora',sans-serif;
+  font-weight:700;
+  font-size:.92rem;
+  color:var(--blue);
+  line-height:1.4;
+}
 
-  .faq-list { display: grid; gap: 10px; }
+.faq-icon{
+  width:28px;height:28px;
+  flex-shrink:0;
+  border:1.5px solid var(--gray-200);
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .28s ease,background .2s,border-color .2s;
+}
+.faq-item.open .faq-icon{
+  border-color:var(--orange);
+  background:var(--orange);
+  transform:rotate(45deg);
+}
+.faq-icon svg{display:block;flex-shrink:0}
+.faq-item.open .faq-icon svg line{stroke:#fff}
 
-  .faq-item {
-    border: 1.5px solid var(--gray-200);
-    border-radius: 12px;
-    overflow: hidden;
-    transition: border-color 0.2s;
-    background: #fff;
-  }
+.faq-body{
+  display:grid;
+  grid-template-rows:0fr;
+  transition:grid-template-rows .3s ease;
+}
+.faq-item.open .faq-body{grid-template-rows:1fr}
+.faq-body-inner{overflow:hidden}
+.faq-a{
+  padding:0 1.25rem 1.1rem;
+  font-size:.88rem;
+  color:var(--gray-500);
+  line-height:1.72;
+}
+.faq-a a{color:var(--orange);font-weight:600;text-decoration:none}
+.faq-a a:hover{text-decoration:underline}
 
-  .faq-item.open {
-    border-color: var(--orange);
-    background: #fff;
-  }
-
-  .faq-trigger {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    padding: 18px 20px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    text-align: left;
-    font-family: 'Sora', sans-serif;
-    font-size: 0.9375rem;
-    font-weight: 600;
-    color: var(--blue);
-    line-height: 1.4;
-  }
-
-  .faq-icon {
-    flex-shrink: 0;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: var(--gray-50);
-    border: 1.5px solid var(--gray-200);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: var(--gray-500);
-    transition: transform 0.25s, background 0.2s, color 0.2s, border-color 0.2s;
-    line-height: 1;
-  }
-
-  .faq-item.open .faq-icon {
-    background: var(--orange);
-    color: #fff;
-    border-color: var(--orange);
-    transform: rotate(45deg);
-  }
-
-  .faq-body {
-    display: grid;
-    grid-template-rows: 0fr;
-    overflow: hidden;
-    transition: grid-template-rows 0.28s ease;
-  }
-
-  .faq-item.open .faq-body { grid-template-rows: 1fr; }
-
-  .faq-body-inner { overflow: hidden; }
-
-  .faq-answer {
-    padding: 0 20px 18px;
-    font-size: 0.9375rem;
-    color: var(--gray-500);
-    line-height: 1.7;
-  }
+@media(max-width:600px){
+  section{padding:3.5rem 1rem}
+  .faq-q{padding:.95rem 1rem}
+  .faq-a{padding:0 1rem 1rem}
+  .faq-q-text{font-size:.87rem}
+}
 </style>
 </head>
 <body>
-  <section class="section">
-    <p class="section-label">FAQ</p>
-    <h2>Vos questions, nos réponses.</h2>
-    <div class="faq-list" id="faq"></div>
-  </section>
+<section>
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="eyebrow">Vous avez des questions ?</span>
+      <h2>Questions <span class="accent">fréquentes</span></h2>
+    </div>
 
-  <script>
-    const FAQS = [
-      {
-        q: "Les certificats sont-ils reconnus ?",
-        a: "Nos certificats internes suivent les standards CEFR (A1&ndash;C2). Nous vous préparons également aux examens officiels Goethe / TestDaF que vous passez en centre agréé."
-      },
-      {
-        q: "Comment payer depuis l'Algérie ?",
-        a: "CCP, BaridiMob, Edahabia, ou virement bancaire local. Pas besoin de carte internationale."
-      },
-      {
-        q: "Si je rate un cours en direct ?",
-        a: "Tous les cours sont enregistrés. Vous avez accès aux replays et à un résumé écrit pendant toute la durée du programme."
-      },
-      {
-        q: "Quel matériel faut-il ?",
-        a: "Juste un navigateur web et une connexion. Mobile ou ordinateur. Aucun logiciel à installer."
-      },
-      {
-        q: "Puis-je changer de formule ?",
-        a: "Oui, à tout moment. Vous pouvez passer d'une formule à une autre et le solde restant est reporté."
-      }
-    ];
+    <div class="faq-list reveal reveal-d1">
 
-    const list = document.getElementById('faq');
-    FAQS.forEach(f => {
-      const item = document.createElement('div');
-      item.className = 'faq-item closed';
-      item.innerHTML = `
-        <button class="faq-trigger" aria-expanded="false">
-          <span>${f.q}</span>
-          <span class="faq-icon" aria-hidden="true">+</span>
-        </button>
+      <!-- FAQ 1 -->
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span class="faq-q-text">Quel niveau faut-il avoir pour commencer ?</span>
+          <span class="faq-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <line x1="12" y1="5" x2="12" y2="19"/>
+              <line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+          </span>
+        </div>
         <div class="faq-body">
           <div class="faq-body-inner">
-            <p class="faq-answer">${f.a}</p>
+            <p class="faq-a">Aucun prérequis n'est nécessaire. Nous accueillons des étudiants de tous niveaux, du grand débutant (A1) jusqu'au niveau avancé (C2). Si vous n'êtes pas sûr de votre niveau, notre équipe vous propose un test de positionnement gratuit pour vous orienter vers le groupe adapté.</p>
           </div>
-        </div>`;
-      item.querySelector('.faq-trigger').addEventListener('click', () => {
-        const isOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item').forEach(el => {
-          el.className = 'faq-item';
-          el.querySelector('.faq-trigger').setAttribute('aria-expanded', 'false');
-        });
-        if (!isOpen) {
-          item.className = 'faq-item open';
-          item.querySelector('.faq-trigger').setAttribute('aria-expanded', 'true');
-        }
-      });
-      list.appendChild(item);
-    });
-  </script>
+        </div>
+      </div>
+
+      <!-- FAQ 2 -->
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span class="faq-q-text">Comment se déroulent les cours en ligne ?</span>
+          <span class="faq-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <line x1="12" y1="5" x2="12" y2="19"/>
+              <line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+          </span>
+        </div>
+        <div class="faq-body">
+          <div class="faq-body-inner">
+            <p class="faq-a">Les cours ont lieu en direct via visioconférence, en petits groupes de maximum 8 étudiants. Chaque séance dure 90 minutes et inclut des exercices interactifs, des échanges oraux et des corrections personnalisées. Toutes les sessions sont enregistrées et accessibles à vie sur notre plateforme Moodle.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ 3 -->
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span class="faq-q-text">Puis-je mettre en pause ou annuler mon abonnement ?</span>
+          <span class="faq-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <line x1="12" y1="5" x2="12" y2="19"/>
+              <line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+          </span>
+        </div>
+        <div class="faq-body">
+          <div class="faq-body-inner">
+            <p class="faq-a">Oui, vous pouvez suspendre votre abonnement à tout moment en nous contactant 7 jours avant votre prochaine facturation. L'annulation est libre, sans engagement ni pénalité. Votre accès aux replays reste actif même après l'annulation.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ 4 -->
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span class="faq-q-text">Proposez-vous une préparation aux examens officiels ?</span>
+          <span class="faq-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <line x1="12" y1="5" x2="12" y2="19"/>
+              <line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+          </span>
+        </div>
+        <div class="faq-body">
+          <div class="faq-body-inner">
+            <p class="faq-a">Oui. Nous proposons des programmes spécifiques pour le TestDaF, le Goethe-Zertifikat, le DSH et le telc. Nos formateurs sont spécialisés dans ces certifications et vous accompagnent avec des simulations d'examen, des corrections détaillées et des stratégies de réponse éprouvées.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ 5 -->
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span class="faq-q-text">Quels modes de paiement acceptez-vous ?</span>
+          <span class="faq-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <line x1="12" y1="5" x2="12" y2="19"/>
+              <line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+          </span>
+        </div>
+        <div class="faq-body">
+          <div class="faq-body-inner">
+            <p class="faq-a">Nous acceptons les paiements locaux adaptés au contexte algérien : virement CCP, carte Edahabia (CPA) et BaridiMob (Algérie Poste). Le paiement international par carte bancaire est également disponible. Toutes les transactions sont sécurisées et vous recevez un reçu par email.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+function toggleFaq(item){
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el=>{if(el!==item)el.classList.remove('open')});
+  item.classList.toggle('open',!isOpen);
+}
+
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
 </body>
 </html>

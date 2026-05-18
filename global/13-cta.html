@@ -1,58 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Get Started — FDS Institut</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700;800&family=Montserrat:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --orange: #FF7900;
-    --blue: #00304E;
-    --black: #111111;
-  }
-  body { font-family: 'Montserrat', sans-serif; background: var(--blue); }
-  section {
-    max-width: 48rem; margin: 0 auto; padding: 6rem 1.5rem; text-align: center;
-  }
-  h2 {
-    font-family: 'Sora', sans-serif; font-weight: 800;
-    font-size: clamp(2rem, 5vw, 3.25rem); letter-spacing: -0.03em; line-height: 1.1;
-    color: #fff; margin-bottom: 1rem;
-  }
-  .sub { font-size: 1.0625rem; line-height: 1.65; color: rgba(255,255,255,0.8); margin-bottom: 2.5rem; }
-  .btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-  .btn-white {
-    font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.9375rem;
-    background: #fff; color: var(--blue); border: none; border-radius: 10px;
-    padding: 0.9rem 1.75rem; cursor: pointer; text-decoration: none; transition: opacity 0.15s; display: inline-block;
-  }
-  .btn-white:hover { opacity: 0.9; }
-  .btn-outline {
-    font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.9375rem;
-    background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.5);
-    border-radius: 10px; padding: 0.9rem 1.75rem; cursor: pointer; text-decoration: none;
-    transition: border-color 0.2s; display: inline-block;
-  }
-  .btn-outline:hover { border-color: #fff; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FDS Institut — Final CTA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; }
+
+    :root {
+      --orange: #FF7900;
+      --orange-2: #FF9100;
+      --blue: #00304E;
+      --gray-50: #F7F8FA;
+      --gray-200: #E2E3E5;
+      --gray-500: #6B7280;
+      --black: #111;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--black);
+    }
+
+    .final-cta-section {
+      background: var(--blue);
+      padding: 7rem 1.5rem;
+      text-align: center;
+    }
+
+    .final-cta-inner {
+      max-width: 44rem;
+      margin: 0 auto;
+    }
+
+    .final-cta-h2 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      letter-spacing: -.03em;
+    }
+
+    .accent {
+      color: var(--orange);
+    }
+
+    .final-cta-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,.7);
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+      font-weight: 500;
+    }
+
+    .final-cta-btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 12px;
+      padding: 1rem 2rem;
+      cursor: pointer;
+      border: none;
+      white-space: nowrap;
+      transition: all .2s ease;
+      text-decoration: none;
+    }
+
+    .btn-orange {
+      background: var(--orange);
+      color: #fff;
+    }
+
+    .btn-orange:hover {
+      background: var(--orange-2);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px -4px rgba(255,121,0,.4);
+    }
+
+    .btn-outline-white {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,.6);
+    }
+
+    .btn-outline-white:hover {
+      background: rgba(255,255,255,.1);
+      border-color: #fff;
+    }
+
+    @media (max-width: 600px) {
+      .final-cta-section { padding: 5rem 1rem; }
+      .final-cta-btns { flex-direction: column; align-items: center; }
+    }
+  </style>
 </head>
 <body>
-  <section>
-    <h2>Ready to speak German?</h2>
-    <p class="sub">Join 12,000+ students learning German the right way — live, online, with real teachers.</p>
-    <div class="btns">
-      <button class="btn-white" onclick="openModal()">Reserve my seat</button>
-      <a class="btn-outline" href="https://elearning.fdsinstitut.com" target="_blank" rel="noopener">Visit the platform &rarr;</a>
+
+<section class="final-cta-section" aria-labelledby="final-cta-heading">
+  <div class="final-cta-inner">
+    <h2 class="final-cta-h2" id="final-cta-heading">
+      Ready to speak<br><span class="accent">German</span>?
+    </h2>
+    <p class="final-cta-sub">Join 12,000+ students. Live classes. Real teachers. Proven results.</p>
+    <div class="final-cta-btns">
+      <button class="btn btn-orange" onclick="openModal()" aria-label="Reserve my seat — scroll to enrollment form">
+        Reserve my seat
+      </button>
+      <a class="btn btn-outline-white" href="https://elearning.fdsinstitut.com" target="_blank" rel="noopener" aria-label="Visit the learning platform">
+        Visit the platform &nbsp;&rarr;
+      </a>
     </div>
-  </section>
-  <script>
-    function openModal() {
-      window.parent && window.parent.openModal ? window.parent.openModal() : alert('Modal coming soon.');
-    }
-  </script>
+  </div>
+</section>
+
+<script>
+function openModal() {
+  if (window.parent && window.parent.openModal) {
+    window.parent.openModal();
+  } else if (document.getElementById('hero')) {
+    document.getElementById('hero').scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+function scrollToHero() {
+  openModal();
+}
+</script>
+
 </body>
 </html>

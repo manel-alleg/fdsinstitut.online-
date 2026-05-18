@@ -1,151 +1,177 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Valeur — FDS Institut DZ</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Montserrat:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Valeur — FDS Institut</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Montserrat:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"/>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --orange: #FF7900;
-    --orange-solid: #FF9100;
-    --blue: #00304E;
-    --gray-50: #F7F8FA;
-    --gray-100: #F0F1F3;
-    --gray-200: #E2E3E5;
-    --gray-500: #6B7280;
-    --black: #111111;
-  }
-  body { font-family: 'Montserrat', sans-serif; background: #fff; color: var(--black); }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --orange:#FF7900;
+  --orange-2:#FF9100;
+  --blue:#00304E;
+  --black:#111;
+  --gray-50:#F7F8FA;
+  --gray-200:#E2E3E5;
+  --gray-500:#6B7280;
+  --moodle:#F27F22;
+}
+body{font-family:'Montserrat',sans-serif;color:var(--black);background:#fff;line-height:1.6;overflow-x:hidden}
 
-  .section {
-    background: #fff;
-    padding: 88px 24px;
-  }
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.reveal.in{opacity:1;transform:none}
+.reveal-d1{transition-delay:.1s}
+.reveal-d2{transition-delay:.2s}
+.reveal-d3{transition-delay:.3s}
 
-  .inner {
-    max-width: 1080px;
-    margin: 0 auto;
-  }
+h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
+.eyebrow{
+  font-family:'Nunito',sans-serif;font-weight:700;font-size:.78rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--orange);
+  margin-bottom:.75rem;display:block;
+}
 
-  .section-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--orange);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 14px;
-  }
+/* ── FEATURES ── */
+#features{
+  background:#fff;
+  padding:5rem 1.5rem;
+}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:3rem}
+.section-header h2{
+  font-size:clamp(1.6rem,3vw,2.25rem);
+  font-weight:800;
+  color:var(--blue);
+  margin-top:.5rem;
+}
+.features-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:1.5rem;
+}
+.feat-card{
+  border:1.5px solid var(--gray-200);
+  border-radius:20px;
+  padding:2rem;
+  transition:all .25s;
+}
+.feat-card:hover{
+  border-color:var(--orange);
+  box-shadow:0 8px 32px rgba(255,121,0,.12);
+  transform:translateY(-4px);
+}
+.feat-icon{
+  width:48px;height:48px;border-radius:14px;
+  background:#fff3e8;display:flex;align-items:center;
+  justify-content:center;margin-bottom:1.25rem;
+}
+.feat-card h3{
+  font-family:'Sora',sans-serif;font-weight:700;font-size:1rem;
+  color:var(--blue);margin-bottom:.5rem;
+}
+.feat-card p{font-size:.88rem;color:var(--gray-500);line-height:1.6}
 
-  h2 {
-    font-family: 'Sora', sans-serif;
-    font-size: clamp(1.875rem, 4vw, 2.5rem);
-    font-weight: 800;
-    color: var(--blue);
-    letter-spacing: -0.03em;
-    line-height: 1.12;
-    margin-bottom: 52px;
-    max-width: 560px;
-  }
+/* ── PHOTO ROW ── */
+.features-photo-row{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.25rem;
+  margin-top:2rem;
+}
+.feat-photo{
+  border-radius:16px;overflow:hidden;
+  position:relative;aspect-ratio:4/3;
+  box-shadow:0 8px 24px rgba(0,0,0,.1);
+}
+.feat-photo img{
+  width:100%;height:100%;object-fit:cover;transition:transform .5s;
+}
+.feat-photo:hover img{transform:scale(1.04)}
+.feat-photo-caption{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(0deg,rgba(0,0,0,.7) 0%,transparent 100%);
+  color:#fff;padding:1.5rem .875rem .875rem;
+  font-family:'Nunito',sans-serif;font-weight:700;font-size:.75rem;
+  letter-spacing:.06em;text-transform:uppercase;
+}
 
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  @media (min-width: 640px) {
-    .grid { grid-template-columns: repeat(2, 1fr); }
-  }
-
-  .card {
-    background: #fff;
-    border: 1.5px solid var(--gray-200);
-    border-radius: 20px;
-    padding: 32px 28px;
-    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .card:hover {
-    border-color: var(--orange);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 28px rgba(255, 121, 0, 0.1);
-  }
-
-  .card-icon {
-    width: 44px;
-    height: 44px;
-    color: var(--orange);
-    margin-bottom: 20px;
-  }
-
-  .card-title {
-    font-family: 'Sora', sans-serif;
-    font-size: 1.0625rem;
-    font-weight: 700;
-    color: var(--blue);
-    margin-bottom: 8px;
-    line-height: 1.3;
-  }
-
-  .card-desc {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.875rem;
-    font-weight: 400;
-    color: var(--gray-500);
-    line-height: 1.65;
-  }
+@media(max-width:1023px){
+  .features-grid{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .features-photo-row{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
-  <section class="section">
-    <div class="inner">
-      <p class="section-label">Inclus dans chaque formule</p>
-      <h2>Tout ce qu'il vous faut. Rien de superflu.</h2>
-      <div class="grid">
 
-        <div class="card">
-          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
-          </svg>
-          <div class="card-title">Cours en direct avec de vrais profs</div>
-          <div class="card-desc">Petits groupes, formateurs certifiés, aucun cours préenregistré.</div>
+<section id="features">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="eyebrow">Pourquoi FDS</span>
+      <h2>Tout ce qu'il faut. Rien de superflu.</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feat-card reveal">
+        <div class="feat-icon">
+          <svg width="24" height="24" fill="none" stroke="#FF7900" stroke-width="2" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
         </div>
-
-        <div class="card">
-          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="1 4 1 10 7 10"/>
-            <path d="M3.51 15a9 9 0 1 0 .49-3.5"/>
-          </svg>
-          <div class="card-title">Replays à vie</div>
-          <div class="card-desc">Manqué un cours ? Chaque séance est enregistrée et vous appartient pour toujours.</div>
+        <h3>Cours en direct avec de vrais profs</h3>
+        <p>Petits groupes de 8 max, formateurs certifiés DAAD. Interaction réelle, progression garantie.</p>
+      </div>
+      <div class="feat-card reveal reveal-d1">
+        <div class="feat-icon">
+          <svg width="24" height="24" fill="none" stroke="#FF7900" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
         </div>
-
-        <div class="card">
-          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-            <circle cx="9" cy="7" r="4"/>
-            <polyline points="16 11 18 13 22 9"/>
-          </svg>
-          <div class="card-title">Formateurs certifiés</div>
-          <div class="card-desc">Tous nos profs sont certifiés DAAD et entraînés aux examens.</div>
+        <h3>Replays à vie</h3>
+        <p>Chaque cours enregistré et disponible dans votre espace Moodle. Révisez à votre rythme, pour toujours.</p>
+      </div>
+      <div class="feat-card reveal reveal-d2">
+        <div class="feat-icon">
+          <svg width="24" height="24" fill="none" stroke="#FF7900" stroke-width="2" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg>
         </div>
-
-        <div class="card">
-          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-          </svg>
-          <div class="card-title">Soutien permanent</div>
-          <div class="card-desc">Groupe WhatsApp, sessions Q&amp;R et permanences dédiées.</div>
+        <h3>Formateurs certifiés</h3>
+        <p>Tous nos profs sont certifiés et spécialisés dans la préparation aux examens officiels allemands.</p>
+      </div>
+      <div class="feat-card reveal reveal-d3">
+        <div class="feat-icon">
+          <svg width="24" height="24" fill="none" stroke="#FF7900" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         </div>
-
+        <h3>Support WhatsApp</h3>
+        <p>Accès direct à votre professeur entre les séances. Questions, exercices, encouragements — toujours disponible.</p>
       </div>
     </div>
-  </section>
+
+    <div class="features-photo-row reveal reveal-d1">
+      <div class="feat-photo">
+        <img src="https://images.pexels.com/photos/4144923/pexels-photo-4144923.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Séance en direct"/>
+        <div class="feat-photo-caption">Séance en direct — Groupe A2</div>
+      </div>
+      <div class="feat-photo">
+        <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Cours en groupe"/>
+        <div class="feat-photo-caption">Cours en groupe — Niveau B1</div>
+      </div>
+      <div class="feat-photo">
+        <img src="https://images.pexels.com/photos/5905902/pexels-photo-5905902.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Plateforme autonome"/>
+        <div class="feat-photo-caption">Plateforme autonome</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!els.length) return;
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){if(en.isIntersecting)en.target.classList.add('in')});
+  },{threshold:.12});
+  els.forEach(function(el){io.observe(el)});
+})();
+</script>
 </body>
 </html>

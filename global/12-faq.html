@@ -1,116 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FAQ — FDS Institut</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700;800&family=Montserrat:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --orange: #FF7900;
-    --gray-50: #F7F8FA;
-    --gray-200: #E2E3E5;
-    --gray-500: #6B7280;
-    --black: #111111;
-  }
-  body { font-family: 'Montserrat', sans-serif; background: var(--gray-50); color: var(--black); }
-  section { max-width: 48rem; margin: 0 auto; padding: 5rem 1.5rem; }
-  .section-header { margin-bottom: 2.5rem; }
-  .eyebrow {
-    font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.6875rem;
-    letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.75rem;
-  }
-  h2 {
-    font-family: 'Sora', sans-serif; font-weight: 800;
-    font-size: clamp(1.75rem, 4vw, 2.5rem); letter-spacing: -0.03em; line-height: 1.1; color: var(--black);
-  }
-  .faq-list { display: flex; flex-direction: column; gap: 0; border: 1.5px solid var(--gray-200); border-radius: 16px; overflow: hidden; background: #fff; }
-  .faq-item { border-bottom: 1px solid var(--gray-200); }
-  .faq-item:last-child { border-bottom: none; }
-  .faq-q {
-    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-    padding: 1.25rem 1.5rem; cursor: pointer; user-select: none;
-    font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.9375rem; color: var(--black);
-    list-style: none;
-  }
-  .faq-q::-webkit-details-marker { display: none; }
-  .faq-icon {
-    width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid var(--gray-200);
-    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-    transition: background 0.2s, border-color 0.2s, transform 0.25s;
-    color: var(--gray-500);
-  }
-  .faq-body {
-    display: grid; grid-template-rows: 0fr;
-    transition: grid-template-rows 0.3s ease;
-  }
-  .faq-item.open .faq-body { grid-template-rows: 1fr; }
-  .faq-item.open .faq-icon { background: var(--orange); border-color: var(--orange); color: #fff; transform: rotate(45deg); }
-  .faq-body-inner { overflow: hidden; }
-  .faq-a {
-    padding: 0 1.5rem 1.25rem; font-size: 0.9375rem; line-height: 1.7; color: var(--gray-500);
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FDS Institut — FAQ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Montserrat:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; }
+
+    :root {
+      --orange: #FF7900;
+      --blue: #00304E;
+      --gray-50: #F7F8FA;
+      --gray-200: #E2E3E5;
+      --gray-500: #6B7280;
+      --black: #111;
+    }
+
+    body {
+      background: var(--gray-50);
+      font-family: 'Montserrat', sans-serif;
+      color: var(--black);
+    }
+
+    .faq-section {
+      background: var(--gray-50);
+      padding: 6rem 1.5rem;
+    }
+
+    .container-sm {
+      max-width: 48rem;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .eyebrow {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: .72rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      display: block;
+      margin-bottom: .75rem;
+    }
+
+    .section-h2 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.25rem);
+      font-weight: 800;
+      color: var(--black);
+      line-height: 1.15;
+      letter-spacing: -.025em;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .faq-item:first-child {
+      border-top: 1px solid var(--gray-200);
+    }
+
+    .faq-q {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.25rem 0;
+      cursor: pointer;
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: .95rem;
+      color: var(--black);
+      user-select: none;
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+    }
+
+    .faq-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gray-200);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--gray-500);
+      transition: transform .25s ease, border-color .25s ease, color .25s ease;
+      line-height: 1;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+
+    .faq-body {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows .3s ease;
+    }
+
+    .faq-item.open .faq-body {
+      grid-template-rows: 1fr;
+    }
+
+    .faq-body-inner {
+      overflow: hidden;
+    }
+
+    .faq-a {
+      font-size: .9rem;
+      color: var(--gray-500);
+      line-height: 1.7;
+      padding-bottom: 1.25rem;
+      font-weight: 500;
+    }
+
+    @media (max-width: 600px) {
+      .faq-section { padding: 4rem 1rem; }
+      .faq-q { font-size: .88rem; }
+    }
+  </style>
 </head>
 <body>
-  <section>
+
+<section class="faq-section" aria-labelledby="faq-heading">
+  <div class="container-sm">
     <div class="section-header">
-      <p class="eyebrow">Help</p>
-      <h2>Frequently asked questions.</h2>
+      <span class="eyebrow">FAQ</span>
+      <h2 class="section-h2" id="faq-heading">Frequently asked questions.</h2>
     </div>
-    <div class="faq-list" id="faq">
-      <div class="faq-item">
-        <div class="faq-q" role="button" tabindex="0">
-          <span>What level do I need to start?</span>
-          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="7" y1="2" x2="7" y2="12"/><line x1="2" y1="7" x2="12" y2="7"/></svg></span>
+
+    <div class="faq-list" role="list">
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-body-1">
+          What level do I need to start?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-body" id="faq-body-1" role="region">
+          <div class="faq-body-inner">
+            <p class="faq-a">We welcome students from A1 (complete beginner) to C2. Our placement test ensures you join the right group — you'll be challenged but never lost.</p>
+          </div>
         </div>
-        <div class="faq-body"><div class="faq-body-inner"><p class="faq-a">We welcome students from complete beginners (A1) to advanced speakers (C1/C2). Our placement test helps you find the right group.</p></div></div>
       </div>
-      <div class="faq-item">
-        <div class="faq-q" role="button" tabindex="0">
-          <span>How do live sessions work?</span>
-          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="7" y1="2" x2="7" y2="12"/><line x1="2" y1="7" x2="12" y2="7"/></svg></span>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-body-2">
+          How do live sessions work?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-body" id="faq-body-2" role="region">
+          <div class="faq-body-inner">
+            <p class="faq-a">Sessions run 3&times; per week on Zoom, 90 minutes each. All sessions are recorded and automatically added to your Moodle library within hours.</p>
+          </div>
         </div>
-        <div class="faq-body"><div class="faq-body-inner"><p class="faq-a">Sessions run 3 times per week via Zoom, 90 minutes each. You can also access recordings anytime on our Moodle platform.</p></div></div>
       </div>
-      <div class="faq-item">
-        <div class="faq-q" role="button" tabindex="0">
-          <span>Can I pause or cancel my subscription?</span>
-          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="7" y1="2" x2="7" y2="12"/><line x1="2" y1="7" x2="12" y2="7"/></svg></span>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-body-3">
+          Can I pause or cancel?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-body" id="faq-body-3" role="region">
+          <div class="faq-body-inner">
+            <p class="faq-a">Yes. You can pause your subscription for up to one month or cancel with 7 days notice before your next billing cycle. No penalties, no fees.</p>
+          </div>
         </div>
-        <div class="faq-body"><div class="faq-body-inner"><p class="faq-a">Yes — pause for up to one month or cancel anytime with 7 days' notice. No penalties.</p></div></div>
       </div>
-      <div class="faq-item">
-        <div class="faq-q" role="button" tabindex="0">
-          <span>Do you offer exam preparation?</span>
-          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="7" y1="2" x2="7" y2="12"/><line x1="2" y1="7" x2="12" y2="7"/></svg></span>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-body-4">
+          Do you offer exam preparation?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-body" id="faq-body-4" role="region">
+          <div class="faq-body-inner">
+            <p class="faq-a">Absolutely. We have dedicated tracks for TestDaF, Goethe-Zertifikat, telc, and DSH. Our Intensive plan includes an exam prep guarantee.</p>
+          </div>
         </div>
-        <div class="faq-body"><div class="faq-body-inner"><p class="faq-a">Yes. We offer dedicated tracks for TestDaF, Goethe-Zertifikat, telc, and DSH exams.</p></div></div>
       </div>
-      <div class="faq-item">
-        <div class="faq-q" role="button" tabindex="0">
-          <span>What payment methods do you accept?</span>
-          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="7" y1="2" x2="7" y2="12"/><line x1="2" y1="7" x2="12" y2="7"/></svg></span>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-body-5">
+          What payment methods do you accept?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-body" id="faq-body-5" role="region">
+          <div class="faq-body-inner">
+            <p class="faq-a">Credit card, bank transfer, and PayPal. All prices are in EUR. You'll receive a secure payment link by email within 24 hours of enrolling.</p>
+          </div>
         </div>
-        <div class="faq-body"><div class="faq-body-inner"><p class="faq-a">Credit card, bank transfer, and PayPal. All prices are in EUR.</p></div></div>
       </div>
+
     </div>
-  </section>
-  <script>
-    document.querySelectorAll('.faq-q').forEach(function(q) {
-      q.addEventListener('click', function() {
-        var item = q.closest('.faq-item');
-        var isOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
-        if (!isOpen) item.classList.add('open');
-      });
-      q.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); q.click(); }
-      });
-    });
-  </script>
+  </div>
+</section>
+
+<script>
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+
+  // Close all open items
+  document.querySelectorAll('.faq-item.open').forEach(function(i) {
+    i.classList.remove('open');
+    i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+  });
+
+  // Open the clicked one if it was closed
+  if (!isOpen) {
+    item.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+  }
+}
+
+// Keyboard support: Enter and Space trigger toggle
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter' || e.key === ' ') {
+    var t = e.target;
+    if (t.classList.contains('faq-q')) {
+      e.preventDefault();
+      toggleFaq(t);
+    }
+  }
+});
+</script>
+
 </body>
 </html>
