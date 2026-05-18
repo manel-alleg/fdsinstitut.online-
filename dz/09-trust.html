@@ -1,143 +1,123 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reconnu par — FDS Institut DZ</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Montserrat:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Partenaires de confiance — FDS Institut</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Montserrat:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"/>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --orange: #FF7900;
-    --blue: #00304E;
-    --gray-50: #F7F8FA;
-    --gray-200: #E2E3E5;
-    --gray-500: #6B7280;
-    --black: #111;
-  }
-  body { font-family: 'Montserrat', sans-serif; background: var(--gray-50); color: var(--black); }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --orange:#FF7900;
+  --blue:#00304E;
+  --black:#111;
+  --gray-50:#F7F8FA;
+  --gray-200:#E2E3E5;
+  --gray-500:#6B7280;
+}
+body{font-family:'Montserrat',sans-serif;color:var(--black);background:var(--gray-50);line-height:1.6}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.reveal.in{opacity:1;transform:none}
+.reveal-d1{transition-delay:.1s}
+.reveal-d2{transition-delay:.2s}
+.reveal-d3{transition-delay:.3s}
+section{padding:5rem 1.5rem}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:3rem}
+.eyebrow{font-family:'Nunito',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:.75rem;display:block}
+h2{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(1.6rem,3vw,2.25rem);color:var(--blue)}
+.accent{color:var(--orange)}
 
-  .section {
-    background: var(--gray-50);
-    padding: 80px 24px;
-    max-width: 1120px;
-    margin: 0 auto;
-  }
+.trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
 
-  .section-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--orange);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 14px;
-  }
+.trust-card{
+  background:#fff;
+  border:1.5px solid var(--gray-200);
+  border-radius:20px;
+  padding:2.25rem 2rem;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:1.25rem;
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+}
+.trust-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 16px 48px rgba(0,48,78,.1);
+  border-color:var(--gray-200);
+}
 
-  h2 {
-    font-family: 'Sora', sans-serif;
-    font-size: clamp(1.875rem, 4vw, 2.625rem);
-    font-weight: 700;
-    color: var(--blue);
-    letter-spacing: -0.03em;
-    line-height: 1.1;
-    margin-bottom: 48px;
-    max-width: 480px;
-  }
+.trust-logo{
+  width:56px;height:56px;border-radius:16px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Sora',sans-serif;font-weight:800;font-size:1.5rem;
+  flex-shrink:0;
+}
+.logo-orange{background:#FFF3E8;color:var(--orange)}
+.logo-blue{background:#E8F0F7;color:var(--blue)}
+.logo-gray{background:var(--gray-50);color:var(--gray-500);border:1.5px solid var(--gray-200)}
 
-  .grid {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: 1fr;
-  }
+.trust-card-body{}
+.trust-card-name{font-family:'Sora',sans-serif;font-weight:700;font-size:1.05rem;color:var(--blue);margin-bottom:.35rem}
+.trust-card-sub{font-family:'Nunito',sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--orange);margin-bottom:.6rem}
+.trust-card-desc{font-size:.87rem;color:var(--gray-500);line-height:1.65}
 
-  @media (min-width: 640px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+.trust-tag{display:inline-block;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:100px;padding:.25rem .75rem;font-family:'Nunito',sans-serif;font-weight:700;font-size:.72rem;color:var(--gray-500);letter-spacing:.04em}
 
-  .card {
-    background: #fff;
-    border: 1.5px solid var(--gray-200);
-    border-radius: 16px;
-    padding: 32px 28px;
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
-
-  .card:hover {
-    border-color: var(--orange);
-    box-shadow: 0 4px 24px rgba(255,121,0,0.08);
-  }
-
-  .logo-badge {
-    width: 52px;
-    height: 52px;
-    border-radius: 12px;
-    background: var(--blue);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Sora', sans-serif;
-    font-weight: 700;
-    font-size: 1rem;
-    margin-bottom: 20px;
-    flex-shrink: 0;
-  }
-
-  .card-name {
-    font-family: 'Sora', sans-serif;
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: var(--blue);
-    margin-bottom: 4px;
-  }
-
-  .card-tag {
-    font-family: 'Nunito', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--orange);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-    display: block;
-  }
-
-  .card-desc {
-    font-size: 0.875rem;
-    color: var(--gray-500);
-    line-height: 1.65;
-  }
+@media(max-width:860px){.trust-grid{grid-template-columns:1fr}}
+@media(max-width:600px){section{padding:3.5rem 1rem}}
 </style>
 </head>
 <body>
-  <section class="section">
-    <p class="section-label">Reconnu par</p>
-    <h2>Standards prouvés.</h2>
-    <div class="grid">
-
-      <div class="card">
-        <div class="logo-badge">H</div>
-        <div class="card-name">Hueber</div>
-        <span class="card-tag">Partenaire pédagogique officiel</span>
-        <p class="card-desc">Notre programme utilise des supports certifiés Hueber &mdash; la référence en édition de langue allemande depuis 1961.</p>
-      </div>
-
-      <div class="card">
-        <div class="logo-badge">F</div>
-        <div class="card-name">Fintiba</div>
-        <span class="card-tag">Compte bloqué facilité</span>
-        <p class="card-desc">Vous partez étudier en Allemagne ? Nous collaborons avec Fintiba pour faciliter votre compte bloqué et votre preuve financière visa.</p>
-      </div>
-
-      <div class="card">
-        <div class="logo-badge">CE</div>
-        <div class="card-name">CEFR / CECRL</div>
-        <span class="card-tag">Conforme au cadre européen</span>
-        <p class="card-desc">Tous nos niveaux (A1&rarr;C2) suivent strictement le Cadre Européen Commun de Référence &mdash; reconnu par Goethe, TestDaF et telc.</p>
-      </div>
-
+<section>
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="eyebrow">Nos références</span>
+      <h2>Alignés sur les <span class="accent">standards européens</span></h2>
     </div>
-  </section>
+
+    <div class="trust-grid">
+      <!-- HUEBER -->
+      <div class="trust-card reveal reveal-d1">
+        <div class="trust-logo logo-orange">H</div>
+        <div class="trust-card-body">
+          <div class="trust-card-name">Hueber Verlag</div>
+          <div class="trust-card-sub">Éditeur de référence</div>
+          <p class="trust-card-desc">Nos cours s'appuient sur les manuels Hueber, la maison d'édition allemande leader pour l'enseignement du FLE. Méthodes éprouvées, contenus actualisés.</p>
+        </div>
+        <span class="trust-tag">Manuels officiels</span>
+      </div>
+
+      <!-- FINTIBA -->
+      <div class="trust-card reveal reveal-d2">
+        <div class="trust-logo logo-blue">F</div>
+        <div class="trust-card-body">
+          <div class="trust-card-name">Fintiba</div>
+          <div class="trust-card-sub">Partenaire financier</div>
+          <p class="trust-card-desc">Fintiba facilite l'ouverture de comptes bloqués pour les étudiants algériens souhaitant étudier en Allemagne. Une démarche simplifiée, un soutien concret.</p>
+        </div>
+        <span class="trust-tag">Études en Allemagne</span>
+      </div>
+
+      <!-- CECR -->
+      <div class="trust-card reveal reveal-d3">
+        <div class="trust-logo logo-gray">C</div>
+        <div class="trust-card-body">
+          <div class="trust-card-name">Cadre CECR</div>
+          <div class="trust-card-sub">Référentiel européen</div>
+          <p class="trust-card-desc">Tous nos niveaux (A1 à C2) sont alignés sur le Cadre Européen Commun de Référence pour les langues, garantissant une progression reconnue internationalement.</p>
+        </div>
+        <span class="trust-tag">A1 – C2</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
 </body>
 </html>

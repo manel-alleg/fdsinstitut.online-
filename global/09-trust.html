@@ -1,78 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Trust Partners — FDS Institut</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700;800&family=Montserrat:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --orange: #FF7900;
-    --blue: #00304E;
-    --gray-50: #F7F8FA;
-    --gray-200: #E2E3E5;
-    --gray-500: #6B7280;
-    --black: #111111;
-  }
-  body { font-family: 'Montserrat', sans-serif; background: var(--gray-50); color: var(--black); }
-  section { max-width: 64rem; margin: 0 auto; padding: 5rem 1.5rem; }
-  .section-header { max-width: 36rem; margin-bottom: 3rem; }
-  .eyebrow {
-    font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.6875rem;
-    letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.75rem;
-  }
-  h2 {
-    font-family: 'Sora', sans-serif; font-weight: 800;
-    font-size: clamp(1.75rem, 4vw, 2.5rem); letter-spacing: -0.03em; line-height: 1.1;
-    color: var(--black); margin-bottom: 0.75rem;
-  }
-  .sub { font-size: 1rem; line-height: 1.65; color: var(--gray-500); }
-  .grid { display: grid; gap: 1.25rem; grid-template-columns: 1fr; }
-  @media (min-width: 640px) { .grid { grid-template-columns: repeat(3, 1fr); } }
-  .card {
-    background: #fff; border: 1.5px solid var(--gray-200); border-radius: 20px; padding: 2rem;
-    transition: border-color 0.25s, transform 0.3s cubic-bezier(0.22,1,0.36,1);
-  }
-  .card:hover { border-color: var(--orange); transform: translateY(-3px); }
-  .avatar {
-    width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center;
-    justify-content: center; font-family: 'Sora', sans-serif; font-weight: 800;
-    font-size: 1.125rem; color: #fff; margin-bottom: 1.25rem;
-  }
-  .av-orange { background: var(--orange); }
-  .av-blue { background: var(--blue); }
-  .av-gray { background: var(--gray-500); }
-  .card-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.125rem; color: var(--black); margin-bottom: 0.5rem; }
-  .card-desc { font-size: 0.9rem; line-height: 1.6; color: var(--gray-500); }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FDS Institut — Trust Partners</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Montserrat:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; }
+
+    :root {
+      --orange: #FF7900;
+      --blue: #00304E;
+      --gray-50: #F7F8FA;
+      --gray-200: #E2E3E5;
+      --gray-500: #6B7280;
+      --black: #111;
+    }
+
+    body {
+      background: var(--gray-50);
+      font-family: 'Montserrat', sans-serif;
+      color: var(--black);
+    }
+
+    .trust-section {
+      background: var(--gray-50);
+      padding: 6rem 1.5rem;
+    }
+
+    .container {
+      max-width: 56rem;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .eyebrow {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: .72rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      display: block;
+      margin-bottom: .75rem;
+    }
+
+    .section-h2 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.25rem);
+      font-weight: 800;
+      color: var(--black);
+      line-height: 1.15;
+      letter-spacing: -.025em;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .trust-card {
+      background: #fff;
+      border: 1.5px solid var(--gray-200);
+      border-radius: 20px;
+      padding: 2rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+      transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease;
+      cursor: default;
+    }
+
+    .trust-card:hover {
+      border-color: var(--orange);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px -8px rgba(255,121,0,.15);
+    }
+
+    .trust-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Sora', sans-serif;
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .trust-avatar.orange { background: var(--orange); }
+    .trust-avatar.blue   { background: var(--blue); }
+    .trust-avatar.gray   { background: var(--gray-500); }
+
+    .trust-name {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--black);
+      margin-bottom: .25rem;
+    }
+
+    .trust-desc {
+      font-size: .85rem;
+      font-weight: 500;
+      color: var(--gray-500);
+      line-height: 1.55;
+    }
+
+    @media (max-width: 768px) {
+      .trust-grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
+    }
+
+    @media (max-width: 600px) {
+      .trust-section { padding: 4rem 1rem; }
+    }
+  </style>
 </head>
 <body>
-  <section>
+
+<section class="trust-section" aria-labelledby="trust-heading">
+  <div class="container">
     <div class="section-header">
-      <p class="eyebrow">Standards</p>
-      <h2>Aligned with European standards.</h2>
-      <p class="sub">Our curriculum, materials, and certifications are built on the frameworks trusted by European institutions.</p>
+      <span class="eyebrow">Trusted partners</span>
+      <h2 class="section-h2" id="trust-heading">Aligned with European standards.</h2>
     </div>
-    <div class="grid">
-      <div class="card">
-        <div class="avatar av-orange">H</div>
-        <div class="card-title">Hueber</div>
-        <p class="card-desc">Course materials from Hueber Verlag, Germany's leading language publisher.</p>
+
+    <div class="trust-grid">
+
+      <div class="trust-card">
+        <div class="trust-avatar orange" aria-hidden="true">H</div>
+        <div>
+          <div class="trust-name">Hueber Verlag</div>
+          <p class="trust-desc">Official Hueber teaching materials integrated into every level — the gold standard in German language publishing.</p>
+        </div>
       </div>
-      <div class="card">
-        <div class="avatar av-blue">F</div>
-        <div class="card-title">Fintiba</div>
-        <p class="card-desc">Fintiba-compatible blocked accounts for German visa applications.</p>
+
+      <div class="trust-card">
+        <div class="trust-avatar blue" aria-hidden="true">F</div>
+        <div>
+          <div class="trust-name">Fintiba</div>
+          <p class="trust-desc">Recommended partner for blocked accounts and financial requirements for students moving to Germany.</p>
+        </div>
       </div>
-      <div class="card">
-        <div class="avatar av-gray">C</div>
-        <div class="card-title">CEFR</div>
-        <p class="card-desc">All levels mapped to the Common European Framework of Reference (A1–C2).</p>
+
+      <div class="trust-card">
+        <div class="trust-avatar gray" aria-hidden="true">C</div>
+        <div>
+          <div class="trust-name">CEFR Framework</div>
+          <p class="trust-desc">All FDS courses are structured and assessed in full alignment with the Common European Framework of Reference for Languages.</p>
+        </div>
       </div>
+
     </div>
-  </section>
+  </div>
+</section>
+
 </body>
 </html>

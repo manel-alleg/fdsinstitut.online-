@@ -1,119 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Testimonials — FDS Institut</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700;800&family=Montserrat:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --orange: #FF7900;
-    --blue: #00304E;
-    --gray-200: #E2E3E5;
-    --gray-500: #6B7280;
-    --black: #111111;
-  }
-  body { font-family: 'Montserrat', sans-serif; background: #fff; color: var(--black); }
-  section { max-width: 64rem; margin: 0 auto; padding: 5rem 1.5rem; }
-  .section-header { margin-bottom: 3rem; }
-  .eyebrow {
-    font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.6875rem;
-    letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.75rem;
-  }
-  h2 {
-    font-family: 'Sora', sans-serif; font-weight: 800;
-    font-size: clamp(1.75rem, 4vw, 2.5rem); letter-spacing: -0.03em; line-height: 1.1; color: var(--black);
-  }
-  .grid { display: grid; gap: 1.25rem; grid-template-columns: 1fr; }
-  @media (min-width: 768px) { .grid { grid-template-columns: repeat(3, 1fr); } }
-  .card { border-radius: 20px; padding: 2rem; display: flex; flex-direction: column; gap: 1.25rem; }
-  .card-light { background: #fff; border: 1.5px solid var(--gray-200); }
-  .card-dark { background: var(--blue); }
-  .stars { display: flex; gap: 3px; }
-  .star { color: #F59E0B; }
-  .star-w { color: rgba(255,255,255,0.9); }
-  .quote { font-size: 1rem; line-height: 1.65; flex: 1; }
-  .card-light .quote { color: var(--gray-500); }
-  .card-dark .quote { color: rgba(255,255,255,0.85); }
-  .author { display: flex; align-items: center; gap: 0.75rem; }
-  .avatar {
-    width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center;
-    justify-content: center; font-family: 'Sora', sans-serif; font-weight: 800;
-    font-size: 0.75rem; color: #fff; flex-shrink: 0;
-  }
-  .av-orange { background: var(--orange); }
-  .av-glass { background: rgba(255,255,255,0.2); }
-  .author-name { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.9rem; }
-  .card-light .author-name { color: var(--black); }
-  .card-dark .author-name { color: #fff; }
-  .author-role { font-size: 0.8rem; }
-  .card-light .author-role { color: var(--gray-500); }
-  .card-dark .author-role { color: rgba(255,255,255,0.6); }
-  .star-svg { width:16px; height:16px; display:inline-block; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FDS Institut — Testimonials</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Montserrat:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; }
+
+    :root {
+      --orange: #FF7900;
+      --blue: #00304E;
+      --gray-50: #F7F8FA;
+      --gray-200: #E2E3E5;
+      --gray-500: #6B7280;
+      --black: #111;
+    }
+
+    body {
+      background: #fff;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--black);
+    }
+
+    .testimonials-section {
+      background: #fff;
+      padding: 6rem 1.5rem;
+    }
+
+    .container {
+      max-width: 80rem;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .eyebrow {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: .72rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      display: block;
+      margin-bottom: .75rem;
+    }
+
+    .section-h2 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.25rem);
+      font-weight: 800;
+      color: var(--black);
+      line-height: 1.15;
+      letter-spacing: -.025em;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .testi-card {
+      border-radius: 24px;
+      padding: 2rem;
+      border: 1.5px solid var(--gray-200);
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .testi-card.dark {
+      background: var(--blue);
+      border-color: var(--blue);
+    }
+
+    .testi-stars {
+      display: flex;
+      gap: .15rem;
+      margin-bottom: 1rem;
+      color: #F59E0B;
+    }
+
+    .testi-quote {
+      font-size: .9rem;
+      line-height: 1.65;
+      color: var(--black);
+      margin-bottom: 1.5rem;
+      flex: 1;
+      font-style: italic;
+    }
+
+    .testi-card.dark .testi-quote { color: rgba(255,255,255,.85); }
+
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+
+    .testi-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      border: 2px solid rgba(255,255,255,.3);
+    }
+
+    .testi-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+    }
+
+    .testi-name {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: .9rem;
+      color: var(--black);
+      margin-bottom: .15rem;
+    }
+
+    .testi-card.dark .testi-name { color: #fff; }
+
+    .testi-meta {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: .72rem;
+      color: var(--gray-500);
+    }
+
+    .testi-card.dark .testi-meta { color: rgba(255,255,255,.5); }
+
+    @media (max-width: 1023px) {
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .testimonials-section { padding: 4rem 1rem; }
+    }
+  </style>
 </head>
 <body>
-  <section>
+
+<section class="testimonials-section" aria-labelledby="testimonials-heading">
+  <div class="container">
     <div class="section-header">
-      <p class="eyebrow">Students</p>
-      <h2>What our students say.</h2>
+      <span class="eyebrow">Student stories</span>
+      <h2 class="section-h2" id="testimonials-heading">What our students say.</h2>
     </div>
-    <div class="grid">
-      <div class="card card-light">
-        <div class="stars">
-          <span class="star"><svg class="star-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
-          <span class="star"><svg class="star-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
-          <span class="star"><svg class="star-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
-          <span class="star"><svg class="star-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
-          <span class="star"><svg class="star-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
+
+    <div class="testimonials-grid">
+
+      <!-- Card 1: light -->
+      <div class="testi-card">
+        <div class="testi-stars" aria-label="5 out of 5 stars">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
-        <p class="quote">"FDS helped me pass the TestDaF on my first attempt. The live sessions made all the difference."</p>
-        <div class="author">
-          <div class="avatar av-orange">SK</div>
+        <p class="testi-quote">"FDS helped me pass the TestDaF on my first attempt. The live sessions made all the difference — the teacher knew exactly where I was struggling."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" aria-hidden="true">
+            <img src="https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Sarah K.">
+          </div>
           <div>
-            <div class="author-name">Sarah K.</div>
-            <div class="author-role">TestDaF B2, Germany</div>
+            <div class="testi-name">Sarah K.</div>
+            <div class="testi-meta">TestDaF B2 &middot; Germany</div>
           </div>
         </div>
       </div>
-      <div class="card card-dark">
-        <div class="stars">
-          <span class="star-w"><svg class="star-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
-          <span class="star-w"><svg class="star-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
-          <span class="star-w"><svg class="star-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
-          <span class="star-w"><svg class="star-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
-          <span class="star-w"><svg class="star-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
+
+      <!-- Card 2: dark blue, white text -->
+      <div class="testi-card dark">
+        <div class="testi-stars" aria-label="5 out of 5 stars">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
-        <p class="quote">"After 3 months with FDS, I went from A2 to B2. Incredible pace."</p>
-        <div class="author">
-          <div class="avatar av-glass">MR</div>
+        <p class="testi-quote">"After 3 months I went from A2 to B2. The structure and teacher quality are exceptional. I finally feel confident speaking German at work."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" aria-hidden="true">
+            <img src="https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Michael R.">
+          </div>
           <div>
-            <div class="author-name">Michael R.</div>
-            <div class="author-role">Group Class, Netherlands</div>
+            <div class="testi-name">Michael R.</div>
+            <div class="testi-meta">Group Class &middot; Netherlands</div>
           </div>
         </div>
       </div>
-      <div class="card card-light">
-        <div class="stars">
-          <span class="star"><svg class="star-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
-          <span class="star"><svg class="star-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
-          <span class="star"><svg class="star-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
-          <span class="star"><svg class="star-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
-          <span class="star"><svg class="star-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
+
+      <!-- Card 3: light -->
+      <div class="testi-card">
+        <div class="testi-stars" aria-label="5 out of 5 stars">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
-        <p class="quote">"Affordable, structured, and actually fun. I recommend FDS to every Algerian I know abroad."</p>
-        <div class="author">
-          <div class="avatar av-orange">AB</div>
+        <p class="testi-quote">"The most structured and affordable online German school I've found. Worth every euro. My visa interview was in German and I handled it confidently."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" aria-hidden="true">
+            <img src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Amira B.">
+          </div>
           <div>
-            <div class="author-name">Amira B.</div>
-            <div class="author-role">Intensive, UK</div>
+            <div class="testi-name">Amira B.</div>
+            <div class="testi-meta">Intensive &middot; United Kingdom</div>
           </div>
         </div>
       </div>
+
     </div>
-  </section>
+  </div>
+</section>
+
 </body>
 </html>

@@ -1,58 +1,54 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Urgence — FDS Institut DZ</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Montserrat:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Urgency Bar — FDS Institut</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Montserrat:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"/>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --orange: #FF7900;
-    --blue: #00304E;
-    --gray-50: #F7F8FA;
-    --gray-200: #E2E3E5;
-    --gray-500: #6B7280;
-    --black: #111;
-  }
-  body { font-family: 'Montserrat', sans-serif; background: #fff; }
-
-  .urgency-bar {
-    background: var(--orange);
-    color: #fff;
-    text-align: center;
-    padding: 10px 16px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.875rem;
-    font-weight: 600;
-    letter-spacing: 0.01em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-  }
-
-  .blink-dot {
-    width: 8px;
-    height: 8px;
-    background: #fff;
-    border-radius: 50%;
-    flex-shrink: 0;
-    animation: blink 1.2s ease-in-out infinite;
-  }
-
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.15; }
-  }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --orange:#FF7900;
+  --orange-2:#FF9100;
+  --blue:#00304E;
+  --black:#111;
+  --gray-50:#F7F8FA;
+  --gray-200:#E2E3E5;
+  --gray-500:#6B7280;
+  --moodle:#F27F22;
+}
+@keyframes pulseDot{0%,100%{opacity:1}50%{opacity:.35}}
+body{font-family:'Montserrat',sans-serif;color:var(--black);background:#fff;line-height:1.6;overflow-x:hidden}
+#urgency-bar{
+  background:var(--orange);
+  padding:.6rem 1rem;
+  text-align:center;
+  font-family:'Nunito',sans-serif;
+  font-weight:700;
+  font-size:.82rem;
+  color:#fff;
+  letter-spacing:.04em;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:.6rem;
+}
+.pulse-dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#fff;
+  animation:pulseDot 1.4s ease-in-out infinite;
+  flex-shrink:0;
+}
 </style>
 </head>
 <body>
-  <div class="urgency-bar">
-    <span class="blink-dot"></span>
-    <span>Nouvelle session — places limitées &nbsp;&middot;&nbsp; Démarrage cette semaine</span>
-  </div>
+<div id="urgency-bar">
+  <div class="pulse-dot"></div>
+  Nouvelles inscriptions ouvertes &nbsp;·&nbsp; Places limitées &nbsp;·&nbsp; Inscrivez-vous en 2 minutes
+</div>
 </body>
 </html>

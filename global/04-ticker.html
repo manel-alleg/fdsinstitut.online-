@@ -1,88 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FDS Institut — Ticker</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { -webkit-font-smoothing: antialiased; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FDS Institut — Ticker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange: #FF7900;
+  --orange-2: #FF9100;
+  --blue: #00304E;
+  --black: #111;
+  --gray-50: #F7F8FA;
+  --gray-100: #F0F1F3;
+  --gray-200: #E2E3E5;
+  --gray-500: #6B7280;
+  --moodle: #F27F22;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-font-smoothing: antialiased; }
+body { background: #fff; color: var(--black); font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
 
-    :root {
-      --orange: #FF7900;
-      --gray-200: #E2E3E5;
-      --black: #111;
-    }
+@keyframes marquee { to { transform: translateX(-50%); } }
 
-    body {
-      background: #fff;
-      overflow: hidden;
-    }
-
-    .ticker-wrap {
-      border-top: 1px solid var(--gray-200);
-      border-bottom: 1px solid var(--gray-200);
-      background: #fff;
-      padding: 13px 0;
-      overflow: hidden;
-    }
-
-    .marquee {
-      display: flex;
-      width: max-content;
-      animation: marquee 36s linear infinite;
-      will-change: transform;
-    }
-
-    @keyframes marquee {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-
-    .item {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 500;
-      font-size: 0.875rem;
-      letter-spacing: 0.01em;
-      white-space: nowrap;
-      color: var(--black);
-      display: flex;
-      align-items: center;
-    }
-
-    .diamond {
-      display: inline-block;
-      width: 6px;
-      height: 6px;
-      background: var(--orange);
-      transform: rotate(45deg);
-      margin: 0 18px;
-      flex-shrink: 0;
-    }
-  </style>
+.ticker {
+  background: #fff;
+  border-top: 1px solid var(--gray-200);
+  border-bottom: 1px solid var(--gray-200);
+  overflow: hidden;
+  padding: .85rem 0;
+  white-space: nowrap;
+}
+.ticker-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 2rem;
+  animation: marquee 34s linear infinite;
+  will-change: transform;
+}
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 2rem;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: .82rem;
+  letter-spacing: .04em;
+  color: var(--black);
+  white-space: nowrap;
+}
+.ticker-sep {
+  flex-shrink: 0;
+  color: var(--orange);
+}
+</style>
 </head>
 <body>
-  <div class="ticker-wrap">
-    <div class="marquee" id="ticker"></div>
-  </div>
 
-  <script>
-    const words = [
-      'A1 → C2', 'Live online', 'Certified teachers', 'European standards',
-      'Worldwide', 'Lifetime replays', 'Small cohorts', '14-day money-back'
-    ];
-    const all = [...words, ...words, ...words];
-    const ticker = document.getElementById('ticker');
-    const fullSet = [...all, ...all];
-    fullSet.forEach(w => {
-      const span = document.createElement('span');
-      span.className = 'item';
-      span.innerHTML = w + '<span class="diamond"></span>';
-      ticker.appendChild(span);
-    });
-  </script>
+<!-- ═══ 4. TICKER ═══ -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <!-- First set -->
+    <span class="ticker-item">Deutsch lernen</span>
+    <span class="ticker-sep"><svg width="10" height="10" viewBox="0 0 10 10"><polygon points="5,0 10,5 5,10 0,5" fill="currentColor"/></svg></span>
+    <span class="ticker-item">A1 → C2</span>
+    <span class="ticker-sep"><svg width="10" height="10" viewBox="0 0 10 10"><polygon points="5,0 10,5 5,10 0,5" fill="currentColor"/></svg></span>
+    <span class="ticker-item">Live online</span>
+    <span class="ticker-sep"><svg width="10" height="10" viewBox="0 0 10 10"><polygon points="5,0 10,5 5,10 0,5" fill="currentColor"/></svg></span>
+    <span class="ticker-item">TestDaF ready</span>
+    <span class="ticker-sep"><svg width="10" height="10" viewBox="0 0 10 10"><polygon points="5,0 10,5 5,10 0,5" fill="currentColor"/></svg></span>
+    <span class="ticker-item">Goethe Zertifikat</span>
+    <span class="ticker-sep"><svg width="10" height="10" viewBox="0 0 10 10"><polygon points="5,0 10,5 5,10 0,5" fill="currentColor"/></svg></span>
+    <span class="ticker-item">FDS Institut</span>
+    <span class="ticker-sep"><svg width="10" height="10" viewBox="0 0 10 10"><polygon points="5,0 10,5 5,10 0,5" fill="currentColor"/></svg></span>
+    <span class="ticker-item">12,000+ students</span>
+    <span class="ticker-sep"><svg width="10" height="10" viewBox="0 0 10 10"><polygon points="5,0 10,5 5,10 0,5" fill="currentColor"/></svg></span>
+    <!-- Duplicate for seamless loop -->
+    <span class="ticker-item">Deutsch lernen</span>
+    <span class="ticker-sep"><svg width="10" height="10" viewBox="0 0 10 10"><polygon points="5,0 10,5 5,10 0,5" fill="currentColor"/></svg></span>
+    <span class="ticker-item">A1 → C2</span>
+    <span class="ticker-sep"><svg width="10" height="10" viewBox="0 0 10 10"><polygon points="5,0 10,5 5,10 0,5" fill="currentColor"/></svg></span>
+    <span class="ticker-item">Live online</span>
+    <span class="ticker-sep"><svg width="10" height="10" viewBox="0 0 10 10"><polygon points="5,0 10,5 5,10 0,5" fill="currentColor"/></svg></span>
+    <span class="ticker-item">TestDaF ready</span>
+    <span class="ticker-sep"><svg width="10" height="10" viewBox="0 0 10 10"><polygon points="5,0 10,5 5,10 0,5" fill="currentColor"/></svg></span>
+    <span class="ticker-item">Goethe Zertifikat</span>
+    <span class="ticker-sep"><svg width="10" height="10" viewBox="0 0 10 10"><polygon points="5,0 10,5 5,10 0,5" fill="currentColor"/></svg></span>
+    <span class="ticker-item">FDS Institut</span>
+    <span class="ticker-sep"><svg width="10" height="10" viewBox="0 0 10 10"><polygon points="5,0 10,5 5,10 0,5" fill="currentColor"/></svg></span>
+    <span class="ticker-item">12,000+ students</span>
+    <span class="ticker-sep"><svg width="10" height="10" viewBox="0 0 10 10"><polygon points="5,0 10,5 5,10 0,5" fill="currentColor"/></svg></span>
+  </div>
+</div>
+
 </body>
 </html>

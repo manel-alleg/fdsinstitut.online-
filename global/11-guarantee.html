@@ -1,68 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Guarantee — FDS Institut</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700;800&family=Montserrat:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --orange: #FF7900;
-    --gray-100: #F0F1F3;
-    --gray-200: #E2E3E5;
-    --gray-500: #6B7280;
-    --black: #111111;
-  }
-  body { font-family: 'Montserrat', sans-serif; background: #fff; color: var(--black); }
-  section { max-width: 64rem; margin: 0 auto; padding: 5rem 1.5rem; }
-  .card {
-    background: var(--gray-100); border: 1.5px solid var(--gray-200); border-radius: 24px;
-    padding: 3rem 2.5rem; display: flex; align-items: center; gap: 3rem; flex-wrap: wrap;
-  }
-  .icon-wrap { flex-shrink: 0; }
-  .icon-wrap svg { width: 64px; height: 64px; }
-  .content { flex: 1; min-width: 200px; }
-  h2 {
-    font-family: 'Sora', sans-serif; font-weight: 800;
-    font-size: clamp(1.5rem, 3vw, 2rem); letter-spacing: -0.03em; line-height: 1.15;
-    color: var(--black); margin-bottom: 0.75rem;
-  }
-  .sub { font-size: 0.9375rem; line-height: 1.65; color: var(--gray-500); max-width: 36rem; }
-  .btn {
-    display: inline-block; font-family: 'Montserrat', sans-serif; font-weight: 600;
-    font-size: 0.9375rem; background: var(--orange); color: #fff; border: none;
-    border-radius: 10px; padding: 0.875rem 1.75rem; cursor: pointer; text-decoration: none;
-    transition: opacity 0.15s; flex-shrink: 0; white-space: nowrap;
-  }
-  .btn:hover { opacity: 0.88; }
-  @media (max-width: 640px) {
-    .card { gap: 1.5rem; padding: 2rem 1.5rem; }
-    .icon-wrap svg { width: 48px; height: 48px; }
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FDS Institut — Guarantee</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; }
+
+    :root {
+      --orange: #FF7900;
+      --orange-2: #FF9100;
+      --blue: #00304E;
+      --gray-50: #F7F8FA;
+      --gray-200: #E2E3E5;
+      --gray-500: #6B7280;
+      --black: #111;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--black);
+    }
+
+    .guarantee-section {
+      background: linear-gradient(135deg, #FF7900 0%, #FF9100 100%);
+      padding: 4rem 1.5rem;
+    }
+
+    .guarantee-inner {
+      max-width: 80rem;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    .guarantee-icon {
+      flex-shrink: 0;
+    }
+
+    .guarantee-text {
+      flex: 1;
+    }
+
+    .guarantee-title {
+      font-family: 'Sora', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+      color: #fff;
+      margin-bottom: .4rem;
+      line-height: 1.15;
+      letter-spacing: -.025em;
+    }
+
+    .guarantee-sub {
+      font-size: .95rem;
+      color: rgba(255,255,255,.85);
+      line-height: 1.5;
+      font-weight: 500;
+    }
+
+    .guarantee-action {
+      flex-shrink: 0;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 12px;
+      padding: 1rem 2rem;
+      cursor: pointer;
+      border: none;
+      white-space: nowrap;
+      transition: all .2s ease;
+    }
+
+    .btn-white-orange {
+      background: #fff;
+      color: var(--orange);
+    }
+
+    .btn-white-orange:hover {
+      background: var(--gray-50);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px -4px rgba(0,0,0,.15);
+    }
+
+    @media (max-width: 1023px) {
+      .guarantee-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .guarantee-section { padding: 3rem 1rem; }
+    }
+  </style>
 </head>
 <body>
-  <section>
-    <div class="card">
-      <div class="icon-wrap">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#FF7900" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-        </svg>
-      </div>
-      <div class="content">
-        <h2>14-day money-back guarantee.</h2>
-        <p class="sub">Try any class risk-free. If you're not satisfied in the first 14 days, we'll refund every cent — no questions asked.</p>
-      </div>
-      <button class="btn" onclick="openModal()">Reserve my free trial</button>
+
+<section class="guarantee-section" aria-labelledby="guarantee-heading">
+  <div class="guarantee-inner">
+
+    <div class="guarantee-icon" aria-hidden="true">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <polyline points="9 12 11 14 15 10"/>
+      </svg>
     </div>
-  </section>
-  <script>
-    function openModal() {
-      window.parent && window.parent.openModal ? window.parent.openModal() : alert('Modal coming soon.');
-    }
-  </script>
+
+    <div class="guarantee-text">
+      <h2 class="guarantee-title" id="guarantee-heading">14-day money-back guarantee.</h2>
+      <p class="guarantee-sub">Try a class risk-free. Full refund if you're not satisfied — no questions asked.</p>
+    </div>
+
+    <div class="guarantee-action">
+      <button class="btn btn-white-orange" onclick="openModal()" aria-label="Start your risk-free trial">
+        Start risk-free &nbsp;&rarr;
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<script>
+function openModal() {
+  if (window.parent && window.parent.openModal) {
+    window.parent.openModal();
+  } else if (document.getElementById('hero')) {
+    document.getElementById('hero').scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+function scrollToHero() {
+  if (window.parent && window.parent.openModal) {
+    window.parent.openModal();
+  } else if (document.getElementById('hero')) {
+    document.getElementById('hero').scrollIntoView({ behavior: 'smooth' });
+  }
+}
+</script>
+
 </body>
 </html>

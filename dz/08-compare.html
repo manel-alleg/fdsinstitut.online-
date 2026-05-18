@@ -1,176 +1,181 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Comparaison — FDS Institut DZ</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Montserrat:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Comparaison — FDS Institut</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Montserrat:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"/>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --orange: #FF7900;
-    --blue: #00304E;
-    --gray-50: #F7F8FA;
-    --gray-200: #E2E3E5;
-    --gray-500: #6B7280;
-    --black: #111;
-  }
-  body { font-family: 'Montserrat', sans-serif; background: #fff; color: var(--black); }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --orange:#FF7900;
+  --blue:#00304E;
+  --black:#111;
+  --gray-50:#F7F8FA;
+  --gray-200:#E2E3E5;
+  --gray-500:#6B7280;
+}
+body{font-family:'Montserrat',sans-serif;color:var(--black);background:#fff;line-height:1.6}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.reveal.in{opacity:1;transform:none}
+.reveal-d1{transition-delay:.1s}
+.reveal-d2{transition-delay:.2s}
+section{padding:5rem 1.5rem}
+.section-inner{max-width:900px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:3rem}
+.eyebrow{font-family:'Nunito',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:.75rem;display:block}
+h2{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(1.6rem,3vw,2.25rem);color:var(--blue)}
+.accent{color:var(--orange)}
 
-  .section {
-    background: #fff;
-    padding: 80px 24px;
-    max-width: 900px;
-    margin: 0 auto;
-  }
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1.5px solid var(--gray-200);border-radius:20px;box-shadow:0 4px 24px rgba(0,48,78,.06)}
+table{width:100%;border-collapse:collapse;min-width:540px}
 
-  .section-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--orange);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 14px;
-  }
+thead tr th{padding:1.1rem 1.25rem;font-family:'Nunito',sans-serif;font-weight:800;font-size:.82rem;text-align:left;border-bottom:1.5px solid var(--gray-200);background:#fff;color:var(--gray-500)}
+thead tr th:nth-child(2){background:var(--orange);color:#fff;text-align:center}
+thead tr th:nth-child(3){text-align:center}
 
-  h2 {
-    font-family: 'Sora', sans-serif;
-    font-size: clamp(1.875rem, 4vw, 2.625rem);
-    font-weight: 700;
-    color: var(--blue);
-    letter-spacing: -0.03em;
-    line-height: 1.1;
-    margin-bottom: 48px;
-    max-width: 480px;
-  }
+.badge-fds{display:inline-block;background:rgba(255,255,255,.25);color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:.68rem;padding:.15rem .5rem;border-radius:100px;letter-spacing:.04em;margin-left:.5rem;vertical-align:middle;border:1px solid rgba(255,255,255,.4)}
 
-  .table-wrap {
-    border: 1.5px solid var(--gray-200);
-    border-radius: 16px;
-    overflow: hidden;
-  }
+tbody tr td{padding:.95rem 1.25rem;font-size:.88rem;border-bottom:1px solid var(--gray-200);vertical-align:middle}
+tbody tr:last-child td{border-bottom:none}
+tbody tr td:nth-child(2){background:#FFF9F5;text-align:center;font-weight:600;color:var(--blue)}
+tbody tr td:nth-child(3){text-align:center;color:var(--gray-500)}
+tbody tr:nth-child(even) td:first-child{background:var(--gray-50)}
+tbody tr:nth-child(even) td:nth-child(3){background:var(--gray-50)}
+tbody tr:nth-child(odd) td:first-child{background:#fff}
+tbody tr:nth-child(odd) td:nth-child(3){background:#fff}
 
-  .table-head {
-    display: grid;
-    grid-template-columns: 2fr 1.5fr 1.5fr;
-    background: var(--blue);
-    padding: 16px 24px;
-    align-items: center;
-    gap: 12px;
-  }
+td.crit{font-family:'Nunito',sans-serif;font-weight:700;font-size:.85rem;color:var(--black)}
 
-  .head-empty { }
+.cell-content{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;flex-wrap:wrap}
+.icon-check-orange{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.icon-check-gray{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;opacity:.4}
+.icon-x-red{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
 
-  .head-us {
-    font-family: 'Nunito', sans-serif;
-    font-size: 0.8125rem;
-    font-weight: 700;
-    color: var(--orange);
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
+.price-main{font-family:'Sora',sans-serif;font-weight:700;font-size:.92rem;color:var(--blue)}
+.price-alt{font-size:.8rem;color:var(--gray-500);font-weight:500}
+.text-muted{font-size:.82rem;color:var(--gray-500)}
 
-  .head-them {
-    font-family: 'Nunito', sans-serif;
-    font-size: 0.8125rem;
-    font-weight: 600;
-    color: rgba(255,255,255,0.55);
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
-  .table-row {
-    display: grid;
-    grid-template-columns: 2fr 1.5fr 1.5fr;
-    padding: 16px 24px;
-    align-items: center;
-    gap: 12px;
-    border-top: 1px solid var(--gray-200);
-    font-size: 0.9375rem;
-  }
-
-  .table-row:nth-child(even) { background: var(--gray-50); }
-
-  .row-label {
-    font-weight: 600;
-    color: var(--black);
-  }
-
-  .row-us {
-    font-family: 'Sora', sans-serif;
-    font-weight: 700;
-    color: var(--orange);
-    text-align: center;
-    font-size: 0.9375rem;
-  }
-
-  .row-them {
-    text-align: center;
-    color: var(--gray-500);
-    font-size: 0.875rem;
-  }
-
-  .footnote {
-    font-size: 0.75rem;
-    color: var(--gray-500);
-    margin-top: 14px;
-    font-style: italic;
-  }
-
-  @media (max-width: 540px) {
-    .table-head, .table-row {
-      grid-template-columns: 1.5fr 1.2fr 1.2fr;
-      padding: 14px 16px;
-      font-size: 0.8125rem;
-    }
-    .row-us { font-size: 0.8125rem; }
-  }
+@media(max-width:600px){
+  section{padding:3.5rem 1rem}
+  thead tr th,tbody tr td{padding:.75rem .9rem}
+  td.crit{font-size:.8rem}
+  tbody tr td{font-size:.82rem}
+}
 </style>
 </head>
 <body>
-  <section class="section">
-    <p class="section-label">Comparaison</p>
-    <h2>Pourquoi FDS ?</h2>
-
-    <div class="table-wrap">
-      <div class="table-head">
-        <div class="head-empty"></div>
-        <div class="head-us">FDS Institut</div>
-        <div class="head-them">Institut Classique</div>
-      </div>
-      <div class="table-row">
-        <div class="row-label">Cours mensuel</div>
-        <div class="row-us">7&nbsp;500 DA</div>
-        <div class="row-them">45&nbsp;000 DA+</div>
-      </div>
-      <div class="table-row">
-        <div class="row-label">Délai avant commencer</div>
-        <div class="row-us">Sous 7 jours</div>
-        <div class="row-them">Liste d'attente</div>
-      </div>
-      <div class="table-row">
-        <div class="row-label">Format</div>
-        <div class="row-us">100% en ligne</div>
-        <div class="row-them">Présentiel uniquement</div>
-      </div>
-      <div class="table-row">
-        <div class="row-label">Paiement local</div>
-        <div class="row-us">CCP &middot; Edahabia &middot; BaridiMob</div>
-        <div class="row-them">Non disponible</div>
-      </div>
-      <div class="table-row">
-        <div class="row-label">Support</div>
-        <div class="row-us">WhatsApp direct</div>
-        <div class="row-them">Email uniquement</div>
-      </div>
+<section>
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="eyebrow">Pourquoi FDS ?</span>
+      <h2>FDS face aux <span class="accent">alternatives</span></h2>
     </div>
 
-    <p class="footnote">Comparaison à titre indicatif. Sources publiques.</p>
-  </section>
+    <div class="table-wrap reveal reveal-d1">
+      <table>
+        <thead>
+          <tr>
+            <th>Critère</th>
+            <th>FDS Institut <span class="badge-fds">Recommandé</span></th>
+            <th>Institut Classique</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="crit">Cours en direct</td>
+            <td>
+              <span class="cell-content">
+                <span class="icon-check-orange"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF7900" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                Oui, inclus
+              </span>
+            </td>
+            <td>
+              <span class="cell-content">
+                <span class="icon-check-gray"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                Oui
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td class="crit">Tarif mensuel</td>
+            <td>
+              <span class="cell-content">
+                <span class="icon-check-orange"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF7900" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                <span class="price-main">Dès 7 500 DA</span>
+              </span>
+            </td>
+            <td>
+              <span class="cell-content">
+                <span class="price-alt">15 000 – 30 000 DA+</span>
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td class="crit">Taille du groupe</td>
+            <td>
+              <span class="cell-content">
+                <span class="icon-check-orange"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF7900" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                Max 8
+              </span>
+            </td>
+            <td>
+              <span class="cell-content text-muted">15 – 25</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="crit">Accès aux replays</td>
+            <td>
+              <span class="cell-content">
+                <span class="icon-check-orange"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF7900" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                À vie
+              </span>
+            </td>
+            <td>
+              <span class="cell-content">
+                <span class="icon-x-red"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+                Non inclus
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td class="crit">Paiement local</td>
+            <td>
+              <span class="cell-content">
+                <span class="icon-check-orange"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF7900" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                CCP · Edahabia · BaridiMob
+              </span>
+            </td>
+            <td>
+              <span class="cell-content text-muted">Virement uniquement</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="crit">Cours d'essai</td>
+            <td>
+              <span class="cell-content">
+                <span class="icon-check-orange"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF7900" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                Gratuit
+              </span>
+            </td>
+            <td>
+              <span class="cell-content">
+                <span class="icon-check-gray"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                Rarement offert
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<script>
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
 </body>
 </html>
