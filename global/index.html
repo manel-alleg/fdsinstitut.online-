@@ -64,7 +64,7 @@ input, textarea, select { font-family: 'Montserrat', sans-serif; }
 .btn-outline-orange:hover { background: var(--orange); color: #fff; }
 .btn-white-orange { background: #fff; color: var(--orange); font-weight: 700; }
 .btn-white-orange:hover { background: var(--gray-50); }
-.btn-moodle { background: var(--moodle); color: #fff; }
+.btn-moodle { background: var(--moodle); color: #fff; padding: 1rem 2.25rem; font-size: 1rem; }
 .btn-moodle:hover { background: #d96e15; transform: translateY(-1px); }
 .btn-lg { padding: 1rem 2rem; font-size: 1rem; border-radius: 12px; }
 .btn-full { width: 100%; justify-content: center; }
@@ -575,7 +575,7 @@ input, textarea, select { font-family: 'Montserrat', sans-serif; }
    7. MOODLE PREVIEW
 ═══════════════════════════════════ */
 .moodle-section {
-  background: var(--gray-50);
+  background: linear-gradient(135deg, #FFF8F4 0%, #FFF3E8 40%, #F7F8FA 100%);
   padding: 6rem 1.5rem;
 }
 .moodle-inner {
@@ -613,8 +613,8 @@ input, textarea, select { font-family: 'Montserrat', sans-serif; }
 .moodle-card-wrap {
   position: relative;
   border-radius: 20px;
-  overflow: hidden;
-  height: 340px;
+  overflow: visible;
+  height: 400px;
 }
 .moodle-card-wrap img {
   width: 100%;
@@ -1058,6 +1058,143 @@ input, textarea, select { font-family: 'Montserrat', sans-serif; }
   animation: none;
 }
 
+/* ─── HERO PHOTOS ─── */
+.hero-photos {
+  display: flex;
+  margin-bottom: 1.5rem;
+}
+.hero-photo-card {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 2.5px solid #fff;
+  margin-left: -10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.12);
+  transition: transform .25s;
+}
+.hero-photo-card:first-child { margin-left: 0; }
+.hero-photo-card:hover { transform: translateY(-4px) scale(1.08); z-index: 1; }
+.hero-photo-card img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ─── VIDEO SECTION ─── */
+.video-section { padding: 5rem 1.5rem; background: var(--gray-50); }
+@media(min-width:1024px){.video-section{padding:6rem 3rem}}
+.video-inner { max-width: 64rem; margin: 0 auto; }
+.video-card {
+  border-radius: 20px; overflow: hidden;
+  box-shadow: 0 32px 80px -16px rgba(0,0,0,.18);
+}
+.video-thumb {
+  position: relative; cursor: pointer;
+  aspect-ratio: 16/9; overflow: hidden;
+}
+.video-thumb img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .6s ease;
+}
+.video-thumb:hover img { transform: scale(1.03); }
+.video-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.1) 0%, rgba(0,0,0,.5) 100%);
+}
+.play-btn {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px; height: 80px; border-radius: 50%;
+  background: var(--orange); color: #fff; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 32px rgba(255,121,0,.5);
+  transition: transform .25s, box-shadow .25s;
+  padding-left: 4px;
+}
+.video-thumb:hover .play-btn {
+  transform: translate(-50%, -50%) scale(1.1);
+  box-shadow: 0 12px 40px rgba(255,121,0,.6);
+}
+.video-caption {
+  position: absolute; bottom: 1.25rem; left: 1.25rem;
+  background: rgba(0,0,0,.6); backdrop-filter: blur(8px);
+  color: #fff; border-radius: 999px; padding: .4rem 1rem;
+  font-family: 'Nunito', sans-serif; font-weight: 700; font-size: .75rem;
+  display: flex; align-items: center; gap: .5rem;
+}
+.video-cap-dot {
+  width: 7px; height: 7px; border-radius: 50%; background: #EF4444;
+  animation: pulseDot 1.4s ease infinite;
+}
+
+/* ─── MOODLE ENHANCEMENTS ─── */
+.moodle-logo-box {
+  display: inline-block;
+  background: #fff;
+  border: 1.5px solid var(--gray-200);
+  border-radius: 16px;
+  padding: .75rem 1.5rem;
+  margin-bottom: 1.75rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,.06);
+}
+.moodle-stats {
+  display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.75rem;
+  padding: 1rem 1.25rem;
+  background: rgba(255,121,0,.06);
+  border-radius: 12px; border: 1px solid rgba(255,121,0,.15);
+}
+.moodle-stat { display: flex; flex-direction: column; }
+.moodle-stat-num {
+  font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.375rem;
+  color: var(--orange); line-height: 1;
+}
+.moodle-stat-lbl {
+  font-family: 'Nunito', sans-serif; font-weight: 700; font-size: .7rem;
+  letter-spacing: .06em; text-transform: uppercase; color: var(--gray-500);
+  margin-top: .2rem;
+}
+.moodle-ring {
+  position: absolute; bottom: -24px; right: -24px;
+  width: 120px; height: 120px; border-radius: 50%;
+  border: 3px solid var(--orange); opacity: .25; pointer-events: none;
+}
+
+/* ─── TESTIMONIAL PHOTO AVATARS ─── */
+.testi-avatar img {
+  width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
+}
+
+/* ─── FEATURES PHOTO ROW ─── */
+.features-photo-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+@media(max-width:640px){.features-photo-row{grid-template-columns:1fr}}
+.feat-photo {
+  border-radius: 16px; overflow: hidden; position: relative;
+  aspect-ratio: 4/3;
+  box-shadow: 0 8px 24px rgba(0,0,0,.1);
+}
+.feat-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+.feat-photo:hover img { transform: scale(1.04); }
+.feat-photo-caption {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(0deg, rgba(0,0,0,.7) 0%, transparent 100%);
+  color: #fff; padding: 1.5rem .875rem .875rem;
+  font-family: 'Nunito', sans-serif; font-weight: 700; font-size: .75rem;
+  letter-spacing: .06em; text-transform: uppercase;
+}
+
+/* ─── VIDEO SECTION eyebrow ─── */
+.section-eyebrow {
+  font-family: 'Nunito', sans-serif; font-weight: 800; font-size: .72rem;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--orange);
+  display: block; margin-bottom: .75rem;
+}
+.section-title {
+  font-size: clamp(1.6rem, 3vw, 2.25rem); font-weight: 800;
+  color: var(--black); line-height: 1.15;
+}
+
 /* ═══════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════ */
@@ -1133,6 +1270,20 @@ input, textarea, select { font-family: 'Montserrat', sans-serif; }
         <div class="trust-pill">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           14-day money-back
+        </div>
+      </div>
+      <div class="hero-photos reveal reveal-d4">
+        <div class="hero-photo-card">
+          <img src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Student">
+        </div>
+        <div class="hero-photo-card">
+          <img src="https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Student">
+        </div>
+        <div class="hero-photo-card">
+          <img src="https://images.pexels.com/photos/1438072/pexels-photo-1438072.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Student">
+        </div>
+        <div class="hero-photo-card">
+          <img src="https://images.pexels.com/photos/4144101/pexels-photo-4144101.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Student">
         </div>
       </div>
       <div class="social-proof reveal reveal-d4">
@@ -1282,6 +1433,33 @@ input, textarea, select { font-family: 'Montserrat', sans-serif; }
   </div>
 </section>
 
+<!-- ═══ 5b. VIDEO SECTION ═══ -->
+<section class="video-section reveal">
+  <div class="video-inner">
+    <div class="section-header" style="text-align:center;max-width:36rem;margin:0 auto 3rem;">
+      <p class="section-eyebrow">Watch</p>
+      <h2 class="section-title">See a live class in action.</h2>
+      <p style="color:var(--gray-500);font-size:1rem;margin-top:.75rem;line-height:1.65">A 90-minute live session, small group, real teacher — this is how FDS works.</p>
+    </div>
+    <div class="video-card" id="video-card">
+      <div class="video-thumb" id="video-thumb" onclick="loadVideo()">
+        <img src="https://images.pexels.com/photos/4778667/pexels-photo-4778667.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Live German class preview">
+        <div class="video-overlay"></div>
+        <button class="play-btn" aria-label="Play video">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </button>
+        <div class="video-caption">
+          <span class="video-cap-dot"></span>
+          Live session recording · B1 Group · 8 students
+        </div>
+      </div>
+      <div id="video-frame" style="display:none;aspect-ratio:16/9;width:100%;">
+        <iframe id="yt-frame" width="100%" height="100%" src="" frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen style="border-radius:20px;display:block;"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ 6. FEATURES ═══ -->
 <section class="features" aria-labelledby="features-heading">
   <div class="container">
@@ -1319,6 +1497,20 @@ input, textarea, select { font-family: 'Montserrat', sans-serif; }
         <p class="feature-desc">Direct access to your teacher between sessions. Ask questions, share practice, get feedback.</p>
       </div>
     </div>
+    <div class="features-photo-row reveal reveal-d1">
+      <div class="feat-photo">
+        <img src="https://images.pexels.com/photos/4144923/pexels-photo-4144923.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Student studying online">
+        <div class="feat-photo-caption">Live session — A2 group</div>
+      </div>
+      <div class="feat-photo">
+        <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Group learning">
+        <div class="feat-photo-caption">Study group — B1 level</div>
+      </div>
+      <div class="feat-photo">
+        <img src="https://images.pexels.com/photos/5905902/pexels-photo-5905902.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Online class">
+        <div class="feat-photo-caption">Self-paced platform</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1327,7 +1519,9 @@ input, textarea, select { font-family: 'Montserrat', sans-serif; }
   <div class="moodle-inner">
     <div class="moodle-text">
       <div class="moodle-logo reveal">
-        <img src="https://assets.zyrosite.com/tPWPZ3kEpjHdFO9F/moodle-1-740x380-s84vr5GqRxP3NUXr.png" alt="Moodle LMS" style="height:56px;width:auto;">
+        <div class="moodle-logo-box">
+          <img src="https://assets.zyrosite.com/tPWPZ3kEpjHdFO9F/moodle-1-740x380-s84vr5GqRxP3NUXr.png" alt="Moodle LMS" style="height:80px;width:auto;display:block;">
+        </div>
       </div>
       <h2 class="moodle-h2 reveal reveal-d1" id="moodle-heading">Your classroom, accessible 24/7.</h2>
       <p class="moodle-sub reveal reveal-d2">All your live sessions, replays, exercises, and certificates — in one place, powered by Moodle.</p>
@@ -1345,17 +1539,32 @@ input, textarea, select { font-family: 'Montserrat', sans-serif; }
           Certificate on completion
         </div>
       </div>
+      <div class="moodle-stats reveal reveal-d4">
+        <div class="moodle-stat">
+          <span class="moodle-stat-num">2 400+</span>
+          <span class="moodle-stat-lbl">Enrolled students</span>
+        </div>
+        <div class="moodle-stat">
+          <span class="moodle-stat-num">40+</span>
+          <span class="moodle-stat-lbl">Live courses</span>
+        </div>
+        <div class="moodle-stat">
+          <span class="moodle-stat-num">98%</span>
+          <span class="moodle-stat-lbl">Satisfaction</span>
+        </div>
+      </div>
       <button class="btn btn-moodle btn-lg reveal reveal-d4" onclick="window.open('https://elearning.fdsinstitut.com','_blank')" aria-label="Open the Moodle learning platform in a new tab">
         Open the platform &nbsp;→
       </button>
     </div>
     <div class="moodle-card-side reveal reveal-d2">
       <div class="moodle-card-wrap">
-        <img src="https://images.pexels.com/photos/5905902/pexels-photo-5905902.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Student attending a live German class online" loading="lazy">
+        <img src="https://images.pexels.com/photos/5905902/pexels-photo-5905902.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Student attending a live German class online" loading="lazy" style="border-radius:20px;overflow:hidden;">
         <div class="moodle-live-badge">
           <span class="green-dot" aria-hidden="true"></span>
           Live now &nbsp;·&nbsp; 24 students online
         </div>
+        <div class="moodle-ring"></div>
       </div>
     </div>
   </div>
@@ -1481,7 +1690,7 @@ input, textarea, select { font-family: 'Montserrat', sans-serif; }
         </div>
         <p class="testi-quote">"FDS helped me pass the TestDaF on my first attempt. The live sessions made all the difference — the teacher knew exactly where I was struggling."</p>
         <div class="testi-author">
-          <div class="testi-avatar testi-avatar-orange" aria-hidden="true">SK</div>
+          <div class="testi-avatar testi-avatar-orange" aria-hidden="true"><img src="https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Sarah K."></div>
           <div>
             <div class="testi-name">Sarah K.</div>
             <div class="testi-meta">TestDaF B2 · Germany</div>
@@ -1499,7 +1708,7 @@ input, textarea, select { font-family: 'Montserrat', sans-serif; }
         </div>
         <p class="testi-quote">"After 3 months I went from A2 to B2. The structure and teacher quality are exceptional. I finally feel confident speaking German at work."</p>
         <div class="testi-author">
-          <div class="testi-avatar testi-avatar-glass" aria-hidden="true">MR</div>
+          <div class="testi-avatar testi-avatar-glass" aria-hidden="true"><img src="https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Michael R."></div>
           <div>
             <div class="testi-name">Michael R.</div>
             <div class="testi-meta">Group Class · Netherlands</div>
@@ -1517,7 +1726,7 @@ input, textarea, select { font-family: 'Montserrat', sans-serif; }
         </div>
         <p class="testi-quote">"The most structured and affordable online German school I've found. Worth every euro. My visa interview was in German and I handled it confidently."</p>
         <div class="testi-author">
-          <div class="testi-avatar testi-avatar-orange" aria-hidden="true">AB</div>
+          <div class="testi-avatar testi-avatar-orange" aria-hidden="true"><img src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Amira B."></div>
           <div>
             <div class="testi-name">Amira B.</div>
             <div class="testi-meta">Intensive · United Kingdom</div>
@@ -1734,6 +1943,12 @@ function goBack() {
 
 function scrollToHero() {
   document.getElementById('hero').scrollIntoView({ behavior: 'smooth' });
+}
+
+function loadVideo() {
+  document.getElementById('video-thumb').style.display = 'none';
+  document.getElementById('video-frame').style.display = 'block';
+  document.getElementById('yt-frame').src = 'https://www.youtube.com/embed/?autoplay=1&rel=0';
 }
 
 /* ─── FAQ accordion ─── */

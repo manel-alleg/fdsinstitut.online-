@@ -98,6 +98,17 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
 .avatar-row-text{font-family:'Nunito',sans-serif;font-weight:700;font-size:.8rem;color:var(--gray-500)}
 .avatar-row-text strong{color:var(--black);display:block;font-size:.9rem}
 
+/* ── HERO PHOTOS ── */
+.hero-photos { display: flex; margin-bottom: 1.5rem; }
+.hero-photo-card {
+  width: 56px; height: 56px; border-radius: 14px; overflow: hidden;
+  border: 2.5px solid #fff; margin-left: -10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.12); transition: transform .25s;
+}
+.hero-photo-card:first-child { margin-left: 0; }
+.hero-photo-card:hover { transform: translateY(-4px) scale(1.08); z-index: 1; }
+.hero-photo-card img { width: 100%; height: 100%; object-fit: cover; }
+
 /* ── FORM CARD ── */
 .form-card{background:#fff;border:1.5px solid var(--gray-200);border-radius:24px;padding:2rem;box-shadow:0 8px 40px rgba(0,48,78,.08);width:100%}
 .form-card-label{font-family:'Nunito',sans-serif;font-weight:800;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:1rem;display:block}
@@ -145,6 +156,33 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
 .image-content h2{font-size:clamp(1.6rem,3.5vw,2.5rem);font-weight:800;color:#fff;margin-bottom:1rem}
 .image-content p{font-size:1rem;color:rgba(255,255,255,.8);margin-bottom:1.75rem;line-height:1.7}
 
+/* ── VIDEO SECTION ── */
+.video-section { padding: 5rem 1.5rem; background: var(--gray-50); }
+@media(min-width:1024px){.video-section{padding:6rem 3rem}}
+.video-inner { max-width: 64rem; margin: 0 auto; }
+.video-card { border-radius: 20px; overflow: hidden; box-shadow: 0 32px 80px -16px rgba(0,0,0,.18); }
+.video-thumb { position: relative; cursor: pointer; aspect-ratio: 16/9; overflow: hidden; }
+.video-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.video-thumb:hover img { transform: scale(1.03); }
+.video-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.1) 0%, rgba(0,0,0,.5) 100%); }
+.play-btn {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  width: 80px; height: 80px; border-radius: 50%; background: var(--orange); color: #fff;
+  border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 32px rgba(255,121,0,.5); transition: transform .25s, box-shadow .25s; padding-left: 4px;
+}
+.video-thumb:hover .play-btn { transform: translate(-50%,-50%) scale(1.1); box-shadow: 0 12px 40px rgba(255,121,0,.6); }
+.video-caption {
+  position: absolute; bottom: 1.25rem; left: 1.25rem;
+  background: rgba(0,0,0,.6); backdrop-filter: blur(8px); color: #fff;
+  border-radius: 999px; padding: .4rem 1rem;
+  font-family: 'Nunito', sans-serif; font-weight: 700; font-size: .75rem;
+  display: flex; align-items: center; gap: .5rem;
+}
+.video-cap-dot { width: 7px; height: 7px; border-radius: 50%; background: #EF4444; animation: pulseDot 1.4s ease infinite; }
+.section-eyebrow { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--orange); margin-bottom: .5rem; display: block; }
+.section-title { font-family: 'Sora', sans-serif; font-weight: 800; font-size: clamp(1.6rem,3vw,2.25rem); color: var(--blue); margin-top: .5rem; }
+
 /* ── FEATURES ── */
 #features{background:#fff;padding:5rem 1.5rem}
 .section-inner{max-width:1200px;margin:0 auto}
@@ -157,8 +195,16 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
 .feat-card h3{font-family:'Sora',sans-serif;font-weight:700;font-size:1rem;color:var(--blue);margin-bottom:.5rem}
 .feat-card p{font-size:.88rem;color:var(--gray-500);line-height:1.6}
 
+/* ── FEATURES PHOTO ROW ── */
+.features-photo-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-top: 2rem; }
+@media(max-width:640px){.features-photo-row{grid-template-columns:1fr}}
+.feat-photo { border-radius: 16px; overflow: hidden; position: relative; aspect-ratio: 4/3; box-shadow: 0 8px 24px rgba(0,0,0,.1); }
+.feat-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+.feat-photo:hover img { transform: scale(1.04); }
+.feat-photo-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(0deg,rgba(0,0,0,.7) 0%,transparent 100%); color: #fff; padding: 1.5rem .875rem .875rem; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; }
+
 /* ── MOODLE ── */
-#moodle{background:var(--gray-50);padding:5rem 1.5rem}
+#moodle{background:linear-gradient(135deg,#FFF8F4 0%,#FFF3E8 40%,#F7F8FA 100%);padding:5rem 1.5rem}
 .moodle-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
 .moodle-left h2{font-size:clamp(1.5rem,2.5vw,2.1rem);font-weight:800;color:var(--blue);margin:1rem 0 .75rem}
 .moodle-left p{font-size:.95rem;color:var(--gray-500);margin-bottom:1.5rem;line-height:1.7}
@@ -167,6 +213,22 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
 .moodle-img-wrap{position:relative;border-radius:20px;overflow:hidden;height:340px}
 .moodle-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
 .moodle-badge{position:absolute;bottom:1rem;left:1rem;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);border-radius:10px;padding:.45rem .8rem;display:flex;align-items:center;gap:.5rem;font-family:'Nunito',sans-serif;font-weight:700;font-size:.75rem;color:#fff}
+
+/* ── MOODLE ENHANCEMENTS ── */
+.moodle-logo-box {
+  display: inline-block; background: #fff; border: 1.5px solid var(--gray-200);
+  border-radius: 16px; padding: .75rem 1.5rem; margin-bottom: 1.75rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,.06);
+}
+.moodle-stats {
+  display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.75rem;
+  padding: 1rem 1.25rem; background: rgba(255,121,0,.06);
+  border-radius: 12px; border: 1px solid rgba(255,121,0,.15);
+}
+.moodle-stat { display: flex; flex-direction: column; }
+.moodle-stat-num { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.375rem; color: var(--orange); line-height: 1; }
+.moodle-stat-lbl { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; color: var(--gray-500); margin-top: .2rem; }
+.moodle-ring { position: absolute; bottom: -24px; right: -24px; width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--orange); opacity: .25; pointer-events: none; }
 
 /* ── PRICING ── */
 #pricing{background:#fff;padding:5rem 1.5rem}
@@ -328,6 +390,20 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
         <div class="trust-pill">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF7900" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           Remboursé 14 jours
+        </div>
+      </div>
+      <div class="hero-photos reveal reveal-d4">
+        <div class="hero-photo-card">
+          <img src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Étudiante">
+        </div>
+        <div class="hero-photo-card">
+          <img src="https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Étudiant">
+        </div>
+        <div class="hero-photo-card">
+          <img src="https://images.pexels.com/photos/1438072/pexels-photo-1438072.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Étudiante">
+        </div>
+        <div class="hero-photo-card">
+          <img src="https://images.pexels.com/photos/4144101/pexels-photo-4144101.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Cours en ligne">
         </div>
       </div>
       <hr class="hero-divider reveal reveal-d4"/>
@@ -492,6 +568,33 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
   </div>
 </section>
 
+<!-- ── VIDEO SECTION ── -->
+<section class="video-section reveal">
+  <div class="video-inner">
+    <div class="section-header" style="text-align:center;max-width:36rem;margin:0 auto 3rem;">
+      <p class="section-eyebrow">Découvrez</p>
+      <h2 class="section-title">Voyez un cours en direct.</h2>
+      <p style="color:var(--gray-500);font-size:1rem;margin-top:.75rem;line-height:1.65">90 minutes, petit groupe, vrai prof — voici comment fonctionne FDS.</p>
+    </div>
+    <div class="video-card" id="video-card">
+      <div class="video-thumb" id="video-thumb" onclick="loadVideo()">
+        <img src="https://images.pexels.com/photos/4778667/pexels-photo-4778667.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Aperçu cours FDS">
+        <div class="video-overlay"></div>
+        <button class="play-btn" aria-label="Lire la vidéo">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </button>
+        <div class="video-caption">
+          <span class="video-cap-dot"></span>
+          Enregistrement séance · Groupe B1 · 8 étudiants
+        </div>
+      </div>
+      <div id="video-frame" style="display:none;aspect-ratio:16/9;width:100%;">
+        <iframe id="yt-frame" width="100%" height="100%" src="" frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen style="border-radius:20px;display:block;"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ── FEATURES ── -->
 <section id="features">
   <div class="section-inner">
@@ -529,6 +632,20 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
         <p>Accès direct à votre professeur entre les séances. Questions, exercices, encouragements — toujours disponible.</p>
       </div>
     </div>
+    <div class="features-photo-row reveal reveal-d1">
+      <div class="feat-photo">
+        <img src="https://images.pexels.com/photos/4144923/pexels-photo-4144923.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Étudiante apprend en ligne">
+        <div class="feat-photo-caption">Séance en direct — Groupe A2</div>
+      </div>
+      <div class="feat-photo">
+        <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Groupe d'apprentissage">
+        <div class="feat-photo-caption">Cours en groupe — Niveau B1</div>
+      </div>
+      <div class="feat-photo">
+        <img src="https://images.pexels.com/photos/5905902/pexels-photo-5905902.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Cours autonome">
+        <div class="feat-photo-caption">Plateforme autonome</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -536,7 +653,9 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
 <section id="moodle">
   <div class="moodle-inner">
     <div class="moodle-left reveal">
-      <img src="https://assets.zyrosite.com/tPWPZ3kEpjHdFO9F/moodle-1-740x380-s84vr5GqRxP3NUXr.png" alt="Moodle" style="height:56px;width:auto;margin-bottom:.5rem"/>
+      <div class="moodle-logo-box">
+        <img src="https://assets.zyrosite.com/tPWPZ3kEpjHdFO9F/moodle-1-740x380-s84vr5GqRxP3NUXr.png" alt="Moodle LMS" style="height:80px;width:auto;display:block;">
+      </div>
       <h2>Votre classe, accessible 24h/24.</h2>
       <p>Tous vos cours en direct, replays, exercices et certificats — en un seul endroit, propulsé par Moodle.</p>
       <div class="moodle-checks">
@@ -553,18 +672,33 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
           Certificat à la fin du parcours
         </div>
       </div>
-      <button class="btn btn-moodle btn-lg" onclick="window.open('https://elearning.fdsinstitut.com','_blank')">
+      <div class="moodle-stats">
+        <div class="moodle-stat">
+          <span class="moodle-stat-num">3 200+</span>
+          <span class="moodle-stat-lbl">Étudiants inscrits</span>
+        </div>
+        <div class="moodle-stat">
+          <span class="moodle-stat-num">40+</span>
+          <span class="moodle-stat-lbl">Cours disponibles</span>
+        </div>
+        <div class="moodle-stat">
+          <span class="moodle-stat-num">98%</span>
+          <span class="moodle-stat-lbl">Satisfaction</span>
+        </div>
+      </div>
+      <button class="btn btn-moodle btn-lg" style="font-size:1rem;padding:1rem 2.25rem" onclick="window.open('https://elearning.fdsinstitut.com','_blank')">
         Accéder à la plateforme
         <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </button>
     </div>
     <div class="reveal reveal-d2">
-      <div class="moodle-img-wrap">
+      <div class="moodle-img-wrap" style="height:400px">
         <img src="https://images.pexels.com/photos/5905902/pexels-photo-5905902.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Étudiant sur plateforme en ligne"/>
         <div class="moodle-badge">
           <span class="green-dot"></span>
           En direct · 24 étudiants connectés
         </div>
+        <div class="moodle-ring"></div>
       </div>
     </div>
   </div>
@@ -690,7 +824,7 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
         </div>
         <p class="testi-quote">"FDS m'a aidée à réussir le TestDaF du premier coup. Les cours en direct font toute la différence — un vrai prof qui vous connaît, ça change tout."</p>
         <div class="testi-author">
-          <div class="testi-av av-orange">SB</div>
+          <div class="testi-av av-orange" style="overflow:hidden;padding:0"><img src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Sara B." style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
           <div>
             <div class="testi-name">Sara B.</div>
             <div class="testi-meta">TestDaF B2 · Alger</div>
@@ -709,7 +843,7 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
         </div>
         <p class="testi-quote">"En 3 mois je suis passé de A2 à B2. Le rythme et la qualité des profs sont incroyables. Je n'ai jamais progressé aussi vite."</p>
         <div class="testi-author">
-          <div class="testi-av av-glass">KM</div>
+          <div class="testi-av av-glass" style="overflow:hidden;padding:0"><img src="https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Karim M." style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
           <div>
             <div class="testi-name">Karim M.</div>
             <div class="testi-meta">Cours en groupe · Oran</div>
@@ -728,7 +862,7 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
         </div>
         <p class="testi-quote">"Le meilleur rapport qualité/prix pour apprendre l'allemand depuis l'Algérie. Vraiment. J'ai essayé d'autres plateformes — aucune comparaison."</p>
         <div class="testi-author">
-          <div class="testi-av av-orange">LA</div>
+          <div class="testi-av av-orange" style="overflow:hidden;padding:0"><img src="https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Lina A." style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
           <div>
             <div class="testi-name">Lina A.</div>
             <div class="testi-meta">Intensif · Constantine</div>
@@ -894,6 +1028,13 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
 </div>
 
 <script>
+/* ── VIDEO ── */
+function loadVideo() {
+  document.getElementById('video-thumb').style.display = 'none';
+  document.getElementById('video-frame').style.display = 'block';
+  document.getElementById('yt-frame').src = 'https://www.youtube.com/embed/?autoplay=1&rel=0';
+}
+
 /* ── FORM LOGIC ── */
 let curStep = 1;
 let ans = {};
