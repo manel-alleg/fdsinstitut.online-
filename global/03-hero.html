@@ -10,11 +10,13 @@
 <style>
 /* ─── TOKENS ─── */
 :root {
-  --orange: #FF7900;
+  --orange:   #FF7900;
   --orange-2: #FF9100;
-  --blue: #00304E;
-  --black: #111;
-  --gray-50: #F7F8FA;
+  --blue:     #00304E;
+  --teal:     #0891B2;
+  --green:    #22c55e;
+  --black:    #111;
+  --gray-50:  #F7F8FA;
   --gray-100: #F0F1F3;
   --gray-200: #E2E3E5;
   --gray-500: #6B7280;
@@ -23,7 +25,12 @@
 /* ─── RESET ─── */
 *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-body { background: #fff; color: var(--black); font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+body {
+  background: #fff;
+  color: var(--black);
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
+}
 h1,h2,h3,h4 { font-family: 'Sora', sans-serif; letter-spacing: -.025em; }
 a { color: inherit; text-decoration: none; }
 button { cursor: pointer; font-family: inherit; border: none; background: none; }
@@ -33,20 +40,24 @@ input, textarea, select { font-family: 'Montserrat', sans-serif; }
 /* ─── ANIMATIONS ─── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(28px); }
-  to { opacity: 1; transform: none; }
+  to   { opacity: 1; transform: none; }
 }
 @keyframes pulseDot {
-  0%,100% { opacity: 1; }
-  50% { opacity: .35; }
+  0%,100% { opacity: 1; box-shadow: 0 0 0 0 rgba(34,197,94,.6); }
+  50%     { opacity: .7; box-shadow: 0 0 0 6px rgba(34,197,94,0); }
 }
 @keyframes slideUp {
   from { transform: translateY(100%); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  to   { transform: translateY(0);    opacity: 1; }
 }
 @keyframes popIn {
-  0% { opacity: 0; transform: scale(.85) translateY(12px); }
-  70% { transform: scale(1.04) translateY(-2px); }
+  0%   { opacity: 0; transform: scale(.85) translateY(16px); }
+  70%  { transform: scale(1.03) translateY(-2px); }
   100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50%     { transform: translateY(-10px); }
 }
 
 /* ─── REVEAL ─── */
@@ -56,177 +67,249 @@ input, textarea, select { font-family: 'Montserrat', sans-serif; }
 .reveal-d2.in { transition-delay: .2s; }
 .reveal-d3.in { transition-delay: .3s; }
 .reveal-d4.in { transition-delay: .4s; }
+.reveal-d5.in { transition-delay: .5s; }
 
 /* ─── UTILS ─── */
 .accent { color: var(--orange); }
 
-/* ─── BUTTONS ─── */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: .5rem;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-size: .9rem;
-  border-radius: 10px;
-  padding: .75rem 1.5rem;
-  transition: all .2s ease;
-  cursor: pointer;
-  border: none;
-  white-space: nowrap;
-}
-.btn-orange { background: var(--orange); color: #fff; }
-.btn-orange:hover {
-  background: var(--orange-2);
-  transform: translateY(-1px);
-  box-shadow: 0 8px 20px -4px rgba(255,121,0,.4);
-}
-.btn-full { width: 100%; justify-content: center; }
-.btn-lg { padding: 1rem 2rem; font-size: 1rem; border-radius: 12px; }
-
-/* ═══════════════════════════════════
+/* ═══════════════════════════════════════════════════
    HERO SECTION
-═══════════════════════════════════ */
+═══════════════════════════════════════════════════ */
 #hero {
   scroll-margin-top: 64px;
-  background: var(--gray-50);
-  padding: 5rem 1.5rem 4rem;
-}
-.hero-inner {
-  max-width: 80rem;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
+  background: var(--blue);
+  padding: 5rem 1.5rem 5rem;
+  position: relative;
+  overflow: hidden;
 }
 
-/* ─── HERO LEFT ─── */
+/* Decorative blurred orange circle behind left column */
+#hero::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: -6%;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: var(--orange);
+  filter: blur(80px);
+  opacity: .12;
+  pointer-events: none;
+}
+
+/* Decorative ring near form card top-right */
+.deco-ring {
+  position: absolute;
+  top: -2.5rem;
+  right: -2.5rem;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 10px solid rgba(255,121,0,.18);
+  pointer-events: none;
+}
+
+.hero-inner {
+  max-width: 82rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 480px;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* ────────────────────────────────
+   LEFT COLUMN
+──────────────────────────────── */
+.hero-left { position: relative; }
+
+/* ── Eyebrow ── */
 .hero-eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: .5rem;
+  gap: .55rem;
   font-family: 'Nunito', sans-serif;
   font-weight: 800;
   font-size: .75rem;
-  letter-spacing: .1em;
+  letter-spacing: .08em;
   text-transform: uppercase;
-  color: var(--blue);
-  background: #fff;
-  border: 1.5px solid var(--gray-200);
+  color: #fff;
+  border: 1.5px solid rgba(255,255,255,.22);
   border-radius: 999px;
-  padding: .35rem .9rem;
-  margin-bottom: 1.5rem;
+  padding: .38rem 1rem .38rem .75rem;
+  margin-bottom: 1.75rem;
+  backdrop-filter: blur(6px);
+  background: rgba(255,255,255,.08);
 }
 .green-dot {
-  width: 8px;
-  height: 8px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
-  background: #22c55e;
+  background: var(--green);
   display: inline-block;
-  animation: pulseDot 1.4s ease infinite;
+  flex-shrink: 0;
+  animation: pulseDot 1.6s ease infinite;
 }
+
+/* ── H1 ── */
 .hero-h1 {
-  font-size: clamp(3.5rem, 7vw, 6rem);
+  font-size: clamp(3.25rem, 6.5vw, 6rem);
   font-weight: 800;
-  color: var(--black);
+  color: #fff;
   line-height: 1.0;
   letter-spacing: -.04em;
   margin-bottom: 1.25rem;
 }
+
+/* ── Subtitle ── */
 .hero-sub {
   font-size: 1.05rem;
   font-weight: 500;
-  color: var(--gray-500);
-  line-height: 1.6;
-  margin-bottom: 2rem;
-  max-width: 36ch;
+  color: rgba(255,255,255,.72);
+  line-height: 1.65;
+  margin-bottom: 1.75rem;
+  max-width: 38ch;
 }
 
-/* ─── TRUST PILLS ─── */
+/* ── Trust pills ── */
 .trust-pills {
   display: flex;
   flex-wrap: wrap;
   gap: .5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.25rem;
 }
 .trust-pill {
   display: inline-flex;
   align-items: center;
-  gap: .4rem;
+  gap: .45rem;
   font-family: 'Nunito', sans-serif;
   font-weight: 700;
   font-size: .78rem;
-  color: var(--black);
-  background: #fff;
-  border: 1.5px solid var(--gray-200);
+  color: #fff;
+  background: rgba(255,255,255,.12);
+  border: 1.5px solid rgba(255,255,255,.2);
   border-radius: 999px;
-  padding: .35rem .8rem;
+  padding: .38rem .9rem;
+  backdrop-filter: blur(4px);
 }
-.trust-pill svg { color: var(--orange); flex-shrink: 0; }
 
-/* ─── HERO PHOTOS (avatar photo row) ─── */
-.hero-photos {
-  display: flex;
-  margin-bottom: 1.5rem;
-}
-.hero-photo-card {
-  width: 56px;
-  height: 56px;
-  border-radius: 14px;
+/* ── Photo collage grid ── */
+.photo-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  grid-template-rows: 200px 140px;
+  gap: 8px;
+  border-radius: 20px;
   overflow: hidden;
-  border: 2.5px solid #fff;
-  margin-left: -10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,.12);
-  transition: transform .25s;
+  margin-top: 2rem;
 }
-.hero-photo-card:first-child { margin-left: 0; }
-.hero-photo-card:hover { transform: translateY(-4px) scale(1.08); z-index: 1; }
-.hero-photo-card img { width: 100%; height: 100%; object-fit: cover; }
+.photo-main {
+  grid-row: 1 / 3;
+  position: relative;
+  overflow: hidden;
+}
+.photo-tr,
+.photo-br {
+  position: relative;
+  overflow: hidden;
+}
+.photo-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .45s ease;
+  display: block;
+}
+.photo-main:hover img,
+.photo-tr:hover img,
+.photo-br:hover img {
+  transform: scale(1.04);
+}
 
-/* ─── SOCIAL PROOF / AVATAR STACK ─── */
+/* Caption overlay on main photo */
+.photo-caption {
+  position: absolute;
+  bottom: .85rem;
+  left: .85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: .72rem;
+  color: #fff;
+  background: rgba(0,0,0,.55);
+  backdrop-filter: blur(6px);
+  border-radius: 999px;
+  padding: .3rem .8rem;
+  border: 1px solid rgba(255,255,255,.18);
+}
+.caption-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulseDot 1.4s ease infinite;
+  flex-shrink: 0;
+}
+
+/* ── Social proof below photos ── */
 .social-proof {
   display: flex;
   align-items: center;
-  gap: .75rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--gray-200);
+  gap: .85rem;
+  margin-top: 1.5rem;
 }
 .avatar-stack { display: flex; }
 .avatar-item {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background: var(--orange);
   color: #fff;
   font-family: 'Sora', sans-serif;
   font-weight: 700;
-  font-size: .7rem;
+  font-size: .68rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid var(--gray-50);
-  margin-left: -8px;
+  border: 2.5px solid var(--blue);
+  margin-left: -10px;
   flex-shrink: 0;
 }
 .avatar-item:first-child { margin-left: 0; }
+.avatar-item:nth-child(2) { background: #0EA5E9; }
+.avatar-item:nth-child(3) { background: var(--teal); }
 .social-text {
   font-family: 'Nunito', sans-serif;
   font-weight: 700;
-  font-size: .8rem;
-  color: var(--gray-500);
+  font-size: .82rem;
+  color: rgba(255,255,255,.7);
   line-height: 1.4;
 }
-.social-text strong { color: var(--black); }
+.social-text strong { color: #fff; }
 
-/* ─── FORM CARD ─── */
+/* ────────────────────────────────
+   RIGHT COLUMN — form card
+──────────────────────────────── */
+.hero-right { position: relative; }
+
 .form-card {
   background: #fff;
-  border: 1.5px solid var(--gray-200);
-  border-radius: 24px;
-  box-shadow: 0 24px 60px -12px rgba(0,0,0,.12);
-  padding: 2rem;
+  border-radius: 28px;
+  box-shadow: 0 40px 80px -20px rgba(0,0,0,.3);
+  padding: 2.25rem 2.5rem;
   position: relative;
+  animation: popIn .55s cubic-bezier(.22,.68,0,1.35) both;
+}
+
+/* ── Form header ── */
+.form-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.4rem;
 }
 .form-card-label {
   font-family: 'Nunito', sans-serif;
@@ -235,26 +318,79 @@ input, textarea, select { font-family: 'Montserrat', sans-serif; }
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--gray-500);
-  margin-bottom: 1rem;
 }
-
-/* ─── FORM DOTS (step progress indicator) ─── */
-.form-dots {
-  display: flex;
-  gap: .4rem;
-  margin-bottom: 1.5rem;
-}
-.form-dot {
-  height: 6px;
+.form-enrolled-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: .68rem;
+  color: var(--green);
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
   border-radius: 999px;
-  background: var(--gray-200);
-  transition: all .3s ease;
-  width: 24px;
+  padding: .28rem .7rem;
 }
-.form-dot.active { background: var(--orange); width: 40px; }
-.form-dot.done { background: var(--orange); opacity: .4; }
+.form-enrolled-badge::before {
+  content: '●';
+  font-size: .55rem;
+  animation: pulseDot 1.4s ease infinite;
+}
 
-/* ─── FORM STEPS ─── */
+/* ── Numbered step circles ── */
+.step-circles {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.75rem;
+}
+.step-circle-wrap {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+.step-circle-wrap:last-child { flex: none; }
+.step-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: .78rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all .3s ease;
+  border: 2px solid var(--gray-200);
+  color: var(--gray-500);
+  background: #fff;
+}
+.step-num.active {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: #fff;
+  box-shadow: 0 4px 12px -2px rgba(255,121,0,.45);
+}
+.step-num.done {
+  background: #ffead6;
+  border-color: #ffead6;
+  color: var(--orange);
+}
+.step-connector {
+  flex: 1;
+  height: 2px;
+  background: var(--gray-200);
+  margin: 0 4px;
+  border-radius: 1px;
+  transition: background .3s ease;
+}
+.step-connector.done { background: #ffcf9e; }
+
+/* Legacy dot bar — hidden now, kept for JS compat */
+.form-dots { display: none; }
+
+/* ── Form steps ── */
 .form-step { display: none; }
 .form-step.active { display: block; }
 
@@ -264,44 +400,157 @@ input, textarea, select { font-family: 'Montserrat', sans-serif; }
   font-size: 1.05rem;
   color: var(--black);
   margin-bottom: 1rem;
-  line-height: 1.3;
+  line-height: 1.35;
 }
 
-/* ─── OPTION CARDS (opt-card) ─── */
-.option-list { display: flex; flex-direction: column; gap: .5rem; }
+/* ── Option cards (Step 1 — rich cards) ── */
+.opt-cards-grid { display: flex; flex-direction: column; gap: .55rem; }
 .opt-card {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: .75rem;
-  padding: .8rem 1rem;
+  gap: .85rem;
+  padding: .85rem 1rem;
+  border: 1.5px solid var(--gray-200);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all .2s ease;
+  text-align: left;
+  width: 100%;
+  background: #fff;
+}
+.opt-card:hover { border-color: var(--orange); background: #fffaf5; }
+.opt-card.selected { border-color: var(--orange); background: #fff7ef; }
+.opt-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.opt-icon-box.orange { background: #fff0e0; }
+.opt-icon-box.blue   { background: #e0f2fe; }
+.opt-icon-box.teal   { background: #e0f7fa; }
+.opt-card-body { flex: 1; min-width: 0; }
+.opt-card-title {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: .9rem;
+  color: var(--black);
+  margin-bottom: .18rem;
+}
+.opt-card-desc {
+  font-size: .75rem;
+  font-weight: 500;
+  color: var(--gray-500);
+  line-height: 1.35;
+}
+.opt-badge {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: .68rem;
+  background: var(--gray-100);
+  color: var(--gray-500);
+  padding: .22rem .6rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all .2s;
+}
+.opt-card.selected .opt-badge { background: #ffead6; color: var(--orange); }
+.opt-card.selected .opt-card-title { color: var(--orange); }
+.opt-card.selected .opt-icon-box.orange svg { color: var(--orange); }
+.opt-card.selected .opt-icon-box.blue   svg { color: var(--teal); }
+.opt-card.selected .opt-icon-box.teal   svg { color: #0e7490; }
+
+/* ── Level grid (Step 2) ── */
+.level-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .5rem;
+}
+.level-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .2rem;
+  padding: .75rem .5rem;
   border: 1.5px solid var(--gray-200);
   border-radius: 12px;
   cursor: pointer;
   transition: all .2s ease;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  font-size: .9rem;
-  color: var(--black);
   background: #fff;
+  text-align: center;
+  min-height: 72px;
+}
+.level-btn:hover { border-color: var(--orange); background: #fffaf5; }
+.level-btn.selected { border-color: var(--orange); background: #fff7ef; }
+.level-code {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: var(--black);
+  line-height: 1;
+  transition: color .2s;
+}
+.level-btn.selected .level-code { color: var(--orange); }
+.level-desc {
+  font-size: .68rem;
+  font-weight: 500;
+  color: var(--gray-500);
+  line-height: 1.25;
+}
+
+/* ── Goal list (Step 3) ── */
+.goal-list { display: flex; flex-direction: column; gap: .45rem; }
+.goal-btn {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  padding: .72rem .9rem;
+  border: 1.5px solid var(--gray-200);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all .2s ease;
   text-align: left;
   width: 100%;
+  background: #fff;
 }
-.opt-card:hover { border-color: var(--orange); background: #fffaf5; }
-.opt-card.selected { border-color: var(--orange); background: #fff7ef; color: var(--orange); }
-.opt-badge {
-  font-family: 'Nunito', sans-serif;
-  font-weight: 800;
-  font-size: .7rem;
+.goal-btn:hover { border-color: var(--orange); background: #fffaf5; }
+.goal-btn.selected { border-color: var(--orange); background: #fff7ef; }
+.goal-icon-box {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
   background: var(--gray-100);
-  color: var(--gray-500);
-  padding: .2rem .55rem;
-  border-radius: 999px;
-  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background .2s;
 }
-.opt-card.selected .opt-badge { background: #ffead6; color: var(--orange); }
+.goal-btn.selected .goal-icon-box { background: #ffead6; }
+.goal-btn.selected .goal-icon-box svg { color: var(--orange); }
+.goal-body { flex: 1; min-width: 0; }
+.goal-title {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: .85rem;
+  color: var(--black);
+  line-height: 1.2;
+  transition: color .2s;
+}
+.goal-btn.selected .goal-title { color: var(--orange); }
+.goal-sub {
+  font-size: .72rem;
+  color: var(--gray-500);
+  line-height: 1.3;
+  margin-top: .1rem;
+}
 
-/* ─── BACK BUTTON ─── */
+/* ── Back button ── */
 .form-back {
   background: none;
   border: none;
@@ -310,44 +559,78 @@ input, textarea, select { font-family: 'Montserrat', sans-serif; }
   font-size: .8rem;
   color: var(--gray-500);
   cursor: pointer;
-  margin-top: .75rem;
-  display: flex;
+  margin-top: .9rem;
+  display: inline-flex;
   align-items: center;
   gap: .3rem;
   padding: 0;
+  transition: color .2s;
 }
 .form-back:hover { color: var(--black); }
 
-/* ─── CONTACT STEP INPUTS ─── */
+/* ── Contact inputs (Step 4) ── */
 .form-field-group {
   display: flex;
   flex-direction: column;
-  gap: .65rem;
+  gap: .6rem;
   margin-bottom: 1rem;
 }
+.input-row { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
 .form-input {
   width: 100%;
   border: 1.5px solid var(--gray-200);
   border-radius: 10px;
   padding: .85rem 1rem;
   font-family: 'Montserrat', sans-serif;
-  font-size: .9rem;
+  font-size: .88rem;
   font-weight: 500;
   color: var(--black);
   outline: none;
-  transition: border-color .2s;
+  transition: border-color .2s, box-shadow .2s;
   background: #fff;
 }
-.form-input:focus { border-color: var(--orange); }
+.form-input:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(255,121,0,.12); }
 .form-input::placeholder { color: var(--gray-500); }
 
-/* ─── FORM SUCCESS STATE ─── */
-.form-success { display: none; text-align: center; padding: 1.5rem 0; }
+/* ── Submit btn ── */
+.btn-submit {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: .01em;
+  background: var(--orange);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  transition: background .2s, transform .2s, box-shadow .2s;
+}
+.btn-submit:hover {
+  background: var(--orange-2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -4px rgba(255,121,0,.45);
+}
+.form-note {
+  text-align: center;
+  font-size: .72rem;
+  color: var(--gray-500);
+  margin-top: .65rem;
+}
+
+/* ── Success state ── */
+.form-success { display: none; text-align: center; padding: 2rem 0 1rem; }
 .success-circle {
-  width: 72px;
-  height: 72px;
+  width: 76px;
+  height: 76px;
   border-radius: 50%;
   background: #f0fdf4;
+  border: 3px solid #bbf7d0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -356,7 +639,7 @@ input, textarea, select { font-family: 'Montserrat', sans-serif; }
 .success-title {
   font-family: 'Sora', sans-serif;
   font-weight: 800;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: var(--black);
   margin-bottom: .5rem;
 }
@@ -364,17 +647,20 @@ input, textarea, select { font-family: 'Montserrat', sans-serif; }
   font-size: .9rem;
   color: var(--gray-500);
   margin-bottom: .75rem;
-  line-height: 1.5;
+  line-height: 1.55;
+  max-width: 28ch;
+  margin-left: auto;
+  margin-right: auto;
 }
 .success-help { font-size: .78rem; color: var(--gray-500); }
 .success-help a { color: var(--orange); font-weight: 600; }
 
-/* ─── FIXED SUCCESS BANNER ─── */
+/* ── Fixed success banner ── */
 #success-banner {
   position: fixed;
   bottom: 2rem;
   left: 50%;
-  transform: translateX(-50%) translateY(120%);
+  transform: translateX(-50%) translateY(130%);
   background: var(--blue);
   color: #fff;
   border-radius: 999px;
@@ -388,8 +674,9 @@ input, textarea, select { font-family: 'Montserrat', sans-serif; }
   white-space: nowrap;
   z-index: 9999;
   box-shadow: 0 12px 40px -6px rgba(0,48,78,.4);
-  transition: transform .4s ease, opacity .4s ease;
+  transition: transform .4s cubic-bezier(.22,.68,0,1.2), opacity .4s ease;
   opacity: 0;
+  border: 1px solid rgba(255,255,255,.15);
 }
 #success-banner.show {
   transform: translateX(-50%) translateY(0);
@@ -397,21 +684,28 @@ input, textarea, select { font-family: 'Montserrat', sans-serif; }
 }
 
 /* ─── RESPONSIVE ─── */
-@media (max-width: 1023px) {
-  .hero-inner {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
+@media (max-width: 1100px) {
+  .hero-inner { grid-template-columns: 1fr 440px; gap: 3rem; }
+}
+@media (max-width: 960px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 3.5rem; }
+  .hero-h1 { font-size: clamp(3.25rem, 9vw, 5rem); }
+  .photo-grid { grid-template-rows: 180px 120px; }
 }
 @media (max-width: 600px) {
-  .hero-h1 { font-size: clamp(2.75rem, 10vw, 4rem); }
+  #hero { padding: 4rem 1.25rem 3.5rem; }
+  .hero-h1 { font-size: clamp(3rem, 11vw, 4.5rem); }
+  .form-card { padding: 1.75rem 1.5rem; border-radius: 20px; }
+  .level-grid { grid-template-columns: repeat(2, 1fr); }
+  .input-row { grid-template-columns: 1fr; }
+  .photo-grid { grid-template-rows: 160px 110px; }
   #success-banner {
     white-space: normal;
     text-align: center;
     border-radius: 16px;
     left: 1rem;
     right: 1rem;
-    transform: translateY(120%);
+    transform: translateY(130%);
     width: auto;
   }
   #success-banner.show { transform: translateY(0); }
@@ -420,50 +714,80 @@ input, textarea, select { font-family: 'Montserrat', sans-serif; }
 </head>
 <body>
 
-<!-- ═══ HERO SECTION ═══ -->
+<!-- ════════════════════════════════════
+     HERO SECTION
+════════════════════════════════════ -->
 <section id="hero">
   <div class="hero-inner">
 
-    <!-- Left: headline, sub, trust pills, photo stack, social proof -->
+    <!-- ═══ LEFT COLUMN ═══ -->
     <div class="hero-left">
+
+      <!-- Eyebrow -->
       <div class="hero-eyebrow reveal">
         <span class="green-dot"></span>
-        Enrolling now &nbsp;·&nbsp; Live online
+        Enrolling now &nbsp;·&nbsp; Online &nbsp;·&nbsp; Worldwide
       </div>
-      <h1 class="hero-h1 reveal reveal-d1">Speak<br>German<span class="accent">.</span></h1>
-      <p class="hero-sub reveal reveal-d2">Live classes with certified teachers. Small groups, human feedback, zero recordings. A1 to C2.</p>
 
+      <!-- H1 -->
+      <h1 class="hero-h1 reveal reveal-d1">Speak<br>German<span class="accent">.</span></h1>
+
+      <!-- Subtitle -->
+      <p class="hero-sub reveal reveal-d2">Live classes A1–C2. Certified teachers, small groups, results guaranteed.</p>
+
+      <!-- Trust pills -->
       <div class="trust-pills reveal reveal-d3">
         <div class="trust-pill">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          12,000+ students
+          <!-- Checkmark SVG -->
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          2,400+ students
         </div>
         <div class="trust-pill">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          4.9 / 5 rating
+          <!-- Star SVG -->
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBF24" stroke="none" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          4.9 rating
         </div>
         <div class="trust-pill">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          14-day money-back
+          <!-- Shield SVG -->
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.8)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          14-day guarantee
         </div>
       </div>
 
-      <div class="hero-photos reveal reveal-d4">
-        <div class="hero-photo-card">
-          <img src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Student">
+      <!-- Photo collage grid -->
+      <div class="photo-grid reveal reveal-d4">
+        <!-- Main photo (spans both rows) -->
+        <div class="photo-main">
+          <img
+            src="https://images.pexels.com/photos/4144923/pexels-photo-4144923.jpeg?auto=compress&cs=tinysrgb&w=600&h=700&fit=crop"
+            alt="Live German classroom session"
+            loading="lazy"
+          >
+          <div class="photo-caption">
+            <span class="caption-dot"></span>
+            Live session · B1 Group
+          </div>
         </div>
-        <div class="hero-photo-card">
-          <img src="https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Student">
+        <!-- Top-right photo -->
+        <div class="photo-tr">
+          <img
+            src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop"
+            alt="Student learning online"
+            loading="lazy"
+          >
         </div>
-        <div class="hero-photo-card">
-          <img src="https://images.pexels.com/photos/1438072/pexels-photo-1438072.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Student">
-        </div>
-        <div class="hero-photo-card">
-          <img src="https://images.pexels.com/photos/4144101/pexels-photo-4144101.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Student">
+        <!-- Bottom-right photo -->
+        <div class="photo-br">
+          <img
+            src="https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=400&h=140&fit=crop"
+            alt="Engaged student"
+            loading="lazy"
+          >
         </div>
       </div>
 
-      <div class="social-proof reveal reveal-d4">
+      <!-- Social proof -->
+      <div class="social-proof reveal reveal-d5">
         <div class="avatar-stack" aria-hidden="true">
           <div class="avatar-item">AL</div>
           <div class="avatar-item">MR</div>
@@ -473,97 +797,225 @@ input, textarea, select { font-family: 'Montserrat', sans-serif; }
           <strong>Join 400+ new students</strong> this month
         </div>
       </div>
+
     </div><!-- /hero-left -->
 
-    <!-- Right: multi-step enrollment form card -->
-    <div class="hero-right reveal reveal-d2">
+
+    <!-- ═══ RIGHT COLUMN — white form card ═══ -->
+    <div class="hero-right">
       <div class="form-card" role="form" aria-label="Enrollment form">
 
-        <div class="form-card-label">Enroll in 2 minutes</div>
+        <!-- Decorative ring -->
+        <div class="deco-ring" aria-hidden="true"></div>
 
-        <!-- Step progress dots -->
-        <div class="form-dots" aria-label="Step progress" role="progressbar">
-          <div class="form-dot active" aria-label="Step 1"></div>
-          <div class="form-dot" aria-label="Step 2"></div>
-          <div class="form-dot" aria-label="Step 3"></div>
-          <div class="form-dot" aria-label="Step 4"></div>
+        <!-- Form header -->
+        <div class="form-card-header">
+          <div class="form-card-label">Enroll in 2 minutes</div>
+          <div class="form-enrolled-badge">380+ enrolled this month</div>
+        </div>
+
+        <!-- Numbered step circles ① ─── ② ─── ③ ─── ④ -->
+        <div class="step-circles" aria-label="Step progress" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="4">
+          <div class="step-num active" id="sc-1" aria-label="Step 1">1</div>
+          <div class="step-connector" id="conn-1"></div>
+          <div class="step-num" id="sc-2" aria-label="Step 2">2</div>
+          <div class="step-connector" id="conn-2"></div>
+          <div class="step-num" id="sc-3" aria-label="Step 3">3</div>
+          <div class="step-connector" id="conn-3"></div>
+          <div class="step-num" id="sc-4" aria-label="Step 4">4</div>
+        </div>
+
+        <!-- Hidden legacy dots (JS compat) -->
+        <div class="form-dots" aria-hidden="true">
+          <div class="form-dot active"></div>
+          <div class="form-dot"></div>
+          <div class="form-dot"></div>
+          <div class="form-dot"></div>
         </div>
 
         <div class="form-steps-wrap">
 
-          <!-- ── Step 1: Class type ── -->
+          <!-- ─── STEP 1: Class type ─── -->
           <div class="form-step active" data-step="1">
-            <div class="step-question">What type of class fits you best?</div>
-            <div class="option-list">
-              <button class="opt-card" onclick="selectOpt(this,'type','group')" type="button">
-                Group Classes
+            <div class="step-question">What type of class?</div>
+            <div class="opt-cards-grid">
+
+              <!-- Group -->
+              <button class="opt-card" onclick="selectOpt(this,'type','group')" type="button" aria-label="Group Classes">
+                <div class="opt-icon-box orange" aria-hidden="true">
+                  <!-- group-people SVG -->
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <div class="opt-card-body">
+                  <div class="opt-card-title">Group Classes</div>
+                  <div class="opt-card-desc">3 sessions/week · max 8 students</div>
+                </div>
                 <span class="opt-badge">€125/mo</span>
               </button>
-              <button class="opt-card" onclick="selectOpt(this,'type','self')" type="button">
-                Self-Paced
+
+              <!-- Self-Paced -->
+              <button class="opt-card" onclick="selectOpt(this,'type','self')" type="button" aria-label="Self-Paced">
+                <div class="opt-icon-box blue" aria-hidden="true">
+                  <!-- laptop SVG -->
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                </div>
+                <div class="opt-card-body">
+                  <div class="opt-card-title">Self-Paced</div>
+                  <div class="opt-card-desc">Your schedule · lifetime replays</div>
+                </div>
                 <span class="opt-badge">€85/mo</span>
               </button>
-              <button class="opt-card" onclick="selectOpt(this,'type','intensive')" type="button">
-                Intensive
+
+              <!-- Intensive -->
+              <button class="opt-card" onclick="selectOpt(this,'type','intensive')" type="button" aria-label="Intensive">
+                <div class="opt-icon-box teal" aria-hidden="true">
+                  <!-- bolt SVG -->
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0e7490" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                </div>
+                <div class="opt-card-body">
+                  <div class="opt-card-title">Intensive</div>
+                  <div class="opt-card-desc">Daily sessions · fast-track</div>
+                </div>
                 <span class="opt-badge">€290/mo</span>
               </button>
-            </div>
-          </div>
 
-          <!-- ── Step 2: Current level ── -->
+            </div>
+          </div><!-- /step 1 -->
+
+
+          <!-- ─── STEP 2: German level ─── -->
           <div class="form-step" data-step="2">
-            <div class="step-question">What's your current German level?</div>
-            <div class="option-list">
-              <button class="opt-card" onclick="selectOpt(this,'level','a1')" type="button">A1 — Complete Beginner</button>
-              <button class="opt-card" onclick="selectOpt(this,'level','a2')" type="button">A2 — False Beginner</button>
-              <button class="opt-card" onclick="selectOpt(this,'level','b1')" type="button">B1 — Intermediate</button>
-              <button class="opt-card" onclick="selectOpt(this,'level','b2')" type="button">B2 — Upper Intermediate</button>
-              <button class="opt-card" onclick="selectOpt(this,'level','c1')" type="button">C1 / C2 — Advanced</button>
-              <button class="opt-card" onclick="selectOpt(this,'level','unsure')" type="button">I'm not sure yet</button>
+            <div class="step-question">Your German level?</div>
+            <div class="level-grid">
+              <button class="level-btn" onclick="selectLevel(this,'a1')" type="button">
+                <span class="level-code">A1</span>
+                <span class="level-desc">Beginner</span>
+              </button>
+              <button class="level-btn" onclick="selectLevel(this,'a2')" type="button">
+                <span class="level-code">A2</span>
+                <span class="level-desc">Elementary</span>
+              </button>
+              <button class="level-btn" onclick="selectLevel(this,'b1')" type="button">
+                <span class="level-code">B1</span>
+                <span class="level-desc">Intermediate</span>
+              </button>
+              <button class="level-btn" onclick="selectLevel(this,'b2')" type="button">
+                <span class="level-code">B2</span>
+                <span class="level-desc">Upper-Int.</span>
+              </button>
+              <button class="level-btn" onclick="selectLevel(this,'c1')" type="button">
+                <span class="level-code">C1–C2</span>
+                <span class="level-desc">Advanced</span>
+              </button>
+              <button class="level-btn" onclick="selectLevel(this,'unsure')" type="button">
+                <span class="level-code" style="font-size:.95rem">?</span>
+                <span class="level-desc">Not sure</span>
+              </button>
             </div>
-            <button class="form-back" onclick="goBack()" type="button" aria-label="Go back to previous step">
+            <button class="form-back" onclick="goBack()" type="button" aria-label="Go back">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
               Back
             </button>
-          </div>
+          </div><!-- /step 2 -->
 
-          <!-- ── Step 3: Learning goal ── -->
+
+          <!-- ─── STEP 3: Learning goal ─── -->
           <div class="form-step" data-step="3">
-            <div class="step-question">What's your main goal?</div>
-            <div class="option-list">
-              <button class="opt-card" onclick="selectOpt(this,'goal','study')" type="button">Study in Germany</button>
-              <button class="opt-card" onclick="selectOpt(this,'goal','work')" type="button">Work / Career</button>
-              <button class="opt-card" onclick="selectOpt(this,'goal','visa')" type="button">Visa &amp; Immigration</button>
-              <button class="opt-card" onclick="selectOpt(this,'goal','exam')" type="button">Exam prep (TestDaF, telc)</button>
-              <button class="opt-card" onclick="selectOpt(this,'goal','travel')" type="button">Travel &amp; culture</button>
+            <div class="step-question">Your main goal?</div>
+            <div class="goal-list">
+
+              <button class="goal-btn" onclick="selectOpt(this,'goal','study')" type="button">
+                <div class="goal-icon-box" aria-hidden="true">
+                  <!-- mortarboard SVG -->
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                </div>
+                <div class="goal-body">
+                  <div class="goal-title">Study in Germany</div>
+                  <div class="goal-sub">University admission & academic German</div>
+                </div>
+              </button>
+
+              <button class="goal-btn" onclick="selectOpt(this,'goal','work')" type="button">
+                <div class="goal-icon-box" aria-hidden="true">
+                  <!-- briefcase SVG -->
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="12.01"/></svg>
+                </div>
+                <div class="goal-body">
+                  <div class="goal-title">Work &amp; Career</div>
+                  <div class="goal-sub">Professional German for the workplace</div>
+                </div>
+              </button>
+
+              <button class="goal-btn" onclick="selectOpt(this,'goal','visa')" type="button">
+                <div class="goal-icon-box" aria-hidden="true">
+                  <!-- card / ID SVG -->
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+                </div>
+                <div class="goal-body">
+                  <div class="goal-title">Visa &amp; Immigration</div>
+                  <div class="goal-sub">Residency, citizenship language tests</div>
+                </div>
+              </button>
+
+              <button class="goal-btn" onclick="selectOpt(this,'goal','exam')" type="button">
+                <div class="goal-icon-box" aria-hidden="true">
+                  <!-- document SVG -->
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                </div>
+                <div class="goal-body">
+                  <div class="goal-title">Exam Prep</div>
+                  <div class="goal-sub">Goethe, TestDaF, telc, ÖSD</div>
+                </div>
+              </button>
+
+              <button class="goal-btn" onclick="selectOpt(this,'goal','travel')" type="button">
+                <div class="goal-icon-box" aria-hidden="true">
+                  <!-- globe SVG -->
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <div class="goal-body">
+                  <div class="goal-title">Travel &amp; Culture</div>
+                  <div class="goal-sub">Conversational German for everyday life</div>
+                </div>
+              </button>
+
             </div>
-            <button class="form-back" onclick="goBack()" type="button" aria-label="Go back to previous step">
+            <button class="form-back" onclick="goBack()" type="button" aria-label="Go back">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
               Back
             </button>
-          </div>
+          </div><!-- /step 3 -->
 
-          <!-- ── Step 4: Contact details & submit ── -->
+
+          <!-- ─── STEP 4: Contact & submit ─── -->
           <div class="form-step" data-step="4">
-            <div class="step-question">Almost there — reserve your spot</div>
+            <div class="step-question">Reserve your spot</div>
             <form onsubmit="submitForm(event)" novalidate>
               <div class="form-field-group">
-                <input class="form-input" type="text" placeholder="First name" required aria-label="First name">
-                <input class="form-input" type="email" placeholder="Email address" required aria-label="Email address">
-                <input class="form-input" type="tel" placeholder="+1 234 567 890" required aria-label="Phone number">
-                <input class="form-input" type="text" placeholder="Your country" aria-label="Country">
+                <div class="input-row">
+                  <input class="form-input" type="text"  placeholder="First name"     required aria-label="First name">
+                  <input class="form-input" type="email" placeholder="Email"           required aria-label="Email address">
+                </div>
+                <div class="input-row">
+                  <input class="form-input" type="tel"   placeholder="+1 234 567 890" aria-label="Phone number">
+                  <input class="form-input" type="text"  placeholder="Country"         aria-label="Country">
+                </div>
               </div>
-              <button class="btn btn-orange btn-full btn-lg" type="submit">Get my payment link &nbsp;→</button>
+              <button class="btn-submit" type="submit">
+                Get my payment link
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+              <p class="form-note">No commitment · Free cancellation</p>
             </form>
-            <button class="form-back" onclick="goBack()" type="button" aria-label="Go back to previous step">
+            <button class="form-back" onclick="goBack()" type="button" aria-label="Go back">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
               Back
             </button>
-          </div>
+          </div><!-- /step 4 -->
 
         </div><!-- /form-steps-wrap -->
 
-        <!-- Success state — shown after form submission -->
+        <!-- ─── Success state ─── -->
         <div class="form-success" role="status" aria-live="polite">
           <div class="success-circle">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
@@ -579,28 +1031,38 @@ input, textarea, select { font-family: 'Montserrat', sans-serif; }
   </div><!-- /hero-inner -->
 </section>
 
-<!-- Fixed success banner (appears after form submission) -->
+<!-- Fixed success banner -->
 <div id="success-banner" role="status" aria-live="polite" aria-atomic="true">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
   Application sent! Payment link in your inbox within 24h.
 </div>
 
 <script>
-/* ─── Form state ─── */
+/* ─── State ─── */
 let curStep = 1;
 let ans = {};
 
-/* Select an option card, record the answer, auto-advance after 320ms */
+/* ─── Select option card (step 1 + goal step) ─── */
 function selectOpt(el, key, val) {
-  el.closest('.option-list').querySelectorAll('.opt-card').forEach(c => c.classList.remove('selected'));
+  const list = el.closest('.opt-cards-grid') || el.closest('.goal-list') || el.closest('.option-list');
+  if (list) list.querySelectorAll('.opt-card, .goal-btn').forEach(c => c.classList.remove('selected'));
   el.classList.add('selected');
   ans[key] = val;
   setTimeout(() => goStep(curStep + 1), 320);
 }
 
-/* Navigate to a specific step number */
+/* ─── Select level cell (step 2) ─── */
+function selectLevel(el, val) {
+  el.closest('.level-grid').querySelectorAll('.level-btn').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  ans.level = val;
+  setTimeout(() => goStep(curStep + 1), 320);
+}
+
+/* ─── Navigate to step n ─── */
 function goStep(n) {
-  document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+  const steps = document.querySelectorAll('.form-step');
+  steps.forEach(s => s.classList.remove('active'));
   const target = document.querySelector(`.form-step[data-step="${n}"]`);
   if (target) {
     target.classList.add('active');
@@ -609,43 +1071,61 @@ function goStep(n) {
   }
 }
 
-/* Update progress dots to reflect current step */
+/* ─── Update numbered circles + legacy dots ─── */
 function updateDots(n) {
+  /* Numbered circles */
+  for (let i = 1; i <= 4; i++) {
+    const sc = document.getElementById('sc-' + i);
+    if (!sc) continue;
+    sc.classList.remove('active', 'done');
+    if (i < n) sc.classList.add('done');
+    else if (i === n) sc.classList.add('active');
+  }
+  /* Connectors */
+  for (let i = 1; i <= 3; i++) {
+    const conn = document.getElementById('conn-' + i);
+    if (!conn) continue;
+    conn.classList.toggle('done', i < n);
+  }
+  /* Legacy dot bar */
   document.querySelectorAll('.form-dot').forEach((d, i) => {
     d.classList.remove('active', 'done');
     if (i + 1 < n) d.classList.add('done');
     else if (i + 1 === n) d.classList.add('active');
   });
+  /* ARIA */
+  const bar = document.querySelector('.step-circles');
+  if (bar) bar.setAttribute('aria-valuenow', n);
 }
 
-/* Go back one step */
+/* ─── Go back one step ─── */
 function goBack() {
   if (curStep > 1) goStep(curStep - 1);
 }
 
-/* Handle final form submission — show success state + banner */
+/* ─── Submit form → show success ─── */
 function submitForm(e) {
   e.preventDefault();
   document.querySelector('.form-steps-wrap').style.display = 'none';
-  document.querySelector('.form-dots').style.display = 'none';
-  document.querySelector('.form-card-label').style.display = 'none';
+  document.querySelector('.step-circles').style.display = 'none';
+  document.querySelector('.form-card-header').style.display = 'none';
   document.querySelector('.form-success').style.display = 'block';
   showBanner();
 }
 
-/* Show the fixed bottom success banner for 6 seconds */
+/* ─── Fixed bottom success banner (6 s auto-hide) ─── */
 function showBanner() {
   const b = document.getElementById('success-banner');
   b.classList.add('show');
   setTimeout(() => b.classList.remove('show'), 6000);
 }
 
-/* Smooth scroll to hero section */
+/* ─── Smooth scroll to hero ─── */
 function scrollToHero() {
   document.getElementById('hero').scrollIntoView({ behavior: 'smooth' });
 }
 
-/* ─── IntersectionObserver for .reveal scroll-animation ─── */
+/* ─── IntersectionObserver scroll-reveal ─── */
 const revealObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
@@ -653,7 +1133,7 @@ const revealObs = new IntersectionObserver(entries => {
       revealObs.unobserve(e.target);
     }
   });
-}, { threshold: 0.12 });
+}, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 </script>
 
