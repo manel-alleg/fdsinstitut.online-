@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Pied de page — FDS Institut</title>
+<title>FDS Institut — Pied de page</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Montserrat:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -17,154 +17,97 @@
   --gray-200:#E2E3E5;
   --gray-500:#6B7280;
 }
-body{font-family:'Montserrat',sans-serif;color:var(--black);background:#fff;line-height:1.6}
-footer{
-  background:#fff;
-  border-top:1.5px solid var(--gray-200);
-  padding:3rem 1.5rem 1.5rem;
-}
-.footer-inner{
-  max-width:1200px;
-  margin:0 auto;
-}
-.footer-cols{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:2rem;
-  padding-bottom:2rem;
-  border-bottom:1px solid var(--gray-200);
-  margin-bottom:1.5rem;
-}
+body{font-family:'Montserrat',sans-serif;color:var(--black);background:#fff;line-height:1.6;overflow-x:hidden}
+h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
 
-/* BRAND COL */
-.footer-brand{}
-.footer-logo{display:flex;align-items:center;gap:.3rem;margin-bottom:.5rem;text-decoration:none}
+footer{background:#fff;border-top:1.5px solid var(--gray-200)}
+
+/* Main grid */
+.footer-main{max-width:1100px;margin:0 auto;padding:3.5rem 1.5rem 2.5rem;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:3rem}
+@media(max-width:768px){.footer-main{grid-template-columns:1fr;gap:2.25rem;padding:2.5rem 1.5rem}}
+
+/* Brand col */
+.brand-logo{display:flex;align-items:center;gap:.5rem;text-decoration:none;margin-bottom:.9rem}
 .logo-text{font-family:'Sora',sans-serif;font-weight:800;font-size:1.5rem;color:var(--blue);line-height:1}
 .logo-dot{color:var(--orange)}
-.footer-tagline{font-size:.83rem;color:var(--gray-500);margin-bottom:.2rem;line-height:1.5}
-.footer-est{font-size:.78rem;color:var(--gray-500);margin-bottom:.9rem}
-.footer-copy{font-size:.75rem;color:var(--gray-500)}
+.brand-tagline{font-size:.875rem;color:var(--gray-500);line-height:1.65;margin-bottom:.75rem;max-width:280px}
+.brand-est{font-family:'Nunito',sans-serif;font-weight:700;font-size:.75rem;color:var(--gray-500);letter-spacing:.04em}
+.brand-copyright{font-family:'Nunito',sans-serif;font-weight:600;font-size:.78rem;color:var(--gray-500);margin-top:.75rem}
 
-/* NAV COL */
-.footer-col{}
-.footer-col-heading{
-  font-family:'Nunito',sans-serif;
-  font-weight:800;
-  font-size:.75rem;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  color:var(--blue);
-  margin-bottom:.85rem;
-}
-.footer-nav{list-style:none;display:flex;flex-direction:column;gap:.45rem}
-.footer-nav a,.footer-nav button{
-  font-size:.85rem;
-  color:var(--gray-500);
-  text-decoration:none;
-  font-family:'Montserrat',sans-serif;
-  font-weight:500;
-  background:none;
-  border:none;
-  cursor:pointer;
-  padding:0;
-  transition:color .2s;
-  text-align:left;
-  display:inline-block;
-}
-.footer-nav a:hover,.footer-nav button:hover{color:var(--orange)}
+/* Nav col */
+.col-title{font-family:'Nunito',sans-serif;font-weight:800;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:1rem;display:block}
+.nav-list{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.nav-list a{font-size:.9rem;color:var(--gray-500);text-decoration:none;transition:color .18s;font-weight:500}
+.nav-list a:hover{color:var(--orange)}
 
-/* CONTACT COL */
-.footer-contact-item{
-  display:flex;
-  align-items:center;
-  gap:.5rem;
-  font-size:.85rem;
-  color:var(--gray-500);
-  margin-bottom:.5rem;
-  text-decoration:none;
-  font-family:'Montserrat',sans-serif;
-  font-weight:500;
-  transition:color .2s;
-}
-.footer-contact-item:hover{color:var(--orange)}
-.footer-contact-item svg{flex-shrink:0;opacity:.6}
-.footer-contact-item:hover svg{opacity:1}
+/* Contact col */
+.contact-list{list-style:none;display:flex;flex-direction:column;gap:.85rem}
+.contact-item{display:flex;align-items:flex-start;gap:.6rem;font-size:.875rem;color:var(--gray-500)}
+.contact-item svg{flex-shrink:0;margin-top:2px}
+.contact-item a{color:var(--gray-500);text-decoration:none;transition:color .18s;font-weight:500}
+.contact-item a:hover{color:var(--orange)}
 
-/* BOTTOM */
-.footer-bottom{
-  text-align:center;
-  font-size:.75rem;
-  color:var(--gray-500);
-  font-family:'Nunito',sans-serif;
-  font-weight:600;
-  letter-spacing:.02em;
-}
-
-@media(max-width:860px){
-  .footer-cols{grid-template-columns:1fr;gap:2rem}
-}
-@media(max-width:600px){
-  footer{padding:2.5rem 1.25rem 1.25rem}
-}
+/* Bottom bar */
+.footer-bottom{border-top:1px solid var(--gray-200);background:#fff}
+.footer-bottom-inner{max-width:1100px;margin:0 auto;padding:.9rem 1.5rem;display:flex;align-items:center;justify-content:center;gap:.75rem;font-family:'Nunito',sans-serif;font-weight:600;font-size:.78rem;color:var(--gray-500);text-align:center;flex-wrap:wrap}
+.sep{color:var(--gray-200);font-size:1rem}
 </style>
 </head>
 <body>
 <footer>
-  <div class="footer-inner">
-    <div class="footer-cols">
+  <div class="footer-main">
 
-      <!-- BRAND -->
-      <div class="footer-brand">
-        <a href="#" class="footer-logo">
-          <span class="logo-text">FDS<span class="logo-dot">.</span></span>
-        </a>
-        <p class="footer-tagline">École d'allemand en ligne.</p>
-        <p class="footer-est">Est. Alger.</p>
-        <p class="footer-copy">&copy; 2026 FDS Institut. Tous droits réservés.</p>
-      </div>
-
-      <!-- NAVIGATION -->
-      <div class="footer-col">
-        <div class="footer-col-heading">Navigation</div>
-        <ul class="footer-nav">
-          <li><a href="#pricing">Tarifs</a></li>
-          <li><a href="https://elearning.fdsinstitut.com" target="_blank" rel="noopener noreferrer">Plateforme</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><button onclick="openModal()">Cours d'essai</button></li>
-        </ul>
-      </div>
-
-      <!-- CONTACT -->
-      <div class="footer-col">
-        <div class="footer-col-heading">Contact</div>
-        <a href="mailto:online@fdsinstitut.com" class="footer-contact-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          online@fdsinstitut.com
-        </a>
-        <a href="https://fdsinstitut.com" target="_blank" rel="noopener noreferrer" class="footer-contact-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          fdsinstitut.com
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left:.1rem;opacity:.6"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-        </a>
-      </div>
-
+    <!-- Brand -->
+    <div>
+      <a class="brand-logo" href="#">
+        <span class="logo-text">FDS<span class="logo-dot">.</span></span>
+      </a>
+      <p class="brand-tagline">École d'allemand en ligne. Professeurs certifiés, cours en direct, tarifs en dinars.</p>
+      <span class="brand-est">Est. Alger · Algérie</span>
+      <p class="brand-copyright">© 2026 FDS Institut. Tous droits réservés.</p>
     </div>
 
-    <div class="footer-bottom">
-      Tous les cours sont dispensés en ligne &nbsp;·&nbsp; Accessibles depuis l'Algérie
+    <!-- Navigation -->
+    <div>
+      <span class="col-title">Navigation</span>
+      <ul class="nav-list">
+        <li><a href="#">Tarifs</a></li>
+        <li><a href="https://elearning.fdsinstitut.com" target="_blank" rel="noopener">Plateforme e-learning</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Cours d'essai gratuit</a></li>
+        <li><a href="#">Préparation TestDaF</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div>
+      <span class="col-title">Contact</span>
+      <ul class="contact-list">
+        <li class="contact-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4l6 5 6-5" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="1.5" y="3" width="13" height="10" rx="2" stroke="#6B7280" stroke-width="1.5"/></svg>
+          <a href="mailto:online@fdsinstitut.com">online@fdsinstitut.com</a>
+        </li>
+        <li class="contact-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="#6B7280" stroke-width="1.5"/><path d="M8 4.5V8l2.5 2.5" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <span>Lun – Sam · 9h – 20h (CET)</span>
+        </li>
+        <li class="contact-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1.5 5.5C1.5 3.29 3.29 1.5 5.5 1.5h5C12.71 1.5 14.5 3.29 14.5 5.5v5c0 2.21-1.79 4-4 4h-5c-2.21 0-4-1.79-4-4v-5z" stroke="#6B7280" stroke-width="1.5"/><circle cx="8" cy="8" r="2.5" stroke="#6B7280" stroke-width="1.5"/><circle cx="11.25" cy="4.75" r=".75" fill="#6B7280"/></svg>
+          <a href="https://fdsinstitut.com" target="_blank" rel="noopener">fdsinstitut.com</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="#6B7280" stroke-width="1.4"/><path d="M4.5 7h5M7 4.5v5" stroke="#6B7280" stroke-width="1.4" stroke-linecap="round"/></svg>
+      Toutes les séances se déroulent en ligne
+      <span class="sep">·</span>
+      Accessible depuis toute l'Algérie et partout dans le monde
     </div>
   </div>
 </footer>
-
-<script>
-function openModal(){
-  if(window.parent&&window.parent.openModal){
-    window.parent.openModal();
-  } else {
-    var hero=document.getElementById('hero');
-    if(hero){hero.scrollIntoView({behavior:'smooth'});}
-  }
-}
-</script>
 </body>
 </html>
