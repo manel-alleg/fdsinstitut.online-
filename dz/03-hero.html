@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Hero — FDS Institut · Cours d'allemand en ligne · Algérie</title>
+<title>FDS Institut — Section Héros</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Montserrat:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -19,14 +19,16 @@ html{scroll-behavior:smooth}
   --gray-100:#F0F1F3;
   --gray-200:#E2E3E5;
   --gray-500:#6B7280;
-  --moodle:#F27F22;
 }
 body{font-family:'Montserrat',sans-serif;color:var(--black);background:#fff;line-height:1.6;overflow-x:hidden}
 
+/* ── ANIMATIONS ── */
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
 @keyframes pulseDot{0%,100%{opacity:1}50%{opacity:.35}}
 @keyframes slideUp{from{transform:translateY(100%);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes popIn{0%{opacity:0;transform:scale(.85)}60%{transform:scale(1.04)}100%{opacity:1;transform:scale(1)}}
 
+/* ── REVEAL ── */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
 .reveal.in{opacity:1;transform:none}
 .reveal-d1{transition-delay:.1s}
@@ -34,83 +36,49 @@ body{font-family:'Montserrat',sans-serif;color:var(--black);background:#fff;line
 .reveal-d3{transition-delay:.3s}
 .reveal-d4{transition-delay:.4s}
 
+/* ── TYPOGRAPHY ── */
 h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
 .accent{color:var(--orange)}
 
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-family:'Montserrat',sans-serif;font-weight:600;font-size:.9rem;padding:.75rem 1.5rem;border-radius:10px;border:2px solid transparent;cursor:pointer;transition:all .2s;text-decoration:none;white-space:nowrap}
+.btn-orange{background:var(--orange);color:#fff;border-color:var(--orange)}
+.btn-orange:hover{background:var(--orange-2);border-color:var(--orange-2);transform:translateY(-1px);box-shadow:0 6px 20px rgba(255,121,0,.35)}
+.btn-full{width:100%;justify-content:center}
+
+/* ── URGENCY BAR ── */
+#urgency-bar{background:var(--orange);padding:.6rem 1rem;text-align:center;font-family:'Nunito',sans-serif;font-weight:700;font-size:.82rem;color:#fff;letter-spacing:.04em;display:flex;align-items:center;justify-content:center;gap:.6rem}
+.pulse-dot{width:8px;height:8px;border-radius:50%;background:#fff;animation:pulseDot 1.4s ease-in-out infinite;flex-shrink:0}
+
+/* ── NAV ── */
+#nav{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1.5px solid var(--gray-200);height:64px;display:flex;align-items:center}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.nav-logo{display:flex;align-items:center;gap:.6rem;text-decoration:none}
+.logo-text{font-family:'Sora',sans-serif;font-weight:800;font-size:1.5rem;color:var(--blue);line-height:1}
+.logo-dot{color:var(--orange)}
+.nav-badge{font-family:'Nunito',sans-serif;font-weight:700;font-size:.65rem;background:var(--gray-100);color:var(--blue);padding:.2rem .5rem;border-radius:6px;letter-spacing:.06em}
+.nav-cta{font-size:.85rem;padding:.5rem 1.1rem;border-radius:8px}
+
 /* ── HERO ── */
-#hero{
-  scroll-margin-top:64px;
-  background:var(--gray-50);
-  padding:5rem 1.5rem 4rem;
-}
-.hero-inner{
-  max-width:1200px;
-  margin:0 auto;
-  display:grid;
-  grid-template-columns:1fr 480px;
-  gap:3.5rem;
-  align-items:center;
-}
-.hero-eyebrow{
-  display:inline-flex;
-  align-items:center;
-  gap:.5rem;
-  background:#fff;
-  border:1.5px solid var(--gray-200);
-  border-radius:100px;
-  padding:.35rem .8rem .35rem .5rem;
-  font-family:'Nunito',sans-serif;
-  font-weight:700;
-  font-size:.75rem;
-  color:var(--black);
-  margin-bottom:1.25rem;
-}
-.green-dot{
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  background:#22c55e;
-  animation:pulseDot 1.4s ease-in-out infinite;
-  flex-shrink:0;
-}
-.hero-h1{
-  font-size:clamp(3rem,6vw,5rem);
-  font-weight:800;
-  color:var(--black);
-  margin-bottom:1.25rem;
-}
-.hero-sub{
-  font-size:1.05rem;
-  color:var(--gray-500);
-  max-width:480px;
-  margin-bottom:1.75rem;
-  line-height:1.7;
-}
-.trust-pills{
-  display:flex;
-  flex-direction:column;
-  gap:.6rem;
-  margin-bottom:1.75rem;
-}
-.trust-pill{
-  display:flex;
-  align-items:center;
-  gap:.6rem;
-  font-family:'Nunito',sans-serif;
-  font-weight:600;
-  font-size:.85rem;
-  color:var(--black);
-}
+#hero{scroll-margin-top:64px;background:var(--gray-50);padding:5rem 1.5rem 4rem}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 480px;gap:3.5rem;align-items:center}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:#fff;border:1.5px solid var(--gray-200);border-radius:100px;padding:.35rem .8rem .35rem .5rem;font-family:'Nunito',sans-serif;font-weight:700;font-size:.75rem;color:var(--black);margin-bottom:1.25rem}
+.green-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;animation:pulseDot 1.4s ease-in-out infinite;flex-shrink:0}
+.hero-h1{font-size:clamp(3rem,6vw,5rem);font-weight:800;color:var(--black);margin-bottom:1.25rem}
+.hero-sub{font-size:1.05rem;color:var(--gray-500);max-width:480px;margin-bottom:1.75rem;line-height:1.7}
+
+/* trust pills */
+.trust-pills{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.75rem}
+.trust-pill{display:flex;align-items:center;gap:.6rem;font-family:'Nunito',sans-serif;font-weight:600;font-size:.85rem;color:var(--black)}
 .trust-pill svg{flex-shrink:0}
+
+/* divider */
 .hero-divider{border:none;border-top:1.5px solid var(--gray-200);margin:1.5rem 0}
+
+/* avatar row */
 .avatar-row{display:flex;align-items:center;gap:.75rem}
 .avatar-stack{display:flex}
-.avatar-stack .av{
-  width:36px;height:36px;border-radius:50%;border:2.5px solid #fff;
-  background:var(--blue);color:#fff;font-family:'Nunito',sans-serif;
-  font-weight:800;font-size:.65rem;display:flex;align-items:center;
-  justify-content:center;margin-left:-10px;
-}
+.avatar-stack .av{width:36px;height:36px;border-radius:50%;border:2.5px solid #fff;background:var(--blue);color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:.65rem;display:flex;align-items:center;justify-content:center;margin-left:-10px}
 .avatar-stack .av:first-child{margin-left:0}
 .avatar-stack .av:nth-child(2){background:#FF7900}
 .avatar-stack .av:nth-child(3){background:#22c55e}
@@ -118,140 +86,55 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
 .avatar-row-text{font-family:'Nunito',sans-serif;font-weight:700;font-size:.8rem;color:var(--gray-500)}
 .avatar-row-text strong{color:var(--black);display:block;font-size:.9rem}
 
-/* ── HERO PHOTOS ── */
+/* hero photo cards */
 .hero-photos{display:flex;margin-bottom:1.5rem}
-.hero-photo-card{
-  width:56px;height:56px;border-radius:14px;overflow:hidden;
-  border:2.5px solid #fff;margin-left:-10px;
-  box-shadow:0 4px 12px rgba(0,0,0,.12);transition:transform .25s;
-}
+.hero-photo-card{width:56px;height:56px;border-radius:14px;overflow:hidden;border:2.5px solid #fff;margin-left:-10px;box-shadow:0 4px 12px rgba(0,0,0,.12);transition:transform .25s}
 .hero-photo-card:first-child{margin-left:0}
 .hero-photo-card:hover{transform:translateY(-4px) scale(1.08);z-index:1}
 .hero-photo-card img{width:100%;height:100%;object-fit:cover}
 
 /* ── FORM CARD ── */
-.form-card{
-  background:#fff;
-  border:1.5px solid var(--gray-200);
-  border-radius:24px;
-  padding:2rem;
-  box-shadow:0 8px 40px rgba(0,48,78,.08);
-  width:100%;
-}
-.form-card-label{
-  font-family:'Nunito',sans-serif;
-  font-weight:800;
-  font-size:.72rem;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  color:var(--orange);
-  margin-bottom:1rem;
-  display:block;
-}
+.form-card{background:#fff;border:1.5px solid var(--gray-200);border-radius:24px;padding:2rem;box-shadow:0 8px 40px rgba(0,48,78,.08);width:100%}
+.form-card-label{font-family:'Nunito',sans-serif;font-weight:800;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:1rem;display:block}
 .form-dots{display:flex;gap:.4rem;margin-bottom:1.5rem}
-.form-dot{
-  width:32px;height:4px;border-radius:4px;
-  background:var(--gray-200);transition:all .3s;
-}
+.form-dot{width:32px;height:4px;border-radius:4px;background:var(--gray-200);transition:all .3s}
 .form-dot.active{background:var(--orange)}
 .form-dot.done{background:var(--orange);opacity:.4}
 .form-step{display:none}
 .form-step.active{display:block}
-.step-q{
-  font-family:'Sora',sans-serif;
-  font-weight:700;
-  font-size:1rem;
-  color:var(--blue);
-  margin-bottom:1rem;
-}
+.step-q{font-family:'Sora',sans-serif;font-weight:700;font-size:1rem;color:var(--blue);margin-bottom:1rem}
 .option-list{display:flex;flex-direction:column;gap:.5rem}
-.opt-card{
-  border:1.5px solid var(--gray-200);
-  border-radius:12px;
-  padding:.7rem 1rem;
-  cursor:pointer;
-  transition:all .18s;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  font-family:'Montserrat',sans-serif;
-  font-weight:500;
-  font-size:.88rem;
-  color:var(--black);
-}
+.opt-card{border:1.5px solid var(--gray-200);border-radius:12px;padding:.7rem 1rem;cursor:pointer;transition:all .18s;display:flex;align-items:center;justify-content:space-between;font-family:'Montserrat',sans-serif;font-weight:500;font-size:.88rem;color:var(--black)}
 .opt-card:hover{border-color:var(--orange);background:#fff9f5}
 .opt-card.selected{border-color:var(--orange);background:#fff3e8;font-weight:600;color:var(--blue)}
-.opt-badge{
-  font-family:'Nunito',sans-serif;
-  font-weight:800;
-  font-size:.72rem;
-  background:var(--gray-100);
-  color:var(--orange);
-  padding:.18rem .5rem;
-  border-radius:6px;
-  white-space:nowrap;
-}
+.opt-badge{font-family:'Nunito',sans-serif;font-weight:800;font-size:.72rem;background:var(--gray-100);color:var(--orange);padding:.18rem .5rem;border-radius:6px;white-space:nowrap}
 .opt-card.selected .opt-badge{background:var(--orange);color:#fff}
-.step-back{
-  display:inline-flex;align-items:center;gap:.3rem;
-  font-family:'Montserrat',sans-serif;font-weight:600;font-size:.8rem;
-  color:var(--gray-500);border:none;background:none;cursor:pointer;
-  padding:.3rem 0;margin-top:.75rem;transition:color .2s;
-}
+.step-back{display:inline-flex;align-items:center;gap:.3rem;font-family:'Montserrat',sans-serif;font-weight:600;font-size:.8rem;color:var(--gray-500);border:none;background:none;cursor:pointer;padding:.3rem 0;margin-top:.75rem;transition:color .2s}
 .step-back:hover{color:var(--blue)}
 .form-fields{display:flex;flex-direction:column;gap:.75rem}
-.form-field label{
-  font-family:'Nunito',sans-serif;font-weight:700;font-size:.75rem;
-  color:var(--blue);display:block;margin-bottom:.3rem;
-}
-.form-field input,
-.form-field select{
-  width:100%;border:1.5px solid var(--gray-200);border-radius:10px;
-  padding:.65rem .9rem;font-family:'Montserrat',sans-serif;font-size:.9rem;
-  color:var(--black);outline:none;transition:border-color .2s;
-  background:#fff;appearance:none;
-}
-.form-field input:focus,
-.form-field select:focus{border-color:var(--orange)}
+.form-field label{font-family:'Nunito',sans-serif;font-weight:700;font-size:.75rem;color:var(--blue);display:block;margin-bottom:.3rem}
+.form-field input{width:100%;border:1.5px solid var(--gray-200);border-radius:10px;padding:.65rem .9rem;font-family:'Montserrat',sans-serif;font-size:.9rem;color:var(--black);outline:none;transition:border-color .2s}
+.form-field input:focus{border-color:var(--orange)}
 .form-field input::placeholder{color:var(--gray-500)}
-.form-step-4-meta{
-  font-family:'Nunito',sans-serif;font-weight:600;font-size:.73rem;
-  color:var(--gray-500);text-align:center;margin-top:.6rem;
-}
+.form-step-4-meta{font-family:'Nunito',sans-serif;font-weight:600;font-size:.73rem;color:var(--gray-500);text-align:center;margin-top:.6rem}
+
+/* success state */
 .form-success{display:none;text-align:center;padding:1rem 0}
-.form-success .success-icon{
-  margin:0 auto 1rem;width:64px;height:64px;border-radius:50%;
-  background:#dcfce7;display:flex;align-items:center;justify-content:center;
-}
+.form-success .success-icon{margin:0 auto 1rem;width:64px;height:64px;border-radius:50%;background:#dcfce7;display:flex;align-items:center;justify-content:center}
 .form-success h3{font-family:'Sora',sans-serif;font-weight:700;font-size:1.1rem;color:var(--blue);margin-bottom:.6rem}
 .form-success p{font-family:'Montserrat',sans-serif;font-size:.85rem;color:var(--gray-500);margin-bottom:.5rem}
 .form-success a{color:var(--orange);font-weight:600;font-size:.82rem}
 
-.btn{
-  display:inline-flex;align-items:center;gap:.5rem;
-  font-family:'Montserrat',sans-serif;font-weight:600;font-size:.9rem;
-  padding:.75rem 1.5rem;border-radius:10px;border:2px solid transparent;
-  cursor:pointer;transition:all .2s;text-decoration:none;white-space:nowrap;
-}
-.btn-orange{background:var(--orange);color:#fff;border-color:var(--orange)}
-.btn-orange:hover{background:var(--orange-2);border-color:var(--orange-2);transform:translateY(-1px);box-shadow:0 6px 20px rgba(255,121,0,.35)}
-.btn-full{width:100%;justify-content:center}
-
 /* ── SUCCESS BANNER ── */
-#success-banner{
-  position:fixed;bottom:1.5rem;left:50%;
-  transform:translateX(-50%) translateY(120%);
-  z-index:500;background:var(--blue);color:#fff;border-radius:100px;
-  padding:.75rem 1.5rem;display:flex;align-items:center;gap:.65rem;
-  font-family:'Nunito',sans-serif;font-weight:700;font-size:.85rem;
-  box-shadow:0 8px 32px rgba(0,0,0,.2);white-space:nowrap;
-  transition:transform .4s cubic-bezier(.34,1.56,.64,1),opacity .4s;
-}
+#success-banner{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%) translateY(120%);z-index:500;background:var(--blue);color:#fff;border-radius:100px;padding:.75rem 1.5rem;display:flex;align-items:center;gap:.65rem;font-family:'Nunito',sans-serif;font-weight:700;font-size:.85rem;box-shadow:0 8px 32px rgba(0,0,0,.2);white-space:nowrap;transition:transform .4s cubic-bezier(.34,1.56,.64,1),opacity .4s}
 #success-banner.show{transform:translateX(-50%) translateY(0)}
+.banner-pill{background:rgba(255,255,255,.18);border-radius:100px;padding:.15rem .6rem;font-size:.75rem;letter-spacing:.04em}
 
+/* ── RESPONSIVE ── */
 @media(max-width:1023px){
   .hero-inner{grid-template-columns:1fr;gap:2.5rem}
   #hero{padding:3.5rem 1.25rem 3rem}
+  body{padding-bottom:72px}
 }
 @media(max-width:600px){
   .hero-h1{font-size:2.6rem}
@@ -261,16 +144,45 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
 </head>
 <body>
 
+<!-- ── URGENCY BAR ── -->
+<div id="urgency-bar">
+  <div class="pulse-dot"></div>
+  Nouvelles inscriptions ouvertes &nbsp;·&nbsp; Places limitées &nbsp;·&nbsp; Inscrivez-vous en 2 minutes
+</div>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <span class="logo-text">FDS<span class="logo-dot">.</span></span>
+      <span class="nav-badge">ALGÉRIE · A1–C2</span>
+    </a>
+    <div class="nav-actions">
+      <button class="btn btn-orange nav-cta" onclick="scrollToHero()">Réserver ma place</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
 <section id="hero">
   <div class="hero-inner">
-    <!-- LEFT -->
+
+    <!-- LEFT COLUMN -->
     <div class="hero-left">
+
+      <!-- Live badge -->
       <div class="hero-eyebrow reveal">
         <span class="green-dot"></span>
         Inscriptions ouvertes · En ligne
       </div>
+
+      <!-- Headline -->
       <h1 class="hero-h1 reveal reveal-d1">Apprenez<br>l'allemand<span class="accent">.</span></h1>
+
+      <!-- Subtitle -->
       <p class="hero-sub reveal reveal-d2">Cours en direct avec des professeurs certifiés. Petits groupes, feedback humain, replays à vie. De A1 à C2.</p>
+
+      <!-- Trust pills -->
       <div class="trust-pills reveal reveal-d3">
         <div class="trust-pill">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -278,28 +190,34 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
         </div>
         <div class="trust-pill">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="#FF7900" stroke="#FF7900" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          4.9★ avis vérifiés
+          4.9 / 5 avis vérifiés
         </div>
         <div class="trust-pill">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF7900" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           Remboursé 14 jours
         </div>
       </div>
+
+      <!-- Student photo cards -->
       <div class="hero-photos reveal reveal-d4">
         <div class="hero-photo-card">
-          <img src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Étudiante"/>
+          <img src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Étudiante">
         </div>
         <div class="hero-photo-card">
-          <img src="https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Étudiant"/>
+          <img src="https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Étudiant">
         </div>
         <div class="hero-photo-card">
-          <img src="https://images.pexels.com/photos/1438072/pexels-photo-1438072.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Étudiante"/>
+          <img src="https://images.pexels.com/photos/1438072/pexels-photo-1438072.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Étudiante">
         </div>
         <div class="hero-photo-card">
-          <img src="https://images.pexels.com/photos/4144101/pexels-photo-4144101.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Cours en ligne"/>
+          <img src="https://images.pexels.com/photos/4144101/pexels-photo-4144101.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Cours en ligne">
         </div>
       </div>
+
+      <!-- Divider -->
       <hr class="hero-divider reveal reveal-d4"/>
+
+      <!-- Avatar stack social proof -->
       <div class="avatar-row reveal reveal-d4">
         <div class="avatar-stack">
           <div class="av">AK</div>
@@ -312,20 +230,24 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
           rejoignent FDS ce mois
         </div>
       </div>
-    </div>
 
-    <!-- RIGHT — FORM CARD -->
+    </div><!-- /hero-left -->
+
+    <!-- RIGHT COLUMN — FORM CARD -->
     <div class="form-card reveal reveal-d2">
       <span class="form-card-label">Inscription en 2 min</span>
-      <div class="form-dots" id="form-dots">
+
+      <!-- Progress dots -->
+      <div class="form-dots">
         <div class="form-dot active"></div>
         <div class="form-dot"></div>
         <div class="form-dot"></div>
         <div class="form-dot"></div>
       </div>
 
-      <div class="form-steps-wrap" id="form-steps-wrap">
-        <!-- STEP 1 -->
+      <div class="form-steps-wrap">
+
+        <!-- STEP 1 : Programme -->
         <div class="form-step active" data-step="1">
           <p class="step-q">Quel type de cours vous convient ?</p>
           <div class="option-list">
@@ -344,7 +266,7 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
           </div>
         </div>
 
-        <!-- STEP 2 -->
+        <!-- STEP 2 : Niveau -->
         <div class="form-step" data-step="2">
           <p class="step-q">Quel est votre niveau actuel ?</p>
           <div class="option-list">
@@ -361,14 +283,14 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
           </button>
         </div>
 
-        <!-- STEP 3 -->
+        <!-- STEP 3 : Objectif -->
         <div class="form-step" data-step="3">
           <p class="step-q">Quel est votre objectif ?</p>
           <div class="option-list">
             <div class="opt-card" onclick="selectOpt(this,'objectif','etudes')">Études en Allemagne</div>
-            <div class="opt-card" onclick="selectOpt(this,'objectif','visa')">Visa &amp; Immigration</div>
+            <div class="opt-card" onclick="selectOpt(this,'objectif','visa')">Visa / Immigration</div>
             <div class="opt-card" onclick="selectOpt(this,'objectif','pro')">Évolution professionnelle</div>
-            <div class="opt-card" onclick="selectOpt(this,'objectif','examen')">Préparation examen (TestDaF…)</div>
+            <div class="opt-card" onclick="selectOpt(this,'objectif','examen')">Préparation examen (TestDaF...)</div>
             <div class="opt-card" onclick="selectOpt(this,'objectif','voyage')">Voyages et culture</div>
           </div>
           <button class="step-back" onclick="goBack()">
@@ -377,7 +299,7 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
           </button>
         </div>
 
-        <!-- STEP 4 -->
+        <!-- STEP 4 : Contact -->
         <div class="form-step" data-step="4">
           <p class="step-q">Presque là — réservez votre place</p>
           <form onsubmit="submitForm(event)">
@@ -392,11 +314,11 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
               </div>
               <div class="form-field">
                 <label for="f-tel">Téléphone</label>
-                <input type="tel" id="f-tel" placeholder="+213 …" required/>
+                <input type="tel" id="f-tel" placeholder="+213 ..." required/>
               </div>
               <div class="form-field">
                 <label for="f-wilaya">Wilaya</label>
-                <input type="text" id="f-wilaya" placeholder="Ex : Alger, Oran, Constantine…"/>
+                <input type="text" id="f-wilaya" placeholder="Votre wilaya"/>
               </div>
               <button type="submit" class="btn btn-orange btn-full" style="margin-top:.25rem">
                 Recevoir mon lien de paiement
@@ -410,95 +332,102 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
             Retour
           </button>
         </div>
-      </div>
+
+      </div><!-- /form-steps-wrap -->
 
       <!-- SUCCESS STATE -->
-      <div class="form-success" id="form-success">
+      <div class="form-success">
         <div class="success-icon">
           <svg width="32" height="32" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
-        <h3>Votre demande est envoyée !</h3>
+        <h3>C'est parti !</h3>
         <p>Consultez votre boîte mail sous 24h pour recevoir votre lien de paiement personnel.</p>
         <p>Besoin d'aide ? <a href="mailto:online@fdsinstitut.com">online@fdsinstitut.com</a></p>
       </div>
-    </div>
-  </div>
+
+    </div><!-- /form-card -->
+
+  </div><!-- /hero-inner -->
 </section>
 
-<!-- SUCCESS BANNER -->
+<!-- ── SUCCESS BANNER ── -->
 <div id="success-banner">
   <svg width="18" height="18" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-  Formulaire envoyé ! Lien de paiement sous 24h.
+  <span class="banner-pill">C'est parti !</span>
+  Formulaire envoyé · Lien de paiement sous 24h.
 </div>
 
 <script>
-var formData={type:null,niveau:null,objectif:null};
-var currentStep=1;
+/* ── FORM LOGIC ── */
+var curStep = 1;
+var ans = {};
 
-function scrollToHero(){
-  var hero=document.getElementById('hero');
-  if(hero){hero.scrollIntoView({behavior:'smooth'});}
+function selectOpt(el, key, val) {
+  el.closest('.option-list').querySelectorAll('.opt-card').forEach(function(c){
+    c.classList.remove('selected');
+  });
+  el.classList.add('selected');
+  ans[key] = val;
+  setTimeout(function(){ goStep(curStep + 1); }, 320);
 }
 
-function updateDots(step){
-  var dots=document.querySelectorAll('#form-dots .form-dot');
-  dots.forEach(function(d,i){
-    d.classList.remove('active','done');
-    if(i===step-1) d.classList.add('active');
-    else if(i<step-1) d.classList.add('done');
+function goStep(n) {
+  document.querySelectorAll('.form-step').forEach(function(s){
+    s.classList.remove('active');
+  });
+  var t = document.querySelector('.form-step[data-step="' + n + '"]');
+  if (t) {
+    t.classList.add('active');
+    curStep = n;
+    updateDots(n);
+  }
+}
+
+function updateDots(n) {
+  document.querySelectorAll('.form-dot').forEach(function(d, i) {
+    d.classList.remove('active', 'done');
+    if (i + 1 < n) d.classList.add('done');
+    else if (i + 1 === n) d.classList.add('active');
   });
 }
 
-function goStep(n){
-  var steps=document.querySelectorAll('.form-step');
-  steps.forEach(function(s){s.classList.remove('active')});
-  var target=document.querySelector('.form-step[data-step="'+n+'"]');
-  if(target){target.classList.add('active');}
-  currentStep=n;
-  updateDots(n);
+function goBack() {
+  if (curStep > 1) goStep(curStep - 1);
 }
 
-function selectOpt(el,field,value){
-  var parent=el.closest('.option-list');
-  parent.querySelectorAll('.opt-card').forEach(function(c){c.classList.remove('selected')});
-  el.classList.add('selected');
-  formData[field]=value;
-  setTimeout(function(){
-    if(currentStep<4) goStep(currentStep+1);
-  },260);
-}
-
-function goBack(){
-  if(currentStep>1) goStep(currentStep-1);
-}
-
-function showBanner(){
-  var b=document.getElementById('success-banner');
-  b.classList.add('show');
-  setTimeout(function(){b.classList.remove('show')},4500);
-}
-
-function submitForm(e){
+function submitForm(e) {
   e.preventDefault();
-  var wrap=document.getElementById('form-steps-wrap');
-  var success=document.getElementById('form-success');
-  var dots=document.getElementById('form-dots');
-  wrap.style.display='none';
-  dots.style.display='none';
-  success.style.display='block';
+  document.querySelector('.form-steps-wrap').style.display = 'none';
+  document.querySelector('.form-success').style.display = 'block';
   showBanner();
 }
-</script>
 
-<script>
-// Reveal on scroll
-(function(){
-  var els=document.querySelectorAll('.reveal');
-  if(!els.length) return;
-  var io=new IntersectionObserver(function(entries){
-    entries.forEach(function(en){if(en.isIntersecting)en.target.classList.add('in')});
-  },{threshold:.12});
-  els.forEach(function(el){io.observe(el)});
+function showBanner() {
+  var b = document.getElementById('success-banner');
+  b.classList.add('show');
+  setTimeout(function(){ b.classList.remove('show'); }, 6000);
+}
+
+function scrollToHero() {
+  document.getElementById('hero').scrollIntoView({ behavior: 'smooth' });
+}
+
+/* ── SCROLL-REVEAL (IntersectionObserver) ── */
+(function() {
+  var revealEls = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(function(el){ observer.observe(el); });
 })();
 </script>
 </body>
