@@ -46,19 +46,6 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
 .btn-orange:hover{background:var(--orange-2);border-color:var(--orange-2);transform:translateY(-1px);box-shadow:0 6px 20px rgba(255,121,0,.35)}
 .btn-full{width:100%;justify-content:center}
 
-/* ── URGENCY BAR ── */
-#urgency-bar{background:var(--orange);padding:.6rem 1rem;text-align:center;font-family:'Nunito',sans-serif;font-weight:700;font-size:.82rem;color:#fff;letter-spacing:.04em;display:flex;align-items:center;justify-content:center;gap:.6rem}
-.pulse-dot{width:8px;height:8px;border-radius:50%;background:#fff;animation:pulseDot 1.4s ease-in-out infinite;flex-shrink:0}
-
-/* ── NAV ── */
-#nav{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1.5px solid var(--gray-200);height:64px;display:flex;align-items:center}
-.nav-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.nav-logo{display:flex;align-items:center;gap:.6rem;text-decoration:none}
-.logo-text{font-family:'Sora',sans-serif;font-weight:800;font-size:1.5rem;color:var(--blue);line-height:1}
-.logo-dot{color:var(--orange)}
-.nav-badge{font-family:'Nunito',sans-serif;font-weight:700;font-size:.65rem;background:var(--gray-100);color:var(--blue);padding:.2rem .5rem;border-radius:6px;letter-spacing:.06em}
-.nav-cta{font-size:.85rem;padding:.5rem 1.1rem;border-radius:8px}
-
 /* ── HERO ── */
 #hero{scroll-margin-top:64px;background:var(--gray-50);padding:5rem 1.5rem 4rem}
 .hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 480px;gap:3.5rem;align-items:center}
@@ -143,25 +130,6 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
 </style>
 </head>
 <body>
-
-<!-- ── URGENCY BAR ── -->
-<div id="urgency-bar">
-  <div class="pulse-dot"></div>
-  Nouvelles inscriptions ouvertes &nbsp;·&nbsp; Places limitées &nbsp;·&nbsp; Inscrivez-vous en 2 minutes
-</div>
-
-<!-- ── NAV ── -->
-<nav id="nav">
-  <div class="nav-inner">
-    <a href="#" class="nav-logo">
-      <span class="logo-text">FDS<span class="logo-dot">.</span></span>
-      <span class="nav-badge">ALGÉRIE · A1–C2</span>
-    </a>
-    <div class="nav-actions">
-      <button class="btn btn-orange nav-cta" onclick="scrollToHero()">Réserver ma place</button>
-    </div>
-  </div>
-</nav>
 
 <!-- ── HERO ── -->
 <section id="hero">
