@@ -1,814 +1,616 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FDS Institut — Hero</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { -webkit-font-smoothing: antialiased; }
-
-    :root {
-      --orange: #FF7900;
-      --orange-2: #FF9100;
-      --blue: #00304E;
-      --gray-50: #F7F8FA;
-      --gray-200: #E2E3E5;
-      --gray-500: #6B7280;
-      --black: #111;
-      --moodle: #F27F22;
-    }
-
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: #fff;
-      color: var(--black);
-      overflow-x: hidden;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    /* ── Animations ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes pulseDot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50%       { opacity: 0.35; transform: scale(0.85); }
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(-6px); }
-    }
-
-    /* ── Success banner ── */
-    #success-banner {
-      position: fixed;
-      top: 1.25rem;
-      left: 50%;
-      transform: translateX(-50%) translateY(-120px);
-      z-index: 9999;
-      background: var(--blue);
-      color: #fff;
-      font-family: 'Nunito', sans-serif;
-      font-weight: 700;
-      font-size: 0.875rem;
-      border-radius: 9999px;
-      padding: 12px 24px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-      white-space: nowrap;
-    }
-
-    #success-banner.show {
-      transform: translateX(-50%) translateY(0);
-    }
-
-    #success-banner .check-icon {
-      width: 18px;
-      height: 18px;
-      background: #22c55e;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    /* ── Hero layout ── */
-    .hero {
-      max-width: 80rem;
-      margin: 0 auto;
-      padding: 4rem 1.5rem 5rem;
-    }
-
-    @media (min-width: 1024px) {
-      .hero {
-        padding: 5.5rem 3rem 7rem;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 5rem;
-        align-items: flex-start;
-      }
-    }
-
-    /* ── LEFT column ── */
-    .hero-left {
-      animation: fadeUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
-    }
-
-    /* Eyebrow chip */
-    .eyebrow-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      background: var(--gray-50);
-      border: 1px solid var(--gray-200);
-      border-radius: 9999px;
-      padding: 5px 14px 5px 10px;
-      font-family: 'Nunito', sans-serif;
-      font-weight: 700;
-      font-size: 0.75rem;
-      color: var(--black);
-      letter-spacing: 0.03em;
-      margin-bottom: 2rem;
-    }
-
-    .pulse-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #22c55e;
-      flex-shrink: 0;
-      animation: pulseDot 1.8s ease-in-out infinite;
-    }
-
-    /* H1 */
-    h1 {
-      font-family: 'Sora', sans-serif;
-      font-weight: 800;
-      font-size: clamp(3rem, 8vw, 5.5rem);
-      line-height: 0.95;
-      letter-spacing: -0.04em;
-      color: var(--black);
-      margin-bottom: 1.5rem;
-    }
-
-    h1 .orange-dot {
-      display: inline-block;
-      width: 0.18em;
-      height: 0.18em;
-      background: var(--orange);
-      border-radius: 50%;
-      margin-left: 0.05em;
-      vertical-align: middle;
-      position: relative;
-      top: -0.28em;
-    }
-
-    /* Sub */
-    .hero-sub {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 500;
-      font-size: 1rem;
-      line-height: 1.75;
-      color: var(--gray-500);
-      max-width: 30rem;
-      margin-bottom: 2rem;
-    }
-
-    @media (min-width: 640px) {
-      .hero-sub { font-size: 1.0625rem; }
-    }
-
-    /* Trust pills */
-    .trust-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 2rem;
-    }
-
-    .trust-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-family: 'Nunito', sans-serif;
-      font-weight: 700;
-      font-size: 0.75rem;
-      color: var(--black);
-      background: var(--gray-50);
-      border: 1px solid var(--gray-200);
-      border-radius: 9999px;
-      padding: 5px 12px 5px 10px;
-      letter-spacing: 0.01em;
-    }
-
-    .trust-pill svg {
-      color: var(--orange);
-      flex-shrink: 0;
-    }
-
-    /* Photo strip */
-    .photo-strip {
-      display: flex;
-      align-items: center;
-      margin-top: 0.5rem;
-    }
-
-    .photo-strip .avatar {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      border: 3px solid #fff;
-      object-fit: cover;
-      margin-left: -14px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-      flex-shrink: 0;
-    }
-
-    .photo-strip .avatar:first-child {
-      margin-left: 0;
-    }
-
-    .photo-strip .avatar-count {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      border: 3px solid #fff;
-      background: var(--gray-50);
-      margin-left: -14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Nunito', sans-serif;
-      font-weight: 800;
-      font-size: 0.75rem;
-      color: var(--gray-500);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      flex-shrink: 0;
-    }
-
-    /* ── RIGHT column — Form card ── */
-    .hero-right {
-      animation: fadeUp 0.55s 0.12s cubic-bezier(0.22, 1, 0.36, 1) both;
-    }
-
-    .form-card {
-      background: #fff;
-      border: 1.5px solid var(--gray-200);
-      border-radius: 24px;
-      box-shadow: 0 4px 40px -8px rgba(0,0,0,0.08);
-      padding: 2rem;
-      position: relative;
-    }
-
-    /* Card label + dots */
-    .card-label {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 1.75rem;
-    }
-
-    .card-label-text {
-      font-family: 'Nunito', sans-serif;
-      font-weight: 800;
-      font-size: 0.6875rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gray-500);
-    }
-
-    .dots-row {
-      display: flex;
-      gap: 5px;
-      margin-left: auto;
-    }
-
-    .form-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--gray-200);
-      transition: background 0.25s ease, transform 0.25s ease;
-    }
-
-    .form-dot.active {
-      background: var(--orange);
-      transform: scale(1.25);
-    }
-
-    .form-dot.done {
-      background: #22c55e;
-    }
-
-    /* Steps */
-    .form-steps-wrap { position: relative; }
-
-    .form-step {
-      display: none;
-    }
-
-    .form-step.active {
-      display: block;
-      animation: fadeUp 0.3s ease both;
-    }
-
-    .step-title {
-      font-family: 'Sora', sans-serif;
-      font-weight: 700;
-      font-size: 1.0625rem;
-      color: var(--black);
-      margin-bottom: 1rem;
-      letter-spacing: -0.01em;
-    }
-
-    /* Location cards grid */
-    .loc-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.75rem;
-      margin-bottom: 1rem;
-    }
-
-    .loc-card {
-      border: 1.5px solid var(--gray-200);
-      border-radius: 16px;
-      padding: 1.25rem 1rem;
-      cursor: pointer;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
-      background: #fff;
-      text-align: center;
-    }
-
-    .loc-card:hover {
-      border-color: var(--orange);
-      box-shadow: 0 4px 16px rgba(255,121,0,0.10);
-    }
-
-    .loc-card.selected {
-      border-color: var(--orange);
-      background: #fff9f4;
-      box-shadow: 0 4px 16px rgba(255,121,0,0.14);
-    }
-
-    .loc-card svg {
-      display: block;
-      margin: 0 auto 0.5rem;
-      color: var(--orange);
-    }
-
-    .loc-card-title {
-      font-family: 'Sora', sans-serif;
-      font-weight: 700;
-      font-size: 0.875rem;
-      color: var(--black);
-      margin-bottom: 0.25rem;
-      letter-spacing: -0.01em;
-    }
-
-    .loc-card-sub {
-      font-family: 'Nunito', sans-serif;
-      font-weight: 600;
-      font-size: 0.6875rem;
-      color: var(--gray-500);
-      line-height: 1.5;
-    }
-
-    /* Option list */
-    .option-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .opt-card {
-      border: 1.5px solid var(--gray-200);
-      border-radius: 12px;
-      padding: 0.75rem 1rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      transition: border-color 0.2s ease, background 0.2s ease;
-      background: #fff;
-    }
-
-    .opt-card:hover {
-      border-color: var(--orange);
-      background: #fff9f4;
-    }
-
-    .opt-card.selected {
-      border-color: var(--orange);
-      background: #fff5eb;
-    }
-
-    .opt-label {
-      font-family: 'Nunito', sans-serif;
-      font-weight: 700;
-      font-size: 0.875rem;
-      color: var(--black);
-    }
-
-    .price-badge {
-      font-family: 'Nunito', sans-serif;
-      font-weight: 700;
-      font-size: 0.75rem;
-      color: var(--orange);
-      background: rgba(255,121,0,0.08);
-      border-radius: 9999px;
-      padding: 2px 9px;
-    }
-
-    /* Level grid */
-    .level-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .level-btn {
-      border: 1.5px solid var(--gray-200);
-      border-radius: 10px;
-      padding: 0.6rem 0.5rem;
-      text-align: center;
-      cursor: pointer;
-      font-family: 'Nunito', sans-serif;
-      font-weight: 700;
-      font-size: 0.875rem;
-      color: var(--black);
-      background: #fff;
-      transition: border-color 0.2s ease, background 0.2s ease;
-    }
-
-    .level-btn:hover, .level-btn.selected {
-      border-color: var(--orange);
-      background: #fff5eb;
-      color: var(--orange);
-    }
-
-    /* Step 5 — Contact form */
-    .form-fields {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      margin-bottom: 1rem;
-    }
-
-    .form-input {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 500;
-      font-size: 0.9375rem;
-      color: var(--black);
-      background: #fff;
-      border: 1.5px solid var(--gray-200);
-      border-radius: 10px;
-      padding: 0.75rem 1rem;
-      width: 100%;
-      outline: none;
-      transition: border-color 0.2s ease;
-    }
-
-    .form-input:focus {
-      border-color: var(--orange);
-      box-shadow: 0 0 0 3px rgba(255,121,0,0.08);
-    }
-
-    .form-input::placeholder {
-      color: var(--gray-500);
-    }
-
-    /* Buttons */
-    .btn-submit {
-      width: 100%;
-      font-family: 'Nunito', sans-serif;
-      font-weight: 800;
-      font-size: 0.9375rem;
-      color: #fff;
-      background: var(--orange);
-      border: none;
-      border-radius: 12px;
-      padding: 14px 24px;
-      cursor: pointer;
-      transition: background 0.2s ease, transform 0.15s ease;
-      letter-spacing: 0.01em;
-    }
-
-    .btn-submit:hover {
-      background: var(--orange-2);
-      transform: translateY(-1px);
-    }
-
-    .btn-submit:active { transform: scale(0.98); }
-
-    .btn-back {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.25rem;
-      font-family: 'Nunito', sans-serif;
-      font-weight: 700;
-      font-size: 0.75rem;
-      color: var(--gray-500);
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      margin-bottom: 1rem;
-      transition: color 0.15s;
-    }
-
-    .btn-back:hover { color: var(--orange); }
-
-    /* Success state */
-    .form-success {
-      display: none;
-      text-align: center;
-      padding: 1rem 0;
-      animation: fadeUp 0.4s ease both;
-    }
-
-    .success-icon {
-      width: 56px;
-      height: 56px;
-      background: #f0fdf4;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1rem;
-    }
-
-    .success-title {
-      font-family: 'Sora', sans-serif;
-      font-weight: 800;
-      font-size: 1.25rem;
-      color: var(--black);
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.02em;
-    }
-
-    .success-sub {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 500;
-      font-size: 0.9375rem;
-      color: var(--gray-500);
-      line-height: 1.6;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FDS Institut — Hero</title>
+<meta name="description" content="Online German classes. A1 to C2. Live sessions with certified teachers. Prices in DA for Algeria, EUR internationally. Enroll in 2 minutes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ─── TOKENS ─── */
+:root {
+  --orange: #FF7900;
+  --orange-2: #FF9100;
+  --blue: #00304E;
+  --black: #111;
+  --gray-50: #F7F8FA;
+  --gray-100: #F0F1F3;
+  --gray-200: #E2E3E5;
+  --gray-500: #6B7280;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { background: var(--blue); color: var(--black); font-family: 'Montserrat', sans-serif; overflow-x: hidden; line-height: 1.6; }
+h1,h2,h3,h4 { font-family: 'Sora', sans-serif; letter-spacing: -.025em; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; font-family: inherit; border: none; background: none; }
+img { max-width: 100%; display: block; }
+input, textarea, select { font-family: 'Montserrat', sans-serif; }
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp   { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:none; } }
+@keyframes float    { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-10px); } }
+@keyframes pulseDot { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:.35; transform:scale(.85); } }
+@keyframes slideUp  { from { transform:translateY(100%); opacity:0; } to { transform:translateY(0); opacity:1; } }
+@keyframes popIn    { 0% { transform:scale(.88); opacity:0; } 100% { transform:scale(1); opacity:1; } }
+
+/* ─── BUTTONS ─── */
+.btn { display:inline-flex; align-items:center; gap:.5rem; font-family:'Montserrat',sans-serif; font-weight:700; font-size:.9rem; border-radius:10px; padding:.75rem 1.5rem; transition:all .2s; cursor:pointer; border:2px solid transparent; white-space:nowrap; }
+.btn-orange { background:var(--orange); color:#fff; border-color:var(--orange); }
+.btn-orange:hover { background:var(--orange-2); border-color:var(--orange-2); transform:translateY(-1px); box-shadow:0 8px 20px -4px rgba(255,121,0,.4); }
+.btn-lg   { padding:1rem 2rem; font-size:1rem; border-radius:12px; }
+.btn-full { width:100%; justify-content:center; }
+
+/* ══════════════════════════════════
+   HERO — solid blue, centered
+══════════════════════════════════ */
+#hero {
+  background:var(--blue);
+  padding:5.5rem 1.5rem 7rem;
+  text-align:center;
+  scroll-margin-top:0;
+}
+
+.hero-center { max-width:44rem; margin:0 auto; }
+
+.hero-eyebrow {
+  display:inline-flex; align-items:center; gap:.5rem;
+  font-family:'Nunito',sans-serif; font-weight:800; font-size:.75rem;
+  letter-spacing:.1em; text-transform:uppercase; color:#fff;
+  background:rgba(255,255,255,.12); border:1.5px solid rgba(255,255,255,.25);
+  border-radius:999px; padding:.4rem 1rem; margin-bottom:1.75rem;
+}
+.green-dot { width:8px; height:8px; border-radius:50%; background:#22c55e; display:inline-block; animation:pulseDot 1.4s ease infinite; }
+
+.hero-h1 {
+  font-size:clamp(3.25rem, 9vw, 6.5rem); font-weight:800; color:#fff;
+  line-height:1.0; letter-spacing:-.04em; margin-bottom:1.25rem;
+}
+.hero-h1 .accent { color:var(--orange); }
+
+.hero-sub {
+  font-size:1.1rem; font-weight:500; color:rgba(255,255,255,.75);
+  line-height:1.65; margin-bottom:2rem;
+}
+
+/* Trust pills — white on blue */
+.trust-pills { display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:2.5rem; justify-content:center; }
+.trust-pill {
+  display:inline-flex; align-items:center; gap:.4rem;
+  font-family:'Nunito',sans-serif; font-weight:700; font-size:.78rem;
+  color:var(--black); background:#fff;
+  border-radius:999px; padding:.35rem .9rem;
+}
+.trust-pill svg { color:var(--orange); flex-shrink:0; }
+
+/* ─── FORM CARD — big, centered, white ─── */
+.form-wrap { max-width:600px; margin:0 auto 3rem; }
+.form-card {
+  background:#fff; border-radius:28px;
+  box-shadow:0 40px 100px -20px rgba(0,0,0,.35), 0 0 0 1px rgba(0,0,0,.05);
+  padding:2.5rem 2.75rem;
+  animation:popIn .5s ease both;
+}
+
+.form-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:1.5rem; flex-wrap:wrap; gap:.75rem; }
+.form-card-label {
+  font-family:'Nunito',sans-serif; font-weight:800; font-size:.65rem;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--gray-500);
+}
+.enroll-count {
+  display:inline-flex; align-items:center; gap:.4rem;
+  font-family:'Nunito',sans-serif; font-weight:700; font-size:.72rem;
+  background:#f0fdf4; color:#15803d; border-radius:999px; padding:.25rem .7rem;
+}
+
+/* Progress dots */
+.form-dots { display:flex; gap:.35rem; margin-bottom:1.75rem; }
+.form-dot { height:7px; border-radius:999px; background:var(--gray-200); transition:all .35s ease; width:26px; }
+.form-dot.active { background:var(--orange); width:44px; }
+.form-dot.done   { background:var(--orange); opacity:.35; }
+
+.form-step { display:none; }
+.form-step.active { display:block; animation:fadeUp .3s ease; }
+
+.step-label {
+  font-family:'Nunito',sans-serif; font-weight:700; font-size:.68rem;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--orange);
+  margin-bottom:.5rem;
+}
+.step-question {
+  font-family:'Sora',sans-serif; font-weight:800; font-size:1.2rem;
+  color:var(--black); margin-bottom:1.25rem; line-height:1.25;
+}
+
+/* ─── LOCATION CARDS (step 1) ─── */
+.loc-options { display:grid; grid-template-columns:1fr 1fr; gap:.875rem; }
+.loc-card {
+  border:2px solid var(--gray-200); border-radius:18px; padding:1.5rem 1.25rem;
+  cursor:pointer; transition:all .2s ease; text-align:center;
+  display:flex; flex-direction:column; align-items:center; gap:.65rem; background:#fff;
+}
+.loc-card:hover   { border-color:var(--orange); background:#fffaf5; transform:translateY(-2px); box-shadow:0 8px 24px -8px rgba(255,121,0,.25); }
+.loc-card.selected { border-color:var(--orange); background:#fff7ef; box-shadow:0 0 0 4px rgba(255,121,0,.1); }
+.loc-icon { width:56px; height:56px; border-radius:50%; background:var(--gray-100); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.loc-card.selected .loc-icon { background:rgba(255,121,0,.15); }
+.dz-badge-circle { width:32px; height:32px; border-radius:50%; background:var(--blue); color:#fff; font-family:'Nunito',sans-serif; font-weight:800; font-size:.75rem; display:flex; align-items:center; justify-content:center; }
+.loc-title { font-family:'Sora',sans-serif; font-weight:700; font-size:1rem; color:var(--black); }
+.loc-card.selected .loc-title { color:var(--orange); }
+.loc-sub { font-family:'Nunito',sans-serif; font-weight:600; font-size:.72rem; color:var(--gray-500); line-height:1.4; }
+.loc-price { font-family:'Sora',sans-serif; font-weight:800; font-size:.9rem; color:var(--orange); }
+
+/* ─── OPTION CARDS (steps 2-4) ─── */
+.option-list { display:flex; flex-direction:column; gap:.55rem; }
+.opt-card {
+  display:flex; align-items:center; gap:.875rem;
+  padding:.95rem 1.1rem; border:2px solid var(--gray-200); border-radius:14px;
+  cursor:pointer; transition:all .2s; width:100%; text-align:left;
+  font-family:'Montserrat',sans-serif; font-weight:600; font-size:.9rem;
+  color:var(--black); background:#fff;
+}
+.opt-card:hover   { border-color:var(--orange); background:#fffaf5; transform:translateX(2px); }
+.opt-card.selected { border-color:var(--orange); background:#fff7ef; color:var(--orange); box-shadow:0 0 0 3px rgba(255,121,0,.1); }
+.opt-icon {
+  width:40px; height:40px; border-radius:10px; background:var(--gray-100);
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  color:var(--gray-500); transition:all .2s;
+}
+.opt-card.selected .opt-icon { background:rgba(255,121,0,.12); color:var(--orange); }
+.opt-main { flex:1; display:flex; flex-direction:column; gap:.15rem; }
+.opt-title { font-weight:700; font-size:.93rem; line-height:1.2; }
+.opt-desc  { font-family:'Nunito',sans-serif; font-weight:600; font-size:.72rem; color:var(--gray-500); line-height:1.3; }
+.opt-card.selected .opt-desc { color:rgba(255,121,0,.7); }
+.opt-badge {
+  font-family:'Nunito',sans-serif; font-weight:800; font-size:.72rem;
+  background:var(--gray-100); color:var(--gray-500);
+  padding:.25rem .6rem; border-radius:999px; white-space:nowrap; flex-shrink:0;
+}
+.opt-card.selected .opt-badge { background:#ffead6; color:var(--orange); }
+
+/* Level grid */
+.level-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:.55rem; }
+.level-card {
+  border:2px solid var(--gray-200); border-radius:14px; padding:1rem .875rem;
+  cursor:pointer; transition:all .2s; text-align:center; background:#fff;
+  display:flex; flex-direction:column; align-items:center; gap:.35rem;
+}
+.level-card:hover    { border-color:var(--orange); background:#fffaf5; transform:translateY(-2px); }
+.level-card.selected { border-color:var(--orange); background:#fff7ef; box-shadow:0 0 0 3px rgba(255,121,0,.1); }
+.level-code { font-family:'Sora',sans-serif; font-weight:800; font-size:1.2rem; color:var(--black); }
+.level-card.selected .level-code { color:var(--orange); }
+.level-name { font-family:'Nunito',sans-serif; font-weight:700; font-size:.68rem; color:var(--gray-500); text-transform:uppercase; letter-spacing:.05em; }
+
+/* Back button */
+.form-back { background:none; border:none; font-family:'Montserrat',sans-serif; font-weight:600; font-size:.8rem; color:var(--gray-500); cursor:pointer; margin-top:.875rem; display:flex; align-items:center; gap:.3rem; padding:0; transition:color .2s; }
+.form-back:hover { color:var(--black); }
+
+/* Contact step */
+.form-field-group { display:flex; flex-direction:column; gap:.65rem; margin-bottom:1rem; }
+.form-input { width:100%; border:2px solid var(--gray-200); border-radius:12px; padding:.9rem 1rem; font-family:'Montserrat',sans-serif; font-size:.92rem; font-weight:500; color:var(--black); outline:none; transition:border-color .2s; background:#fff; }
+.form-input:focus { border-color:var(--orange); }
+.form-input::placeholder { color:var(--gray-500); }
+.form-note { font-family:'Nunito',sans-serif; font-weight:600; font-size:.73rem; color:var(--gray-500); text-align:center; margin-top:.5rem; }
+
+/* Success state */
+.form-success { display:none; text-align:center; padding:1.5rem 0; }
+.success-circle { width:72px; height:72px; border-radius:50%; background:#f0fdf4; display:flex; align-items:center; justify-content:center; margin:0 auto 1.25rem; }
+.success-title { font-family:'Sora',sans-serif; font-weight:800; font-size:1.5rem; color:var(--black); margin-bottom:.5rem; }
+.success-sub   { font-size:.9rem; color:var(--gray-500); margin-bottom:.75rem; line-height:1.5; }
+.success-help  { font-size:.78rem; color:var(--gray-500); }
+.success-help a { color:var(--orange); font-weight:600; }
+
+/* ─── HERO PHOTO ROW ─── */
+.hero-social { margin-top:2.5rem; display:flex; flex-direction:column; align-items:center; gap:1rem; }
+.hero-photos { display:flex; justify-content:center; }
+.hero-photo-card {
+  width:60px; height:60px; border-radius:16px; overflow:hidden;
+  border:3px solid rgba(255,255,255,.25); margin-left:-12px;
+  box-shadow:0 4px 16px rgba(0,0,0,.25); transition:transform .25s;
+  animation:float 4s ease infinite;
+}
+.hero-photo-card:nth-child(1) { margin-left:0; animation-delay:0s; }
+.hero-photo-card:nth-child(2) { animation-delay:.4s; }
+.hero-photo-card:nth-child(3) { animation-delay:.8s; }
+.hero-photo-card:nth-child(4) { animation-delay:1.2s; }
+.hero-photo-card:nth-child(5) { animation-delay:1.6s; }
+.hero-photo-card:hover { transform:translateY(-5px) scale(1.1); z-index:1; }
+.hero-photo-card img { width:100%; height:100%; object-fit:cover; }
+.social-proof { display:flex; align-items:center; gap:.75rem; }
+.avatar-stack { display:flex; }
+.avatar-item {
+  width:36px; height:36px; border-radius:50%; background:var(--orange);
+  color:#fff; font-family:'Sora',sans-serif; font-weight:700; font-size:.7rem;
+  display:flex; align-items:center; justify-content:center;
+  border:2px solid var(--blue); margin-left:-8px; flex-shrink:0;
+}
+.avatar-item:first-child { margin-left:0; }
+.social-text { font-family:'Nunito',sans-serif; font-weight:700; font-size:.82rem; color:rgba(255,255,255,.7); line-height:1.4; }
+.social-text strong { color:#fff; }
+
+/* ══════════════════════════════════
+   SUCCESS BANNER
+══════════════════════════════════ */
+#success-banner {
+  position:fixed; bottom:2rem; left:50%;
+  transform:translateX(-50%) translateY(120%);
+  background:var(--blue); color:#fff; border-radius:999px;
+  padding:.85rem 1.75rem; display:flex; align-items:center; gap:.65rem;
+  font-family:'Nunito',sans-serif; font-weight:700; font-size:.85rem;
+  white-space:nowrap; z-index:9999;
+  box-shadow:0 12px 40px -6px rgba(0,48,78,.4);
+  transition:transform .4s ease, opacity .4s ease; opacity:0;
+}
+#success-banner.show { transform:translateX(-50%) translateY(0); opacity:1; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width:700px) {
+  .form-card { padding:1.75rem 1.5rem; }
+  .loc-options { grid-template-columns:1fr; }
+  .level-grid  { grid-template-columns:repeat(2,1fr); }
+}
+@media (max-width:600px) {
+  .hero-h1 { font-size:clamp(2.75rem,12vw,4.5rem); }
+  #success-banner { white-space:normal; text-align:center; border-radius:16px; left:1rem; right:1rem; transform:translateY(120%); width:auto; }
+  #success-banner.show { transform:translateY(0); }
+}
+</style>
 </head>
 <body>
 
-  <!-- Success banner -->
-  <div id="success-banner" role="status" aria-live="polite">
-    <div class="check-icon" aria-hidden="true">
-      <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2 5l2.5 2.5 3.5-4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </div>
-    Spot reserved! Check your inbox.
-  </div>
+<!-- HERO — solid blue, centered -->
+<section id="hero">
+  <div class="hero-center">
 
-  <section class="hero" id="hero">
-
-    <!-- LEFT -->
-    <div class="hero-left">
-
-      <!-- Eyebrow -->
-      <span class="eyebrow-chip">
-        <span class="pulse-dot" aria-hidden="true"></span>
-        Enrolling now &middot; Online
-      </span>
-
-      <!-- H1 -->
-      <h1>Sprich Deutsch<span class="orange-dot" aria-hidden="true"></span></h1>
-
-      <!-- Sub -->
-      <p class="hero-sub">Online German classes for everyone. Live sessions, certified teachers, pricing adapted to where you live.</p>
-
-      <!-- Trust pills -->
-      <div class="trust-pills">
-        <span class="trust-pill">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          +12 000 students
-        </span>
-        <span class="trust-pill">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          4.9&#x2605; rating
-        </span>
-        <span class="trust-pill">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          14-day guarantee
-        </span>
-      </div>
-
-      <!-- Photo strip -->
-      <div class="photo-strip" aria-label="Students of FDS Institut">
-        <img class="avatar" src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Student" loading="lazy" />
-        <img class="avatar" src="https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Student" loading="lazy" />
-        <img class="avatar" src="https://images.pexels.com/photos/1438072/pexels-photo-1438072.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Student" loading="lazy" />
-        <img class="avatar" src="https://images.pexels.com/photos/4144101/pexels-photo-4144101.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Student" loading="lazy" />
-        <div class="avatar-count">12k+</div>
-      </div>
-
+    <div class="hero-eyebrow">
+      <span class="green-dot"></span>
+      Enrolling now &nbsp;·&nbsp; Online &nbsp;·&nbsp; Worldwide
     </div>
 
-    <!-- RIGHT — Form card -->
-    <div class="hero-right">
+    <h1 class="hero-h1">Sprich<br>Deutsch<span class="accent">.</span></h1>
+    <p class="hero-sub">Live German classes from A1 to C2. Certified teachers, small groups, prices adapted to where you are.</p>
+
+    <div class="trust-pills">
+      <div class="trust-pill">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        12 000+ students
+      </div>
+      <div class="trust-pill">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        4.9 rating
+      </div>
+      <div class="trust-pill">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        14-day guarantee
+      </div>
+      <div class="trust-pill">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Available worldwide
+      </div>
+    </div>
+
+    <!-- FORM CARD — centered, dominant -->
+    <div class="form-wrap">
       <div class="form-card">
-
-        <!-- Label + dots -->
-        <div class="card-label">
-          <span class="card-label-text">ENROLL NOW &middot; 2 MINUTES</span>
-          <div class="dots-row" aria-label="Form progress">
-            <span class="form-dot active" aria-hidden="true"></span>
-            <span class="form-dot" aria-hidden="true"></span>
-            <span class="form-dot" aria-hidden="true"></span>
-            <span class="form-dot" aria-hidden="true"></span>
-            <span class="form-dot" aria-hidden="true"></span>
-          </div>
+        <div class="form-header">
+          <span class="form-card-label">ENROLL NOW &nbsp;·&nbsp; 2 MINUTES</span>
+          <span class="enroll-count">
+            <span class="green-dot"></span>
+            400+ enrolled this month
+          </span>
         </div>
 
-        <!-- Steps wrapper -->
+        <div class="form-dots">
+          <div class="form-dot active"></div>
+          <div class="form-dot"></div>
+          <div class="form-dot"></div>
+          <div class="form-dot"></div>
+          <div class="form-dot"></div>
+        </div>
+
         <div class="form-steps-wrap">
 
           <!-- Step 1: Location -->
           <div class="form-step active" data-step="1">
-            <p class="step-title">Where are you based?</p>
-            <div class="loc-grid">
-              <div class="loc-card" onclick="selectLoc(this,'dz')" role="button" tabindex="0" aria-label="Algeria">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
-                <div class="loc-card-title">Algeria</div>
-                <div class="loc-card-sub">7 500 DA/month<br>CCP &middot; Edahabia</div>
+            <div class="step-label">Step 1 of 5</div>
+            <div class="step-question">Where are you based?</div>
+            <div class="loc-options">
+              <div class="loc-card" onclick="selectLocation(this,'dz')" role="button" tabindex="0">
+                <div class="loc-icon"><div class="dz-badge-circle">DZ</div></div>
+                <div class="loc-title">Algeria</div>
+                <div class="loc-sub">CCP · Edahabia · BaridiMob</div>
+                <div class="loc-price">From 7 500 DA</div>
               </div>
-              <div class="loc-card" onclick="selectLoc(this,'intl')" role="button" tabindex="0" aria-label="International">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                <div class="loc-card-title">International</div>
-                <div class="loc-card-sub">From &euro;85/month<br>Card &middot; PayPal</div>
+              <div class="loc-card" onclick="selectLocation(this,'intl')" role="button" tabindex="0">
+                <div class="loc-icon">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <div class="loc-title">International</div>
+                <div class="loc-sub">Card · PayPal · Transfer</div>
+                <div class="loc-price">From €85</div>
               </div>
             </div>
           </div>
 
           <!-- Step 2: Class type -->
           <div class="form-step" data-step="2">
-            <button class="btn-back" onclick="goBack()" aria-label="Go back">
-              <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 8H3M7 4l-4 4 4 4"/></svg>
+            <div class="step-label">Step 2 of 5</div>
+            <div class="step-question">What type of class fits you best?</div>
+            <div class="option-list">
+              <button class="opt-card" onclick="selectOpt(this,'type','group')" type="button">
+                <div class="opt-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <div class="opt-main">
+                  <span class="opt-title">Group Classes</span>
+                  <span class="opt-desc">3 sessions/week · Max 8 students · Mon / Wed / Fri</span>
+                </div>
+                <span class="opt-badge price-badge">€125/mo</span>
+              </button>
+              <button class="opt-card" onclick="selectOpt(this,'type','self')" type="button">
+                <div class="opt-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/></svg>
+                </div>
+                <div class="opt-main">
+                  <span class="opt-title">Self-Paced</span>
+                  <span class="opt-desc">Study on your schedule · Full Moodle access · Lifetime replays</span>
+                </div>
+                <span class="opt-badge price-badge">€85/mo</span>
+              </button>
+              <button class="opt-card" onclick="selectOpt(this,'type','intensive')" type="button">
+                <div class="opt-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                </div>
+                <div class="opt-main">
+                  <span class="opt-title">Intensive</span>
+                  <span class="opt-desc">Daily sessions · Fast-track A1 to B2 · Small group of 4</span>
+                </div>
+                <span class="opt-badge price-badge">€290/mo</span>
+              </button>
+            </div>
+            <button class="form-back" onclick="goBack()" type="button">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
               Back
             </button>
-            <p class="step-title">What type of class?</p>
-            <div class="option-list">
-              <div class="opt-card" onclick="selectOpt(this,'classType','group')" role="button" tabindex="0">
-                <span class="opt-label">Group</span>
-                <span class="price-badge">&euro;125/mo</span>
-              </div>
-              <div class="opt-card" onclick="selectOpt(this,'classType','self-paced')" role="button" tabindex="0">
-                <span class="opt-label">Self-Paced</span>
-                <span class="price-badge">&euro;85/mo</span>
-              </div>
-              <div class="opt-card" onclick="selectOpt(this,'classType','intensive')" role="button" tabindex="0">
-                <span class="opt-label">Intensive</span>
-                <span class="price-badge">&euro;290/mo</span>
-              </div>
-            </div>
           </div>
 
           <!-- Step 3: Level -->
           <div class="form-step" data-step="3">
-            <button class="btn-back" onclick="goBack()" aria-label="Go back">
-              <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 8H3M7 4l-4 4 4 4"/></svg>
+            <div class="step-label">Step 3 of 5</div>
+            <div class="step-question">What's your current German level?</div>
+            <div class="level-grid">
+              <div class="level-card" onclick="selectLevel(this,'a1')" role="button" tabindex="0">
+                <div class="level-code">A1</div>
+                <div class="level-name">Beginner</div>
+              </div>
+              <div class="level-card" onclick="selectLevel(this,'a2')" role="button" tabindex="0">
+                <div class="level-code">A2</div>
+                <div class="level-name">Elementary</div>
+              </div>
+              <div class="level-card" onclick="selectLevel(this,'b1')" role="button" tabindex="0">
+                <div class="level-code">B1</div>
+                <div class="level-name">Intermediate</div>
+              </div>
+              <div class="level-card" onclick="selectLevel(this,'b2')" role="button" tabindex="0">
+                <div class="level-code">B2</div>
+                <div class="level-name">Upper-Inter.</div>
+              </div>
+              <div class="level-card" onclick="selectLevel(this,'c1c2')" role="button" tabindex="0">
+                <div class="level-code">C1-C2</div>
+                <div class="level-name">Advanced</div>
+              </div>
+              <div class="level-card" onclick="selectLevel(this,'unsure')" role="button" tabindex="0">
+                <div class="level-code" style="font-size:.95rem">?</div>
+                <div class="level-name">Not sure</div>
+              </div>
+            </div>
+            <button class="form-back" onclick="goBack()" type="button">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
               Back
             </button>
-            <p class="step-title">Your level?</p>
-            <div class="level-grid option-list">
-              <div class="level-btn opt-card" onclick="selectOpt(this,'level','A1')" role="button" tabindex="0">A1</div>
-              <div class="level-btn opt-card" onclick="selectOpt(this,'level','A2')" role="button" tabindex="0">A2</div>
-              <div class="level-btn opt-card" onclick="selectOpt(this,'level','B1')" role="button" tabindex="0">B1</div>
-              <div class="level-btn opt-card" onclick="selectOpt(this,'level','B2')" role="button" tabindex="0">B2</div>
-              <div class="level-btn opt-card" onclick="selectOpt(this,'level','C1-C2')" role="button" tabindex="0">C1&ndash;C2</div>
-              <div class="level-btn opt-card" onclick="selectOpt(this,'level','not-sure')" role="button" tabindex="0">Not sure</div>
-            </div>
           </div>
 
           <!-- Step 4: Goal -->
           <div class="form-step" data-step="4">
-            <button class="btn-back" onclick="goBack()" aria-label="Go back">
-              <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 8H3M7 4l-4 4 4 4"/></svg>
+            <div class="step-label">Step 4 of 5</div>
+            <div class="step-question">What's your main goal?</div>
+            <div class="option-list">
+              <button class="opt-card" onclick="selectOpt(this,'goal','study')" type="button">
+                <div class="opt-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                </div>
+                <div class="opt-main">
+                  <span class="opt-title">Study in Germany / Austria</span>
+                  <span class="opt-desc">University admission, DSH, TestDaF, Studienkolleg</span>
+                </div>
+              </button>
+              <button class="opt-card" onclick="selectOpt(this,'goal','work')" type="button">
+                <div class="opt-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                </div>
+                <div class="opt-main">
+                  <span class="opt-title">Work &amp; Career</span>
+                  <span class="opt-desc">Professional German, job applications, workplace communication</span>
+                </div>
+              </button>
+              <button class="opt-card" onclick="selectOpt(this,'goal','visa')" type="button">
+                <div class="opt-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                </div>
+                <div class="opt-main">
+                  <span class="opt-title">Visa &amp; Immigration</span>
+                  <span class="opt-desc">Integration course language, Einbürgerungstest preparation</span>
+                </div>
+              </button>
+              <button class="opt-card" onclick="selectOpt(this,'goal','exam')" type="button">
+                <div class="opt-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                </div>
+                <div class="opt-main">
+                  <span class="opt-title">Exam Preparation</span>
+                  <span class="opt-desc">Goethe-Zertifikat, telc, IELTS German, official certifications</span>
+                </div>
+              </button>
+              <button class="opt-card" onclick="selectOpt(this,'goal','travel')" type="button">
+                <div class="opt-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <div class="opt-main">
+                  <span class="opt-title">Travel &amp; Culture</span>
+                  <span class="opt-desc">Conversational German, travel, connect with the culture</span>
+                </div>
+              </button>
+            </div>
+            <button class="form-back" onclick="goBack()" type="button">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
               Back
             </button>
-            <p class="step-title">Your main goal?</p>
-            <div class="option-list">
-              <div class="opt-card" onclick="selectOpt(this,'goal','study-germany')" role="button" tabindex="0"><span class="opt-label">Study in Germany</span></div>
-              <div class="opt-card" onclick="selectOpt(this,'goal','career')" role="button" tabindex="0"><span class="opt-label">Work &amp; Career</span></div>
-              <div class="opt-card" onclick="selectOpt(this,'goal','visa')" role="button" tabindex="0"><span class="opt-label">Visa</span></div>
-              <div class="opt-card" onclick="selectOpt(this,'goal','exam-prep')" role="button" tabindex="0"><span class="opt-label">Exam prep</span></div>
-              <div class="opt-card" onclick="selectOpt(this,'goal','travel')" role="button" tabindex="0"><span class="opt-label">Travel</span></div>
-            </div>
           </div>
 
-          <!-- Step 5: Contact details -->
+          <!-- Step 5: Contact -->
           <div class="form-step" data-step="5">
-            <button class="btn-back" onclick="goBack()" aria-label="Go back">
-              <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 8H3M7 4l-4 4 4 4"/></svg>
+            <div class="step-label">Step 5 of 5</div>
+            <div class="step-question">Reserve your spot</div>
+            <form onsubmit="submitForm(event)" novalidate>
+              <div class="form-field-group">
+                <input class="form-input" type="text" id="f-firstname" placeholder="First name" required>
+                <input class="form-input" type="email" id="f-email" placeholder="Email address" required>
+                <input class="form-input" type="tel" id="f-phone" placeholder="Phone number" required>
+                <input id="field-wilaya"  class="form-input loc-dz"   placeholder="Your wilaya" style="display:none">
+                <input id="field-country" class="form-input loc-intl" placeholder="Your country" style="display:none">
+              </div>
+              <button class="btn btn-orange btn-full btn-lg" type="submit">Get my payment link &nbsp;→</button>
+            </form>
+            <p class="form-note">No commitment &nbsp;·&nbsp; Free cancellation &nbsp;·&nbsp; Secure</p>
+            <button class="form-back" onclick="goBack()" type="button">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
               Back
             </button>
-            <p class="step-title">Reserve your spot</p>
-            <form onsubmit="submitForm(event)" novalidate>
-              <div class="form-fields">
-                <input class="form-input" type="text" name="firstName" placeholder="First name" required autocomplete="given-name" />
-                <input class="form-input" type="email" name="email" placeholder="Email address" required autocomplete="email" />
-                <input class="form-input" type="tel" name="phone" placeholder="Phone / WhatsApp" autocomplete="tel" />
-                <!-- DZ: wilaya -->
-                <div class="loc-dz" style="display:none;">
-                  <select class="form-input" name="wilaya">
-                    <option value="" disabled selected>Wilaya</option>
-                    <option>Alger</option><option>Oran</option><option>Constantine</option>
-                    <option>Annaba</option><option>Blida</option><option>Tizi Ouzou</option>
-                    <option>Autre</option>
-                  </select>
-                </div>
-                <!-- INT: country -->
-                <div class="loc-intl" style="display:none;">
-                  <input class="form-input" type="text" name="country" placeholder="Country" autocomplete="country-name" />
-                </div>
-              </div>
-              <button type="submit" class="btn-submit">Reserve my spot &rarr;</button>
-            </form>
           </div>
 
         </div>
 
         <!-- Success state -->
-        <div class="form-success" role="status" aria-live="polite">
-          <div class="success-icon" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        <div class="form-success">
+          <div class="success-circle">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
-          <p class="success-title">You&rsquo;re on the list!</p>
-          <p class="success-sub">We'll be in touch within 24 hours to confirm your spot and share next steps.</p>
+          <div class="success-title">You're in!</div>
+          <p class="success-sub">Check your inbox — your personal payment link arrives within 24 hours.</p>
+          <p class="success-help">Questions? <a href="mailto:online@fdsinstitut.com">online@fdsinstitut.com</a></p>
         </div>
 
       </div>
     </div>
 
-  </section>
+    <!-- Student photos + social proof -->
+    <div class="hero-social">
+      <div class="hero-photos">
+        <div class="hero-photo-card"><img src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Student"></div>
+        <div class="hero-photo-card"><img src="https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Student"></div>
+        <div class="hero-photo-card"><img src="https://images.pexels.com/photos/1438072/pexels-photo-1438072.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Student"></div>
+        <div class="hero-photo-card"><img src="https://images.pexels.com/photos/4144101/pexels-photo-4144101.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Student"></div>
+        <div class="hero-photo-card"><img src="https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Student"></div>
+      </div>
+      <div class="social-proof">
+        <div class="avatar-stack">
+          <div class="avatar-item">AL</div>
+          <div class="avatar-item">MR</div>
+          <div class="avatar-item">SK</div>
+        </div>
+        <div class="social-text"><strong>400+ new students</strong> joined this month</div>
+      </div>
+    </div>
 
-  <script>
-    let curStep = 1, ans = {};
+  </div>
+</section>
 
-    function selectLoc(el, val) {
-      document.querySelectorAll('.loc-card').forEach(c => c.classList.remove('selected'));
-      el.classList.add('selected');
-      ans.location = val;
-      // update price badges
-      const isDZ = (val === 'dz');
-      const prices = isDZ
-        ? ['7 500 DA/mo', '9 900 DA/mo', '32 000 DA/mo']
-        : ['€125/mo', '€85/mo', '€290/mo'];
-      document.querySelectorAll('.price-badge').forEach((b, i) => { if (prices[i]) b.textContent = prices[i]; });
-      setTimeout(() => goStep(2), 320);
-    }
+<!-- SUCCESS BANNER -->
+<div id="success-banner">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+  Enrollment sent! Payment link in 24h.
+</div>
 
-    function selectOpt(el, key, val) {
-      el.closest('.option-list').querySelectorAll('.opt-card').forEach(c => c.classList.remove('selected'));
-      el.classList.add('selected');
-      ans[key] = val;
-      if (curStep < 5) setTimeout(() => goStep(curStep + 1), 320);
-    }
+<script>
+/* ─── FORM STATE ─── */
+let curStep = 1;
+const ans = {};
 
-    function goStep(n) {
-      document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
-      const t = document.querySelector('.form-step[data-step="' + n + '"]');
-      if (t) { t.classList.add('active'); curStep = n; updateDots(n); }
-      if (n === 5) {
-        document.querySelectorAll('.loc-dz').forEach(el => el.style.display = ans.location === 'dz' ? 'block' : 'none');
-        document.querySelectorAll('.loc-intl').forEach(el => el.style.display = ans.location === 'intl' ? 'block' : 'none');
-      }
-    }
+function scrollToHero() {
+  document.getElementById('hero').scrollIntoView({ behavior: 'smooth' });
+}
 
-    function updateDots(n) {
-      document.querySelectorAll('.form-dot').forEach((d, i) => {
-        d.classList.remove('active', 'done');
-        if (i + 1 < n) d.classList.add('done');
-        else if (i + 1 === n) d.classList.add('active');
-      });
-    }
+function goStep(n) {
+  document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+  const t = document.querySelector(`.form-step[data-step="${n}"]`);
+  if (t) { t.classList.add('active'); curStep = n; updateDots(n); }
+  if (n === 5) showStep5Fields();
+}
 
-    function submitForm(e) {
-      e.preventDefault();
-      document.querySelector('.form-steps-wrap').style.display = 'none';
-      document.querySelector('.form-success').style.display = 'block';
-      showBanner();
-    }
+function updateDots(n) {
+  document.querySelectorAll('.form-dot').forEach((d, i) => {
+    d.classList.remove('active', 'done');
+    if (i + 1 < n) d.classList.add('done');
+    else if (i + 1 === n) d.classList.add('active');
+  });
+}
 
-    function showBanner() {
-      const b = document.getElementById('success-banner');
-      b.classList.add('show');
-      setTimeout(() => b.classList.remove('show'), 6000);
-    }
+function goBack() { if (curStep > 1) goStep(curStep - 1); }
 
-    function goBack() { if (curStep > 1) goStep(curStep - 1); }
+/* Step 1: location */
+function selectLocation(el, val) {
+  document.querySelectorAll('.loc-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  ans.location = val;
+  const isDZ = val === 'dz';
+  const prices = isDZ
+    ? ['7 500 DA/mo', '4 900 DA/mo', '12 000 DA/mo']
+    : ['€125/mo', '€85/mo', '€290/mo'];
+  document.querySelectorAll('.price-badge').forEach((b, i) => { if (prices[i]) b.textContent = prices[i]; });
+  setTimeout(() => goStep(2), 320);
+}
 
-    // keyboard accessibility for card buttons
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        const t = e.target;
-        if (t.classList.contains('loc-card') || t.classList.contains('opt-card') || t.classList.contains('level-btn')) {
-          e.preventDefault();
-          t.click();
-        }
-      }
-    });
-  </script>
+/* Steps 2 & 4: option cards */
+function selectOpt(el, key, val) {
+  el.closest('.option-list').querySelectorAll('.opt-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  ans[key] = val;
+  setTimeout(() => goStep(curStep + 1), 320);
+}
+
+/* Step 3: level grid */
+function selectLevel(el, val) {
+  document.querySelectorAll('.level-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  ans.level = val;
+  setTimeout(() => goStep(4), 320);
+}
+
+/* Show/hide location-specific contact fields */
+function showStep5Fields() {
+  document.querySelectorAll('.loc-dz').forEach(f => f.style.display = ans.location === 'dz' ? 'block' : 'none');
+  document.querySelectorAll('.loc-intl').forEach(f => f.style.display = ans.location === 'intl' ? 'block' : 'none');
+}
+
+/* Submit */
+function submitForm(e) {
+  e.preventDefault();
+  document.querySelector('.form-steps-wrap').style.display = 'none';
+  document.querySelector('.form-success').style.display = 'block';
+  showBanner();
+}
+
+function showBanner() {
+  const b = document.getElementById('success-banner');
+  b.classList.add('show');
+  setTimeout(() => b.classList.remove('show'), 6000);
+}
+
+/* ─── LOC CARD & LEVEL CARD KEYBOARD ─── */
+document.querySelectorAll('.loc-card, .level-card').forEach(c => {
+  c.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); c.click(); } });
+});
+</script>
 </body>
 </html>

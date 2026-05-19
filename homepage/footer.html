@@ -1,222 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FDS Institut — Footer</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { -webkit-font-smoothing: antialiased; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FDS Institut — Footer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ─── TOKENS ─── */
+:root {
+  --orange: #FF7900;
+  --orange-2: #FF9100;
+  --blue: #00304E;
+  --black: #111;
+  --gray-50: #F7F8FA;
+  --gray-200: #E2E3E5;
+  --gray-500: #6B7280;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-font-smoothing: antialiased; }
+body {
+  background: #fff;
+  color: var(--black);
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.6;
+}
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; font-family: inherit; border: none; background: none; }
 
-    :root {
-      --orange: #FF7900;
-      --blue: #00304E;
-      --gray-50: #F7F8FA;
-      --gray-200: #E2E3E5;
-      --gray-500: #6B7280;
-      --black: #111;
-    }
+/* ══════════════════════════════════
+   FOOTER — white bg, border-top
+══════════════════════════════════ */
+.footer {
+  background: #fff;
+  border-top: 1px solid var(--gray-200);
+  padding: 3.5rem 1.5rem 0;
+}
 
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: #fff;
-      color: var(--black);
-    }
+.footer-inner {
+  max-width: 80rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 3rem;
+}
 
-    a { color: inherit; text-decoration: none; }
+/* ─── Brand column ─── */
+.footer-brand-logo {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: 1.35rem;
+  color: var(--blue);
+  letter-spacing: -.04em;
+  margin-bottom: .5rem;
+}
+.footer-brand-logo span { color: var(--orange); }
 
-    /* ── Footer ── */
-    footer {
-      background: #fff;
-      border-top: 1px solid var(--gray-200);
-    }
+.footer-brand-sub {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: .78rem;
+  color: var(--gray-500);
+  margin-bottom: .35rem;
+}
 
-    .footer-inner {
-      max-width: 80rem;
-      margin: 0 auto;
-      padding: 3.5rem 1.5rem 2.5rem;
-    }
+.footer-copy {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: .72rem;
+  color: var(--gray-500);
+  margin-top: .75rem;
+}
 
-    @media (min-width: 1024px) {
-      .footer-inner { padding: 4rem 3rem 2.5rem; }
-    }
+/* ─── Navigate column ─── */
+.footer-nav-title,
+.footer-contact-title {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: .72rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--black);
+  margin-bottom: 1rem;
+}
 
-    /* ── 3-col grid ── */
-    .footer-grid {
-      display: grid;
-      gap: 2.5rem;
-      grid-template-columns: 1fr;
-      margin-bottom: 3rem;
-    }
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
+}
 
-    @media (min-width: 768px) {
-      .footer-grid { grid-template-columns: 2fr 1fr 1fr; }
-    }
+.footer-link {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: .85rem;
+  color: var(--gray-500);
+  cursor: pointer;
+  transition: color .2s;
+}
+.footer-link:hover { color: var(--orange); }
 
-    /* ── Brand column ── */
-    .logo {
-      display: inline-flex;
-      align-items: center;
-      font-family: 'Sora', sans-serif;
-      font-weight: 800;
-      font-size: 1.5rem;
-      color: var(--blue);
-      letter-spacing: -0.03em;
-      margin-bottom: 0.75rem;
-      line-height: 1;
-    }
+/* ─── Contact column ─── */
+.footer-contact-items {
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+}
 
-    .logo-dot {
-      display: inline-block;
-      width: 7px;
-      height: 7px;
-      background: var(--orange);
-      border-radius: 50%;
-      margin-left: 2px;
-      margin-bottom: 3px;
-      flex-shrink: 0;
-    }
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: .85rem;
+  color: var(--gray-500);
+}
 
-    .brand-tagline {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 500;
-      font-size: 0.875rem;
-      color: var(--gray-500);
-      line-height: 1.6;
-      margin-bottom: 0.5rem;
-    }
+.footer-contact-item svg {
+  flex-shrink: 0;
+  color: var(--gray-500);
+}
 
-    .brand-copy {
-      font-family: 'Nunito', sans-serif;
-      font-weight: 700;
-      font-size: 0.75rem;
-      color: var(--gray-500);
-      letter-spacing: 0.01em;
-    }
+.footer-contact-item a {
+  color: var(--gray-500);
+  transition: color .2s;
+}
+.footer-contact-item a:hover { color: var(--orange); }
 
-    /* ── Nav / Contact columns ── */
-    .col-heading {
-      font-family: 'Nunito', sans-serif;
-      font-weight: 700;
-      font-size: 0.6875rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gray-500);
-      margin-bottom: 1rem;
-    }
+/* ─── Bottom bar ─── */
+.footer-bottom {
+  border-top: 1px solid var(--gray-200);
+  padding: 1rem 1.5rem;
+  max-width: 80rem;
+  margin: 0 auto;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: .72rem;
+  color: var(--gray-500);
+  text-align: center;
+}
 
-    .footer-links {
-      display: flex;
-      flex-direction: column;
-      gap: 0.55rem;
-    }
-
-    .footer-links a {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 500;
-      font-size: 0.9rem;
-      color: var(--gray-500);
-      transition: color 0.15s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.25rem;
-    }
-
-    .footer-links a:hover {
-      color: var(--orange);
-    }
-
-    .ext-icon {
-      display: inline-block;
-      width: 11px;
-      height: 11px;
-      flex-shrink: 0;
-    }
-
-    /* ── Bottom bar ── */
-    .footer-bottom {
-      border-top: 1px solid var(--gray-200);
-      padding-top: 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .footer-bottom-text {
-      font-family: 'Nunito', sans-serif;
-      font-weight: 700;
-      font-size: 0.6875rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--gray-500);
-      text-align: center;
-    }
-
-    .footer-bottom-sep {
-      margin: 0 0.5rem;
-      color: var(--gray-200);
-    }
-  </style>
+/* ─── Responsive ─── */
+@media (max-width: 1023px) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+</style>
 </head>
 <body>
-  <footer>
-    <div class="footer-inner">
 
-      <!-- 3-col grid -->
-      <div class="footer-grid">
+<footer class="footer">
 
-        <!-- Brand column -->
-        <div>
-          <a href="../index.html" class="logo" aria-label="FDS Institut home">
-            FDS<span class="logo-dot" aria-hidden="true"></span>
-          </a>
-          <p class="brand-tagline">Online German school. Est. Algiers.</p>
-          <p class="brand-copy">&copy; 2026 FDS Institut</p>
-        </div>
+  <div class="footer-inner">
 
-        <!-- Navigation column -->
-        <div>
-          <p class="col-heading">Navigation</p>
-          <div class="footer-links">
-            <a href="#pricing">Pricing</a>
-            <a href="https://elearning.fdsinstitut.com" target="_blank" rel="noopener noreferrer">Platform
-              <svg class="ext-icon" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 9L9 1M9 1H4M9 1v5"/></svg>
-            </a>
-            <a href="#faq">FAQ</a>
-            <a href="../dz/index.html">Algeria</a>
-            <a href="../global/index.html">International</a>
-          </div>
-        </div>
-
-        <!-- Contact column -->
-        <div>
-          <p class="col-heading">Contact</p>
-          <div class="footer-links">
-            <a href="mailto:online@fdsinstitut.com">online@fdsinstitut.com</a>
-            <a href="https://fdsinstitut.com" target="_blank" rel="noopener noreferrer">
-              fdsinstitut.com
-              <svg class="ext-icon" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 9L9 1M9 1H4M9 1v5"/></svg>
-            </a>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Bottom bar -->
-      <div class="footer-bottom">
-        <p class="footer-bottom-text">
-          All sessions online
-          <span class="footer-bottom-sep" aria-hidden="true">&middot;</span>
-          Algeria
-          <span class="footer-bottom-sep" aria-hidden="true">&middot;</span>
-          Worldwide
-        </p>
-      </div>
-
+    <!-- Column 1: Brand -->
+    <div>
+      <div class="footer-brand-logo">FDS<span>.</span></div>
+      <div class="footer-brand-sub">Online German school. Est. Algiers.</div>
+      <div class="footer-copy">&copy; 2026 FDS Institut</div>
     </div>
-  </footer>
+
+    <!-- Column 2: Navigate -->
+    <div>
+      <div class="footer-nav-title">Navigate</div>
+      <div class="footer-links">
+        <span class="footer-link" onclick="scrollToHero()">Enroll</span>
+        <a class="footer-link" href="../dz/index.html">Algeria (DZ)</a>
+        <a class="footer-link" href="../global/index.html">International</a>
+        <a class="footer-link" href="https://elearning.fdsinstitut.com" target="_blank" rel="noopener">Platform</a>
+      </div>
+    </div>
+
+    <!-- Column 3: Contact -->
+    <div>
+      <div class="footer-contact-title">Contact</div>
+      <div class="footer-contact-items">
+
+        <div class="footer-contact-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+          <a href="mailto:online@fdsinstitut.com">online@fdsinstitut.com</a>
+        </div>
+
+        <div class="footer-contact-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          <a href="https://fdsinstitut.com" target="_blank" rel="noopener">fdsinstitut.com</a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="footer-bottom">
+    All sessions conducted online &nbsp;&middot;&nbsp; Globally accessible &nbsp;&middot;&nbsp; A1 to C2
+  </div>
+
+</footer>
+
+<script>
+/* scrollToHero — works standalone or embedded in parent frame */
+function scrollToHero() {
+  if (window.parent && window.parent.scrollToHero && window.parent !== window) {
+    window.parent.scrollToHero();
+  } else {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+</script>
 </body>
 </html>
