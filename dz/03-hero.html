@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>FDS Institut — Section Héros</title>
+<title>FDS Institut — Cours d'allemand en ligne · Algérie</title>
+<meta name="description" content="Apprenez l'allemand depuis l'Algérie. Cours en direct avec des professeurs certifiés. Tarifs en dinars. CCP · Edahabia · BaridiMob."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -19,17 +20,21 @@ html{scroll-behavior:smooth}
   --gray-100:#F0F1F3;
   --gray-200:#E2E3E5;
   --gray-500:#6B7280;
+  --teal:#0891b2;
+  --green:#22c55e;
 }
 body{font-family:'Montserrat',sans-serif;color:var(--black);background:#fff;line-height:1.6;overflow-x:hidden}
 
 /* ── ANIMATIONS ── */
-@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
-@keyframes pulseDot{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes pulseDot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.85)}}
+@keyframes popIn{0%{transform:scale(.88);opacity:0}100%{transform:scale(1);opacity:1}}
 @keyframes slideUp{from{transform:translateY(100%);opacity:0}to{transform:translateY(0);opacity:1}}
-@keyframes popIn{0%{opacity:0;transform:scale(.85)}60%{transform:scale(1.04)}100%{opacity:1;transform:scale(1)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes spin45{to{transform:rotate(45deg)}}
 
 /* ── REVEAL ── */
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
 .reveal.in{opacity:1;transform:none}
 .reveal-d1{transition-delay:.1s}
 .reveal-d2{transition-delay:.2s}
@@ -44,347 +49,806 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
 .btn{display:inline-flex;align-items:center;gap:.5rem;font-family:'Montserrat',sans-serif;font-weight:600;font-size:.9rem;padding:.75rem 1.5rem;border-radius:10px;border:2px solid transparent;cursor:pointer;transition:all .2s;text-decoration:none;white-space:nowrap}
 .btn-orange{background:var(--orange);color:#fff;border-color:var(--orange)}
 .btn-orange:hover{background:var(--orange-2);border-color:var(--orange-2);transform:translateY(-1px);box-shadow:0 6px 20px rgba(255,121,0,.35)}
-.btn-full{width:100%;justify-content:center}
+
+/* ── URGENCY BAR ── */
+#urgency-bar{background:var(--orange);padding:.6rem 1rem;text-align:center;font-family:'Nunito',sans-serif;font-weight:700;font-size:.82rem;color:#fff;letter-spacing:.04em;display:flex;align-items:center;justify-content:center;gap:.6rem}
+.pulse-dot{width:8px;height:8px;border-radius:50%;background:#fff;animation:pulseDot 1.4s ease-in-out infinite;flex-shrink:0}
+
+/* ── NAV ── */
+#nav{position:sticky;top:0;z-index:100;background:rgba(0,48,78,.97);border-bottom:1.5px solid rgba(255,255,255,.1);height:64px;display:flex;align-items:center;backdrop-filter:blur(10px)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 1.5rem;width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.nav-logo{display:flex;align-items:center;gap:.6rem;text-decoration:none}
+.logo-text{font-family:'Sora',sans-serif;font-weight:800;font-size:1.5rem;color:#fff;line-height:1}
+.logo-dot{color:var(--orange)}
+.nav-badge{font-family:'Nunito',sans-serif;font-weight:700;font-size:.65rem;background:rgba(255,255,255,.1);color:rgba(255,255,255,.7);padding:.2rem .5rem;border-radius:6px;letter-spacing:.06em;border:1px solid rgba(255,255,255,.15)}
+.nav-actions{display:flex;align-items:center;gap:.75rem}
+.nav-intl{font-family:'Montserrat',sans-serif;font-weight:600;font-size:.85rem;color:rgba(255,255,255,.75);text-decoration:none;display:flex;align-items:center;gap:.3rem;border:1.5px solid rgba(255,255,255,.2);padding:.45rem 1rem;border-radius:8px;transition:all .2s}
+.nav-intl:hover{border-color:rgba(255,255,255,.5);color:#fff}
+.nav-cta{font-size:.85rem;padding:.5rem 1.1rem;border-radius:8px}
 
 /* ── HERO ── */
-#hero{scroll-margin-top:64px;background:var(--gray-50);padding:5rem 1.5rem 4rem}
-.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 480px;gap:3.5rem;align-items:center}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:#fff;border:1.5px solid var(--gray-200);border-radius:100px;padding:.35rem .8rem .35rem .5rem;font-family:'Nunito',sans-serif;font-weight:700;font-size:.75rem;color:var(--black);margin-bottom:1.25rem}
+#hero{
+  scroll-margin-top:64px;
+  background:var(--blue);
+  padding:5rem 1.5rem 5rem;
+  position:relative;
+  overflow:hidden;
+}
+
+/* decorative blobs */
+.hero-blob{position:absolute;width:350px;height:350px;border-radius:50%;background:var(--orange);filter:blur(80px);opacity:.12;top:10%;right:-60px;pointer-events:none;animation:float 8s ease-in-out infinite}
+.hero-blob-2{position:absolute;width:280px;height:280px;border-radius:50%;background:#0891b2;filter:blur(100px);opacity:.08;bottom:5%;left:-80px;pointer-events:none;animation:float 11s ease-in-out infinite reverse}
+
+/* ── HERO GRID ── */
+.hero-inner{
+  max-width:80rem;margin:0 auto;
+  display:grid;grid-template-columns:1.1fr 1fr;gap:4rem;align-items:start;
+  position:relative;z-index:1;
+}
+@media(max-width:1023px){.hero-inner{grid-template-columns:1fr}}
+
+/* ── LEFT COLUMN ── */
+.hero-left{display:flex;flex-direction:column}
+
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);
+  border-radius:100px;padding:.4rem .9rem .4rem .55rem;
+  font-family:'Nunito',sans-serif;font-weight:700;font-size:.78rem;
+  color:#fff;margin-bottom:1.5rem;width:fit-content;
+  backdrop-filter:blur(8px);
+}
 .green-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;animation:pulseDot 1.4s ease-in-out infinite;flex-shrink:0}
-.hero-h1{font-size:clamp(3rem,6vw,5rem);font-weight:800;color:var(--black);margin-bottom:1.25rem}
-.hero-sub{font-size:1.05rem;color:var(--gray-500);max-width:480px;margin-bottom:1.75rem;line-height:1.7}
+
+.hero-h1{
+  font-size:clamp(3rem,5.5vw,5.5rem);
+  font-weight:800;color:#fff;
+  margin-bottom:1.25rem;line-height:1.05;
+}
+
+.hero-sub{
+  font-size:1.05rem;color:rgba(255,255,255,.7);
+  max-width:480px;margin-bottom:1.75rem;line-height:1.7;
+}
 
 /* trust pills */
-.trust-pills{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.75rem}
-.trust-pill{display:flex;align-items:center;gap:.6rem;font-family:'Nunito',sans-serif;font-weight:600;font-size:.85rem;color:var(--black)}
-.trust-pill svg{flex-shrink:0}
+.trust-pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
+.trust-pill{
+  display:inline-flex;align-items:center;gap:.45rem;
+  background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.15);
+  border-radius:100px;padding:.35rem .85rem;
+  font-family:'Nunito',sans-serif;font-weight:700;font-size:.8rem;color:#fff;
+  backdrop-filter:blur(4px);transition:all .2s;cursor:default;
+}
+.trust-pill:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.3)}
 
-/* divider */
-.hero-divider{border:none;border-top:1.5px solid var(--gray-200);margin:1.5rem 0}
+/* ── PHOTO COLLAGE ── */
+.photo-grid{
+  display:grid;
+  grid-template-columns:1.3fr 1fr;
+  grid-template-rows:200px 140px;
+  gap:8px;border-radius:20px;overflow:hidden;margin-top:2rem;
+  box-shadow:0 32px 80px -16px rgba(0,0,0,.45);
+}
+.photo-main{grid-row:1/3;position:relative;overflow:hidden}
+.photo-main img,.photo-grid .photo-item img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .6s ease;
+}
+.photo-main:hover img,.photo-item:hover img{transform:scale(1.04)}
+.photo-item{overflow:hidden;position:relative}
 
-/* avatar row */
-.avatar-row{display:flex;align-items:center;gap:.75rem}
+.photo-caption{
+  position:absolute;bottom:.75rem;left:.75rem;
+  background:rgba(0,0,0,.55);backdrop-filter:blur(8px);
+  color:#fff;border-radius:999px;padding:.35rem .85rem;
+  font-family:'Nunito',sans-serif;font-weight:700;font-size:.72rem;
+  display:flex;align-items:center;gap:.45rem;
+  border:1px solid rgba(255,255,255,.15);
+}
+.live-dot{width:7px;height:7px;border-radius:50%;background:#EF4444;animation:pulseDot 1.4s ease infinite;flex-shrink:0}
+
+/* social proof */
+.social-proof{display:flex;align-items:center;gap:.85rem;margin-top:1.5rem}
 .avatar-stack{display:flex}
-.avatar-stack .av{width:36px;height:36px;border-radius:50%;border:2.5px solid #fff;background:var(--blue);color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:.65rem;display:flex;align-items:center;justify-content:center;margin-left:-10px}
+.avatar-stack .av{
+  width:36px;height:36px;border-radius:50%;
+  border:2.5px solid var(--blue);
+  color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:.65rem;
+  display:flex;align-items:center;justify-content:center;
+  margin-left:-10px;flex-shrink:0;
+}
 .avatar-stack .av:first-child{margin-left:0}
-.avatar-stack .av:nth-child(2){background:#FF7900}
-.avatar-stack .av:nth-child(3){background:#22c55e}
-.avatar-stack .av:nth-child(4){background:#7c3aed}
-.avatar-row-text{font-family:'Nunito',sans-serif;font-weight:700;font-size:.8rem;color:var(--gray-500)}
-.avatar-row-text strong{color:var(--black);display:block;font-size:.9rem}
+.av-1{background:#FF7900}
+.av-2{background:#7c3aed}
+.av-3{background:#22c55e}
+.av-4{background:#0891b2}
+.av-5{background:#e11d48}
+.social-proof-text{font-family:'Nunito',sans-serif;font-weight:700;font-size:.82rem;color:rgba(255,255,255,.75)}
+.social-proof-text strong{color:#fff;display:block;font-size:.88rem}
 
-/* hero photo cards */
-.hero-photos{display:flex;margin-bottom:1.5rem}
-.hero-photo-card{width:56px;height:56px;border-radius:14px;overflow:hidden;border:2.5px solid #fff;margin-left:-10px;box-shadow:0 4px 12px rgba(0,0,0,.12);transition:transform .25s}
-.hero-photo-card:first-child{margin-left:0}
-.hero-photo-card:hover{transform:translateY(-4px) scale(1.08);z-index:1}
-.hero-photo-card img{width:100%;height:100%;object-fit:cover}
+/* ── RIGHT COLUMN — FORM CARD ── */
+.hero-right{padding-top:.5rem}
 
-/* ── FORM CARD ── */
-.form-card{background:#fff;border:1.5px solid var(--gray-200);border-radius:24px;padding:2rem;box-shadow:0 8px 40px rgba(0,48,78,.08);width:100%}
-.form-card-label{font-family:'Nunito',sans-serif;font-weight:800;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:1rem;display:block}
-.form-dots{display:flex;gap:.4rem;margin-bottom:1.5rem}
-.form-dot{width:32px;height:4px;border-radius:4px;background:var(--gray-200);transition:all .3s}
-.form-dot.active{background:var(--orange)}
-.form-dot.done{background:var(--orange);opacity:.4}
-.form-step{display:none}
+.form-card{
+  background:#fff;border-radius:28px;
+  box-shadow:0 40px 80px -20px rgba(0,0,0,.3),0 0 0 1px rgba(0,0,0,.04);
+  padding:2.25rem 2.5rem;
+  animation:popIn .5s ease both .2s;
+  position:relative;
+}
+
+.deco-ring{
+  position:absolute;top:-20px;right:-20px;
+  width:80px;height:80px;border-radius:50%;
+  border:2px solid var(--orange);opacity:.2;
+  pointer-events:none;
+}
+.deco-ring-2{
+  position:absolute;bottom:-14px;left:-14px;
+  width:50px;height:50px;border-radius:50%;
+  border:2px solid var(--blue);opacity:.15;
+  pointer-events:none;
+}
+
+/* form header */
+.form-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;gap:.75rem;flex-wrap:wrap}
+.form-card-label{font-family:'Nunito',sans-serif;font-weight:800;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--orange)}
+.enroll-badge{display:inline-flex;align-items:center;gap:.4rem;background:#dcfce7;border-radius:100px;padding:.28rem .7rem;font-family:'Nunito',sans-serif;font-weight:700;font-size:.72rem;color:#15803d;white-space:nowrap}
+
+/* step nav */
+.step-nav{display:flex;align-items:center;gap:.4rem;margin-bottom:1.75rem}
+.step-num{
+  width:32px;height:32px;border-radius:50%;
+  font-family:'Sora',sans-serif;font-weight:800;font-size:.8rem;
+  display:flex;align-items:center;justify-content:center;
+  border:2px solid var(--gray-200);color:var(--gray-500);
+  transition:all .3s;flex-shrink:0;
+}
+.step-num.active{background:var(--orange);color:#fff;border-color:var(--orange);box-shadow:0 4px 12px rgba(255,121,0,.4)}
+.step-num.done{background:var(--orange);color:#fff;border-color:var(--orange);opacity:.45}
+.step-connector{flex:1;height:2px;background:var(--gray-200);border-radius:1px;transition:background .3s}
+.step-connector.done{background:var(--orange);opacity:.45}
+
+/* form steps */
+.form-step{display:none;animation:fadeUp .3s ease both}
 .form-step.active{display:block}
-.step-q{font-family:'Sora',sans-serif;font-weight:700;font-size:1rem;color:var(--blue);margin-bottom:1rem}
+
+.step-question{
+  font-family:'Sora',sans-serif;font-weight:700;font-size:1rem;
+  color:var(--blue);margin-bottom:1.1rem;
+}
+
+/* option cards */
 .option-list{display:flex;flex-direction:column;gap:.5rem}
-.opt-card{border:1.5px solid var(--gray-200);border-radius:12px;padding:.7rem 1rem;cursor:pointer;transition:all .18s;display:flex;align-items:center;justify-content:space-between;font-family:'Montserrat',sans-serif;font-weight:500;font-size:.88rem;color:var(--black)}
-.opt-card:hover{border-color:var(--orange);background:#fff9f5}
+.opt-card{
+  border:1.5px solid var(--gray-200);border-radius:14px;
+  padding:.75rem 1rem;cursor:pointer;transition:all .18s;
+  display:flex;align-items:center;gap:.75rem;
+  font-family:'Montserrat',sans-serif;font-weight:500;font-size:.88rem;
+  color:var(--black);background:#fff;text-align:left;width:100%;
+}
+.opt-card:hover{border-color:var(--orange);background:#fff9f5;transform:translateX(2px)}
 .opt-card.selected{border-color:var(--orange);background:#fff3e8;font-weight:600;color:var(--blue)}
-.opt-badge{font-family:'Nunito',sans-serif;font-weight:800;font-size:.72rem;background:var(--gray-100);color:var(--orange);padding:.18rem .5rem;border-radius:6px;white-space:nowrap}
-.opt-card.selected .opt-badge{background:var(--orange);color:#fff}
-.step-back{display:inline-flex;align-items:center;gap:.3rem;font-family:'Montserrat',sans-serif;font-weight:600;font-size:.8rem;color:var(--gray-500);border:none;background:none;cursor:pointer;padding:.3rem 0;margin-top:.75rem;transition:color .2s}
+.opt-icon{
+  width:36px;height:36px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.opt-main{display:flex;flex-direction:column;flex:1;min-width:0}
+.opt-title{font-family:'Nunito',sans-serif;font-weight:800;font-size:.88rem;color:var(--blue)}
+.opt-desc{font-family:'Montserrat',sans-serif;font-size:.75rem;color:var(--gray-500);margin-top:.1rem}
+.opt-card.selected .opt-title{color:var(--orange)}
+.opt-badge,.price-badge{
+  font-family:'Nunito',sans-serif;font-weight:800;font-size:.7rem;
+  background:var(--gray-100);color:var(--orange);
+  padding:.2rem .55rem;border-radius:7px;white-space:nowrap;flex-shrink:0;
+}
+.opt-card.selected .opt-badge,.opt-card.selected .price-badge{background:var(--orange);color:#fff}
+
+/* level grid */
+.level-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem}
+.level-card{
+  border:2px solid var(--gray-200);border-radius:14px;
+  padding:.875rem .75rem;cursor:pointer;text-align:center;
+  transition:all .2s;background:#fff;
+}
+.level-card:hover{border-color:var(--orange);background:#fffaf5;transform:translateY(-2px)}
+.level-card.selected{border-color:var(--orange);background:#fff7ef;box-shadow:0 0 0 3px rgba(255,121,0,.1)}
+.level-code{font-family:'Sora',sans-serif;font-weight:800;font-size:1.15rem;color:var(--black)}
+.level-card.selected .level-code{color:var(--orange)}
+.level-name{font-family:'Nunito',sans-serif;font-weight:700;font-size:.68rem;color:var(--gray-500);text-transform:uppercase;letter-spacing:.04em;margin-top:.2rem}
+
+/* back button */
+.step-back{
+  display:inline-flex;align-items:center;gap:.3rem;
+  font-family:'Montserrat',sans-serif;font-weight:600;font-size:.8rem;
+  color:var(--gray-500);border:none;background:none;cursor:pointer;
+  padding:.3rem 0;margin-top:.875rem;transition:color .2s;
+}
 .step-back:hover{color:var(--blue)}
-.form-fields{display:flex;flex-direction:column;gap:.75rem}
-.form-field label{font-family:'Nunito',sans-serif;font-weight:700;font-size:.75rem;color:var(--blue);display:block;margin-bottom:.3rem}
-.form-field input{width:100%;border:1.5px solid var(--gray-200);border-radius:10px;padding:.65rem .9rem;font-family:'Montserrat',sans-serif;font-size:.9rem;color:var(--black);outline:none;transition:border-color .2s}
-.form-field input:focus{border-color:var(--orange)}
-.form-field input::placeholder{color:var(--gray-500)}
-.form-step-4-meta{font-family:'Nunito',sans-serif;font-weight:600;font-size:.73rem;color:var(--gray-500);text-align:center;margin-top:.6rem}
+
+/* form inputs */
+.form-field-group{display:flex;flex-direction:column;gap:.65rem;margin-bottom:1rem}
+.form-input{
+  width:100%;border:1.5px solid var(--gray-200);border-radius:12px;
+  padding:.7rem 1rem;font-family:'Montserrat',sans-serif;font-size:.9rem;
+  color:var(--black);outline:none;transition:border-color .2s,box-shadow .2s;
+}
+.form-input:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(255,121,0,.08)}
+.form-input::placeholder{color:var(--gray-500)}
+
+/* submit button */
+.btn-submit{
+  width:100%;background:var(--orange);color:#fff;
+  border:none;border-radius:14px;padding:.9rem 1.5rem;
+  font-family:'Nunito',sans-serif;font-weight:800;font-size:.95rem;
+  cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:.4rem;
+  box-shadow:0 6px 20px rgba(255,121,0,.35);
+}
+.btn-submit:hover{background:var(--orange-2);transform:translateY(-1px);box-shadow:0 8px 28px rgba(255,121,0,.45)}
+.btn-submit:active{transform:translateY(0)}
+
+.form-note{
+  text-align:center;font-family:'Nunito',sans-serif;font-weight:600;
+  font-size:.73rem;color:var(--gray-500);margin-top:.65rem;
+}
 
 /* success state */
-.form-success{display:none;text-align:center;padding:1rem 0}
-.form-success .success-icon{margin:0 auto 1rem;width:64px;height:64px;border-radius:50%;background:#dcfce7;display:flex;align-items:center;justify-content:center}
-.form-success h3{font-family:'Sora',sans-serif;font-weight:700;font-size:1.1rem;color:var(--blue);margin-bottom:.6rem}
-.form-success p{font-family:'Montserrat',sans-serif;font-size:.85rem;color:var(--gray-500);margin-bottom:.5rem}
-.form-success a{color:var(--orange);font-weight:600;font-size:.82rem}
+.form-success{display:none;text-align:center;padding:1rem 0;animation:fadeUp .4s ease both}
+.success-circle{
+  width:72px;height:72px;border-radius:50%;background:#dcfce7;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 1.25rem;
+  box-shadow:0 0 0 12px rgba(34,197,94,.08);
+}
+.success-title{font-family:'Sora',sans-serif;font-weight:800;font-size:1.4rem;color:var(--blue);margin-bottom:.6rem}
+.success-sub{font-family:'Montserrat',sans-serif;font-size:.88rem;color:var(--gray-500);margin-bottom:.5rem;line-height:1.65}
+.success-help{font-family:'Montserrat',sans-serif;font-size:.82rem;color:var(--gray-500)}
+.success-help a{color:var(--orange);font-weight:600;text-decoration:none}
+.success-help a:hover{text-decoration:underline}
 
 /* ── SUCCESS BANNER ── */
-#success-banner{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%) translateY(120%);z-index:500;background:var(--blue);color:#fff;border-radius:100px;padding:.75rem 1.5rem;display:flex;align-items:center;gap:.65rem;font-family:'Nunito',sans-serif;font-weight:700;font-size:.85rem;box-shadow:0 8px 32px rgba(0,0,0,.2);white-space:nowrap;transition:transform .4s cubic-bezier(.34,1.56,.64,1),opacity .4s}
-#success-banner.show{transform:translateX(-50%) translateY(0)}
-.banner-pill{background:rgba(255,255,255,.18);border-radius:100px;padding:.15rem .6rem;font-size:.75rem;letter-spacing:.04em}
+#success-banner{
+  position:fixed;bottom:1.5rem;left:50%;
+  transform:translateX(-50%) translateY(120%);
+  z-index:500;background:var(--blue);color:#fff;
+  border-radius:100px;padding:.8rem 1.75rem;
+  display:flex;align-items:center;gap:.65rem;
+  font-family:'Nunito',sans-serif;font-weight:700;font-size:.88rem;
+  box-shadow:0 8px 40px rgba(0,0,0,.25);white-space:nowrap;
+  transition:transform .45s cubic-bezier(.34,1.56,.64,1),opacity .4s;
+  border:1.5px solid rgba(255,255,255,.15);
+  opacity:0;
+}
+#success-banner.show{
+  transform:translateX(-50%) translateY(0);
+  opacity:1;
+}
 
 /* ── RESPONSIVE ── */
 @media(max-width:1023px){
-  .hero-inner{grid-template-columns:1fr;gap:2.5rem}
-  #hero{padding:3.5rem 1.25rem 3rem}
-  body{padding-bottom:72px}
+  #hero{padding:3.5rem 1.25rem 3.5rem}
+  .hero-h1{font-size:clamp(2.5rem,8vw,4rem)}
+  .form-card{padding:1.75rem 1.5rem}
+  .hero-right{padding-top:0}
+  .nav-intl{display:none}
 }
 @media(max-width:600px){
-  .hero-h1{font-size:2.6rem}
-  .form-card{padding:1.5rem}
+  .photo-grid{grid-template-rows:180px 120px}
+  .trust-pills{gap:.4rem}
+  .trust-pill{font-size:.75rem;padding:.3rem .7rem}
+  .level-grid{grid-template-columns:repeat(2,1fr)}
+  .form-card{padding:1.5rem 1.25rem}
 }
 </style>
 </head>
 <body>
 
+<!-- ── URGENCY BAR ── -->
+<div id="urgency-bar">
+  <div class="pulse-dot"></div>
+  Nouvelles inscriptions ouvertes &nbsp;·&nbsp; Places limitées &nbsp;·&nbsp; Inscrivez-vous en 2 minutes
+</div>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <span class="logo-text">FDS<span class="logo-dot">.</span></span>
+      <span class="nav-badge">ALGÉRIE · A1–C2</span>
+    </a>
+    <div class="nav-actions">
+      <a href="../global/index.html" class="nav-intl">
+        International
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <button class="btn btn-orange nav-cta" onclick="scrollToHero()">Réserver ma place</button>
+    </div>
+  </div>
+</nav>
+
 <!-- ── HERO ── -->
 <section id="hero">
+
+  <!-- decorative blobs -->
+  <div class="hero-blob" aria-hidden="true"></div>
+  <div class="hero-blob-2" aria-hidden="true"></div>
+
   <div class="hero-inner">
 
-    <!-- LEFT COLUMN -->
+    <!-- ════════════ LEFT COLUMN ════════════ -->
     <div class="hero-left">
 
-      <!-- Live badge -->
+      <!-- eyebrow pill -->
       <div class="hero-eyebrow reveal">
         <span class="green-dot"></span>
-        Inscriptions ouvertes · En ligne
+        ● Inscriptions ouvertes · En ligne · Algérie
       </div>
 
-      <!-- Headline -->
-      <h1 class="hero-h1 reveal reveal-d1">Apprenez<br>l'allemand<span class="accent">.</span></h1>
+      <!-- H1 -->
+      <h1 class="hero-h1 reveal reveal-d1">
+        Apprenez<br>l'allemand<span class="accent">.</span>
+      </h1>
 
-      <!-- Subtitle -->
-      <p class="hero-sub reveal reveal-d2">Cours en direct avec des professeurs certifiés. Petits groupes, feedback humain, replays à vie. De A1 à C2.</p>
+      <!-- subtitle -->
+      <p class="hero-sub reveal reveal-d2">
+        Cours en direct A1–C2. Professeurs certifiés, petits groupes, tarifs en DA.
+      </p>
 
-      <!-- Trust pills -->
+      <!-- trust pills -->
       <div class="trust-pills reveal reveal-d3">
-        <div class="trust-pill">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          +3 200 étudiants algériens
-        </div>
-        <div class="trust-pill">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="#FF7900" stroke="#FF7900" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          4.9 / 5 avis vérifiés
-        </div>
-        <div class="trust-pill">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF7900" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Remboursé 14 jours
-        </div>
+        <span class="trust-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          +3 200 étudiants
+        </span>
+        <span class="trust-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#FF7900" stroke="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          Note 4.9
+        </span>
+        <span class="trust-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Remboursé 14j
+        </span>
       </div>
 
-      <!-- Student photo cards -->
-      <div class="hero-photos reveal reveal-d4">
-        <div class="hero-photo-card">
-          <img src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Étudiante">
-        </div>
-        <div class="hero-photo-card">
-          <img src="https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Étudiant">
-        </div>
-        <div class="hero-photo-card">
-          <img src="https://images.pexels.com/photos/1438072/pexels-photo-1438072.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Étudiante">
-        </div>
-        <div class="hero-photo-card">
-          <img src="https://images.pexels.com/photos/4144101/pexels-photo-4144101.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Cours en ligne">
-        </div>
-      </div>
-
-      <!-- Divider -->
-      <hr class="hero-divider reveal reveal-d4"/>
-
-      <!-- Avatar stack social proof -->
-      <div class="avatar-row reveal reveal-d4">
-        <div class="avatar-stack">
-          <div class="av">AK</div>
-          <div class="av">SM</div>
-          <div class="av">LB</div>
-          <div class="av">YM</div>
-        </div>
-        <div class="avatar-row-text">
-          <strong>400+ nouveaux étudiants</strong>
-          rejoignent FDS ce mois
-        </div>
-      </div>
-
-    </div><!-- /hero-left -->
-
-    <!-- RIGHT COLUMN — FORM CARD -->
-    <div class="form-card reveal reveal-d2">
-      <span class="form-card-label">Inscription en 2 min</span>
-
-      <!-- Progress dots -->
-      <div class="form-dots">
-        <div class="form-dot active"></div>
-        <div class="form-dot"></div>
-        <div class="form-dot"></div>
-        <div class="form-dot"></div>
-      </div>
-
-      <div class="form-steps-wrap">
-
-        <!-- STEP 1 : Programme -->
-        <div class="form-step active" data-step="1">
-          <p class="step-q">Quel type de cours vous convient ?</p>
-          <div class="option-list">
-            <div class="opt-card" onclick="selectOpt(this,'type','groupe')">
-              <span>Cours en groupe</span>
-              <span class="opt-badge">7 500 DA/mois</span>
-            </div>
-            <div class="opt-card" onclick="selectOpt(this,'type','autonome')">
-              <span>Cours autonome</span>
-              <span class="opt-badge">9 900 DA/mois</span>
-            </div>
-            <div class="opt-card" onclick="selectOpt(this,'type','intensif')">
-              <span>Cours intensif</span>
-              <span class="opt-badge">32 000 DA/mois</span>
-            </div>
+      <!-- photo collage -->
+      <div class="photo-grid reveal reveal-d3">
+        <!-- main photo (spans 2 rows) -->
+        <div class="photo-main">
+          <img
+            src="https://images.pexels.com/photos/4144923/pexels-photo-4144923.jpeg?auto=compress&cs=tinysrgb&w=800"
+            alt="Cours d'allemand en direct"
+            loading="eager"
+          />
+          <div class="photo-caption">
+            <span class="live-dot"></span>
+            Séance en direct · Groupe B1
           </div>
         </div>
+        <!-- top-right photo -->
+        <div class="photo-item">
+          <img
+            src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
+            alt="Étudiante FDS"
+            loading="lazy"
+          />
+        </div>
+        <!-- bottom-right photo -->
+        <div class="photo-item">
+          <img
+            src="https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
+            alt="Étudiant FDS"
+            loading="lazy"
+          />
+        </div>
+      </div>
 
-        <!-- STEP 2 : Niveau -->
-        <div class="form-step" data-step="2">
-          <p class="step-q">Quel est votre niveau actuel ?</p>
+      <!-- social proof -->
+      <div class="social-proof reveal reveal-d4">
+        <div class="avatar-stack" aria-label="Étudiants récents">
+          <div class="av av-1" title="Ahmed L.">AL</div>
+          <div class="av av-2" title="Mounir R.">MR</div>
+          <div class="av av-3" title="Sara K.">SK</div>
+          <div class="av av-4" title="Sofiane B.">SB</div>
+          <div class="av av-5" title="Lina N.">LN</div>
+        </div>
+        <div class="social-proof-text">
+          <strong>400+ nouveaux étudiants ce mois</strong>
+          ont rejoint FDS Institut
+        </div>
+      </div>
+
+    </div>
+    <!-- end left -->
+
+    <!-- ════════════ RIGHT COLUMN — FORM CARD ════════════ -->
+    <div class="hero-right">
+      <div class="form-card" id="form-card">
+
+        <!-- decorative rings -->
+        <div class="deco-ring" aria-hidden="true"></div>
+        <div class="deco-ring-2" aria-hidden="true"></div>
+
+        <!-- form header -->
+        <div class="form-header" id="form-header">
+          <span class="form-card-label">INSCRIPTION EN 2 MIN</span>
+          <span class="enroll-badge">
+            <span class="green-dot"></span>
+            380+ inscrits ce mois
+          </span>
+        </div>
+
+        <!-- numbered step nav -->
+        <div class="step-nav" id="step-nav" aria-label="Étapes du formulaire">
+          <div class="step-num active" id="sn1" aria-current="step">1</div>
+          <div class="step-connector" id="sc1"></div>
+          <div class="step-num" id="sn2">2</div>
+          <div class="step-connector" id="sc2"></div>
+          <div class="step-num" id="sn3">3</div>
+          <div class="step-connector" id="sc3"></div>
+          <div class="step-num" id="sn4">4</div>
+        </div>
+
+        <!-- ── STEP 1: Type de cours ── -->
+        <div class="form-step active" id="step-1" data-step="1">
+          <div class="step-question">Quel type de cours ?</div>
           <div class="option-list">
-            <div class="opt-card" onclick="selectOpt(this,'niveau','A1')">A1 — Débutant complet</div>
-            <div class="opt-card" onclick="selectOpt(this,'niveau','A2')">A2 — Faux débutant</div>
-            <div class="opt-card" onclick="selectOpt(this,'niveau','B1')">B1 — Intermédiaire</div>
-            <div class="opt-card" onclick="selectOpt(this,'niveau','B2')">B2 — Niveau avancé</div>
-            <div class="opt-card" onclick="selectOpt(this,'niveau','C1C2')">C1 / C2 — Expert</div>
-            <div class="opt-card" onclick="selectOpt(this,'niveau','inconnu')">Je ne sais pas encore</div>
+
+            <button class="opt-card" onclick="selectOpt(this,'type','group')" type="button">
+              <div class="opt-icon" style="background:#fff7ef;color:var(--orange)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+              </div>
+              <div class="opt-main">
+                <span class="opt-title">Cours en groupe</span>
+                <span class="opt-desc">3 séances/sem · 8 étudiants max</span>
+              </div>
+              <span class="price-badge">7 500 DA/mois</span>
+            </button>
+
+            <button class="opt-card" onclick="selectOpt(this,'type','autonome')" type="button">
+              <div class="opt-icon" style="background:#e8f0f5;color:var(--blue)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                  <line x1="2" y1="20" x2="22" y2="20"/>
+                </svg>
+              </div>
+              <div class="opt-main">
+                <span class="opt-title">Cours autonome</span>
+                <span class="opt-desc">À votre rythme · Replays inclus</span>
+              </div>
+              <span class="price-badge">9 900 DA/mois</span>
+            </button>
+
+            <button class="opt-card" onclick="selectOpt(this,'type','intensif')" type="button">
+              <div class="opt-icon" style="background:#e6f7f7;color:#0891b2">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                </svg>
+              </div>
+              <div class="opt-main">
+                <span class="opt-title">Cours intensif</span>
+                <span class="opt-desc">5 jours/sem · Progression rapide</span>
+              </div>
+              <span class="price-badge">32 000 DA/mois</span>
+            </button>
+
           </div>
-          <button class="step-back" onclick="goBack()">
+        </div>
+        <!-- end step 1 -->
+
+        <!-- ── STEP 2: Niveau ── -->
+        <div class="form-step" id="step-2" data-step="2">
+          <div class="step-question">Votre niveau d'allemand ?</div>
+          <div class="level-grid" id="level-grid">
+
+            <div class="level-card" onclick="selectLevel(this,'a1')" tabindex="0" role="button" aria-pressed="false">
+              <div class="level-code">A1</div>
+              <div class="level-name">Débutant</div>
+            </div>
+
+            <div class="level-card" onclick="selectLevel(this,'a2')" tabindex="0" role="button" aria-pressed="false">
+              <div class="level-code">A2</div>
+              <div class="level-name">Élémentaire</div>
+            </div>
+
+            <div class="level-card" onclick="selectLevel(this,'b1')" tabindex="0" role="button" aria-pressed="false">
+              <div class="level-code">B1</div>
+              <div class="level-name">Intermédiaire</div>
+            </div>
+
+            <div class="level-card" onclick="selectLevel(this,'b2')" tabindex="0" role="button" aria-pressed="false">
+              <div class="level-code">B2</div>
+              <div class="level-name">Avancé</div>
+            </div>
+
+            <div class="level-card" onclick="selectLevel(this,'c1c2')" tabindex="0" role="button" aria-pressed="false">
+              <div class="level-code">C1-C2</div>
+              <div class="level-name">Expert</div>
+            </div>
+
+            <div class="level-card" onclick="selectLevel(this,'unknown')" tabindex="0" role="button" aria-pressed="false">
+              <div class="level-code">?</div>
+              <div class="level-name">Je ne sais pas</div>
+            </div>
+
+          </div>
+          <button class="step-back" onclick="goBack()" type="button">
             <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
             Retour
           </button>
         </div>
+        <!-- end step 2 -->
 
-        <!-- STEP 3 : Objectif -->
-        <div class="form-step" data-step="3">
-          <p class="step-q">Quel est votre objectif ?</p>
+        <!-- ── STEP 3: Objectif ── -->
+        <div class="form-step" id="step-3" data-step="3">
+          <div class="step-question">Votre objectif ?</div>
           <div class="option-list">
-            <div class="opt-card" onclick="selectOpt(this,'objectif','etudes')">Études en Allemagne</div>
-            <div class="opt-card" onclick="selectOpt(this,'objectif','visa')">Visa / Immigration</div>
-            <div class="opt-card" onclick="selectOpt(this,'objectif','pro')">Évolution professionnelle</div>
-            <div class="opt-card" onclick="selectOpt(this,'objectif','examen')">Préparation examen (TestDaF...)</div>
-            <div class="opt-card" onclick="selectOpt(this,'objectif','voyage')">Voyages et culture</div>
+
+            <button class="opt-card" onclick="selectOpt(this,'goal','study')" type="button">
+              <div class="opt-icon" style="background:#fff7ef;color:var(--orange)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                </svg>
+              </div>
+              <div class="opt-main">
+                <span class="opt-title">Études en Allemagne</span>
+                <span class="opt-desc">DSH, TestDaF, Studienkolleg, admission universitaire</span>
+              </div>
+            </button>
+
+            <button class="opt-card" onclick="selectOpt(this,'goal','work')" type="button">
+              <div class="opt-icon" style="background:#e8f0f5;color:var(--blue)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                </svg>
+              </div>
+              <div class="opt-main">
+                <span class="opt-title">Travail en Allemagne</span>
+                <span class="opt-desc">CV, entretien, secteur médical ou technique</span>
+              </div>
+            </button>
+
+            <button class="opt-card" onclick="selectOpt(this,'goal','visa')" type="button">
+              <div class="opt-icon" style="background:#e6f7f7;color:#0891b2">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                  <line x1="1" y1="10" x2="23" y2="10"/>
+                </svg>
+              </div>
+              <div class="opt-main">
+                <span class="opt-title">Visa / Immigration</span>
+                <span class="opt-desc">Visa national, regroupement familial, intégration</span>
+              </div>
+            </button>
+
+            <button class="opt-card" onclick="selectOpt(this,'goal','exam')" type="button">
+              <div class="opt-icon" style="background:#f5f0ff;color:#7c3aed">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                  <line x1="16" y1="13" x2="8" y2="13"/>
+                  <line x1="16" y1="17" x2="8" y2="17"/>
+                </svg>
+              </div>
+              <div class="opt-main">
+                <span class="opt-title">Préparation examen</span>
+                <span class="opt-desc">Goethe, TestDaF, TELC, ÖSD</span>
+              </div>
+            </button>
+
+            <button class="opt-card" onclick="selectOpt(this,'goal','travel')" type="button">
+              <div class="opt-icon" style="background:#f0fdf4;color:#16a34a">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="2" y1="12" x2="22" y2="12"/>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+              </div>
+              <div class="opt-main">
+                <span class="opt-title">Voyages et culture</span>
+                <span class="opt-desc">Communiquer, voyager, découvrir</span>
+              </div>
+            </button>
+
           </div>
-          <button class="step-back" onclick="goBack()">
+          <button class="step-back" onclick="goBack()" type="button">
             <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
             Retour
           </button>
         </div>
+        <!-- end step 3 -->
 
-        <!-- STEP 4 : Contact -->
-        <div class="form-step" data-step="4">
-          <p class="step-q">Presque là — réservez votre place</p>
-          <form onsubmit="submitForm(event)">
-            <div class="form-fields">
-              <div class="form-field">
-                <label for="f-prenom">Prénom</label>
-                <input type="text" id="f-prenom" placeholder="Votre prénom" required/>
+        <!-- ── STEP 4: Réservez votre place ── -->
+        <div class="form-step" id="step-4" data-step="4">
+          <div class="step-question">Réservez votre place</div>
+          <form onsubmit="submitForm(event)" novalidate>
+            <div class="form-field-group">
+              <input class="form-input" type="text" id="f-prenom" placeholder="Prénom" required autocomplete="given-name"/>
+              <input class="form-input" type="email" id="f-email" placeholder="Adresse e-mail" required autocomplete="email"/>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:.65rem">
+                <input class="form-input" type="tel" id="f-tel" placeholder="Téléphone" autocomplete="tel"/>
+                <input class="form-input" type="text" id="f-wilaya" placeholder="Wilaya"/>
               </div>
-              <div class="form-field">
-                <label for="f-email">Email</label>
-                <input type="email" id="f-email" placeholder="votre@email.com" required/>
-              </div>
-              <div class="form-field">
-                <label for="f-tel">Téléphone</label>
-                <input type="tel" id="f-tel" placeholder="+213 ..." required/>
-              </div>
-              <div class="form-field">
-                <label for="f-wilaya">Wilaya</label>
-                <input type="text" id="f-wilaya" placeholder="Votre wilaya"/>
-              </div>
-              <button type="submit" class="btn btn-orange btn-full" style="margin-top:.25rem">
-                Recevoir mon lien de paiement
-                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              </button>
             </div>
-            <p class="form-step-4-meta">Sans engagement · Annulation libre</p>
+            <button class="btn-submit" type="submit">
+              Obtenir mon lien de paiement &nbsp;→
+            </button>
           </form>
-          <button class="step-back" onclick="goBack()">
+          <p class="form-note">Sans engagement · Annulation gratuite · Sécurisé</p>
+          <button class="step-back" onclick="goBack()" type="button">
             <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
             Retour
           </button>
         </div>
+        <!-- end step 4 -->
 
-      </div><!-- /form-steps-wrap -->
-
-      <!-- SUCCESS STATE -->
-      <div class="form-success">
-        <div class="success-icon">
-          <svg width="32" height="32" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        <!-- ── SUCCESS STATE ── -->
+        <div class="form-success" id="form-success">
+          <div class="success-circle">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+          <div class="success-title">C'est parti !</div>
+          <p class="success-sub">Vérifiez votre boîte mail — votre lien de paiement arrive sous 24h.</p>
+          <p class="success-help">Des questions ? <a href="mailto:online@fdsinstitut.com">online@fdsinstitut.com</a></p>
         </div>
-        <h3>C'est parti !</h3>
-        <p>Consultez votre boîte mail sous 24h pour recevoir votre lien de paiement personnel.</p>
-        <p>Besoin d'aide ? <a href="mailto:online@fdsinstitut.com">online@fdsinstitut.com</a></p>
+
       </div>
+    </div>
+    <!-- end right -->
 
-    </div><!-- /form-card -->
-
-  </div><!-- /hero-inner -->
+  </div>
 </section>
 
-<!-- ── SUCCESS BANNER ── -->
-<div id="success-banner">
-  <svg width="18" height="18" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-  <span class="banner-pill">C'est parti !</span>
-  Formulaire envoyé · Lien de paiement sous 24h.
+<!-- ── FIXED SUCCESS BANNER ── -->
+<div id="success-banner" role="status" aria-live="polite">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+  Inscription envoyée ! Lien sous 24h.
 </div>
 
 <script>
-/* ── FORM LOGIC ── */
+/* ─────────────────────────────────────────────
+   HERO FORM — Multi-step logic
+───────────────────────────────────────────── */
 var curStep = 1;
 var ans = {};
-
-function selectOpt(el, key, val) {
-  el.closest('.option-list').querySelectorAll('.opt-card').forEach(function(c){
-    c.classList.remove('selected');
-  });
-  el.classList.add('selected');
-  ans[key] = val;
-  setTimeout(function(){ goStep(curStep + 1); }, 320);
-}
-
-function goStep(n) {
-  document.querySelectorAll('.form-step').forEach(function(s){
-    s.classList.remove('active');
-  });
-  var t = document.querySelector('.form-step[data-step="' + n + '"]');
-  if (t) {
-    t.classList.add('active');
-    curStep = n;
-    updateDots(n);
-  }
-}
-
-function updateDots(n) {
-  document.querySelectorAll('.form-dot').forEach(function(d, i) {
-    d.classList.remove('active', 'done');
-    if (i + 1 < n) d.classList.add('done');
-    else if (i + 1 === n) d.classList.add('active');
-  });
-}
-
-function goBack() {
-  if (curStep > 1) goStep(curStep - 1);
-}
-
-function submitForm(e) {
-  e.preventDefault();
-  document.querySelector('.form-steps-wrap').style.display = 'none';
-  document.querySelector('.form-success').style.display = 'block';
-  showBanner();
-}
-
-function showBanner() {
-  var b = document.getElementById('success-banner');
-  b.classList.add('show');
-  setTimeout(function(){ b.classList.remove('show'); }, 6000);
-}
 
 function scrollToHero() {
   document.getElementById('hero').scrollIntoView({ behavior: 'smooth' });
 }
 
-/* ── SCROLL-REVEAL (IntersectionObserver) ── */
-(function() {
-  var revealEls = document.querySelectorAll('.reveal');
+/* Show step n, hide all others, update numbered circles */
+function goStep(n) {
+  for (var i = 1; i <= 4; i++) {
+    var el = document.getElementById('step-' + i);
+    if (el) el.classList.remove('active');
+  }
+  var target = document.getElementById('step-' + n);
+  if (target) target.classList.add('active');
+  curStep = n;
+  updateDots(n);
+}
+
+function updateDots(n) {
+  for (var i = 1; i <= 4; i++) {
+    var sn = document.getElementById('sn' + i);
+    if (!sn) continue;
+    sn.classList.remove('active', 'done');
+    sn.removeAttribute('aria-current');
+    if (i < n) {
+      sn.classList.add('done');
+    } else if (i === n) {
+      sn.classList.add('active');
+      sn.setAttribute('aria-current', 'step');
+    }
+    if (i < 4) {
+      var sc = document.getElementById('sc' + i);
+      if (sc) sc.classList.toggle('done', i < n);
+    }
+  }
+}
+
+/* Select an option card (steps 1 and 3) */
+function selectOpt(el, key, val) {
+  var parent = el.closest('.option-list');
+  if (parent) {
+    parent.querySelectorAll('.opt-card').forEach(function(c) {
+      c.classList.remove('selected');
+    });
+  }
+  el.classList.add('selected');
+  ans[key] = val;
+  setTimeout(function() { goStep(curStep + 1); }, 260);
+}
+
+/* Select a level card (step 2) */
+function selectLevel(el, val) {
+  document.querySelectorAll('.level-card').forEach(function(c) {
+    c.classList.remove('selected');
+    c.setAttribute('aria-pressed', 'false');
+  });
+  el.classList.add('selected');
+  el.setAttribute('aria-pressed', 'true');
+  ans.niveau = val;
+  setTimeout(function() { goStep(curStep + 1); }, 260);
+}
+
+/* Go back one step */
+function goBack() {
+  if (curStep > 1) goStep(curStep - 1);
+}
+
+/* Submit: hide chrome, show success, trigger banner */
+function submitForm(e) {
+  e.preventDefault();
+
+  var prenom = document.getElementById('f-prenom').value.trim();
+  var email  = document.getElementById('f-email').value.trim();
+
+  /* simple inline validation */
+  var ok = true;
+  if (!prenom) {
+    document.getElementById('f-prenom').style.borderColor = 'var(--orange)';
+    ok = false;
+  } else {
+    document.getElementById('f-prenom').style.borderColor = '';
+  }
+  if (!email || email.indexOf('@') < 1) {
+    document.getElementById('f-email').style.borderColor = 'var(--orange)';
+    ok = false;
+  } else {
+    document.getElementById('f-email').style.borderColor = '';
+  }
+  if (!ok) return;
+
+  ans.prenom = prenom;
+  ans.email  = email;
+  ans.tel    = document.getElementById('f-tel').value.trim();
+  ans.wilaya = document.getElementById('f-wilaya').value.trim();
+
+  /* hide header, step nav, all steps */
+  var hdr = document.getElementById('form-header');
+  var nav = document.getElementById('step-nav');
+  if (hdr) hdr.style.display = 'none';
+  if (nav) nav.style.display = 'none';
+  for (var i = 1; i <= 4; i++) {
+    var s = document.getElementById('step-' + i);
+    if (s) { s.classList.remove('active'); s.style.display = 'none'; }
+  }
+
+  /* show success */
+  var successEl = document.getElementById('form-success');
+  successEl.style.display = 'block';
+
+  showBanner();
+}
+
+/* Show the fixed bottom success banner, auto-hide after 6 s */
+function showBanner() {
+  var banner = document.getElementById('success-banner');
+  banner.classList.add('show');
+  setTimeout(function() {
+    banner.classList.remove('show');
+  }, 6000);
+}
+
+/* ─────────────────────────────────────────────
+   INTERSECTION OBSERVER — .reveal animations
+───────────────────────────────────────────── */
+(function initReveal() {
   if (!('IntersectionObserver' in window)) {
-    revealEls.forEach(function(el){ el.classList.add('in'); });
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      el.classList.add('in');
+    });
     return;
   }
   var observer = new IntersectionObserver(function(entries) {
@@ -394,9 +858,37 @@ function scrollToHero() {
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12 });
-  revealEls.forEach(function(el){ observer.observe(el); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(function(el) {
+    observer.observe(el);
+  });
 })();
+
+/* ─────────────────────────────────────────────
+   LEVEL CARD — keyboard accessibility
+───────────────────────────────────────────── */
+document.querySelectorAll('.level-card').forEach(function(card) {
+  card.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      this.click();
+    }
+  });
+});
+
+/* ─────────────────────────────────────────────
+   PHOTO GRID — basic keyboard focus
+───────────────────────────────────────────── */
+document.querySelectorAll('.photo-main, .photo-item').forEach(function(item) {
+  item.setAttribute('tabindex', '0');
+  item.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+      var img = this.querySelector('img');
+      if (img) img.style.transform = img.style.transform ? '' : 'scale(1.04)';
+    }
+  });
+});
 </script>
 </body>
 </html>
