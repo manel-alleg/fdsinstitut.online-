@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Témoignages — FDS Institut</title>
+<title>FDS Institut — Témoignages étudiants</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Montserrat:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -17,118 +17,138 @@
   --gray-200:#E2E3E5;
   --gray-500:#6B7280;
 }
-body{font-family:'Montserrat',sans-serif;color:var(--black);background:#fff;line-height:1.6}
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
-.reveal.in{opacity:1;transform:none}
-.reveal-d1{transition-delay:.1s}
-.reveal-d2{transition-delay:.2s}
-.reveal-d3{transition-delay:.3s}
-section{padding:5rem 1.5rem}
-.section-inner{max-width:1100px;margin:0 auto}
+body{font-family:'Montserrat',sans-serif;color:var(--black);background:#fff;line-height:1.6;overflow-x:hidden}
+h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
+
+section{padding:5rem 1.5rem;background:#fff}
+.inner{max-width:1100px;margin:0 auto}
 .section-header{text-align:center;margin-bottom:3rem}
 .eyebrow{font-family:'Nunito',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:.75rem;display:block}
-h2{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(1.6rem,3vw,2.25rem);color:var(--blue)}
-.accent{color:var(--orange)}
+.section-header h2{font-size:clamp(1.6rem,3vw,2.25rem);font-weight:800;color:var(--blue);margin-top:.5rem}
+.section-header p{font-size:.95rem;color:var(--gray-500);margin-top:.75rem;max-width:520px;margin-left:auto;margin-right:auto}
 
-.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;align-items:start}
+@media(max-width:900px){.cards-grid{grid-template-columns:1fr}}
 
-.testi-card{border-radius:20px;padding:1.75rem;display:flex;flex-direction:column;gap:1.1rem;transition:transform .25s ease,box-shadow .25s ease}
-.testi-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,.1)}
+/* Base card */
+.testi-card{border-radius:20px;padding:2rem;transition:all .25s;cursor:default}
+.testi-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,0,0,.12)}
+
+/* Light card */
 .testi-card.light{background:#fff;border:1.5px solid var(--gray-200)}
-.testi-card.dark{background:var(--blue);border:1.5px solid var(--blue)}
+.testi-card.light:hover{border-color:var(--orange);box-shadow:0 16px 48px rgba(255,121,0,.1)}
 
-.testi-stars{display:flex;gap:.2rem}
+/* Dark card */
+.testi-card.dark{background:var(--blue);border:1.5px solid var(--blue);color:#fff}
+.testi-card.dark:hover{box-shadow:0 16px 48px rgba(0,48,78,.3)}
+
+/* Stars */
+.stars{display:flex;gap:.2rem;margin-bottom:1.25rem}
 .star-svg{flex-shrink:0}
 
-.testi-quote{font-size:.9rem;line-height:1.68;flex:1}
-.testi-card.light .testi-quote{color:var(--black)}
-.testi-card.dark .testi-quote{color:rgba(255,255,255,.85)}
+/* Quote */
+.quote{font-style:italic;font-size:.925rem;line-height:1.7;margin-bottom:1.5rem}
+.testi-card.light .quote{color:var(--black)}
+.testi-card.dark .quote{color:rgba(255,255,255,.88)}
 
-.testi-author{display:flex;align-items:center;gap:.75rem;margin-top:.25rem}
-.testi-av{width:42px;height:42px;border-radius:50%;overflow:hidden;flex-shrink:0;border:2.5px solid rgba(255,255,255,.2)}
-.testi-card.light .testi-av{border-color:var(--gray-200)}
-.testi-av img{width:100%;height:100%;object-fit:cover;display:block}
-.testi-info{}
-.testi-name{font-family:'Nunito',sans-serif;font-weight:800;font-size:.88rem;line-height:1.2}
-.testi-card.light .testi-name{color:var(--blue)}
-.testi-card.dark .testi-name{color:#fff}
-.testi-meta{font-family:'Montserrat',sans-serif;font-size:.75rem;margin-top:.15rem}
-.testi-card.light .testi-meta{color:var(--gray-500)}
-.testi-card.dark .testi-meta{color:rgba(255,255,255,.5)}
+/* Author */
+.author-row{display:flex;align-items:center;gap:.85rem}
+.author-photo{width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2.5px solid var(--gray-200)}
+.testi-card.dark .author-photo{border-color:rgba(255,255,255,.25)}
+.author-info{}
+.author-name{font-family:'Sora',sans-serif;font-weight:700;font-size:.92rem}
+.testi-card.light .author-name{color:var(--blue)}
+.testi-card.dark .author-name{color:#fff}
+.author-meta{font-family:'Nunito',sans-serif;font-weight:600;font-size:.75rem;color:var(--orange)}
+.testi-card.dark .author-meta{color:rgba(255,153,0,.95)}
 
-@media(max-width:860px){.testi-grid{grid-template-columns:1fr}}
-@media(max-width:600px){section{padding:3.5rem 1rem}}
+/* Quote mark */
+.quote-mark{font-family:'Sora',sans-serif;font-size:3.5rem;font-weight:800;line-height:.8;color:var(--orange);opacity:.18;margin-bottom:.5rem;display:block}
+.testi-card.dark .quote-mark{color:#fff;opacity:.15}
 </style>
 </head>
 <body>
 <section>
-  <div class="section-inner">
-    <div class="section-header reveal">
-      <span class="eyebrow">Ils nous font confiance</span>
-      <h2>Ce que disent nos <span class="accent">étudiants</span></h2>
+  <div class="inner">
+    <div class="section-header">
+      <span class="eyebrow">Ce qu'ils disent</span>
+      <h2>Témoignages d'étudiants <span style="color:var(--orange)">algériens</span></h2>
+      <p>Plus de 3 200 étudiants ont déjà franchi le pas. Voici leurs retours.</p>
     </div>
 
-    <div class="testi-grid">
+    <div class="cards-grid">
 
-      <!-- SARA B. — light -->
-      <div class="testi-card light reveal reveal-d1">
-        <div class="testi-stars">
-          <svg class="star-svg" width="18" height="18" viewBox="0 0 24 24" fill="#FF7900" stroke="#FF7900" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star-svg" width="18" height="18" viewBox="0 0 24 24" fill="#FF7900" stroke="#FF7900" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star-svg" width="18" height="18" viewBox="0 0 24 24" fill="#FF7900" stroke="#FF7900" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star-svg" width="18" height="18" viewBox="0 0 24 24" fill="#FF7900" stroke="#FF7900" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star-svg" width="18" height="18" viewBox="0 0 24 24" fill="#FF7900" stroke="#FF7900" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <!-- Sara B. -->
+      <div class="testi-card light">
+        <div class="stars">
+          <svg class="star-svg" width="18" height="18" viewBox="0 0 18 18" fill="#FF7900"><path d="M9 1.5l2.09 4.24 4.68.68-3.39 3.3.8 4.67L9 11.99l-4.18 2.4.8-4.67L2.23 6.42l4.68-.68L9 1.5z"/></svg>
+          <svg class="star-svg" width="18" height="18" viewBox="0 0 18 18" fill="#FF7900"><path d="M9 1.5l2.09 4.24 4.68.68-3.39 3.3.8 4.67L9 11.99l-4.18 2.4.8-4.67L2.23 6.42l4.68-.68L9 1.5z"/></svg>
+          <svg class="star-svg" width="18" height="18" viewBox="0 0 18 18" fill="#FF7900"><path d="M9 1.5l2.09 4.24 4.68.68-3.39 3.3.8 4.67L9 11.99l-4.18 2.4.8-4.67L2.23 6.42l4.68-.68L9 1.5z"/></svg>
+          <svg class="star-svg" width="18" height="18" viewBox="0 0 18 18" fill="#FF7900"><path d="M9 1.5l2.09 4.24 4.68.68-3.39 3.3.8 4.67L9 11.99l-4.18 2.4.8-4.67L2.23 6.42l4.68-.68L9 1.5z"/></svg>
+          <svg class="star-svg" width="18" height="18" viewBox="0 0 18 18" fill="#FF7900"><path d="M9 1.5l2.09 4.24 4.68.68-3.39 3.3.8 4.67L9 11.99l-4.18 2.4.8-4.67L2.23 6.42l4.68-.68L9 1.5z"/></svg>
         </div>
-        <p class="testi-quote">"J'ai atteint le niveau B2 en huit mois grâce aux cours en direct de FDS. Les professeurs sont vraiment patients et les replays m'ont permis de revoir chaque leçon à mon rythme. Je recommande vivement !"</p>
-        <div class="testi-author">
-          <div class="testi-av">
-            <img src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Sara B."/>
-          </div>
-          <div class="testi-info">
-            <div class="testi-name">Sara B.</div>
-            <div class="testi-meta">TestDaF B2 · Alger</div>
+        <span class="quote-mark">"</span>
+        <p class="quote">Grâce à FDS Institut, j'ai obtenu un TDN 4 au TestDaF en seulement 8 mois. Les séances en direct avec les professeurs certifiés sont exactement ce dont j'avais besoin. Le programme est structuré et les exercices correspondent parfaitement à l'examen réel.</p>
+        <div class="author-row">
+          <img
+            src="https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=96&h=96&fit=crop"
+            alt="Sara B."
+            class="author-photo"
+            loading="lazy"
+          />
+          <div class="author-info">
+            <div class="author-name">Sara B.</div>
+            <div class="author-meta">Alger · TestDaF TDN 4</div>
           </div>
         </div>
       </div>
 
-      <!-- KARIM M. — dark -->
-      <div class="testi-card dark reveal reveal-d2">
-        <div class="testi-stars">
-          <svg class="star-svg" width="18" height="18" viewBox="0 0 24 24" fill="#FF7900" stroke="#FF7900" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star-svg" width="18" height="18" viewBox="0 0 24 24" fill="#FF7900" stroke="#FF7900" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star-svg" width="18" height="18" viewBox="0 0 24 24" fill="#FF7900" stroke="#FF7900" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star-svg" width="18" height="18" viewBox="0 0 24 24" fill="#FF7900" stroke="#FF7900" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star-svg" width="18" height="18" viewBox="0 0 24 24" fill="#FF7900" stroke="#FF7900" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <!-- Karim M. — dark card -->
+      <div class="testi-card dark">
+        <div class="stars">
+          <svg class="star-svg" width="18" height="18" viewBox="0 0 18 18" fill="#FF7900"><path d="M9 1.5l2.09 4.24 4.68.68-3.39 3.3.8 4.67L9 11.99l-4.18 2.4.8-4.67L2.23 6.42l4.68-.68L9 1.5z"/></svg>
+          <svg class="star-svg" width="18" height="18" viewBox="0 0 18 18" fill="#FF7900"><path d="M9 1.5l2.09 4.24 4.68.68-3.39 3.3.8 4.67L9 11.99l-4.18 2.4.8-4.67L2.23 6.42l4.68-.68L9 1.5z"/></svg>
+          <svg class="star-svg" width="18" height="18" viewBox="0 0 18 18" fill="#FF7900"><path d="M9 1.5l2.09 4.24 4.68.68-3.39 3.3.8 4.67L9 11.99l-4.18 2.4.8-4.67L2.23 6.42l4.68-.68L9 1.5z"/></svg>
+          <svg class="star-svg" width="18" height="18" viewBox="0 0 18 18" fill="#FF7900"><path d="M9 1.5l2.09 4.24 4.68.68-3.39 3.3.8 4.67L9 11.99l-4.18 2.4.8-4.67L2.23 6.42l4.68-.68L9 1.5z"/></svg>
+          <svg class="star-svg" width="18" height="18" viewBox="0 0 18 18" fill="#FF7900"><path d="M9 1.5l2.09 4.24 4.68.68-3.39 3.3.8 4.67L9 11.99l-4.18 2.4.8-4.67L2.23 6.42l4.68-.68L9 1.5z"/></svg>
         </div>
-        <p class="testi-quote">"Le format en petit groupe change tout. On a vraiment l'occasion de pratiquer et le professeur répond à toutes nos questions. Le paiement via Edahabia est un vrai plus pour nous en Algérie."</p>
-        <div class="testi-author">
-          <div class="testi-av">
-            <img src="https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Karim M."/>
-          </div>
-          <div class="testi-info">
-            <div class="testi-name">Karim M.</div>
-            <div class="testi-meta">Cours en groupe · Oran</div>
+        <span class="quote-mark">"</span>
+        <p class="quote">J'avais essayé plusieurs applications mais rien ne remplaçait un vrai professeur en direct. Avec FDS Institut, j'ai progressé d'A1 à B2 en moins d'un an. Le paiement par Edahabia était vraiment pratique pour moi.</p>
+        <div class="author-row">
+          <img
+            src="https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=96&h=96&fit=crop"
+            alt="Karim M."
+            class="author-photo"
+            loading="lazy"
+          />
+          <div class="author-info">
+            <div class="author-name">Karim M.</div>
+            <div class="author-meta">Oran · Niveau B2 atteint</div>
           </div>
         </div>
       </div>
 
-      <!-- LINA A. — light -->
-      <div class="testi-card light reveal reveal-d3">
-        <div class="testi-stars">
-          <svg class="star-svg" width="18" height="18" viewBox="0 0 24 24" fill="#FF7900" stroke="#FF7900" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star-svg" width="18" height="18" viewBox="0 0 24 24" fill="#FF7900" stroke="#FF7900" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star-svg" width="18" height="18" viewBox="0 0 24 24" fill="#FF7900" stroke="#FF7900" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star-svg" width="18" height="18" viewBox="0 0 24 24" fill="#FF7900" stroke="#FF7900" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star-svg" width="18" height="18" viewBox="0 0 24 24" fill="#FF7900" stroke="#FF7900" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <!-- Lina A. -->
+      <div class="testi-card light">
+        <div class="stars">
+          <svg class="star-svg" width="18" height="18" viewBox="0 0 18 18" fill="#FF7900"><path d="M9 1.5l2.09 4.24 4.68.68-3.39 3.3.8 4.67L9 11.99l-4.18 2.4.8-4.67L2.23 6.42l4.68-.68L9 1.5z"/></svg>
+          <svg class="star-svg" width="18" height="18" viewBox="0 0 18 18" fill="#FF7900"><path d="M9 1.5l2.09 4.24 4.68.68-3.39 3.3.8 4.67L9 11.99l-4.18 2.4.8-4.67L2.23 6.42l4.68-.68L9 1.5z"/></svg>
+          <svg class="star-svg" width="18" height="18" viewBox="0 0 18 18" fill="#FF7900"><path d="M9 1.5l2.09 4.24 4.68.68-3.39 3.3.8 4.67L9 11.99l-4.18 2.4.8-4.67L2.23 6.42l4.68-.68L9 1.5z"/></svg>
+          <svg class="star-svg" width="18" height="18" viewBox="0 0 18 18" fill="#FF7900"><path d="M9 1.5l2.09 4.24 4.68.68-3.39 3.3.8 4.67L9 11.99l-4.18 2.4.8-4.67L2.23 6.42l4.68-.68L9 1.5z"/></svg>
+          <svg class="star-svg" width="18" height="18" viewBox="0 0 18 18" fill="#FF7900"><path d="M9 1.5l2.09 4.24 4.68.68-3.39 3.3.8 4.67L9 11.99l-4.18 2.4.8-4.67L2.23 6.42l4.68-.68L9 1.5z"/></svg>
         </div>
-        <p class="testi-quote">"Le cours intensif m'a permis de progresser très rapidement. En trois mois, j'ai gagné deux niveaux. L'organisation est impeccable et l'équipe est toujours disponible pour répondre à nos questions."</p>
-        <div class="testi-author">
-          <div class="testi-av">
-            <img src="https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Lina A."/>
-          </div>
-          <div class="testi-info">
-            <div class="testi-name">Lina A.</div>
-            <div class="testi-meta">Intensif · Constantine</div>
+        <span class="quote-mark">"</span>
+        <p class="quote">Mon visa étudiant pour Munich a été accordé ! FDS Institut m'a non seulement aidée à atteindre le niveau B1 requis, mais aussi guidée pour le compte de blocage Fintiba. Je recommande à toutes les étudiantes algériennes.</p>
+        <div class="author-row">
+          <img
+            src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=96&h=96&fit=crop"
+            alt="Lina A."
+            class="author-photo"
+            loading="lazy"
+          />
+          <div class="author-info">
+            <div class="author-name">Lina A.</div>
+            <div class="author-meta">Constantine · Visa Munich obtenu</div>
           </div>
         </div>
       </div>
@@ -136,10 +156,5 @@ h2{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(1.6rem,3vw,2.25
     </div>
   </div>
 </section>
-
-<script>
-const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}})},{threshold:.1});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-</script>
 </body>
 </html>

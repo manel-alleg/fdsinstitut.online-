@@ -3,13 +3,12 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Moodle — FDS Institut</title>
+<title>FDS Institut — Plateforme Moodle</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Montserrat:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
 :root{
   --orange:#FF7900;
   --orange-2:#FF9100;
@@ -21,24 +20,45 @@ html{scroll-behavior:smooth}
   --gray-500:#6B7280;
   --moodle:#F27F22;
 }
+body{font-family:'Montserrat',sans-serif;color:var(--black);background:#FFF8F4;margin:0;padding:0;line-height:1.6}
 @keyframes pulseDot{0%,100%{opacity:1}50%{opacity:.35}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-body{font-family:'Montserrat',sans-serif;color:var(--black);background:#fff;line-height:1.6;overflow-x:hidden}
-
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
 .reveal.in{opacity:1;transform:none}
+.reveal-d1{transition-delay:.1s}
 .reveal-d2{transition-delay:.2s}
-
 h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
 .eyebrow{
-  font-family:'Nunito',sans-serif;font-weight:700;font-size:.78rem;
-  letter-spacing:.12em;text-transform:uppercase;color:var(--orange);
-  margin-bottom:.75rem;display:block;
+  font-family:'Nunito',sans-serif;
+  font-weight:700;
+  font-size:.78rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--orange);
+  margin-bottom:.75rem;
+  display:block;
 }
-
-/* ── MOODLE SECTION ── */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  font-family:'Montserrat',sans-serif;
+  font-weight:600;
+  font-size:.9rem;
+  padding:.75rem 1.5rem;
+  border-radius:10px;
+  border:2px solid transparent;
+  cursor:pointer;
+  transition:all .2s;
+  text-decoration:none;
+  white-space:nowrap;
+}
+.btn-lg{font-size:1rem;padding:1rem 2.25rem;border-radius:12px}
+.btn-moodle{background:var(--moodle);color:#fff;border-color:var(--moodle)}
+.btn-moodle:hover{background:#e06e15;border-color:#e06e15;transform:translateY(-1px)}
+/* Section */
 #moodle{
-  background:linear-gradient(135deg,#FFF8F4 0%,#FFF3E8 40%,#F7F8FA 100%);
+  background:#FFF8F4;
   padding:5rem 1.5rem;
 }
 .moodle-inner{
@@ -49,6 +69,7 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
   gap:3.5rem;
   align-items:center;
 }
+/* Left */
 .moodle-logo-box{
   display:inline-block;
   background:#fff;
@@ -112,89 +133,119 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
   color:var(--gray-500);
   margin-top:.2rem;
 }
-
-/* IMAGE SIDE */
+/* Right */
 .moodle-img-wrap{
   position:relative;
   border-radius:20px;
-  overflow:hidden;
+  overflow:visible;
   height:420px;
 }
 .moodle-img-wrap img{
-  width:100%;height:100%;
-  object-fit:cover;display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  border-radius:20px;
 }
 .moodle-badge{
-  position:absolute;bottom:1rem;left:1rem;
-  background:rgba(0,0,0,.55);backdrop-filter:blur(8px);
-  border-radius:10px;padding:.45rem .8rem;
-  display:flex;align-items:center;gap:.5rem;
-  font-family:'Nunito',sans-serif;font-weight:700;font-size:.75rem;color:#fff;
+  position:absolute;
+  bottom:1rem;
+  left:1rem;
+  background:rgba(0,0,0,.55);
+  backdrop-filter:blur(8px);
+  border-radius:10px;
+  padding:.45rem .8rem;
+  display:flex;
+  align-items:center;
+  gap:.5rem;
+  font-family:'Nunito',sans-serif;
+  font-weight:700;
+  font-size:.75rem;
+  color:#fff;
+  z-index:2;
 }
 .green-dot{
-  width:8px;height:8px;border-radius:50%;background:#22c55e;
-  animation:pulseDot 1.4s ease-in-out infinite;flex-shrink:0;
-}
-.moodle-ring{
-  position:absolute;bottom:-24px;right:-24px;
-  width:120px;height:120px;border-radius:50%;
-  border:3px solid var(--orange);opacity:.25;pointer-events:none;
-}
-.moodle-ring-2{
-  position:absolute;top:-20px;right:-20px;
-  width:80px;height:80px;border-radius:50%;
-  border:2px solid var(--orange);opacity:.15;pointer-events:none;
-}
-
-/* Floating replay card */
-.replay-card{
-  position:absolute;top:1.25rem;right:1rem;
-  background:#fff;border-radius:12px;
-  padding:.6rem .9rem;
-  box-shadow:0 8px 24px rgba(0,0,0,.18);
-  display:flex;align-items:center;gap:.6rem;
-  animation:float 4s ease-in-out infinite;
-  max-width:180px;
-}
-.replay-icon{
-  width:32px;height:32px;border-radius:8px;
-  background:var(--moodle);
-  display:flex;align-items:center;justify-content:center;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#22c55e;
+  animation:pulseDot 1.4s ease-in-out infinite;
   flex-shrink:0;
 }
-.replay-text strong{
-  font-family:'Nunito',sans-serif;font-weight:800;font-size:.75rem;
-  color:var(--blue);display:block;
+/* Floating replay card */
+.replay-card{
+  position:absolute;
+  top:1.25rem;
+  right:-1.25rem;
+  background:#fff;
+  border:1.5px solid var(--gray-200);
+  border-radius:14px;
+  padding:.65rem 1rem;
+  display:flex;
+  align-items:center;
+  gap:.6rem;
+  box-shadow:0 8px 24px rgba(0,0,0,.1);
+  font-family:'Nunito',sans-serif;
+  font-weight:700;
+  font-size:.78rem;
+  color:var(--blue);
+  white-space:nowrap;
+  z-index:3;
 }
-.replay-text span{
-  font-family:'Montserrat',sans-serif;font-size:.68rem;color:var(--gray-500);
+.replay-icon{
+  width:34px;
+  height:34px;
+  border-radius:10px;
+  background:#fff3e8;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
 }
-
-/* BTN */
-.btn{
-  display:inline-flex;align-items:center;gap:.5rem;
-  font-family:'Montserrat',sans-serif;font-weight:600;
-  border-radius:10px;border:2px solid transparent;
-  cursor:pointer;transition:all .2s;text-decoration:none;white-space:nowrap;
+/* Ring decorations */
+.moodle-ring{
+  position:absolute;
+  bottom:-24px;
+  right:-24px;
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  border:3px solid var(--orange);
+  opacity:.25;
+  pointer-events:none;
+  z-index:1;
 }
-.btn-moodle{background:var(--moodle);color:#fff;border-color:var(--moodle)}
-.btn-moodle:hover{background:#e06e15;border-color:#e06e15;transform:translateY(-1px)}
-.btn-lg{font-size:1rem;padding:1rem 2.25rem;border-radius:12px}
-
+.moodle-ring-2{
+  position:absolute;
+  top:-20px;
+  left:-20px;
+  width:80px;
+  height:80px;
+  border-radius:50%;
+  border:2px solid var(--blue);
+  opacity:.1;
+  pointer-events:none;
+}
 @media(max-width:1023px){
   .moodle-inner{grid-template-columns:1fr;gap:2rem}
-  .moodle-img-wrap{height:320px}
+  .replay-card{right:.5rem;top:.75rem}
+}
+@media(max-width:600px){
+  #moodle{padding:3.5rem 1.25rem}
+  .moodle-img-wrap{height:280px}
+  .replay-card{display:none}
 }
 </style>
 </head>
 <body>
-
 <section id="moodle">
   <div class="moodle-inner">
+
     <!-- LEFT -->
     <div class="moodle-left reveal">
+      <span class="eyebrow">Plateforme en ligne</span>
       <div class="moodle-logo-box">
-        <img src="https://assets.zyrosite.com/tPWPZ3kEpjHdFO9F/moodle-1-740x380-s84vr5GqRxP3NUXr.png" alt="Moodle LMS" style="height:88px;width:auto;display:block;"/>
+        <img src="https://assets.zyrosite.com/tPWPZ3kEpjHdFO9F/moodle-1-740x380-s84vr5GqRxP3NUXr.png" alt="Moodle LMS" style="height:80px;width:auto;display:block;">
       </div>
       <h2>Votre classe, accessible 24h/24.</h2>
       <p>Tous vos cours en direct, replays, exercices et certificats — en un seul endroit, propulsé par Moodle.</p>
@@ -213,7 +264,7 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
         </div>
         <div class="moodle-check">
           <svg width="18" height="18" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-          Exercices interactifs &amp; quiz
+          Exercices interactifs inclus
         </div>
       </div>
       <div class="moodle-stats">
@@ -239,35 +290,45 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
     <!-- RIGHT -->
     <div class="reveal reveal-d2">
       <div class="moodle-img-wrap">
-        <img src="https://images.pexels.com/photos/5905902/pexels-photo-5905902.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Étudiant sur plateforme Moodle"/>
+        <img src="https://images.pexels.com/photos/5905902/pexels-photo-5905902.jpeg?auto=compress&cs=tinysrgb&w=840" alt="Étudiant sur plateforme en ligne"/>
         <div class="moodle-badge">
           <span class="green-dot"></span>
           En direct · 24 étudiants connectés
         </div>
+        <!-- Floating replay card -->
         <div class="replay-card">
           <div class="replay-icon">
-            <svg width="16" height="16" fill="#fff" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <svg width="18" height="18" fill="none" stroke="#FF7900" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="#FF7900" stroke="none"/></svg>
           </div>
-          <div class="replay-text">
-            <strong>Replay disponible</strong>
-            <span>Voir le cours B2</span>
+          <div>
+            <div style="font-size:.75rem;color:var(--blue)">Replay disponible</div>
+            <div style="font-size:.7rem;color:var(--gray-500);font-weight:600">Cours B1 · Mercredi</div>
           </div>
         </div>
         <div class="moodle-ring"></div>
         <div class="moodle-ring-2"></div>
       </div>
     </div>
+
   </div>
 </section>
 
 <script>
 (function(){
-  var els=document.querySelectorAll('.reveal');
-  if(!els.length) return;
-  var io=new IntersectionObserver(function(entries){
-    entries.forEach(function(en){if(en.isIntersecting)en.target.classList.add('in')});
-  },{threshold:.12});
-  els.forEach(function(el){io.observe(el)});
+  var els = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(e){e.classList.add('in')});
+    return;
+  }
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        obs.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.1});
+  els.forEach(function(e){obs.observe(e)});
 })();
 </script>
 </body>

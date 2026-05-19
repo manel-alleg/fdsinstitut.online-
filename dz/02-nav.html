@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Navigation — FDS Institut</title>
+<title>FDS Institut — Navigation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Montserrat:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -20,8 +20,7 @@
   --gray-500:#6B7280;
   --moodle:#F27F22;
 }
-body{font-family:'Montserrat',sans-serif;color:var(--black);background:#fff;line-height:1.6;overflow-x:hidden}
-/* ── NAV ── */
+body{font-family:'Montserrat',sans-serif;color:var(--black);background:#fff;margin:0;padding:0}
 #nav{
   position:sticky;
   top:0;
@@ -31,6 +30,7 @@ body{font-family:'Montserrat',sans-serif;color:var(--black);background:#fff;line
   height:64px;
   display:flex;
   align-items:center;
+  width:100%;
 }
 .nav-inner{
   max-width:1200px;
@@ -101,9 +101,20 @@ body{font-family:'Montserrat',sans-serif;color:var(--black);background:#fff;line
   text-decoration:none;
   white-space:nowrap;
 }
-.btn-orange{background:var(--orange);color:#fff;border-color:var(--orange)}
-.btn-orange:hover{background:var(--orange-2);border-color:var(--orange-2);transform:translateY(-1px);box-shadow:0 6px 20px rgba(255,121,0,.35)}
-@media(max-width:1023px){.nav-intl{display:none}}
+.btn-orange{
+  background:var(--orange);
+  color:#fff;
+  border-color:var(--orange);
+}
+.btn-orange:hover{
+  background:var(--orange-2);
+  border-color:var(--orange-2);
+  transform:translateY(-1px);
+  box-shadow:0 6px 20px rgba(255,121,0,.35);
+}
+@media(max-width:640px){
+  .nav-intl{display:none}
+}
 </style>
 </head>
 <body>
@@ -118,16 +129,11 @@ body{font-family:'Montserrat',sans-serif;color:var(--black);background:#fff;line
         International
         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
-      <button class="btn btn-orange" onclick="scrollToHero()">Réserver ma place</button>
+      <button class="btn btn-orange" onclick="window.parent && window.parent.scrollToHero ? window.parent.scrollToHero() : window.scrollTo({top:0})">
+        Réserver ma place
+      </button>
     </div>
   </div>
 </nav>
-<script>
-function scrollToHero(){
-  const hero=document.getElementById('hero');
-  if(hero){hero.scrollIntoView({behavior:'smooth'});}
-  else{window.location.href='#hero';}
-}
-</script>
 </body>
 </html>

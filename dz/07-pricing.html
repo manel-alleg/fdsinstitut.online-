@@ -3,13 +3,12 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Tarifs — FDS Institut · Algérie</title>
+<title>FDS Institut — Tarifs Algérie</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Montserrat:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
 :root{
   --orange:#FF7900;
   --orange-2:#FF9100;
@@ -21,21 +20,23 @@ html{scroll-behavior:smooth}
   --gray-500:#6B7280;
   --moodle:#F27F22;
 }
-body{font-family:'Montserrat',sans-serif;color:var(--black);background:#fff;line-height:1.6;overflow-x:hidden}
-
+body{font-family:'Montserrat',sans-serif;color:var(--black);background:var(--gray-50);margin:0;padding:0;line-height:1.6}
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
 .reveal.in{opacity:1;transform:none}
 .reveal-d1{transition-delay:.1s}
 .reveal-d2{transition-delay:.2s}
-
-h2{font-family:'Sora',sans-serif;line-height:1.12}
+h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
 .eyebrow{
-  font-family:'Nunito',sans-serif;font-weight:700;font-size:.78rem;
-  letter-spacing:.12em;text-transform:uppercase;color:var(--orange);
-  margin-bottom:.75rem;display:block;
+  font-family:'Nunito',sans-serif;
+  font-weight:700;
+  font-size:.78rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--orange);
+  margin-bottom:.75rem;
+  display:block;
 }
-
-/* ── PRICING ── */
+/* Section */
 #pricing{
   background:var(--gray-50);
   padding:5rem 1.5rem;
@@ -43,16 +44,21 @@ h2{font-family:'Sora',sans-serif;line-height:1.12}
 .section-inner{max-width:1200px;margin:0 auto}
 .section-header{text-align:center;margin-bottom:3rem}
 .section-header h2{
+  font-family:'Sora',sans-serif;
   font-size:clamp(1.6rem,3vw,2.25rem);
   font-weight:800;
   color:var(--blue);
   margin-top:.5rem;
 }
+/* Grid */
 .pricing-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:1.5rem;
+  max-width:1200px;
+  margin:0 auto;
 }
+/* Card */
 .price-card{
   border:1.5px solid var(--gray-200);
   border-radius:24px;
@@ -61,86 +67,146 @@ h2{font-family:'Sora',sans-serif;line-height:1.12}
   flex-direction:column;
   position:relative;
   background:#fff;
-  transition:box-shadow .25s,transform .25s;
-}
-.price-card:hover{
-  box-shadow:0 8px 32px rgba(0,0,0,.08);
-  transform:translateY(-3px);
 }
 .price-card.highlight{
   border-color:var(--orange);
   box-shadow:0 8px 40px rgba(255,121,0,.18);
 }
+/* Badge */
 .pop-badge{
-  position:absolute;top:-12px;left:50%;transform:translateX(-50%);
-  background:var(--orange);color:#fff;
-  font-family:'Nunito',sans-serif;font-weight:800;font-size:.7rem;
-  padding:.25rem .75rem;border-radius:100px;white-space:nowrap;letter-spacing:.04em;
+  position:absolute;
+  top:-12px;
+  left:50%;
+  transform:translateX(-50%);
+  background:var(--orange);
+  color:#fff;
+  font-family:'Nunito',sans-serif;
+  font-weight:800;
+  font-size:.7rem;
+  padding:.25rem .75rem;
+  border-radius:100px;
+  white-space:nowrap;
+  letter-spacing:.04em;
 }
 .price-plan{
-  font-family:'Nunito',sans-serif;font-weight:800;font-size:.8rem;
-  letter-spacing:.08em;text-transform:uppercase;color:var(--gray-500);
+  font-family:'Nunito',sans-serif;
+  font-weight:800;
+  font-size:.8rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--gray-500);
   margin-bottom:.75rem;
 }
 .price-amount{
-  font-family:'Sora',sans-serif;font-weight:800;font-size:2rem;
-  color:var(--blue);line-height:1;margin-bottom:.2rem;
+  font-family:'Sora',sans-serif;
+  font-weight:800;
+  font-size:2rem;
+  color:var(--blue);
+  line-height:1;
+  margin-bottom:.2rem;
 }
-.price-amount span{font-size:.9rem;font-weight:600;color:var(--gray-500)}
+.price-amount span{
+  font-size:.9rem;
+  font-weight:600;
+  color:var(--gray-500);
+}
 .price-period{
-  font-family:'Nunito',sans-serif;font-weight:600;font-size:.75rem;
-  color:var(--gray-500);margin-bottom:1.5rem;
+  font-family:'Nunito',sans-serif;
+  font-weight:600;
+  font-size:.75rem;
+  color:var(--gray-500);
+  margin-bottom:1.5rem;
 }
 .price-features{
-  list-style:none;display:flex;flex-direction:column;
-  gap:.55rem;margin-bottom:1.75rem;flex:1;
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:.55rem;
+  margin-bottom:1.75rem;
+  flex:1;
 }
 .price-features li{
-  display:flex;align-items:flex-start;gap:.5rem;
-  font-size:.85rem;color:var(--black);line-height:1.5;
+  display:flex;
+  align-items:flex-start;
+  gap:.5rem;
+  font-size:.85rem;
+  color:var(--black);
+  line-height:1.5;
 }
 .price-features li svg{flex-shrink:0;margin-top:2px}
-
-/* BUTTONS */
+/* Buttons */
 .btn{
-  display:inline-flex;align-items:center;gap:.5rem;
-  font-family:'Montserrat',sans-serif;font-weight:600;font-size:.9rem;
-  padding:.75rem 1.5rem;border-radius:10px;border:2px solid transparent;
-  cursor:pointer;transition:all .2s;text-decoration:none;white-space:nowrap;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.5rem;
+  font-family:'Montserrat',sans-serif;
+  font-weight:600;
+  font-size:.9rem;
+  padding:.75rem 1.5rem;
+  border-radius:10px;
+  border:2px solid transparent;
+  cursor:pointer;
+  transition:all .2s;
+  text-decoration:none;
+  white-space:nowrap;
+  width:100%;
 }
-.btn-orange{background:var(--orange);color:#fff;border-color:var(--orange)}
-.btn-orange:hover{background:var(--orange-2);border-color:var(--orange-2);transform:translateY(-1px);box-shadow:0 6px 20px rgba(255,121,0,.35)}
-.btn-outline-dark{background:transparent;color:var(--blue);border-color:var(--gray-200)}
-.btn-outline-dark:hover{border-color:var(--orange);color:var(--orange)}
-.btn-full{width:100%;justify-content:center}
-
-/* PRICING FOOTER */
+.btn-orange{
+  background:var(--orange);
+  color:#fff;
+  border-color:var(--orange);
+}
+.btn-orange:hover{
+  background:var(--orange-2);
+  border-color:var(--orange-2);
+  transform:translateY(-1px);
+  box-shadow:0 6px 20px rgba(255,121,0,.35);
+}
+.btn-outline-dark{
+  background:transparent;
+  color:var(--blue);
+  border-color:var(--gray-200);
+}
+.btn-outline-dark:hover{
+  border-color:var(--orange);
+  color:var(--orange);
+}
+/* Assurance */
 .pricing-assurance{
-  text-align:center;margin-top:1.75rem;
-  font-family:'Nunito',sans-serif;font-weight:700;font-size:.8rem;color:var(--gray-500);
+  text-align:center;
+  margin-top:1.75rem;
+  font-family:'Nunito',sans-serif;
+  font-weight:700;
+  font-size:.8rem;
+  color:var(--gray-500);
 }
 .pricing-payment{
-  text-align:center;margin-top:.5rem;
-  font-family:'Nunito',sans-serif;font-weight:600;font-size:.78rem;color:var(--gray-500);
+  text-align:center;
+  margin-top:.5rem;
+  font-family:'Nunito',sans-serif;
+  font-weight:600;
+  font-size:.78rem;
+  color:var(--gray-500);
 }
-.pricing-payment span{
-  display:inline-flex;align-items:center;gap:.35rem;
-}
-
 @media(max-width:1023px){
   .pricing-grid{grid-template-columns:1fr}
   .price-card.highlight{order:-1}
 }
+@media(max-width:600px){
+  #pricing{padding:3.5rem 1.25rem}
+}
 </style>
 </head>
 <body>
-
 <section id="pricing">
   <div class="section-inner">
+
     <div class="section-header reveal">
       <span class="eyebrow">Tarifs</span>
       <h2>Des tarifs pensés pour l'Algérie.</h2>
     </div>
+
     <div class="pricing-grid">
 
       <!-- Autonome -->
@@ -151,7 +217,7 @@ h2{font-family:'Sora',sans-serif;line-height:1.12}
         <ul class="price-features">
           <li>
             <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            Accès complet à la plateforme Moodle
+            Accès plateforme Moodle
           </li>
           <li>
             <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
@@ -163,14 +229,10 @@ h2{font-family:'Sora',sans-serif;line-height:1.12}
           </li>
           <li>
             <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            Exercices interactifs &amp; quiz
-          </li>
-          <li>
-            <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
             Support par email
           </li>
         </ul>
-        <button class="btn btn-outline-dark btn-full" onclick="scrollToHero()">Commencer</button>
+        <button class="btn btn-outline-dark" onclick="window.parent && window.parent.scrollToHero ? window.parent.scrollToHero() : window.scrollTo({top:0})">Commencer</button>
       </div>
 
       <!-- Groupe — HIGHLIGHT -->
@@ -186,7 +248,7 @@ h2{font-family:'Sora',sans-serif;line-height:1.12}
           </li>
           <li>
             <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            Cours en direct 3&times;/semaine
+            Cours en direct 3×/semaine
           </li>
           <li>
             <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
@@ -201,7 +263,7 @@ h2{font-family:'Sora',sans-serif;line-height:1.12}
             Rapport de progression mensuel
           </li>
         </ul>
-        <button class="btn btn-orange btn-full" onclick="scrollToHero()">Réserver ma place</button>
+        <button class="btn btn-orange" onclick="window.parent && window.parent.scrollToHero ? window.parent.scrollToHero() : window.scrollTo({top:0})">Réserver ma place</button>
       </div>
 
       <!-- Intensif -->
@@ -216,7 +278,7 @@ h2{font-family:'Sora',sans-serif;line-height:1.12}
           </li>
           <li>
             <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            Cours quotidiens (5&times;/semaine)
+            Cours quotidiens (5×/semaine)
           </li>
           <li>
             <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
@@ -224,43 +286,40 @@ h2{font-family:'Sora',sans-serif;line-height:1.12}
           </li>
           <li>
             <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            Suivi prioritaire &amp; plan personnalisé
+            Suivi prioritaire
           </li>
           <li>
             <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
             Garantie réussite examen
           </li>
         </ul>
-        <button class="btn btn-outline-dark btn-full" onclick="scrollToHero()">Commencer</button>
+        <button class="btn btn-outline-dark" onclick="window.parent && window.parent.scrollToHero ? window.parent.scrollToHero() : window.scrollTo({top:0})">Commencer</button>
       </div>
 
     </div>
 
-    <p class="pricing-payment">
-      <svg width="16" height="16" fill="none" stroke="var(--gray-500)" stroke-width="2" viewBox="0 0 24 24" style="margin-right:.25rem;vertical-align:middle"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-      Paiement : CCP &nbsp;·&nbsp; Edahabia &nbsp;·&nbsp; BaridiMob &nbsp;·&nbsp; Virement
-    </p>
-    <p class="pricing-assurance">
-      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:.3rem"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      Remboursé 14 jours &nbsp;·&nbsp; Aucune carte requise &nbsp;·&nbsp; Annulation libre
-    </p>
+    <p class="pricing-assurance reveal" style="margin-top:2rem">Remboursé 14 jours · Aucune carte requise · Annulation libre</p>
+    <p class="pricing-payment reveal reveal-d1">Paiement : CCP · Edahabia · BaridiMob · Virement</p>
+
   </div>
 </section>
 
 <script>
-function scrollToHero(){
-  var hero=document.getElementById('hero');
-  if(hero){hero.scrollIntoView({behavior:'smooth'});}
-  else{window.location.href='#hero';}
-}
-function openModal(){scrollToHero();}
 (function(){
-  var els=document.querySelectorAll('.reveal');
-  if(!els.length) return;
-  var io=new IntersectionObserver(function(entries){
-    entries.forEach(function(en){if(en.isIntersecting)en.target.classList.add('in')});
-  },{threshold:.12});
-  els.forEach(function(el){io.observe(el)});
+  var els = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(e){e.classList.add('in')});
+    return;
+  }
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        obs.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.1});
+  els.forEach(function(e){obs.observe(e)});
 })();
 </script>
 </body>
