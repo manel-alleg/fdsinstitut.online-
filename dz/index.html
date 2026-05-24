@@ -26,11 +26,21 @@ body{font-family:'Montserrat',sans-serif;color:var(--black);background:#fff;line
 
 /* ── ANIMATIONS ── */
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes float{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-14px) rotate(var(--r,0deg))}}
 @keyframes marquee{to{transform:translateX(-50%)}}
 @keyframes pulseDot{0%,100%{opacity:1}50%{opacity:.35}}
 @keyframes slideUp{from{transform:translateY(100%);opacity:0}to{transform:translateY(0);opacity:1}}
 @keyframes spin45{to{transform:rotate(45deg)}}
+@keyframes blobMorph{
+  0%,100%{border-radius:60% 40% 70% 30%/50% 60% 40% 70%;transform:translate(0,0) scale(1)}
+  25%{border-radius:40% 60% 30% 70%/60% 40% 70% 30%;transform:translate(38px,-48px) scale(1.07)}
+  50%{border-radius:70% 30% 50% 50%/40% 70% 60% 40%;transform:translate(-28px,28px) scale(.93)}
+  75%{border-radius:30% 70% 60% 40%/70% 30% 40% 60%;transform:translate(22px,14px) scale(1.04)}
+}
+@keyframes popIn{0%{transform:scale(.86);opacity:0}100%{transform:scale(1);opacity:1}}
+
+/* ── CURSOR GLOW ── */
+.cursor-glow{position:fixed;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(255,121,0,.17) 0%,rgba(124,58,237,.05) 45%,transparent 70%);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .07s linear,top .07s linear}
 
 /* ── REVEAL ── */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
@@ -78,39 +88,68 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
 .nav-cta{font-size:.85rem;padding:.5rem 1.1rem;border-radius:8px}
 
 /* ── HERO ── */
-#hero{scroll-margin-top:64px;background:var(--gray-50);padding:5rem 1.5rem 4rem}
-.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 480px;gap:3.5rem;align-items:center}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:#fff;border:1.5px solid var(--gray-200);border-radius:100px;padding:.35rem .8rem .35rem .5rem;font-family:'Nunito',sans-serif;font-weight:700;font-size:.75rem;color:var(--black);margin-bottom:1.25rem}
+#hero{
+  scroll-margin-top:64px;
+  background:var(--blue);
+  min-height:100vh;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  padding:5rem 1.5rem 4rem;
+}
+#hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.055) 1.5px,transparent 1.5px);background-size:30px 30px;pointer-events:none;z-index:0}
+
+/* ── BLOBS ── */
+.blob{position:absolute;filter:blur(72px);pointer-events:none;will-change:transform;z-index:0;animation:blobMorph 10s ease-in-out infinite}
+.blob-1{width:680px;height:680px;background:rgba(255,121,0,.4);bottom:-210px;left:-180px;animation-duration:9s}
+.blob-2{width:540px;height:540px;background:rgba(124,58,237,.33);top:-140px;right:-130px;animation-duration:13s;animation-delay:-5s;animation-direction:reverse}
+.blob-3{width:440px;height:440px;background:rgba(6,182,212,.28);top:28%;left:38%;animation-duration:8s;animation-delay:-3s}
+.blob-4{width:300px;height:300px;background:rgba(16,185,129,.22);bottom:4%;right:10%;animation-duration:15s;animation-delay:-8s;animation-direction:reverse}
+
+/* ── FLOATING PHOTOS ── */
+.fp{position:absolute;border-radius:18px;overflow:hidden;z-index:3;pointer-events:none;box-shadow:0 24px 60px -8px rgba(0,0,0,.6),0 0 0 3px rgba(255,255,255,.2)}
+.fp img{width:100%;height:100%;object-fit:cover;display:block}
+.fp1{width:154px;height:154px;top:7%;left:2.5%;animation:float 6.2s ease-in-out infinite;--r:-6deg;transform:rotate(-6deg)}
+.fp2{width:122px;height:142px;bottom:15%;left:4%;animation:float 7.8s ease-in-out infinite 1.7s;--r:5deg;transform:rotate(5deg)}
+.fp3{width:142px;height:132px;top:5%;right:2.5%;animation:float 8.4s ease-in-out infinite .6s;--r:4deg;transform:rotate(4deg)}
+.fp4{width:112px;height:122px;bottom:17%;right:3%;animation:float 5.6s ease-in-out infinite 2.2s;--r:-5deg;transform:rotate(-5deg)}
+.fp5{width:100px;height:100px;top:43%;left:1.2%;animation:float 9.1s ease-in-out infinite .3s;--r:7deg;transform:rotate(7deg)}
+@media(max-width:1200px){.fp1,.fp2,.fp3,.fp4,.fp5{display:none}}
+
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 480px;gap:3.5rem;align-items:center;position:relative;z-index:4;width:100%}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.25);border-radius:100px;padding:.35rem .8rem .35rem .5rem;font-family:'Nunito',sans-serif;font-weight:700;font-size:.75rem;color:#fff;margin-bottom:1.25rem}
 .green-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;animation:pulseDot 1.4s ease-in-out infinite;flex-shrink:0}
-.hero-h1{font-size:clamp(3rem,6vw,5rem);font-weight:800;color:var(--black);margin-bottom:1.25rem}
-.hero-sub{font-size:1.05rem;color:var(--gray-500);max-width:480px;margin-bottom:1.75rem;line-height:1.7}
+.hero-h1{font-size:clamp(3rem,6vw,5rem);font-weight:800;color:#fff;margin-bottom:1.25rem}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,.78);max-width:480px;margin-bottom:1.75rem;line-height:1.7}
 .trust-pills{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.75rem}
-.trust-pill{display:flex;align-items:center;gap:.6rem;font-family:'Nunito',sans-serif;font-weight:600;font-size:.85rem;color:var(--black)}
+.trust-pill{display:flex;align-items:center;gap:.6rem;font-family:'Nunito',sans-serif;font-weight:700;font-size:.85rem;color:#fff}
 .trust-pill svg{flex-shrink:0}
-.hero-divider{border:none;border-top:1.5px solid var(--gray-200);margin:1.5rem 0}
+.hero-divider{border:none;border-top:1.5px solid rgba(255,255,255,.15);margin:1.5rem 0}
 .avatar-row{display:flex;align-items:center;gap:.75rem}
 .avatar-stack{display:flex}
-.avatar-stack .av{width:36px;height:36px;border-radius:50%;border:2.5px solid #fff;background:var(--blue);color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:.65rem;display:flex;align-items:center;justify-content:center;margin-left:-10px}
+.avatar-stack .av{width:36px;height:36px;border-radius:50%;border:2.5px solid rgba(255,255,255,.3);background:var(--blue);color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:.65rem;display:flex;align-items:center;justify-content:center;margin-left:-10px}
 .avatar-stack .av:first-child{margin-left:0}
 .avatar-stack .av:nth-child(2){background:#FF7900}
 .avatar-stack .av:nth-child(3){background:#22c55e}
 .avatar-stack .av:nth-child(4){background:#7c3aed}
-.avatar-row-text{font-family:'Nunito',sans-serif;font-weight:700;font-size:.8rem;color:var(--gray-500)}
-.avatar-row-text strong{color:var(--black);display:block;font-size:.9rem}
+.avatar-row-text{font-family:'Nunito',sans-serif;font-weight:700;font-size:.8rem;color:rgba(255,255,255,.7)}
+.avatar-row-text strong{color:#fff;display:block;font-size:.9rem}
 
 /* ── HERO PHOTOS ── */
 .hero-photos { display: flex; margin-bottom: 1.5rem; }
 .hero-photo-card {
   width: 56px; height: 56px; border-radius: 14px; overflow: hidden;
-  border: 2.5px solid #fff; margin-left: -10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,.12); transition: transform .25s;
+  border: 2.5px solid rgba(255,255,255,.3); margin-left: -10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.3); transition: transform .25s;
 }
 .hero-photo-card:first-child { margin-left: 0; }
 .hero-photo-card:hover { transform: translateY(-4px) scale(1.08); z-index: 1; }
 .hero-photo-card img { width: 100%; height: 100%; object-fit: cover; }
 
 /* ── FORM CARD ── */
-.form-card{background:#fff;border:1.5px solid var(--gray-200);border-radius:24px;padding:2rem;box-shadow:0 8px 40px rgba(0,48,78,.08);width:100%}
+.form-wrap{max-width:700px}
+.form-card{background:#fff;border-radius:24px;padding:3rem 3.25rem;box-shadow:0 50px 120px -20px rgba(0,0,0,.42),0 0 0 1px rgba(0,0,0,.04),0 20px 60px -30px rgba(255,121,0,.35);width:100%;animation:popIn .55s cubic-bezier(.175,.885,.32,1.275) both}
 .form-card-label{font-family:'Nunito',sans-serif;font-weight:800;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:1rem;display:block}
 .form-dots{display:flex;gap:.4rem;margin-bottom:1.5rem}
 .form-dot{width:32px;height:4px;border-radius:4px;background:var(--gray-200);transition:all .3s}
@@ -335,7 +374,7 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
 @media(max-width:600px){
   .stats-inner{grid-template-columns:repeat(2,1fr)}
   .hero-h1{font-size:2.6rem}
-  .form-card{padding:1.5rem}
+  .form-card{padding:2rem 1.75rem}
   #final-cta{padding:3.5rem 1.25rem}
   .final-btns{flex-direction:column}
   .final-btns .btn{width:100%;justify-content:center}
@@ -358,7 +397,7 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
       <span class="nav-badge">ALGÉRIE · A1–C2</span>
     </a>
     <div class="nav-actions">
-      <a href="../global/index.html" class="nav-intl">
+      <a href="../global/index.html" target="_blank" rel="noopener" class="nav-intl">
         International
         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
@@ -369,6 +408,19 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
 
 <!-- ── HERO ── -->
 <section id="hero">
+  <!-- Animated blobs -->
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="blob blob-4"></div>
+
+  <!-- Floating student photos -->
+  <div class="fp fp1"><img src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop" alt="Étudiante"></div>
+  <div class="fp fp2"><img src="https://images.pexels.com/photos/1438072/pexels-photo-1438072.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop" alt="Étudiante"></div>
+  <div class="fp fp3"><img src="https://images.pexels.com/photos/4050315/pexels-photo-4050315.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop" alt="Étudiant"></div>
+  <div class="fp fp4"><img src="https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop" alt="Étudiant"></div>
+  <div class="fp fp5"><img src="https://images.pexels.com/photos/4144101/pexels-photo-4144101.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop" alt="Cours en ligne"></div>
+
   <div class="hero-inner">
     <!-- LEFT -->
     <div class="hero-left">
@@ -422,111 +474,113 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
     </div>
 
     <!-- RIGHT — FORM CARD -->
-    <div class="form-card reveal reveal-d2">
-      <span class="form-card-label">Inscription en 2 min</span>
-      <div class="form-dots">
-        <div class="form-dot active"></div>
-        <div class="form-dot"></div>
-        <div class="form-dot"></div>
-        <div class="form-dot"></div>
-      </div>
+    <div class="form-wrap reveal reveal-d2">
+      <div class="form-card">
+        <span class="form-card-label">Inscription en 2 min</span>
+        <div class="form-dots">
+          <div class="form-dot active"></div>
+          <div class="form-dot"></div>
+          <div class="form-dot"></div>
+          <div class="form-dot"></div>
+        </div>
 
-      <div class="form-steps-wrap">
-        <!-- STEP 1 -->
-        <div class="form-step active" data-step="1">
-          <p class="step-q">Quel type de cours vous convient ?</p>
-          <div class="option-list">
-            <div class="opt-card" onclick="selectOpt(this,'type','groupe')">
-              <span>Cours en groupe</span>
-              <span class="opt-badge">7 500 DA/mois</span>
+        <div class="form-steps-wrap">
+          <!-- STEP 1 -->
+          <div class="form-step active" data-step="1">
+            <p class="step-q">Quel type de cours vous convient ?</p>
+            <div class="option-list">
+              <div class="opt-card" onclick="selectOpt(this,'type','groupe')">
+                <span>Cours en groupe</span>
+                <span class="opt-badge">7 500 DA/mois</span>
+              </div>
+              <div class="opt-card" onclick="selectOpt(this,'type','autonome')">
+                <span>Cours autonome</span>
+                <span class="opt-badge">9 900 DA/mois</span>
+              </div>
+              <div class="opt-card" onclick="selectOpt(this,'type','intensif')">
+                <span>Cours intensif</span>
+                <span class="opt-badge">32 000 DA/mois</span>
+              </div>
             </div>
-            <div class="opt-card" onclick="selectOpt(this,'type','autonome')">
-              <span>Cours autonome</span>
-              <span class="opt-badge">9 900 DA/mois</span>
+          </div>
+
+          <!-- STEP 2 -->
+          <div class="form-step" data-step="2">
+            <p class="step-q">Quel est votre niveau actuel ?</p>
+            <div class="option-list">
+              <div class="opt-card" onclick="selectOpt(this,'niveau','A1')">A1 — Débutant complet</div>
+              <div class="opt-card" onclick="selectOpt(this,'niveau','A2')">A2 — Faux débutant</div>
+              <div class="opt-card" onclick="selectOpt(this,'niveau','B1')">B1 — Intermédiaire</div>
+              <div class="opt-card" onclick="selectOpt(this,'niveau','B2')">B2 — Niveau avancé</div>
+              <div class="opt-card" onclick="selectOpt(this,'niveau','C1C2')">C1 / C2 — Expert</div>
+              <div class="opt-card" onclick="selectOpt(this,'niveau','inconnu')">Je ne sais pas encore</div>
             </div>
-            <div class="opt-card" onclick="selectOpt(this,'type','intensif')">
-              <span>Cours intensif</span>
-              <span class="opt-badge">32 000 DA/mois</span>
+            <button class="step-back" onclick="goBack()">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+              Retour
+            </button>
+          </div>
+
+          <!-- STEP 3 -->
+          <div class="form-step" data-step="3">
+            <p class="step-q">Quel est votre objectif ?</p>
+            <div class="option-list">
+              <div class="opt-card" onclick="selectOpt(this,'objectif','etudes')">Études en Allemagne</div>
+              <div class="opt-card" onclick="selectOpt(this,'objectif','visa')">Visa / Immigration</div>
+              <div class="opt-card" onclick="selectOpt(this,'objectif','pro')">Évolution professionnelle</div>
+              <div class="opt-card" onclick="selectOpt(this,'objectif','examen')">Préparation examen (TestDaF...)</div>
+              <div class="opt-card" onclick="selectOpt(this,'objectif','voyage')">Voyages et culture</div>
             </div>
+            <button class="step-back" onclick="goBack()">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+              Retour
+            </button>
+          </div>
+
+          <!-- STEP 4 -->
+          <div class="form-step" data-step="4">
+            <p class="step-q">Presque là — réservez votre place</p>
+            <form onsubmit="submitForm(event)">
+              <div class="form-fields">
+                <div class="form-field">
+                  <label for="f-prenom">Prénom</label>
+                  <input type="text" id="f-prenom" placeholder="Votre prénom" required/>
+                </div>
+                <div class="form-field">
+                  <label for="f-email">Email</label>
+                  <input type="email" id="f-email" placeholder="votre@email.com" required/>
+                </div>
+                <div class="form-field">
+                  <label for="f-tel">Téléphone</label>
+                  <input type="tel" id="f-tel" placeholder="+213 ..." required/>
+                </div>
+                <div class="form-field">
+                  <label for="f-wilaya">Wilaya</label>
+                  <input type="text" id="f-wilaya" placeholder="Votre wilaya"/>
+                </div>
+                <button type="submit" class="btn btn-orange btn-full" style="margin-top:.25rem">
+                  Recevoir mon lien de paiement
+                  <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </button>
+              </div>
+              <p class="form-step-4-meta">Sans engagement · Annulation libre</p>
+            </form>
+            <button class="step-back" onclick="goBack()">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+              Retour
+            </button>
           </div>
         </div>
 
-        <!-- STEP 2 -->
-        <div class="form-step" data-step="2">
-          <p class="step-q">Quel est votre niveau actuel ?</p>
-          <div class="option-list">
-            <div class="opt-card" onclick="selectOpt(this,'niveau','A1')">A1 — Débutant complet</div>
-            <div class="opt-card" onclick="selectOpt(this,'niveau','A2')">A2 — Faux débutant</div>
-            <div class="opt-card" onclick="selectOpt(this,'niveau','B1')">B1 — Intermédiaire</div>
-            <div class="opt-card" onclick="selectOpt(this,'niveau','B2')">B2 — Niveau avancé</div>
-            <div class="opt-card" onclick="selectOpt(this,'niveau','C1C2')">C1 / C2 — Expert</div>
-            <div class="opt-card" onclick="selectOpt(this,'niveau','inconnu')">Je ne sais pas encore</div>
+        <!-- SUCCESS STATE -->
+        <div class="form-success">
+          <div class="success-icon">
+            <svg width="32" height="32" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
-          <button class="step-back" onclick="goBack()">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-            Retour
-          </button>
+          <h3>Votre demande est envoyée !</h3>
+          <p>Consultez votre boîte mail sous 24h pour recevoir votre lien de paiement personnel.</p>
+          <p>Besoin d'aide ? <a href="mailto:online@fdsinstitut.com" target="_blank" rel="noopener">online@fdsinstitut.com</a></p>
         </div>
-
-        <!-- STEP 3 -->
-        <div class="form-step" data-step="3">
-          <p class="step-q">Quel est votre objectif ?</p>
-          <div class="option-list">
-            <div class="opt-card" onclick="selectOpt(this,'objectif','etudes')">Études en Allemagne</div>
-            <div class="opt-card" onclick="selectOpt(this,'objectif','visa')">Visa / Immigration</div>
-            <div class="opt-card" onclick="selectOpt(this,'objectif','pro')">Évolution professionnelle</div>
-            <div class="opt-card" onclick="selectOpt(this,'objectif','examen')">Préparation examen (TestDaF...)</div>
-            <div class="opt-card" onclick="selectOpt(this,'objectif','voyage')">Voyages et culture</div>
-          </div>
-          <button class="step-back" onclick="goBack()">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-            Retour
-          </button>
-        </div>
-
-        <!-- STEP 4 -->
-        <div class="form-step" data-step="4">
-          <p class="step-q">Presque là — réservez votre place</p>
-          <form onsubmit="submitForm(event)">
-            <div class="form-fields">
-              <div class="form-field">
-                <label for="f-prenom">Prénom</label>
-                <input type="text" id="f-prenom" placeholder="Votre prénom" required/>
-              </div>
-              <div class="form-field">
-                <label for="f-email">Email</label>
-                <input type="email" id="f-email" placeholder="votre@email.com" required/>
-              </div>
-              <div class="form-field">
-                <label for="f-tel">Téléphone</label>
-                <input type="tel" id="f-tel" placeholder="+213 ..." required/>
-              </div>
-              <div class="form-field">
-                <label for="f-wilaya">Wilaya</label>
-                <input type="text" id="f-wilaya" placeholder="Votre wilaya"/>
-              </div>
-              <button type="submit" class="btn btn-orange btn-full" style="margin-top:.25rem">
-                Recevoir mon lien de paiement
-                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              </button>
-            </div>
-            <p class="form-step-4-meta">Sans engagement · Annulation libre</p>
-          </form>
-          <button class="step-back" onclick="goBack()">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-            Retour
-          </button>
-        </div>
-      </div>
-
-      <!-- SUCCESS STATE -->
-      <div class="form-success">
-        <div class="success-icon">
-          <svg width="32" height="32" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <h3>Votre demande est envoyée !</h3>
-        <p>Consultez votre boîte mail sous 24h pour recevoir votre lien de paiement personnel.</p>
-        <p>Besoin d'aide ? <a href="mailto:online@fdsinstitut.com">online@fdsinstitut.com</a></p>
       </div>
     </div>
   </div>
@@ -971,7 +1025,7 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
     <p class="reveal reveal-d1">Rejoignez +3 200 étudiants algériens qui apprennent l'allemand en direct avec FDS Institut.</p>
     <div class="final-btns reveal reveal-d2">
       <button class="btn btn-orange btn-lg" onclick="scrollToHero()">Réserver ma place</button>
-      <a href="https://elearning.fdsinstitut.com" target="_blank" class="btn btn-outline-white btn-lg">
+      <a href="https://elearning.fdsinstitut.com" target="_blank" rel="noopener" class="btn btn-outline-white btn-lg">
         Voir la plateforme
         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
@@ -991,18 +1045,18 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
       <h4>Navigation</h4>
       <ul class="footer-nav">
         <li><a href="#pricing">Tarifs</a></li>
-        <li><a href="https://elearning.fdsinstitut.com" target="_blank">Plateforme</a></li>
+        <li><a href="https://elearning.fdsinstitut.com" target="_blank" rel="noopener">Plateforme</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><button onclick="scrollToHero()">Cours d'essai</button></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contact</h4>
-      <a href="mailto:online@fdsinstitut.com" class="footer-contact-item">
+      <a href="mailto:online@fdsinstitut.com" target="_blank" rel="noopener" class="footer-contact-item">
         <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         online@fdsinstitut.com
       </a>
-      <a href="https://fdsinstitut.com" target="_blank" class="footer-contact-item">
+      <a href="https://fdsinstitut.com" target="_blank" rel="noopener" class="footer-contact-item">
         <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
         fdsinstitut.com
         <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -1150,6 +1204,24 @@ function toggleFaq(el) {
     });
   }, { threshold: 0.3 });
   statEls.forEach(function(el){ observer.observe(el); });
+})();
+
+// CURSOR GLOW
+const glow = document.createElement('div');
+glow.className = 'cursor-glow';
+document.body.appendChild(glow);
+document.addEventListener('mousemove', e => { glow.style.left = e.clientX+'px'; glow.style.top = e.clientY+'px'; });
+
+// BLOB PARALLAX
+const blobs = document.querySelectorAll('.blob');
+let tX=0,tY=0,cX=0,cY=0;
+function ptrUpdate(x,y){ tX=(x/window.innerWidth-.5)*2; tY=(y/window.innerHeight-.5)*2; }
+document.addEventListener('mousemove',e=>ptrUpdate(e.clientX,e.clientY));
+document.addEventListener('touchmove',e=>ptrUpdate(e.touches[0].clientX,e.touches[0].clientY),{passive:true});
+(function animBlobs(){
+  cX+=(tX-cX)*.04; cY+=(tY-cY)*.04;
+  blobs.forEach((b,i)=>{ const d=(i+1)*22,dir=i%2===0?1:-1; b.style.transform=`translate(${cX*d*dir}px,${cY*d*dir}px)`; });
+  requestAnimationFrame(animBlobs);
 })();
 </script>
 </body>
