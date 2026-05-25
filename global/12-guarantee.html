@@ -1,3 +1,9 @@
+<style>
+/* Hostinger isolation reset — scopes this embed to zero out inherited spacing */
+.fds-block{margin:0!important;padding:0!important;display:block;box-sizing:border-box}
+.fds-block *{box-sizing:border-box}
+</style>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
@@ -5,8 +11,8 @@
 <style>
 :root{--orange:#FF7900;--orange-2:#FF9100;--blue:#00304E;--black:#111;--gray-50:#F7F8FA;--gray-100:#F0F1F3;--gray-200:#E2E3E5;--gray-500:#6B7280;--moodle:#F27F22}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-body{background:#fff;color:var(--black);font-family:'Montserrat',sans-serif;overflow-x:hidden;line-height:1.6}
+.fds-block {scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+.fds-block {background:#fff;color:var(--black);font-family:'Montserrat',sans-serif;overflow-x:hidden;line-height:1.6}
 h1,h2,h3,h4{font-family:'Sora',sans-serif;letter-spacing:-.025em}
 a{color:inherit;text-decoration:none}
 button{cursor:pointer;font-family:inherit;border:none;background:none}
@@ -15,20 +21,14 @@ input,textarea,select{font-family:'Montserrat',sans-serif}
 
 /* ─── ANIMATIONS ─── */
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
-@keyframes float{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-14px) rotate(var(--r,0deg))}}
+50%{transform:translateY(-14px) rotate(var(--r,0deg))}}
 @keyframes marquee{to{transform:translateX(-50%)}}
 @keyframes pulseDot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.85)}}
 @keyframes popIn{0%{transform:scale(.86);opacity:0}100%{transform:scale(1);opacity:1}}
-@keyframes blobMorph{
-  0%,100%{border-radius:60% 40% 70% 30%/50% 60% 40% 70%;transform:translate(0,0) scale(1)}
-  25%{border-radius:40% 60% 30% 70%/60% 40% 70% 30%;transform:translate(38px,-48px) scale(1.07)}
-  50%{border-radius:70% 30% 50% 50%/40% 70% 60% 40%;transform:translate(-28px,28px) scale(.93)}
-  75%{border-radius:30% 70% 60% 40%/70% 30% 40% 60%;transform:translate(22px,14px) scale(1.04)}
-}
+
 @keyframes slideUp{from{transform:translateY(100%);opacity:0}to{transform:translateY(0);opacity:1}}
 
 /* cursor glow */
-.cursor-glow{position:fixed;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(255,121,0,.17) 0%,rgba(124,58,237,.05) 45%,transparent 70%);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .07s linear,top .07s linear}
 
 /* ─── REVEAL ─── */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
@@ -83,24 +83,13 @@ input,textarea,select{font-family:'Montserrat',sans-serif}
 /* ═══════════════════════════════════
    3. HERO
 ═══════════════════════════════════ */
-#hero{position:relative;background:var(--blue);min-height:100vh;display:flex;align-items:center;padding:5.5rem 1.5rem 7rem;overflow:hidden;scroll-margin-top:64px;text-align:center}
-#hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.055) 1.5px,transparent 1.5px);background-size:30px 30px;pointer-events:none;z-index:0}
+#hero{position:relative;background:var(--blue);min-height:min(100vh,900px);display:flex;align-items:center;padding:5.5rem 1.5rem 7rem;overflow:hidden;scroll-margin-top:64px;text-align:center}
 
 /* blobs */
-.blob{position:absolute;filter:blur(72px);pointer-events:none;will-change:transform;z-index:0;animation:blobMorph 10s ease-in-out infinite}
-.blob-1{width:680px;height:680px;background:rgba(255,121,0,.4);bottom:-210px;left:-180px;animation-duration:9s}
-.blob-2{width:540px;height:540px;background:rgba(124,58,237,.33);top:-140px;right:-130px;animation-duration:13s;animation-delay:-5s;animation-direction:reverse}
-.blob-3{width:440px;height:440px;background:rgba(6,182,212,.28);top:28%;left:38%;animation-duration:8s;animation-delay:-3s}
-.blob-4{width:300px;height:300px;background:rgba(16,185,129,.22);bottom:4%;right:10%;animation-duration:15s;animation-delay:-8s;animation-direction:reverse}
 
 /* floating photos */
-.fp{position:absolute;border-radius:18px;overflow:hidden;z-index:3;pointer-events:none;box-shadow:0 24px 60px -8px rgba(0,0,0,.6),0 0 0 3px rgba(255,255,255,.2)}
+
 .fp img{width:100%;height:100%;object-fit:cover;display:block}
-.fp1{width:154px;height:154px;top:7%;left:2.5%;animation:float 6.2s ease-in-out infinite;--r:-6deg;transform:rotate(-6deg)}
-.fp2{width:122px;height:142px;bottom:15%;left:4%;animation:float 7.8s ease-in-out infinite 1.7s;--r:5deg;transform:rotate(5deg)}
-.fp3{width:142px;height:132px;top:5%;right:2.5%;animation:float 8.4s ease-in-out infinite .6s;--r:4deg;transform:rotate(4deg)}
-.fp4{width:112px;height:122px;bottom:17%;right:3%;animation:float 5.6s ease-in-out infinite 2.2s;--r:-5deg;transform:rotate(-5deg)}
-.fp5{width:100px;height:100px;top:43%;left:1.2%;animation:float 9.1s ease-in-out infinite .3s;--r:7deg;transform:rotate(7deg)}
 
 /* hero center */
 .hero-center{max-width:44rem;margin:0 auto;position:relative;z-index:4;width:100%}
@@ -171,7 +160,7 @@ input,textarea,select{font-family:'Montserrat',sans-serif}
 ═══════════════════════════════════ */
 .image-section{position:relative;min-height:480px;display:flex;align-items:center;overflow:hidden}
 .image-bg{position:absolute;inset:0;background-image:url('https://images.pexels.com/photos/4144923/pexels-photo-4144923.jpeg?auto=compress&cs=tinysrgb&w=1400');background-size:cover;background-position:center;z-index:0}
-.image-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,48,78,.92) 0%,rgba(0,48,78,.5) 60%,rgba(0,48,78,.05) 100%);z-index:1}
+.image-overlay{position:absolute;inset:0;background:rgba(0,48,78,.8);z-index:1}
 .image-content{position:relative;z-index:2;max-width:80rem;margin:0 auto;padding:5rem 1.5rem;width:100%}
 .image-content-inner{max-width:540px}
 .image-eyebrow-line{width:32px;height:3px;background:var(--orange);border-radius:2px;margin-bottom:.75rem}
@@ -190,7 +179,7 @@ input,textarea,select{font-family:'Montserrat',sans-serif}
 .video-thumb{position:relative;cursor:pointer;aspect-ratio:16/9;overflow:hidden}
 .video-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
 .video-thumb:hover img{transform:scale(1.03)}
-.video-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.1) 0%,rgba(0,0,0,.5) 100%)}
+.video-overlay{position:absolute;inset:0;background:rgba(0,0,0,.45)}
 .play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:80px;height:80px;border-radius:50%;background:var(--orange);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(255,121,0,.5);transition:transform .25s,box-shadow .25s;padding-left:4px}
 .video-thumb:hover .play-btn{transform:translate(-50%,-50%) scale(1.1);box-shadow:0 12px 40px rgba(255,121,0,.6)}
 .video-caption{position:absolute;bottom:1.25rem;left:1.25rem;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);color:#fff;border-radius:999px;padding:.4rem 1rem;font-family:'Nunito',sans-serif;font-weight:700;font-size:.75rem;display:flex;align-items:center;gap:.5rem}
@@ -214,12 +203,12 @@ input,textarea,select{font-family:'Montserrat',sans-serif}
 .feat-photo{border-radius:16px;overflow:hidden;position:relative;aspect-ratio:4/3;box-shadow:0 8px 24px rgba(0,0,0,.1)}
 .feat-photo img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
 .feat-photo:hover img{transform:scale(1.04)}
-.feat-photo-caption{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(0deg,rgba(0,0,0,.7) 0%,transparent 100%);color:#fff;padding:1.5rem .875rem .875rem;font-family:'Nunito',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase}
+.feat-photo-caption{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.65);color:#fff;padding:1.5rem .875rem .875rem;font-family:'Nunito',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase}
 
 /* ═══════════════════════════════════
    8. MOODLE PREVIEW
 ═══════════════════════════════════ */
-.moodle-section{background:linear-gradient(135deg,#FFF8F4 0%,#FFF3E8 40%,#F7F8FA 100%);padding:6rem 1.5rem}
+.moodle-section{background:#FFF8F4;padding:6rem 1.5rem}
 .moodle-inner{max-width:80rem;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
 .moodle-checks{display:flex;flex-direction:column;gap:.75rem;margin:1.5rem 0 2rem}
 .moodle-check{display:flex;align-items:center;gap:.6rem;font-family:'Montserrat',sans-serif;font-weight:600;font-size:.9rem;color:var(--black)}
@@ -277,7 +266,7 @@ input,textarea,select{font-family:'Montserrat',sans-serif}
 /* ═══════════════════════════════════
    11. GUARANTEE
 ═══════════════════════════════════ */
-.guarantee{background:linear-gradient(135deg,#FF7900 0%,#FF9100 100%);padding:4rem 1.5rem}
+.guarantee{background:#FF7900;padding:4rem 1.5rem}
 .guarantee-inner{max-width:80rem;margin:0 auto;display:flex;align-items:center;gap:2.5rem}
 .guarantee-icon{flex-shrink:0}
 .guarantee-text{flex:1}
@@ -295,8 +284,8 @@ input,textarea,select{font-family:'Montserrat',sans-serif}
 .faq-q{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.25rem 0;cursor:pointer;font-family:'Sora',sans-serif;font-weight:700;font-size:.95rem;color:var(--black);user-select:none}
 .faq-icon{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--gray-200);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem;font-weight:400;color:var(--gray-500);transition:all .25s;line-height:1}
 .faq-item.open .faq-icon{transform:rotate(45deg);border-color:var(--orange);color:var(--orange)}
-.faq-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease}
-.faq-item.open .faq-body{grid-template-rows:1fr}
+.faq-.fds-block {display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease}
+.faq-item.open .faq-.fds-block {grid-template-rows:1fr}
 .faq-body-inner{overflow:hidden}
 .faq-a{font-size:.9rem;color:var(--gray-500);line-height:1.7;padding-bottom:1.25rem}
 
@@ -345,7 +334,7 @@ input,textarea,select{font-family:'Montserrat',sans-serif}
 /* ═══════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════ */
-@media(max-width:1200px){.fp1,.fp2,.fp3,.fp4,.fp5{display:none}}
+
 @media(max-width:1023px){
   .features-grid{grid-template-columns:repeat(2,1fr)}
   .pricing-grid{grid-template-columns:1fr;max-width:420px;margin-left:auto;margin-right:auto}
@@ -354,7 +343,7 @@ input,textarea,select{font-family:'Montserrat',sans-serif}
   .guarantee-inner{flex-direction:column;text-align:center}
   .footer-inner{grid-template-columns:1fr;gap:2rem}
   .mobile-cta{display:flex}
-  body{padding-bottom:72px}
+  
   .stats-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:640px){.features-photo-row{grid-template-columns:1fr}}
@@ -380,8 +369,34 @@ input,textarea,select{font-family:'Montserrat',sans-serif}
 .med-promo-btn{display:inline-flex;align-items:center;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.88rem;background:var(--orange);color:#fff;border-radius:10px;padding:.75rem 1.5rem;white-space:nowrap;transition:all .2s;text-decoration:none;flex-shrink:0}
 .med-promo-btn:hover{background:var(--orange-2);transform:translateY(-1px)}
 @media(max-width:600px){.med-promo-inner{flex-direction:column;text-align:center}.med-promo-photos{justify-content:center}.med-promo-btn{width:100%;justify-content:center}}
+@media(max-width:480px){
+  #hero{padding:3.5rem 1rem 4.5rem;min-height:auto}
+  .hero-h1{font-size:clamp(2rem,9vw,3rem)!important}
+  .section-h2{font-size:clamp(1.35rem,6vw,1.75rem)!important}
+  .container{padding-left:1rem;padding-right:1rem}
+  .form-card{padding:1.5rem 1.25rem;border-radius:16px}
+  .option-cards,.loc-options,.mini-features,.features-grid,.portals-grid{grid-template-columns:1fr!important}
+  .level-grid{grid-template-columns:repeat(2,1fr)!important}
+  .stats-grid{grid-template-columns:repeat(2,1fr)!important}
+  .pricing-grid,.testimonials-grid,.guarantee-inner,.footer-inner,.moodle-inner,.roadmap-phases,.why-grid,.trust-grid,.curriculum-grid{grid-template-columns:1fr!important}
+  .features-photo-row{grid-template-columns:1fr!important}
+  .med-promo-inner{flex-direction:column;text-align:center;gap:1rem}
+  .med-promo-btn{width:100%;justify-content:center}
+  .final-cta-btns{flex-direction:column;align-items:stretch}
+  .btn{width:100%;justify-content:center;text-align:center}
+  .nav-link{display:none}
+  .nav-badge{display:none}
+  section,#hero,.urgency-bar,.stats-bar,#moodle,.moodle-section,.guarantee,#guarantee,.final-cta,#footer,.footer{padding-left:1rem;padding-right:1rem}
+  .hero-social-proof{flex-wrap:wrap;gap:.5rem}
+  .trust-cards{grid-template-columns:1fr!important}
+  .road-phases{grid-template-columns:1fr!important}
+  .faq-list .faq-item{padding:.875rem 1rem}
+  table{font-size:.75rem}
+  table td,table th{padding:.5rem .4rem}
+}
 </style>
 
+<div class="fds-block">
 <!-- ═══ 10. GUARANTEE ═══ -->
 <section class="guarantee" aria-labelledby="guarantee-heading">
   <div class="guarantee-inner">
@@ -397,3 +412,4 @@ input,textarea,select{font-family:'Montserrat',sans-serif}
     </div>
   </div>
 </section>
+</div>

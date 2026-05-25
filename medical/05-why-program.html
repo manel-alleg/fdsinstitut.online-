@@ -1,3 +1,9 @@
+<style>
+/* Hostinger isolation reset — scopes this embed to zero out inherited spacing */
+.fds-block{margin:0!important;padding:0!important;display:block;box-sizing:border-box}
+.fds-block *{box-sizing:border-box}
+</style>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
@@ -5,8 +11,8 @@
 <style>
 :root{--blue:#00304E;--blue-2:#004470;--blue-light:#E8F4FD;--orange:#FF7900;--orange-2:#FF9100;--teal:#0891B2;--teal-light:#E0F7FA;--green:#059669;--black:#111;--gray-50:#F7F8FA;--gray-100:#F0F1F3;--gray-200:#E2E3E5;--gray-500:#6B7280;--moodle:#F27F22}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-body{background:#fff;color:var(--black);font-family:'Montserrat',sans-serif;overflow-x:hidden;line-height:1.6}
+.fds-block {scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+.fds-block {background:#fff;color:var(--black);font-family:'Montserrat',sans-serif;overflow-x:hidden;line-height:1.6}
 h1,h2,h3,h4{font-family:'Sora',sans-serif;letter-spacing:-.025em}
 a{color:inherit;text-decoration:none}
 button{cursor:pointer;font-family:inherit;border:none;background:none}
@@ -14,18 +20,11 @@ img{max-width:100%;display:block}
 input,textarea,select{font-family:'Montserrat',sans-serif}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
-@keyframes float{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-14px) rotate(var(--r,0deg))}}
+50%{transform:translateY(-14px) rotate(var(--r,0deg))}}
 @keyframes pulseDot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.85)}}
 @keyframes popIn{0%{transform:scale(.86);opacity:0}100%{transform:scale(1);opacity:1}}
-@keyframes blobMorph{
-  0%,100%{border-radius:60% 40% 70% 30%/50% 60% 40% 70%;transform:translate(0,0) scale(1)}
-  25%{border-radius:40% 60% 30% 70%/60% 40% 70% 30%;transform:translate(38px,-48px) scale(1.07)}
-  50%{border-radius:70% 30% 50% 50%/40% 70% 60% 40%;transform:translate(-28px,28px) scale(.93)}
-  75%{border-radius:30% 70% 60% 40%/70% 30% 40% 60%;transform:translate(22px,14px) scale(1.04)}
-}
-@keyframes stepPulse{0%,100%{box-shadow:0 0 0 0 rgba(0,68,112,.35)}50%{box-shadow:0 0 0 10px rgba(0,68,112,0)}}
 
-.cursor-glow{position:fixed;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(0,68,112,.2) 0%,rgba(8,145,178,.07) 45%,transparent 70%);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .07s linear,top .07s linear}
+@keyframes stepPulse{0%,100%{box-shadow:0 0 0 0 rgba(0,68,112,.35)}50%{box-shadow:0 0 0 10px rgba(0,68,112,0)}}
 
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
 .reveal.in{opacity:1;transform:none}
@@ -69,25 +68,15 @@ input,textarea,select{font-family:'Montserrat',sans-serif}
 .nav-link:hover{border-color:var(--teal);color:var(--teal)}
 
 /* HERO */
-#hero{position:relative;background:var(--blue);min-height:100vh;display:flex;align-items:center;padding:5.5rem 1.5rem 7rem;overflow:hidden;scroll-margin-top:64px;text-align:center}
-#hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.05) 1.5px,transparent 1.5px);background-size:30px 30px;pointer-events:none;z-index:0}
+#hero{position:relative;background:var(--blue);min-height:min(100vh,900px);display:flex;align-items:center;padding:5.5rem 1.5rem 7rem;overflow:hidden;scroll-margin-top:64px;text-align:center}
 
 /* blobs — blue/teal dominant */
-.blob{position:absolute;filter:blur(72px);pointer-events:none;will-change:transform;z-index:0;animation:blobMorph 10s ease-in-out infinite}
-.blob-1{width:700px;height:700px;background:rgba(0,100,160,.5);bottom:-220px;left:-190px;animation-duration:9s}
-.blob-2{width:560px;height:560px;background:rgba(8,145,178,.35);top:-150px;right:-140px;animation-duration:13s;animation-delay:-5s;animation-direction:reverse}
-.blob-3{width:420px;height:420px;background:rgba(124,58,237,.22);top:30%;left:40%;animation-duration:8s;animation-delay:-3s}
-.blob-4{width:280px;height:280px;background:rgba(255,121,0,.28);bottom:6%;right:12%;animation-duration:15s;animation-delay:-8s;animation-direction:reverse}
 
 /* floating photos */
-.fp{position:absolute;border-radius:18px;overflow:hidden;z-index:3;pointer-events:none;box-shadow:0 24px 60px -8px rgba(0,0,0,.6),0 0 0 3px rgba(255,255,255,.2)}
+
 .fp img{width:100%;height:100%;object-fit:cover;display:block}
-.fp1{width:150px;height:160px;top:7%;left:2%;animation:float 6.5s ease-in-out infinite;--r:-5deg;transform:rotate(-5deg)}
-.fp2{width:120px;height:140px;bottom:14%;left:3.5%;animation:float 8s ease-in-out infinite 1.5s;--r:4deg;transform:rotate(4deg)}
-.fp3{width:140px;height:130px;top:5%;right:2%;animation:float 7.5s ease-in-out infinite .8s;--r:3deg;transform:rotate(3deg)}
-.fp4{width:110px;height:120px;bottom:16%;right:2.5%;animation:float 5.8s ease-in-out infinite 2s;--r:-6deg;transform:rotate(-6deg)}
-.fp5{width:100px;height:105px;top:44%;left:1%;animation:float 9s ease-in-out infinite .4s;--r:7deg;transform:rotate(7deg)}
-@media(max-width:1200px){.fp1,.fp2,.fp3,.fp4,.fp5{display:none}}
+
+
 
 .hero-center{max-width:44rem;margin:0 auto;position:relative;z-index:4;width:100%}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:'Nunito',sans-serif;font-weight:800;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.25);border-radius:999px;padding:.4rem 1rem;margin-bottom:1.75rem}
@@ -180,7 +169,7 @@ input,textarea,select{font-family:'Montserrat',sans-serif}
 
 /* HUEBER BOOK */
 .hueber-section{background:var(--blue);padding:6rem 1.5rem;overflow:hidden;position:relative}
-.hueber-section::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.04) 1.5px,transparent 1.5px);background-size:28px 28px;pointer-events:none}
+
 .hueber-inner{max-width:80rem;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;position:relative;z-index:1}
 .hueber-publisher{display:inline-flex;align-items:center;gap:.5rem;font-family:'Nunito',sans-serif;font-weight:800;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:1.5rem}
 .hueber-h2{font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:800;color:#fff;line-height:1.1;margin-bottom:1rem}
@@ -195,7 +184,7 @@ input,textarea,select{font-family:'Montserrat',sans-serif}
 /* ROADMAP */
 .roadmap-section{padding:6rem 1.5rem;background:var(--gray-50)}
 .roadmap-track{max-width:72rem;margin:3.5rem auto 0;display:flex;align-items:flex-start;gap:0;position:relative}
-.roadmap-track::before{content:'';position:absolute;top:36px;left:calc(16.66% + 36px);right:calc(16.66% + 36px);height:3px;background:linear-gradient(90deg,var(--gray-200),var(--teal) 50%,var(--blue));border-radius:2px;z-index:0}
+.roadmap-track::before{content:'';position:absolute;top:36px;left:calc(16.66% + 36px);right:calc(16.66% + 36px);height:3px;background:var(--teal);border-radius:2px;z-index:0}
 .road-phase{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 .75rem;position:relative;z-index:1}
 .road-circle{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:800;font-size:.95rem;margin-bottom:1.25rem;flex-shrink:0;border:3px solid transparent}
 .road-circle.done{background:var(--green);color:#fff;border-color:var(--green)}
@@ -222,7 +211,7 @@ input,textarea,select{font-family:'Montserrat',sans-serif}
 .curriculum-text-desc{font-size:.83rem;color:var(--gray-500);line-height:1.5}
 .curriculum-image-wrap{position:relative;border-radius:24px;overflow:hidden;height:100%;min-height:460px}
 .curriculum-image-wrap img{width:100%;height:100%;object-fit:cover}
-.curriculum-image-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,48,78,.7) 0%,transparent 50%)}
+.curriculum-image-overlay{position:absolute;inset:0;background:rgba(0,48,78,.55)}
 .curriculum-image-badge{position:absolute;bottom:1.5rem;left:1.5rem;right:1.5rem;color:#fff}
 .curriculum-image-badge h4{font-family:'Sora',sans-serif;font-weight:800;font-size:1.1rem;margin-bottom:.3rem}
 .curriculum-image-badge p{font-size:.82rem;color:rgba(255,255,255,.8);line-height:1.5}
@@ -261,7 +250,7 @@ input,textarea,select{font-family:'Montserrat',sans-serif}
 .testi-card.dark .testi-meta{color:rgba(255,255,255,.5)}
 
 /* GENERAL BANNER (inside medical page → leads to homepage) */
-.general-banner{background:linear-gradient(135deg,var(--orange) 0%,#e85d00 100%);padding:4rem 1.5rem;position:relative;overflow:hidden}
+.general-banner{background:var(--orange);padding:4rem 1.5rem;position:relative;overflow:hidden}
 .general-banner::after{content:'';position:absolute;top:-80px;right:-80px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.08);pointer-events:none}
 .general-banner-inner{max-width:80rem;margin:0 auto;display:flex;align-items:center;gap:3rem}
 .general-banner-photos{display:flex;flex-shrink:0}
@@ -302,14 +291,14 @@ input,textarea,select{font-family:'Montserrat',sans-serif}
 .faq-q{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.25rem 0;cursor:pointer;font-family:'Sora',sans-serif;font-weight:700;font-size:.95rem;color:var(--black);user-select:none}
 .faq-icon{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--gray-200);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem;color:var(--gray-500);transition:all .25s;line-height:1}
 .faq-item.open .faq-icon{transform:rotate(45deg);border-color:var(--teal);color:var(--teal)}
-.faq-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease}
-.faq-item.open .faq-body{grid-template-rows:1fr}
+.faq-.fds-block {display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease}
+.faq-item.open .faq-.fds-block {grid-template-rows:1fr}
 .faq-body-inner{overflow:hidden}
 .faq-a{font-size:.9rem;color:var(--gray-500);line-height:1.7;padding-bottom:1.25rem}
 
 /* FINAL CTA */
 .final-cta{background:var(--blue);padding:7rem 1.5rem;text-align:center;position:relative;overflow:hidden}
-.final-cta::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.04) 1.5px,transparent 1.5px);background-size:28px 28px;pointer-events:none}
+
 .final-cta-inner{max-width:44rem;margin:0 auto;position:relative;z-index:1}
 .final-cta-h2{font-size:clamp(2rem,5vw,3rem);font-weight:800;color:#fff;line-height:1.1;margin-bottom:1rem}
 .final-cta-sub{font-size:1rem;color:rgba(255,255,255,.7);line-height:1.6;margin-bottom:2.5rem}
@@ -354,7 +343,7 @@ input,textarea,select{font-family:'Montserrat',sans-serif}
   .road-arrow{display:none}
   .footer-inner{grid-template-columns:1fr;gap:2rem}
   .mobile-cta{display:flex}
-  body{padding-bottom:72px}
+  
   .stats-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:700px){
@@ -367,8 +356,34 @@ input,textarea,select{font-family:'Montserrat',sans-serif}
   #success-banner{white-space:normal;border-radius:16px;left:1rem;right:1rem;transform:translateY(120%);width:auto}
   #success-banner.show{transform:translateY(0)}
 }
+@media(max-width:480px){
+  #hero{padding:3.5rem 1rem 4.5rem;min-height:auto}
+  .hero-h1{font-size:clamp(2rem,9vw,3rem)!important}
+  .section-h2{font-size:clamp(1.35rem,6vw,1.75rem)!important}
+  .container{padding-left:1rem;padding-right:1rem}
+  .form-card{padding:1.5rem 1.25rem;border-radius:16px}
+  .option-cards,.loc-options,.mini-features,.features-grid,.portals-grid{grid-template-columns:1fr!important}
+  .level-grid{grid-template-columns:repeat(2,1fr)!important}
+  .stats-grid{grid-template-columns:repeat(2,1fr)!important}
+  .pricing-grid,.testimonials-grid,.guarantee-inner,.footer-inner,.moodle-inner,.roadmap-phases,.why-grid,.trust-grid,.curriculum-grid{grid-template-columns:1fr!important}
+  .features-photo-row{grid-template-columns:1fr!important}
+  .med-promo-inner{flex-direction:column;text-align:center;gap:1rem}
+  .med-promo-btn{width:100%;justify-content:center}
+  .final-cta-btns{flex-direction:column;align-items:stretch}
+  .btn{width:100%;justify-content:center;text-align:center}
+  .nav-link{display:none}
+  .nav-badge{display:none}
+  section,#hero,.urgency-bar,.stats-bar,#moodle,.moodle-section,.guarantee,#guarantee,.final-cta,#footer,.footer{padding-left:1rem;padding-right:1rem}
+  .hero-social-proof{flex-wrap:wrap;gap:.5rem}
+  .trust-cards{grid-template-columns:1fr!important}
+  .road-phases{grid-template-columns:1fr!important}
+  .faq-list .faq-item{padding:.875rem 1rem}
+  table{font-size:.75rem}
+  table td,table th{padding:.5rem .4rem}
+}
 </style>
 
+<div class="fds-block">
 <!-- WHY THIS PROGRAM -->
 <section class="why-section">
   <div class="container">
@@ -396,3 +411,4 @@ input,textarea,select{font-family:'Montserrat',sans-serif}
     </div>
   </div>
 </section>
+</div>
