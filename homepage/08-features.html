@@ -339,25 +339,48 @@ input,textarea,select{font-family:'Montserrat',sans-serif}
 </style>
 </head>
 <body>
-<!-- 2. NAV -->
-<nav class="nav">
-  <div class="nav-inner">
-    <div class="nav-brand">
-      <div class="nav-logo">FDS<span>.</span></div>
-      <div class="nav-badge">GLOBAL &nbsp;·&nbsp; A1–C2</div>
+<!-- 7. FEATURES -->
+<section class="features-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow eyebrow-orange reveal">Why FDS</span>
+      <h2 class="section-h2 reveal reveal-d1">Same great school. Fairer pricing.</h2>
+      <p class="section-sub reveal reveal-d2">One curriculum, two payment structures — designed for where you actually live.</p>
     </div>
-    <div class="nav-actions">
-      <a href="../dz/index.html" target="_blank" rel="noopener" class="nav-link">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9"/></svg>
-        DZ Algeria
-      </a>
-      <a href="../global/index.html" target="_blank" rel="noopener" class="nav-link">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        International
-      </a>
-      <button class="btn btn-orange" onclick="scrollToHero()">Reserve</button>
+    <div class="portals-grid">
+      <div class="portal-card dz reveal">
+        <div class="portal-badge">DZ</div>
+        <h3>Je suis en Algérie</h3>
+        <div class="portal-price">Dès 7 500 DA / mois</div>
+        <ul class="portal-features">
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>CCP · Edahabia · BaridiMob</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Cours en direct en français</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Équipe locale &amp; support DZ</li>
+        </ul>
+        <button class="portal-cta-btn" onclick="startDZ()">Commencer en Algérie &nbsp;→</button>
+        <a href="../dz/index.html" target="_blank" rel="noopener" class="portal-link">or visit full DZ page →</a>
+        <div class="portal-deco"></div>
+      </div>
+      <div class="portal-card intl reveal reveal-d1">
+        <div class="portal-badge">INT</div>
+        <h3>I'm based abroad</h3>
+        <div class="portal-price">From €85 / month</div>
+        <ul class="portal-features">
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Card · PayPal · Transfer</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Live classes in German/English</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>CEFR-aligned curriculum</li>
+        </ul>
+        <button class="portal-cta-btn" onclick="startIntl()">Start internationally &nbsp;→</button>
+        <a href="../global/index.html" target="_blank" rel="noopener" class="portal-link">or visit full Global page →</a>
+      </div>
+    </div>
+    <div class="mini-features">
+      <div class="mini-feat reveal"><div class="mini-feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div><div class="mini-feat-title">Live with real teachers</div><p class="mini-feat-desc">Small groups, certified instructors. Personal feedback every session.</p></div>
+      <div class="mini-feat reveal reveal-d1"><div class="mini-feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></div><div class="mini-feat-title">Lifetime replays</div><p class="mini-feat-desc">Every session recorded, forever. Watch any time.</p></div>
+      <div class="mini-feat reveal reveal-d2"><div class="mini-feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div><div class="mini-feat-title">14-day money-back</div><p class="mini-feat-desc">Try risk-free. If you're not satisfied, full refund.</p></div>
+      <div class="mini-feat reveal reveal-d3"><div class="mini-feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div class="mini-feat-title">Worldwide access</div><p class="mini-feat-desc">From Algeria to Germany and beyond. Any device.</p></div>
     </div>
   </div>
-</nav>
+</section>
 </body>
 </html>

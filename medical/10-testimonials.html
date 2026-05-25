@@ -376,124 +376,28 @@ input,textarea,select{font-family:'Montserrat',sans-serif}
 </style>
 </head>
 <body>
-<!-- HERO -->
-<section id="hero">
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  <div class="blob blob-3"></div>
-  <div class="blob blob-4"></div>
-
-  <!-- Floating photos: doctors + Germany + medical -->
-  <div class="fp fp1"><img src="https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=300&h=320&fit=crop" alt="Doctor"></div>
-  <div class="fp fp2"><img src="https://images.pexels.com/photos/3845810/pexels-photo-3845810.jpeg?auto=compress&cs=tinysrgb&w=300&h=280&fit=crop" alt="Doctor"></div>
-  <div class="fp fp3"><img src="https://images.pexels.com/photos/5998474/pexels-photo-5998474.jpeg?auto=compress&cs=tinysrgb&w=300&h=260&fit=crop" alt="Medical study"></div>
-  <div class="fp fp4"><img src="https://images.pexels.com/photos/4167541/pexels-photo-4167541.jpeg?auto=compress&cs=tinysrgb&w=300&h=240&fit=crop" alt="Medical team"></div>
-  <div class="fp fp5"><img src="https://images.pexels.com/photos/6129255/pexels-photo-6129255.jpeg?auto=compress&cs=tinysrgb&w=250&h=250&fit=crop" alt="Doctor online"></div>
-
-  <div class="hero-center">
-    <div class="hero-eyebrow"><span class="green-dot"></span> New program &nbsp;·&nbsp; For medical professionals only</div>
-
-    <h1 class="hero-h1">Deutsch<br>für <span class="accent-teal">Ärzte</span><span class="accent">.</span></h1>
-    <p class="hero-sub">C1 Medical German based on the Hueber curriculum. Taught by a practising physician.<br>Pass your Fachsprachprüfung and practice in Germany.</p>
-
-    <div class="trust-pills">
-      <div class="trust-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Taught by an MD</div>
-      <div class="trust-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Hueber certified</div>
-      <div class="trust-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>3–6 months</div>
-      <div class="trust-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>4.9 rating</div>
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow reveal">Doctor stories</span>
+      <h2 class="section-h2 reveal reveal-d1">They passed. Now they practice.</h2>
     </div>
-
-    <!-- FORM CARD -->
-    <div class="form-wrap">
-      <div class="form-card">
-        <div class="form-header">
-          <span class="form-card-label">ENROLL — 2 MINUTES</span>
-          <span class="enroll-count"><span class="green-dot"></span>180+ doctors enrolled</span>
-        </div>
-        <div class="form-dots">
-          <div class="form-dot active"></div><div class="form-dot"></div><div class="form-dot"></div><div class="form-dot"></div>
-        </div>
-        <div class="form-steps-wrap">
-
-          <!-- Step 1: Current level -->
-          <div class="form-step active" data-step="1">
-            <div class="step-label">Step 1 of 4</div>
-            <div class="step-question">What is your current German level?</div>
-            <div class="level-grid">
-              <div class="level-card" onclick="selectLevel(this,'b1')" role="button" tabindex="0"><div class="level-code">B1</div><div class="level-name">Intermediate</div></div>
-              <div class="level-card" onclick="selectLevel(this,'b2')" role="button" tabindex="0"><div class="level-code">B2</div><div class="level-name">Upper-Inter.</div></div>
-              <div class="level-card" onclick="selectLevel(this,'c1')" role="button" tabindex="0"><div class="level-code">C1</div><div class="level-name">Advanced</div></div>
-              <div class="level-card" onclick="selectLevel(this,'a1a2')" role="button" tabindex="0"><div class="level-code" style="font-size:.85rem">A1-A2</div><div class="level-name">Beginner</div></div>
-              <div class="level-card" onclick="selectLevel(this,'unsure')" role="button" tabindex="0"><div class="level-code" style="font-size:.85rem">?</div><div class="level-name">Not sure</div></div>
-              <div class="level-card" onclick="selectLevel(this,'none')" role="button" tabindex="0"><div class="level-code" style="font-size:.85rem">0</div><div class="level-name">No German</div></div>
-            </div>
-          </div>
-
-          <!-- Step 2: Medical specialty -->
-          <div class="form-step" data-step="2">
-            <div class="step-label">Step 2 of 4</div>
-            <div class="step-question">What is your medical specialty?</div>
-            <div class="option-list">
-              <button class="opt-card" onclick="selectOpt(this,'specialty','gp')" type="button"><div class="opt-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><div class="opt-main"><span class="opt-title">General Practice / Internal Medicine</span><span class="opt-desc">Allgemeinmedizin · Innere Medizin</span></div></button>
-              <button class="opt-card" onclick="selectOpt(this,'specialty','surgery')" type="button"><div class="opt-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div><div class="opt-main"><span class="opt-title">Surgery</span><span class="opt-desc">Chirurgie · Orthopädie · Neurochirurgie</span></div></button>
-              <button class="opt-card" onclick="selectOpt(this,'specialty','pediatrics')" type="button"><div class="opt-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div><div class="opt-main"><span class="opt-title">Pediatrics / Obstetrics</span><span class="opt-desc">Pädiatrie · Gynäkologie · Geburtshilfe</span></div></button>
-              <button class="opt-card" onclick="selectOpt(this,'specialty','other')" type="button"><div class="opt-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div class="opt-main"><span class="opt-title">Other Specialty</span><span class="opt-desc">Psychiatrie · Radiologie · Anästhesie · Other</span></div></button>
-            </div>
-            <button class="form-back" onclick="goBack()" type="button"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>Back</button>
-          </div>
-
-          <!-- Step 3: Goal -->
-          <div class="form-step" data-step="3">
-            <div class="step-label">Step 3 of 4</div>
-            <div class="step-question">What is your primary goal?</div>
-            <div class="option-list">
-              <button class="opt-card" onclick="selectOpt(this,'goal','fsp')" type="button"><div class="opt-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="opt-main"><span class="opt-title">Fachsprachprüfung (FSP)</span><span class="opt-desc">Official medical language exam to practice in Germany / Austria</span></div></button>
-              <button class="opt-card" onclick="selectOpt(this,'goal','approbation')" type="button"><div class="opt-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="opt-main"><span class="opt-title">Approbation / Berufsanerkennung</span><span class="opt-desc">Medical licence recognition in German-speaking countries</span></div></button>
-              <button class="opt-card" onclick="selectOpt(this,'goal','practice')" type="button"><div class="opt-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div><div class="opt-main"><span class="opt-title">Daily clinical practice</span><span class="opt-desc">Doctor–patient communication, medical records, ward rounds</span></div></button>
-              <button class="opt-card" onclick="selectOpt(this,'goal','research')" type="button"><div class="opt-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><div class="opt-main"><span class="opt-title">Research &amp; Academic medicine</span><span class="opt-desc">Publications, presentations, academic vocabulary in German</span></div></button>
-            </div>
-            <button class="form-back" onclick="goBack()" type="button"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>Back</button>
-          </div>
-
-          <!-- Step 4: Contact -->
-          <div class="form-step" data-step="4">
-            <div class="step-label">Step 4 of 4</div>
-            <div class="step-question">Reserve your place</div>
-            <form onsubmit="submitForm(event)" novalidate>
-              <div class="form-field-group">
-                <input class="form-input" type="text" placeholder="Full name" required>
-                <input class="form-input" type="email" placeholder="Email address" required>
-                <input class="form-input" type="tel" placeholder="Phone / WhatsApp" required>
-                <input class="form-input" type="text" placeholder="Country of residence" required>
-              </div>
-              <button class="btn btn-blue btn-full btn-lg" type="submit">Get my personalised plan &nbsp;→</button>
-            </form>
-            <p class="form-note">Free consultation call included &nbsp;·&nbsp; No commitment &nbsp;·&nbsp; Secure</p>
-            <button class="form-back" onclick="goBack()" type="button"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>Back</button>
-          </div>
-
-        </div>
-        <div class="form-success">
-          <div class="success-circle"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div class="success-title">Received!</div>
-          <p class="success-sub">Your personalised learning plan will be sent within 24 hours. We'll also schedule a free consultation call.</p>
-          <p style="font-size:.8rem;color:var(--gray-500)">Questions? <a href="mailto:medical@fdsinstitut.com" style="color:var(--teal);font-weight:600">medical@fdsinstitut.com</a></p>
-        </div>
+    <div class="testimonials-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars"><svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <p class="testi-quote">"I passed my Fachsprachprüfung on the first attempt after only 4 months. The mock consultations were almost identical to the real exam. The instructor knows exactly what examiners want."</p>
+        <div class="testi-author"><div class="testi-avatar"><img src="https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Dr. Karima B."></div><div><div class="testi-name">Dr. Karima B.</div><div class="testi-meta">Internal Medicine &nbsp;·&nbsp; Now at Charité Berlin</div></div></div>
       </div>
-    </div>
-
-    <div class="hero-social">
-      <div class="hero-photos">
-        <div class="hero-photo-card"><img src="https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Dr."></div>
-        <div class="hero-photo-card"><img src="https://images.pexels.com/photos/3845810/pexels-photo-3845810.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Dr."></div>
-        <div class="hero-photo-card"><img src="https://images.pexels.com/photos/5998474/pexels-photo-5998474.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Dr."></div>
-        <div class="hero-photo-card"><img src="https://images.pexels.com/photos/4167541/pexels-photo-4167541.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Dr."></div>
-        <div class="hero-photo-card"><img src="https://images.pexels.com/photos/6129255/pexels-photo-6129255.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Dr."></div>
-        <div class="hero-photo-card"><img src="https://images.pexels.com/photos/4031818/pexels-photo-4031818.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Dr."></div>
+      <div class="testi-card dark reveal reveal-d1">
+        <div class="testi-stars"><svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <p class="testi-quote">"The Hueber book combined with live FSP simulations is the perfect formula. My instructor caught exactly the mistakes that would have failed me. I'm now working as a surgeon in Munich."</p>
+        <div class="testi-author"><div class="testi-avatar"><img src="https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Dr. Yassine M."></div><div><div class="testi-name">Dr. Yassine M.</div><div class="testi-meta">Surgery &nbsp;·&nbsp; Munich Klinikum</div></div></div>
       </div>
-      <div class="social-proof">
-        <div class="avatar-stack"><div class="avatar-item">MD</div><div class="avatar-item">DR</div><div class="avatar-item">SP</div></div>
-        <div class="social-text"><strong>180+ doctors</strong> enrolled &amp; practising in Germany</div>
+      <div class="testi-card reveal reveal-d2">
+        <div class="testi-stars"><svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <p class="testi-quote">"As a paediatrician starting from B2, I was worried the medical vocabulary would overwhelm me. The specialty modules made everything click. I got my Approbation in 5 months."</p>
+        <div class="testi-author"><div class="testi-avatar"><img src="https://images.pexels.com/photos/3845810/pexels-photo-3845810.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Dr. Amina R."></div><div><div class="testi-name">Dr. Amina R.</div><div class="testi-meta">Paediatrics &nbsp;·&nbsp; Hamburg</div></div></div>
       </div>
     </div>
   </div>

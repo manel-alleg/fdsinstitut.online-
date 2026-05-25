@@ -3,14 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FDS Institut — Homepage — Hero</title>
+<title>FDS Institut — Learn German Online | A1 to C2 | Algeria & International</title>
+<meta name="description" content="Online German classes. A1 to C2. Live sessions with certified teachers. Prices in DA for Algeria, EUR internationally. Enroll in 2 minutes.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-body{background:#ffffff;margin:0;padding:0;overflow-x:hidden}
 :root{--orange:#FF7900;--orange-2:#FF9100;--blue:#00304E;--black:#111;--gray-50:#F7F8FA;--gray-100:#F0F1F3;--gray-200:#E2E3E5;--gray-500:#6B7280;--moodle:#F27F22}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
@@ -362,5 +360,129 @@ input,textarea,select{font-family:'Montserrat',sans-serif}
       <div class="trust-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>14-day guarantee</div>
       <div class="trust-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Available worldwide</div>
     </div>
+    <!-- FORM CARD -->
+    <div class="form-wrap">
+      <div class="form-card">
+        <div class="form-header">
+          <span class="form-card-label">ENROLL NOW &nbsp;·&nbsp; 2 MINUTES</span>
+          <span class="enroll-count"><span class="green-dot"></span>400+ enrolled this month</span>
+        </div>
+        <div class="form-dots">
+          <div class="form-dot active"></div><div class="form-dot"></div><div class="form-dot"></div><div class="form-dot"></div><div class="form-dot"></div>
+        </div>
+        <div class="form-steps-wrap">
+          <!-- Step 1 -->
+          <div class="form-step active" data-step="1">
+            <div class="step-label">Step 1 of 5</div>
+            <div class="step-question">Where are you based?</div>
+            <div class="loc-options">
+              <div class="loc-card" onclick="selectLocation(this,'dz')" role="button" tabindex="0">
+                <div class="loc-icon"><div class="dz-badge-circle">DZ</div></div>
+                <div class="loc-title">Algeria</div>
+                <div class="loc-sub">CCP · Edahabia · BaridiMob</div>
+                <div class="loc-price">From 7 500 DA</div>
+              </div>
+              <div class="loc-card" onclick="selectLocation(this,'intl')" role="button" tabindex="0">
+                <div class="loc-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+                <div class="loc-title">International</div>
+                <div class="loc-sub">Card · PayPal · Transfer</div>
+                <div class="loc-price">From €85</div>
+              </div>
+            </div>
+          </div>
+          <!-- Step 2 -->
+          <div class="form-step" data-step="2">
+            <div class="step-label">Step 2 of 5</div>
+            <div class="step-question">What type of class fits you best?</div>
+            <div class="option-list">
+              <button class="opt-card" onclick="selectOpt(this,'type','group')" type="button">
+                <div class="opt-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+                <div class="opt-main"><span class="opt-title">Group Classes</span><span class="opt-desc">3 sessions/week · Max 8 students · Mon / Wed / Fri</span></div>
+                <span class="opt-badge price-badge">€125/mo</span>
+              </button>
+              <button class="opt-card" onclick="selectOpt(this,'type','self')" type="button">
+                <div class="opt-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/></svg></div>
+                <div class="opt-main"><span class="opt-title">Self-Paced</span><span class="opt-desc">Study on your schedule · Full Moodle access · Lifetime replays</span></div>
+                <span class="opt-badge price-badge">€85/mo</span>
+              </button>
+              <button class="opt-card" onclick="selectOpt(this,'type','intensive')" type="button">
+                <div class="opt-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+                <div class="opt-main"><span class="opt-title">Intensive</span><span class="opt-desc">Daily sessions · Fast-track A1 to B2 · Small group of 4</span></div>
+                <span class="opt-badge price-badge">€290/mo</span>
+              </button>
+            </div>
+            <button class="form-back" onclick="goBack()" type="button"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>Back</button>
+          </div>
+          <!-- Step 3 -->
+          <div class="form-step" data-step="3">
+            <div class="step-label">Step 3 of 5</div>
+            <div class="step-question">What's your current German level?</div>
+            <div class="level-grid">
+              <div class="level-card" onclick="selectLevel(this,'a1')" role="button" tabindex="0"><div class="level-code">A1</div><div class="level-name">Beginner</div></div>
+              <div class="level-card" onclick="selectLevel(this,'a2')" role="button" tabindex="0"><div class="level-code">A2</div><div class="level-name">Elementary</div></div>
+              <div class="level-card" onclick="selectLevel(this,'b1')" role="button" tabindex="0"><div class="level-code">B1</div><div class="level-name">Intermediate</div></div>
+              <div class="level-card" onclick="selectLevel(this,'b2')" role="button" tabindex="0"><div class="level-code">B2</div><div class="level-name">Upper-Inter.</div></div>
+              <div class="level-card" onclick="selectLevel(this,'c1c2')" role="button" tabindex="0"><div class="level-code">C1-C2</div><div class="level-name">Advanced</div></div>
+              <div class="level-card" onclick="selectLevel(this,'unsure')" role="button" tabindex="0"><div class="level-code" style="font-size:.95rem">?</div><div class="level-name">Not sure</div></div>
+            </div>
+            <button class="form-back" onclick="goBack()" type="button"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>Back</button>
+          </div>
+          <!-- Step 4 -->
+          <div class="form-step" data-step="4">
+            <div class="step-label">Step 4 of 5</div>
+            <div class="step-question">What's your main goal?</div>
+            <div class="option-list">
+              <button class="opt-card" onclick="selectOpt(this,'goal','study')" type="button"><div class="opt-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div><div class="opt-main"><span class="opt-title">Study in Germany / Austria</span><span class="opt-desc">University admission, DSH, TestDaF, Studienkolleg</span></div></button>
+              <button class="opt-card" onclick="selectOpt(this,'goal','work')" type="button"><div class="opt-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div><div class="opt-main"><span class="opt-title">Work &amp; Career</span><span class="opt-desc">Professional German, job applications, workplace communication</span></div></button>
+              <button class="opt-card" onclick="selectOpt(this,'goal','visa')" type="button"><div class="opt-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div><div class="opt-main"><span class="opt-title">Visa &amp; Immigration</span><span class="opt-desc">Integration course language, Einbürgerungstest preparation</span></div></button>
+              <button class="opt-card" onclick="selectOpt(this,'goal','exam')" type="button"><div class="opt-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div class="opt-main"><span class="opt-title">Exam Preparation</span><span class="opt-desc">Goethe-Zertifikat, telc, IELTS German, official certifications</span></div></button>
+              <button class="opt-card" onclick="selectOpt(this,'goal','travel')" type="button"><div class="opt-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div class="opt-main"><span class="opt-title">Travel &amp; Culture</span><span class="opt-desc">Conversational German, travel, connect with the culture</span></div></button>
+            </div>
+            <button class="form-back" onclick="goBack()" type="button"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>Back</button>
+          </div>
+          <!-- Step 5 -->
+          <div class="form-step" data-step="5">
+            <div class="step-label">Step 5 of 5</div>
+            <div class="step-question">Reserve your spot</div>
+            <form onsubmit="submitForm(event)" novalidate>
+              <div class="form-field-group">
+                <input class="form-input" type="text" placeholder="First name" required>
+                <input class="form-input" type="email" placeholder="Email address" required>
+                <input class="form-input" type="tel" placeholder="Phone number" required>
+                <input class="form-input loc-dz" placeholder="Your wilaya" style="display:none">
+                <input class="form-input loc-intl" placeholder="Your country" style="display:none">
+              </div>
+              <button class="btn btn-orange btn-full btn-lg" type="submit">Get my payment link &nbsp;→</button>
+            </form>
+            <p class="form-note">No commitment &nbsp;·&nbsp; Free cancellation &nbsp;·&nbsp; Secure</p>
+            <button class="form-back" onclick="goBack()" type="button"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>Back</button>
+          </div>
+        </div>
+        <div class="form-success">
+          <div class="success-circle"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="success-title">You're in!</div>
+          <p class="success-sub">Check your inbox — your personal payment link arrives within 24 hours.</p>
+          <p class="success-help">Questions? <a href="mailto:online@fdsinstitut.com">online@fdsinstitut.com</a></p>
+        </div>
+      </div>
+    </div>
+    <!-- Photo strip + social proof -->
+    <div class="hero-social">
+      <div class="hero-photos">
+        <div class="hero-photo-card"><img src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Student"></div>
+        <div class="hero-photo-card"><img src="https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Student"></div>
+        <div class="hero-photo-card"><img src="https://images.pexels.com/photos/1438072/pexels-photo-1438072.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Student"></div>
+        <div class="hero-photo-card"><img src="https://images.pexels.com/photos/4144101/pexels-photo-4144101.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Student"></div>
+        <div class="hero-photo-card"><img src="https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Student"></div>
+        <div class="hero-photo-card"><img src="https://images.pexels.com/photos/4050315/pexels-photo-4050315.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Student"></div>
+        <div class="hero-photo-card"><img src="https://images.pexels.com/photos/6238297/pexels-photo-6238297.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Student"></div>
+      </div>
+      <div class="social-proof">
+        <div class="avatar-stack"><div class="avatar-item">AL</div><div class="avatar-item">MR</div><div class="avatar-item">SK</div></div>
+        <div class="social-text"><strong>400+ new students</strong> joined this month</div>
+      </div>
+    </div>
+  </div>
+</section>
 </body>
 </html>
