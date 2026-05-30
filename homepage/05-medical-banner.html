@@ -368,4 +368,70 @@ input,textarea,select{font-family:'Montserrat',sans-serif}
     <a href="../medical/index.html" target="_blank" rel="noopener" class="med-promo-btn">Discover the program &nbsp;→</a>
   </div>
 </section>
+<script>
+/* FORM *//* FORM */
+let curStep=1; const ans={};
+function scrollToHero(){ document.getElementById('hero').scrollIntoView({behavior:'smooth'}); }
+function goStep(n){
+  document.querySelectorAll('.form-step').forEach(s=>s.classList.remove('active'));
+  const t=document.querySelector(`.form-step[data-step="${n}"]`);
+  if(t){ t.classList.add('active'); curStep=n; updateDots(n); }
+}
+function updateDots(n){
+  document.querySelectorAll('.form-dot').forEach((d,i)=>{ d.classList.remove('active','done'); if(i+1<n)d.classList.add('done'); else if(i+1===n)d.classList.add('active'); });
+}
+function goBack(){ if(curStep>1)goStep(curStep-1); }
+function selectLocation(el,val){
+  document.querySelectorAll('.loc-card').forEach(c=>c.classList.remove('selected')); el.classList.add('selected'); ans.location=val;
+  const p=val==='dz'?['7 500 DA/mo','4 900 DA/mo','12 000 DA/mo']:['€125/mo','€85/mo','€290/mo'];
+  document.querySelectorAll('.price-badge').forEach((b,i)=>{ if(p[i])b.textContent=p[i]; });
+  setTimeout(()=>goStep(2),320);
+}
+function selectOpt(el,key,val){
+  el.closest('.option-list').querySelectorAll('.opt-card').forEach(c=>c.classList.remove('selected')); el.classList.add('selected'); ans[key]=val;
+  setTimeout(()=>goStep(curStep+1),320);
+}
+function selectLevel(el,val){
+  document.querySelectorAll('.level-card').forEach(c=>c.classList.remove('selected')); el.classList.add('selected'); ans.level=val;
+  setTimeout(()=>{ goStep(4); syncFields(); },320);
+}
+function syncFields(){
+  document.querySelectorAll('.loc-dz').forEach(f=>f.style.display=ans.location==='dz'?'block':'none');
+  document.querySelectorAll('.loc-intl').forEach(f=>f.style.display=ans.location==='intl'?'block':'none');
+}
+const _gs=goStep; window.goStep=function(n){ _gs(n); if(n===5)syncFields(); };
+function startDZ(){ ans.location='dz'; scrollToHero(); setTimeout(()=>goStep(2),500); }
+function startIntl(){ ans.location='intl'; scrollToHero(); setTimeout(()=>goStep(2),500); }
+function submitForm(e){
+  e.preventDefault();
+  document.querySelector('.form-steps-wrap').style.display='none';
+  document.querySelector('.form-success').style.display='block';
+  const b=document.getElementById('success-banner'); b.classList.add('show'); setTimeout(()=>b.classList.remove('show'),6000);
+}
+
+/* VIDEO */
+function loadVideo(){ document.getElementById('video-thumb').style.display='none'; document.getElementById('video-frame').style.display='block'; document.getElementById('yt-frame').src='https://www.youtube.com/embed/?autoplay=1&rel=0'; }
+
+/* FAQ */
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>{ const item=q.closest('.faq-item'),isOpen=item.classList.contains('open'); document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open')); if(!isOpen)item.classList.add('open'); });
+  q.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); q.click(); } });
+});
+
+/* REVEAL */
+const obs=new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } }); },{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* COUNTERS */
+function animCounter(el){
+  if(el.dataset.static){ el.textContent=el.dataset.static; return; }
+  const target=parseInt(el.dataset.count)||0,suffix=el.dataset.suffix||'',dur=1800,t0=performance.now();
+  function step(now){ const p=Math.min((now-t0)/dur,1),e=1-Math.pow(1-p,3),v=Math.floor(e*target); el.textContent=v>=1000?Math.floor(v/1000)+' '+String(v%1000||'000').padStart(3,'0')+suffix:v+suffix; if(p<1)requestAnimationFrame(step); else el.textContent=target>=1000?Math.floor(target/1000)+' '+String(target%1000||'000').padStart(3,'0')+suffix:target+suffix; }
+  requestAnimationFrame(step);
+}
+const cObs=new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting){ animCounter(e.target); cObs.unobserve(e.target); } }); },{threshold:0.5});
+document.querySelectorAll('.stat-number').forEach(el=>cObs.observe(el));
+
+document.querySelectorAll('.loc-card,.level-card').forEach(c=>{ c.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); c.click(); } }); });
+</script>
 </div>

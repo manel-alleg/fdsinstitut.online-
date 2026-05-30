@@ -389,4 +389,60 @@ input,textarea,select{font-family:'Montserrat',sans-serif}
   <div class="mobile-cta-text"><span class="mobile-cta-price">From €195/mo · Hueber included</span><span class="mobile-cta-label">C1 Medical German</span></div>
   <button class="btn btn-blue" onclick="scrollToHero()">Enroll</button>
 </div>
+<script>
+/* FORM *//* FORM */
+let curStep=1; const ans={};
+function scrollToHero(){ document.getElementById('hero').scrollIntoView({behavior:'smooth'}); }
+function goStep(n){
+  document.querySelectorAll('.form-step').forEach(s=>s.classList.remove('active'));
+  const t=document.querySelector(`.form-step[data-step="${n}"]`);
+  if(t){ t.classList.add('active'); curStep=n; updateDots(n); }
+}
+function updateDots(n){
+  document.querySelectorAll('.form-dot').forEach((d,i)=>{ d.classList.remove('active','done'); if(i+1<n)d.classList.add('done'); else if(i+1===n)d.classList.add('active'); });
+}
+function goBack(){ if(curStep>1)goStep(curStep-1); }
+function selectLevel(el,val){
+  document.querySelectorAll('.level-card').forEach(c=>c.classList.remove('selected')); el.classList.add('selected'); ans.level=val;
+  if(val==='a1a2'||val==='none'){
+    /* redirect to general programme */
+    const w=document.querySelector('.form-steps-wrap');
+    w.innerHTML='<div style="text-align:center;padding:1.5rem 0"><div style="width:64px;height:64px;border-radius:50%;background:var(--blue-light);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><div style="font-family:Sora,sans-serif;font-weight:800;font-size:1.2rem;margin-bottom:.5rem">You need to reach B2 first!</div><p style="color:var(--gray-500);font-size:.9rem;line-height:1.6;margin-bottom:1.5rem">Our general German programme will take you from A1 to B2 in 12–18 months — then you step directly into C1 Medical.</p><a href="../homepage/index.html" target="_blank" rel="noopener" class="btn btn-orange btn-full btn-lg">Start general German (A1) →</a></div>';
+    return;
+  }
+  setTimeout(()=>goStep(2),320);
+}
+function selectOpt(el,key,val){
+  el.closest('.option-list').querySelectorAll('.opt-card').forEach(c=>c.classList.remove('selected')); el.classList.add('selected'); ans[key]=val;
+  setTimeout(()=>goStep(curStep+1),320);
+}
+function submitForm(e){
+  e.preventDefault();
+  document.querySelector('.form-steps-wrap').style.display='none';
+  document.querySelector('.form-success').style.display='block';
+  const b=document.getElementById('success-banner'); b.classList.add('show'); setTimeout(()=>b.classList.remove('show'),6000);
+}
+
+/* FAQ */
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>{ const item=q.closest('.faq-item'),isOpen=item.classList.contains('open'); document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open')); if(!isOpen)item.classList.add('open'); });
+  q.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); q.click(); } });
+});
+
+/* REVEAL */
+const obs=new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } }); },{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* COUNTERS */
+function animCounter(el){
+  if(el.dataset.static){ el.textContent=el.dataset.static; return; }
+  const target=parseInt(el.dataset.count)||0,suffix=el.dataset.suffix||'',dur=1800,t0=performance.now();
+  function step(now){ const p=Math.min((now-t0)/dur,1),ease=1-Math.pow(1-p,3),v=Math.floor(ease*target); el.textContent=v+suffix; if(p<1)requestAnimationFrame(step); else el.textContent=target+suffix; }
+  requestAnimationFrame(step);
+}
+const cObs=new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting){ animCounter(e.target); cObs.unobserve(e.target); } }); },{threshold:0.5});
+document.querySelectorAll('.stat-number').forEach(el=>cObs.observe(el));
+
+document.querySelectorAll('.level-card').forEach(c=>{ c.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); c.click(); } }); });
+</script>
 </div>
