@@ -26,9 +26,8 @@ input,textarea,select{font-family:'Montserrat',sans-serif}
 
 @keyframes stepPulse{0%,100%{box-shadow:0 0 0 0 rgba(0,68,112,.35)}50%{box-shadow:0 0 0 10px rgba(0,68,112,0)}}
 
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
-.reveal.in{opacity:1;transform:none}
-.reveal-d1.in{transition-delay:.1s}.reveal-d2.in{transition-delay:.2s}.reveal-d3.in{transition-delay:.3s}.reveal-d4.in{transition-delay:.4s}
+.reveal{animation:fadeInUp .55s ease both}
+.reveal-d1{animation-delay:.1s}.reveal-d2{animation-delay:.2s}.reveal-d3{animation-delay:.3s}.reveal-d4{animation-delay:.4s}
 
 .container{max-width:80rem;margin:0 auto;padding:0 1.5rem}
 .container-sm{max-width:48rem;margin:0 auto;padding:0 1.5rem}
@@ -426,7 +425,9 @@ function updateDots(n){
 }
 function goBack(){ if(curStep>1)goStep(curStep-1); }
 function selectLevel(el,val){
-  document.querySelectorAll('.level-card').forEach(c=>c.classList.remove('selected')); el.classList.add('selected'); ans.level=val;
+  document.addEventListener('DOMContentLoaded',()=>{ document.querySelectorAll('.stat-number').forEach(el=>animCounter(el)); });
+
+document.querySelectorAll('.level-card').forEach(c=>c.classList.remove('selected')); el.classList.add('selected'); ans.level=val;
   if(val==='a1a2'||val==='none'){
     /* redirect to general programme */
     const w=document.querySelector('.form-steps-wrap');
@@ -452,9 +453,7 @@ document.querySelectorAll('.faq-q').forEach(q=>{
   q.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); q.click(); } });
 });
 
-/* REVEAL */
-const obs=new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } }); },{threshold:0.1});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
 
 /* COUNTERS */
 function animCounter(el){
@@ -463,8 +462,9 @@ function animCounter(el){
   function step(now){ const p=Math.min((now-t0)/dur,1),ease=1-Math.pow(1-p,3),v=Math.floor(ease*target); el.textContent=v+suffix; if(p<1)requestAnimationFrame(step); else el.textContent=target+suffix; }
   requestAnimationFrame(step);
 }
-const cObs=new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting){ animCounter(e.target); cObs.unobserve(e.target); } }); },{threshold:0.5});
-document.querySelectorAll('.stat-number').forEach(el=>cObs.observe(el));
+
+
+ });
 
 document.querySelectorAll('.level-card').forEach(c=>{ c.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); c.click(); } }); });
 </script>
