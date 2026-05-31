@@ -2,6 +2,18 @@
 /* Hostinger isolation reset — scopes this embed to zero out inherited spacing */
 .fds-block{margin:0!important;padding:0!important;display:block;box-sizing:border-box}
 .fds-block *{box-sizing:border-box}
+
+/* Image section — contained card on white bg */
+.image-section-wrap{background:#fff;padding:3rem 1.5rem}
+.image-section-card{border-radius:24px;overflow:hidden;max-width:1100px;margin:0 auto;position:relative;min-height:420px;display:flex;align-items:center}
+@media(max-width:768px){
+  .image-section-wrap{padding:2rem 1rem}
+  .image-section-card{min-height:300px;border-radius:16px}
+}
+@media(max-width:480px){
+  .image-section-card{min-height:240px;border-radius:12px}
+  .image-content{padding:2rem 1.25rem}
+}
 </style>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -157,7 +169,8 @@ input,textarea,select{font-family:'Montserrat',sans-serif}
 /* ═══════════════════════════════════
    5. IMAGE SECTION
 ═══════════════════════════════════ */
-.image-section{position:relative;min-height:480px;display:flex;align-items:center;overflow:hidden}
+.image-section-outer{background:#fff;padding:3rem 1.5rem}
+.image-section{position:relative;min-height:420px;aspect-ratio:16/9;display:flex;align-items:center;overflow:hidden;border-radius:24px;max-width:1100px;margin:0 auto}
 .image-bg{position:absolute;inset:0;background-image:url('https://images.pexels.com/photos/4144923/pexels-photo-4144923.jpeg?auto=compress&cs=tinysrgb&w=1400');background-size:cover;background-position:center;z-index:0}
 .image-overlay{position:absolute;inset:0;background:rgba(0,48,78,.8);z-index:1}
 .image-content{position:relative;z-index:2;max-width:80rem;margin:0 auto;padding:5rem 1.5rem;width:100%}
@@ -397,6 +410,7 @@ input,textarea,select{font-family:'Montserrat',sans-serif}
 
 <div class="fds-block">
 <!-- ═══ 5. IMAGE SECTION ═══ -->
+<div class="image-section-outer">
 <section class="image-section" aria-label="About FDS Institut">
   <div class="image-bg" role="img" aria-label="Students learning German online in a live class"></div>
   <div class="image-overlay" aria-hidden="true"></div>
@@ -409,7 +423,8 @@ input,textarea,select{font-family:'Montserrat',sans-serif}
       <button class="btn btn-outline-white btn-lg reveal reveal-d4" onclick="scrollToHero()" aria-label="Reserve your free trial — scroll to enrollment form">Reserve your free trial</button>
     </div>
   </div>
-</section>
+</section></div></div>
+</div>
 <script>
 /* ─── Form state ─── */
 let curStep = 1;

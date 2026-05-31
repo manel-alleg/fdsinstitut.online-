@@ -1,0 +1,397 @@
+<style>
+/* Hostinger isolation reset */
+.fds-block{margin:0!important;padding:0!important;display:block;box-sizing:border-box}
+.fds-block *{box-sizing:border-box}
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"/>
+
+<style>
+:root{
+  --orange:#FF7900;
+  --orange-2:#FF9100;
+  --blue:#00304E;
+  --card-radius:18px;
+  --shadow-rest:0 4px 24px rgba(0,0,0,0.10);
+  --shadow-hover:0 16px 48px rgba(0,0,0,0.22);
+  --transition:0.28s cubic-bezier(0.4,0,0.2,1);
+}
+
+.fds-portal-wrap{
+  min-height:100vh;
+  width:100%;
+  background:linear-gradient(135deg,#FF7900 0%,#FF9100 60%,#FFB347 100%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:40px 20px 36px;
+  font-family:'Montserrat',sans-serif;
+}
+
+/* ── Logo ─────────────────────────────────────────────── */
+.fds-logo-wrap{
+  margin-bottom:28px;
+  text-align:center;
+}
+.fds-logo-wrap img{
+  width:auto;
+  height:72px;
+  max-width:260px;
+  object-fit:contain;
+  filter:drop-shadow(0 2px 12px rgba(0,0,0,0.18));
+}
+
+/* ── Headline block ───────────────────────────────────── */
+.fds-headline{
+  text-align:center;
+  margin-bottom:40px;
+}
+.fds-headline h1{
+  font-family:'Sora',sans-serif;
+  font-weight:800;
+  font-size:clamp(2rem,5vw,3rem);
+  color:#fff;
+  letter-spacing:-0.5px;
+  margin:0 0 10px;
+  text-shadow:0 2px 14px rgba(0,0,0,0.15);
+  line-height:1.15;
+}
+.fds-headline p{
+  font-family:'Nunito',sans-serif;
+  font-weight:600;
+  font-size:clamp(0.95rem,2.2vw,1.15rem);
+  color:rgba(255,255,255,0.88);
+  margin:0;
+  letter-spacing:0.2px;
+}
+
+/* ── Cards grid ───────────────────────────────────────── */
+.fds-cards{
+  display:flex;
+  flex-direction:row;
+  gap:24px;
+  width:100%;
+  max-width:1040px;
+  justify-content:center;
+  align-items:stretch;
+}
+
+/* ── Single card ──────────────────────────────────────── */
+.fds-card{
+  position:relative;
+  background:#fff;
+  border-radius:var(--card-radius);
+  box-shadow:var(--shadow-rest);
+  flex:1 1 280px;
+  max-width:320px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:0 0 28px;
+  overflow:hidden;
+  cursor:pointer;
+  text-decoration:none;
+  color:inherit;
+  transition:transform var(--transition), box-shadow var(--transition);
+  -webkit-tap-highlight-color:transparent;
+}
+.fds-card:hover{
+  transform:translateY(-8px) scale(1.012);
+  box-shadow:var(--shadow-hover);
+}
+.fds-card:hover .fds-card-enter{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* Colored top accent bar */
+.fds-card-bar{
+  width:100%;
+  height:6px;
+  border-radius:var(--card-radius) var(--card-radius) 0 0;
+  flex-shrink:0;
+}
+.fds-card--dz .fds-card-bar{ background:linear-gradient(90deg,#006233,#D21034,#006233); }
+.fds-card--global .fds-card-bar{ background:linear-gradient(90deg,#1565C0,#42A5F5,#1565C0); }
+.fds-card--medical .fds-card-bar{ background:linear-gradient(90deg,#00897B,#4DB6AC,#00897B); }
+
+/* Emoji illustration */
+.fds-card-icon{
+  font-size:3.4rem;
+  line-height:1;
+  margin:26px 0 16px;
+  display:block;
+  text-align:center;
+}
+
+/* Card text block */
+.fds-card-body{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  padding:0 22px;
+  gap:6px;
+}
+
+.fds-card-title{
+  font-family:'Sora',sans-serif;
+  font-weight:700;
+  font-size:1.05rem;
+  color:var(--blue);
+  line-height:1.25;
+  margin:0;
+}
+.fds-card-sub{
+  font-family:'Montserrat',sans-serif;
+  font-weight:600;
+  font-size:0.72rem;
+  color:#888;
+  letter-spacing:0.3px;
+  text-transform:uppercase;
+  margin:2px 0 8px;
+}
+.fds-card-desc{
+  font-family:'Montserrat',sans-serif;
+  font-weight:400;
+  font-size:0.85rem;
+  color:#555;
+  line-height:1.6;
+  margin:0;
+}
+
+/* Enter button (visible on hover) */
+.fds-card-enter{
+  display:inline-block;
+  margin-top:18px;
+  padding:10px 28px;
+  border-radius:50px;
+  font-family:'Nunito',sans-serif;
+  font-weight:800;
+  font-size:0.88rem;
+  letter-spacing:0.4px;
+  color:#fff;
+  background:linear-gradient(135deg,#FF7900,#FF9100);
+  box-shadow:0 4px 16px rgba(255,121,0,0.35);
+  opacity:0;
+  transform:translateY(6px);
+  transition:opacity var(--transition), transform var(--transition), box-shadow var(--transition);
+  text-decoration:none;
+  pointer-events:none;
+}
+.fds-card:hover .fds-card-enter{
+  pointer-events:auto;
+}
+.fds-card-enter:hover{
+  box-shadow:0 6px 22px rgba(255,121,0,0.5);
+}
+
+/* ── Fintiba badge ────────────────────────────────────── */
+.fds-partner{
+  margin-top:40px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+}
+.fds-partner-label{
+  font-family:'Montserrat',sans-serif;
+  font-weight:500;
+  font-size:0.72rem;
+  color:rgba(255,255,255,0.72);
+  letter-spacing:0.8px;
+  text-transform:uppercase;
+}
+.fds-partner-link{
+  display:flex;
+  align-items:center;
+  text-decoration:none;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(6px);
+  border-radius:40px;
+  padding:8px 20px;
+  border:1px solid rgba(255,255,255,0.3);
+  transition:background var(--transition), border-color var(--transition);
+}
+.fds-partner-link:hover{
+  background:rgba(255,255,255,0.25);
+  border-color:rgba(255,255,255,0.55);
+}
+.fds-partner-link img{
+  height:28px;
+  width:auto;
+  object-fit:contain;
+  filter:brightness(0) invert(1);
+  opacity:0.88;
+}
+
+/* ── Footer ───────────────────────────────────────────── */
+.fds-footer{
+  margin-top:28px;
+  text-align:center;
+  font-family:'Montserrat',sans-serif;
+  font-weight:400;
+  font-size:0.72rem;
+  color:rgba(255,255,255,0.6);
+  letter-spacing:0.2px;
+  line-height:1.8;
+}
+.fds-footer a{
+  color:rgba(255,255,255,0.75);
+  text-decoration:none;
+}
+.fds-footer a:hover{
+  color:#fff;
+  text-decoration:underline;
+}
+
+/* ── Mobile ───────────────────────────────────────────── */
+@media(max-width:768px){
+  .fds-portal-wrap{
+    padding:32px 16px 32px;
+    justify-content:flex-start;
+  }
+  .fds-cards{
+    flex-direction:column;
+    align-items:center;
+    gap:18px;
+  }
+  .fds-card{
+    max-width:100%;
+    width:100%;
+  }
+  /* Always show enter button on mobile (no hover) */
+  .fds-card-enter{
+    opacity:1;
+    transform:translateY(0);
+    pointer-events:auto;
+    width:calc(100% - 44px);
+    text-align:center;
+  }
+  .fds-headline h1{
+    font-size:1.75rem;
+  }
+  .fds-logo-wrap img{
+    height:58px;
+  }
+}
+
+@media(max-width:380px){
+  .fds-headline h1{
+    font-size:1.5rem;
+  }
+  .fds-card-icon{
+    font-size:2.8rem;
+  }
+}
+</style>
+
+<div class="fds-block">
+  <div class="fds-portal-wrap">
+
+    <!-- Logo -->
+    <div class="fds-logo-wrap">
+      <img
+        src="https://assets.zyrosite.com/V9huRYqxhZWbrM0f/fds-online-logo-28-ODynkWIP4gQDp52I.png"
+        alt="FDS Institut"
+        loading="eager"
+      />
+    </div>
+
+    <!-- Headline -->
+    <div class="fds-headline">
+      <h1>Learn German. Change Your Life.</h1>
+      <p>Choose your programme below</p>
+    </div>
+
+    <!-- Portal Cards -->
+    <div class="fds-cards">
+
+      <!-- Card 1: Algeria -->
+      <a
+        class="fds-card fds-card--dz"
+        href="https://fdsinstitut.online/dz"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Cours d'allemand Algérie"
+      >
+        <div class="fds-card-bar"></div>
+        <span class="fds-card-icon">🇩🇿</span>
+        <div class="fds-card-body">
+          <p class="fds-card-title">Cours d'allemand · Algérie</p>
+          <p class="fds-card-sub">A1 → C2 · Tarifs en DA · CCP / Edahabia</p>
+          <p class="fds-card-desc">Programme complet en ligne. Cours en groupe, autonome ou intensif. Paiement local.</p>
+          <span class="fds-card-enter">→ Enter</span>
+        </div>
+      </a>
+
+      <!-- Card 2: Global -->
+      <a
+        class="fds-card fds-card--global"
+        href="https://fdsinstitut.online/global"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="German Courses Worldwide"
+      >
+        <div class="fds-card-bar"></div>
+        <span class="fds-card-icon">🌍</span>
+        <div class="fds-card-body">
+          <p class="fds-card-title">German Courses · Worldwide</p>
+          <p class="fds-card-sub">A1 → C2 · EUR pricing · Card / PayPal</p>
+          <p class="fds-card-desc">Live online classes with certified teachers. Group, self-paced or intensive tracks.</p>
+          <span class="fds-card-enter">→ Enter</span>
+        </div>
+      </a>
+
+      <!-- Card 3: Medical -->
+      <a
+        class="fds-card fds-card--medical"
+        href="https://fdsinstitut.online/medical"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="C1 Medical German"
+      >
+        <div class="fds-card-bar"></div>
+        <span class="fds-card-icon">🩺</span>
+        <div class="fds-card-body">
+          <p class="fds-card-title">C1 Medical German · Doctors &amp; Nurses</p>
+          <p class="fds-card-sub">FSP prep · Taught by an MD · Hueber certified</p>
+          <p class="fds-card-desc">Specialized German for healthcare professionals. Fachsprachprüfung &amp; Approbation prep.</p>
+          <span class="fds-card-enter">→ Enter</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Fintiba Partner Badge -->
+    <div class="fds-partner">
+      <span class="fds-partner-label">Official Partner</span>
+      <a
+        class="fds-partner-link"
+        href="https://partner.fintiba.com/FDS"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Fintiba partner"
+      >
+        <img
+          src="https://assets.zyrosite.com/V9huRYqxhZWbrM0f/_fintiba-logo-colour-pfcy5JuSRtvMGJdi.png"
+          alt="Fintiba"
+          loading="lazy"
+        />
+      </a>
+    </div>
+
+    <!-- Footer -->
+    <div class="fds-footer">
+      &copy; 2025 FDS Institut &nbsp;&middot;&nbsp;
+      <a href="mailto:online@fdsinstitut.com">online@fdsinstitut.com</a>
+      &nbsp;&middot;&nbsp;
+      <a href="https://fdsinstitut.com" target="_blank" rel="noopener noreferrer">fdsinstitut.com</a>
+    </div>
+
+  </div>
+</div>

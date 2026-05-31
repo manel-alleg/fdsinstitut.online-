@@ -2,6 +2,18 @@
 /* Hostinger isolation reset — scopes this embed to zero out inherited spacing */
 .fds-block{margin:0!important;padding:0!important;display:block;box-sizing:border-box}
 .fds-block *{box-sizing:border-box}
+
+/* Image section — contained card on white bg */
+.image-section-wrap{background:#fff;padding:3rem 1.5rem}
+.image-section-card{border-radius:24px;overflow:hidden;max-width:1100px;margin:0 auto;position:relative;min-height:420px;display:flex;align-items:center}
+@media(max-width:768px){
+  .image-section-wrap{padding:2rem 1rem}
+  .image-section-card{min-height:300px;border-radius:16px}
+}
+@media(max-width:480px){
+  .image-section-card{min-height:240px;border-radius:12px}
+  .image-content{padding:2rem 1.25rem}
+}
 </style>
 
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -169,7 +181,8 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
 .stat-label{font-family:'Nunito',sans-serif;font-weight:600;font-size:.8rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.06em}
 
 /* ── IMAGE SECTION ── */
-#image-section{min-height:480px;position:relative;display:flex;align-items:center;background:url('https://images.pexels.com/photos/4144923/pexels-photo-4144923.jpeg?auto=compress&cs=tinysrgb&w=1400') center/cover no-repeat}
+#image-section-outer{background:#fff;padding:3rem 1.5rem}
+#image-section{min-height:420px;aspect-ratio:16/9;position:relative;display:flex;align-items:center;border-radius:24px;overflow:hidden;max-width:1100px;margin:0 auto;background:url('https://images.pexels.com/photos/4144923/pexels-photo-4144923.jpeg?auto=compress&cs=tinysrgb&w=1400') center/cover no-repeat}
 .image-overlay{position:absolute;inset:0;background:rgba(0,48,78,.8)}
 .image-content{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:4rem 1.5rem;max-width:600px}
 .image-eyebrow-line{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
@@ -405,7 +418,8 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
 
 <div class="fds-block">
 <!-- ── IMAGE SECTION ── -->
-<section id="image-section">
+<div id="image-section-outer">
+<div class="image-section-wrap"><div class="image-section-card"><section id="image-section">
   <div class="image-overlay"></div>
   <div class="image-content reveal">
     <div class="image-eyebrow-line">
@@ -416,7 +430,8 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
     <p>Aucun contenu préenregistré. Chaque cours est en direct, interactif, et enregistré pour une relecture à vie.</p>
     <button class="btn btn-white btn-lg" onclick="scrollToHero()">Réserver un cours d'essai</button>
   </div>
-</section>
+</section></div></div>
+</div>
 <script>
 /* ── VIDEO ── */
 function loadVideo() {

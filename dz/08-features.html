@@ -376,6 +376,11 @@ h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12}
   .final-btns{flex-direction:column}
   .final-btns .btn{width:100%;justify-content:center}
 }
+@media(max-width:768px){
+  table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;font-size:.78rem}
+  table td,table th{padding:.5rem .4rem;min-width:80px}
+  .compare-grid,.features-grid{grid-template-columns:1fr!important}
+}
 @media(max-width:480px){
   #hero{padding:3.5rem 1rem 4.5rem;min-height:auto}
   .hero-h1{font-size:clamp(2rem,9vw,3rem)!important}
