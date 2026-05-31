@@ -387,10 +387,10 @@ input,textarea,select{font-family:'Montserrat',sans-serif}
 <section id="hero">
   <!-- Floating photos: doctors + Germany + medical -->
   <div class="hero-center">
-    <div class="hero-eyebrow"><span class="green-dot"></span> New program &nbsp;·&nbsp; For medical professionals only</div>
+    <div class="hero-eyebrow"><span class="green-dot"></span> New program &nbsp;·&nbsp; Doctors &amp; Nurses &nbsp;·&nbsp; Healthcare German</div>
 
     <h1 class="hero-h1">Deutsch<br>für <span class="accent-teal">Ärzte</span><span class="accent">.</span></h1>
-    <p class="hero-sub">C1 Medical German based on the Hueber curriculum. Taught by a practising physician.<br>Pass your Fachsprachprüfung and practice in Germany.</p>
+    <p class="hero-sub">Specialized German for doctors &amp; nurses. Hueber curriculum, taught by a practising physician.<br>FSP prep for Ärzte · Pflege path for Pflegekräfte — practice or work in Germany.</p>
 
     <div class="trust-pills">
       <div class="trust-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Taught by an MD</div>
@@ -404,7 +404,7 @@ input,textarea,select{font-family:'Montserrat',sans-serif}
       <div class="form-card">
         <div class="form-header">
           <span class="form-card-label">ENROLL — 2 MINUTES</span>
-          <span class="enroll-count"><span class="green-dot"></span>180+ doctors enrolled</span>
+          <span class="enroll-count"><span class="green-dot"></span>180+ doctors &amp; nurses enrolled</span>
         </div>
         <div class="form-dots">
           <div class="form-dot active"></div><div class="form-dot"></div><div class="form-dot"></div><div class="form-dot"></div>
@@ -455,12 +455,14 @@ input,textarea,select{font-family:'Montserrat',sans-serif}
           <div class="form-step" data-step="4">
             <div class="step-label">Step 4 of 4</div>
             <div class="step-question">Reserve your place</div>
-            <form onsubmit="submitForm(event)" novalidate>
+            <form action="https://api.web3forms.com/submit" method="POST" onsubmit="submitForm(event)">
+              <input type="hidden" name="access_key" value="9cbe76af-67f2-4fef-842d-3c98d80a5130"/>
+              <input type="hidden" name="subject" value="New Medical German Enrollment"/>
               <div class="form-field-group">
-                <input class="form-input" type="text" placeholder="Full name" required>
-                <input class="form-input" type="email" placeholder="Email address" required>
-                <input class="form-input" type="tel" placeholder="Phone / WhatsApp" required>
-                <input class="form-input" type="text" placeholder="Country of residence" required>
+                <input class="form-input" type="text" name="name" placeholder="Full name" required>
+                <input class="form-input" type="email" name="email" placeholder="Email address" required>
+                <input class="form-input" type="tel" name="phone" placeholder="Phone / WhatsApp" required>
+                <input class="form-input" type="text" name="country" placeholder="Country of residence" required>
               </div>
               <button class="btn btn-blue btn-full btn-lg" type="submit">Get my personalised plan &nbsp;→</button>
             </form>
