@@ -8,21 +8,55 @@
 <style>
 :root{--orange:#FF7900;--blue:#00304E;--gray-50:#F7F8FA;--gray-200:#E2E3E5;--gray-500:#6B7280}
 .fds-block{font-family:'Montserrat',sans-serif;overflow-x:hidden}
-.hueber-partner{background:var(--gray-50);border-top:2px solid var(--gray-200);border-bottom:2px solid var(--gray-200);padding:2.5rem 1.5rem}
-.hueber-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:2.5rem;flex-wrap:wrap;justify-content:space-between}
-.hueber-left{display:flex;align-items:center;gap:1.5rem;flex:1;min-width:260px}
-.hueber-logo-wrap{background:#c8102e;border-radius:18px;padding:.6rem .9rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.hueber-logo{height:32px;width:auto;display:block;filter:brightness(0) invert(1)}
+
+.hueber-partner{background:var(--gray-50);border-top:2px solid var(--gray-200);border-bottom:2px solid var(--gray-200);padding:2rem 1.5rem}
+.hueber-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:2rem;flex-wrap:wrap;justify-content:space-between}
+
+/* Logo block */
+.hueber-left{display:flex;align-items:center;gap:1.25rem;flex:1}
+.hueber-logo-wrap{
+  background:#fff;
+  border:1.5px solid var(--gray-200);
+  border-radius:18px;
+  padding:.65rem 1.1rem;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  box-shadow:0 2px 8px rgba(0,0,0,.06);
+}
+.hueber-logo{height:34px;width:auto;display:block;object-fit:contain}
 .hueber-divider{width:1.5px;height:36px;background:var(--gray-200);flex-shrink:0}
-.hueber-eyebrow{font-family:'Nunito',sans-serif;font-weight:800;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:.2rem}
-.hueber-headline{font-family:'Sora',sans-serif;font-weight:700;font-size:1rem;color:var(--blue);line-height:1.25;margin-bottom:.2rem}
-.hueber-sub{font-size:.8rem;color:var(--gray-500);line-height:1.5}
-.hueber-badge{display:inline-flex;align-items:center;gap:.4rem;font-family:'Nunito',sans-serif;font-weight:800;font-size:.75rem;background:#fff;border:1.5px solid var(--gray-200);border-radius:999px;padding:.45rem 1rem;color:var(--blue);white-space:nowrap;flex-shrink:0}
-@media(max-width:600px){
-  .hueber-inner{flex-direction:column;align-items:flex-start;gap:1.25rem}
+.hueber-text{min-width:0}
+.hueber-eyebrow{font-family:'Nunito',sans-serif;font-weight:800;font-size:.67rem;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:.2rem}
+.hueber-headline{font-family:'Sora',sans-serif;font-weight:700;font-size:.97rem;color:var(--blue);line-height:1.25;margin-bottom:.2rem}
+.hueber-sub{font-size:.8rem;color:var(--gray-500);line-height:1.55}
+
+/* Badge */
+.hueber-badge{display:inline-flex;align-items:center;gap:.4rem;font-family:'Nunito',sans-serif;font-weight:800;font-size:.75rem;background:#fff;border:1.5px solid var(--gray-200);border-radius:999px;padding:.45rem 1rem;color:var(--blue);white-space:nowrap;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+
+/* Tablet */
+@media(max-width:700px){
+  .hueber-inner{gap:1.25rem}
+  .hueber-badge{flex-shrink:1}
+}
+
+/* Mobile */
+@media(max-width:540px){
+  .hueber-partner{padding:1.5rem 1rem}
+  .hueber-inner{flex-direction:column;align-items:stretch;gap:1rem}
+  .hueber-left{gap:1rem}
+  .hueber-divider{display:none}
+  .hueber-sub{display:none}
   .hueber-badge{width:100%;justify-content:center}
 }
+
+/* Extra small */
+@media(max-width:360px){
+  .hueber-logo-wrap{padding:.5rem .75rem}
+  .hueber-logo{height:28px}
+  .hueber-headline{font-size:.88rem}
+}
 </style>
+
 <div class="fds-block">
 <section class="hueber-partner">
   <div class="hueber-inner">
@@ -31,15 +65,15 @@
         <img src="https://assets.zyrosite.com/V9huRYqxhZWbrM0f/images-PWItKH9DVHHhbq3K.png" alt="Hueber Verlag" class="hueber-logo"/>
       </div>
       <div class="hueber-divider"></div>
-      <div>
-        <span class="hueber-eyebrow">Curriculum Partner</span>
-        <div class="hueber-headline">Hueber Verlag — Official Textbooks</div>
-        <div class="hueber-sub">All FDS Institut courses use Hueber's certified German learning materials — the standard trusted by language schools worldwide.</div>
+      <div class="hueber-text">
+        <span class="hueber-eyebrow">Partenaire Curriculum</span>
+        <div class="hueber-headline">Hueber Verlag — Manuels officiels</div>
+        <div class="hueber-sub">Tous nos cours utilisent les manuels certifiés Hueber — la référence mondiale des écoles de langues.</div>
       </div>
     </div>
     <div class="hueber-badge">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-      Official Curriculum Partner
+      Partenaire officiel
     </div>
   </div>
 </section>
