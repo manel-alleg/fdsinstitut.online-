@@ -1,5 +1,4 @@
 <style>
-/* Hostinger isolation reset */
 .fds-block{margin:0!important;padding:0!important;display:block;box-sizing:border-box}
 .fds-block *{box-sizing:border-box}
 </style>
@@ -11,353 +10,310 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
-/* ── Wrap: full-screen photo bg ─────────────────────── */
-.fds-portal-wrap{
+/* ── Page ─────────────────────────────────────────── */
+.portal-page{
   min-height:100vh;
   width:100%;
-  position:relative;
+  background:#FF7900;
   display:flex;
   flex-direction:column;
   align-items:center;
-  justify-content:center;
-  padding:56px 24px 40px;
+  padding:52px 24px 44px;
   font-family:'Montserrat',sans-serif;
-  overflow:hidden;
 }
 
-/* Background photo */
-.fds-portal-wrap::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:
-    url('https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1920')
-    center/cover no-repeat;
-  z-index:0;
-}
-
-/* Dark overlay so text pops */
-.fds-portal-wrap::after{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:rgba(0,20,40,0.72);
-  z-index:1;
-}
-
-/* Everything above the overlay */
-.fds-portal-wrap > *{position:relative;z-index:2}
-
-/* ── Logo ──────────────────────────────────────────── */
-.fds-logo-wrap{
-  text-align:center;
-  margin-bottom:36px;
-}
-.fds-logo-wrap img{
-  height:110px;
-  width:auto;
-  max-width:360px;
-  object-fit:contain;
+/* ── Logo ─────────────────────────────────────────── */
+.portal-logo{
   display:block;
-  margin:0 auto;
-  filter:drop-shadow(0 4px 24px rgba(0,0,0,0.35));
+  margin:0 auto 16px;
+  height:120px;
+  width:auto;
+  max-width:400px;
+  object-fit:contain;
 }
 
-/* ── Tagline ────────────────────────────────────────── */
-.fds-tagline{
+/* ── Tagline ──────────────────────────────────────── */
+.portal-tagline{
   text-align:center;
-  margin-bottom:48px;
+  margin-bottom:52px;
 }
-.fds-tagline h1{
+.portal-tagline h1{
   font-family:'Sora',sans-serif;
   font-weight:800;
-  font-size:clamp(1.6rem,4vw,2.5rem);
+  font-size:clamp(1.5rem,4vw,2.2rem);
   color:#fff;
-  letter-spacing:-0.4px;
+  letter-spacing:-0.3px;
   line-height:1.2;
-  margin-bottom:10px;
+  margin-bottom:8px;
 }
-.fds-tagline p{
+.portal-tagline p{
   font-family:'Nunito',sans-serif;
   font-weight:700;
-  font-size:clamp(0.85rem,2vw,1rem);
-  color:rgba(255,255,255,0.65);
-  letter-spacing:0.8px;
+  font-size:.85rem;
+  color:rgba(255,255,255,.65);
+  letter-spacing:.08em;
   text-transform:uppercase;
 }
 
-/* ── Cards row ──────────────────────────────────────── */
-.fds-cards{
+/* ── Cards ────────────────────────────────────────── */
+.portal-cards{
   display:flex;
-  gap:20px;
+  gap:18px;
   width:100%;
-  max-width:1020px;
+  max-width:980px;
   justify-content:center;
   align-items:stretch;
 }
 
-/* ── Glass card ─────────────────────────────────────── */
-.fds-card{
-  flex:1 1 280px;
-  max-width:320px;
+/* ── Card ─────────────────────────────────────────── */
+.pcard{
+  flex:1 1 260px;
+  max-width:308px;
+  background:#fff;
+  border-radius:28px;
+  padding:36px 28px 32px;
   display:flex;
   flex-direction:column;
   align-items:center;
-  padding:36px 28px 32px;
-  border-radius:28px;
-  background:rgba(255,255,255,0.10);
-  backdrop-filter:blur(22px);
-  -webkit-backdrop-filter:blur(22px);
-  border:1.5px solid rgba(255,255,255,0.18);
-  box-shadow:0 8px 40px rgba(0,0,0,0.25);
+  text-align:center;
   text-decoration:none;
-  color:#fff;
-  cursor:pointer;
-  transition:transform 0.26s ease, box-shadow 0.26s ease, background 0.26s ease, border-color 0.26s ease;
+  color:inherit;
+  box-shadow:0 8px 40px rgba(0,0,0,.14);
+  transition:transform .24s ease, box-shadow .24s ease;
   -webkit-tap-highlight-color:transparent;
 }
-.fds-card:hover{
+.pcard:hover{
   transform:translateY(-8px);
-  background:rgba(255,255,255,0.16);
-  border-color:rgba(255,121,0,0.55);
-  box-shadow:0 20px 60px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,121,0,0.2);
+  box-shadow:0 20px 60px rgba(0,0,0,.22);
 }
 
-/* Icon */
-.fds-card-icon{
-  font-size:3rem;
-  line-height:1;
-  margin-bottom:20px;
-  display:block;
+/* Icon circle */
+.pcard-icon{
+  width:76px;
+  height:76px;
+  border-radius:22px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:22px;
+  flex-shrink:0;
 }
+.pcard-icon svg{display:block}
 
-/* Title */
-.fds-card-title{
+/* Orange cards (DZ, Global) */
+.pcard--orange .pcard-icon{background:#FF7900}
+.pcard--orange .pcard-btn{background:#FF7900;color:#fff}
+.pcard--orange .pcard-btn:hover{background:#FF9100}
+.pcard--orange .pcard-sub{color:#FF7900}
+
+/* Blue card (Medical) */
+.pcard--blue .pcard-icon{background:#00304E}
+.pcard--blue .pcard-btn{background:#00304E;color:#fff}
+.pcard--blue .pcard-btn:hover{background:#004470}
+.pcard--blue .pcard-sub{color:#00304E}
+
+/* Card text */
+.pcard-title{
   font-family:'Sora',sans-serif;
   font-weight:800;
   font-size:1.05rem;
-  color:#fff;
-  text-align:center;
+  color:#111;
   line-height:1.3;
   margin-bottom:6px;
 }
-
-/* Sub label */
-.fds-card-sub{
+.pcard-sub{
   font-family:'Nunito',sans-serif;
-  font-weight:700;
-  font-size:0.68rem;
-  color:#FF7900;
-  letter-spacing:0.6px;
+  font-weight:800;
+  font-size:.68rem;
+  letter-spacing:.08em;
   text-transform:uppercase;
-  text-align:center;
   margin-bottom:14px;
 }
-
-/* Description */
-.fds-card-desc{
+.pcard-desc{
   font-family:'Montserrat',sans-serif;
   font-weight:400;
-  font-size:0.84rem;
-  color:rgba(255,255,255,0.72);
+  font-size:.83rem;
+  color:#6B7280;
   line-height:1.65;
-  text-align:center;
   flex:1;
   margin-bottom:24px;
 }
 
-/* Orange CTA button — always visible */
-.fds-card-btn{
+/* CTA button */
+.pcard-btn{
   display:inline-flex;
   align-items:center;
   justify-content:center;
   gap:6px;
   width:100%;
-  padding:12px 20px;
+  padding:13px 20px;
   border-radius:50px;
   font-family:'Nunito',sans-serif;
   font-weight:800;
-  font-size:0.88rem;
-  letter-spacing:0.3px;
-  color:#fff;
-  background:#FF7900;
+  font-size:.88rem;
   border:none;
-  box-shadow:0 4px 18px rgba(255,121,0,0.4);
-  transition:background 0.2s, box-shadow 0.2s, transform 0.2s;
+  cursor:pointer;
+  transition:background .2s, transform .2s;
   text-decoration:none;
 }
-.fds-card:hover .fds-card-btn{
-  background:#FF9100;
-  box-shadow:0 6px 24px rgba(255,121,0,0.55);
-  transform:scale(1.03);
-}
+.pcard:hover .pcard-btn{transform:scale(1.03)}
 
-/* ── Fintiba badge ───────────────────────────────────── */
-.fds-partner{
+/* ── Partner ──────────────────────────────────────── */
+.portal-partner{
   margin-top:44px;
   display:flex;
   flex-direction:column;
   align-items:center;
   gap:8px;
 }
-.fds-partner-label{
+.portal-partner-label{
   font-family:'Montserrat',sans-serif;
+  font-size:.68rem;
   font-weight:500;
-  font-size:0.68rem;
-  color:rgba(255,255,255,0.5);
-  letter-spacing:1px;
+  color:rgba(255,255,255,.5);
+  letter-spacing:.08em;
   text-transform:uppercase;
 }
-.fds-partner-link{
+.portal-partner-link{
   display:flex;
   align-items:center;
   text-decoration:none;
-  background:rgba(255,255,255,0.08);
-  backdrop-filter:blur(8px);
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.25);
   border-radius:50px;
   padding:8px 22px;
-  border:1px solid rgba(255,255,255,0.2);
-  transition:background 0.2s, border-color 0.2s;
+  transition:background .2s;
 }
-.fds-partner-link:hover{
-  background:rgba(255,255,255,0.15);
-  border-color:rgba(255,255,255,0.4);
-}
-.fds-partner-link img{
-  height:26px;
-  width:auto;
-  object-fit:contain;
+.portal-partner-link:hover{background:rgba(255,255,255,.2)}
+.portal-partner-link img{
+  height:26px;width:auto;
   filter:brightness(0) invert(1);
-  opacity:0.8;
+  opacity:.85;
 }
 
-/* ── Footer ─────────────────────────────────────────── */
-.fds-footer{
+/* ── Footer ───────────────────────────────────────── */
+.portal-footer{
   margin-top:28px;
   text-align:center;
+  font-size:.7rem;
+  color:rgba(255,255,255,.45);
   font-family:'Montserrat',sans-serif;
-  font-weight:400;
-  font-size:0.70rem;
-  color:rgba(255,255,255,0.45);
-  line-height:1.9;
+  line-height:2;
 }
-.fds-footer a{
-  color:rgba(255,255,255,0.6);
-  text-decoration:none;
-  transition:color 0.2s;
-}
-.fds-footer a:hover{color:#fff}
+.portal-footer a{color:rgba(255,255,255,.6);text-decoration:none}
+.portal-footer a:hover{color:#fff}
 
-/* ── Mobile ─────────────────────────────────────────── */
-@media(max-width:820px){
-  .fds-cards{
-    flex-direction:column;
-    align-items:center;
-    gap:16px;
-    max-width:480px;
-  }
-  .fds-card{
-    max-width:100%;
-    width:100%;
-    flex-direction:row;
-    align-items:flex-start;
-    text-align:left;
-    padding:24px 24px 24px;
-    gap:18px;
-  }
-  .fds-card-icon{
-    font-size:2.4rem;
-    margin-bottom:0;
-    flex-shrink:0;
-    margin-top:2px;
-  }
-  .fds-card-content{
-    flex:1;
-    display:flex;
-    flex-direction:column;
-  }
-  .fds-card-title,.fds-card-sub,.fds-card-desc{text-align:left}
-  .fds-card-btn{width:auto;align-self:flex-start}
-  .fds-logo-wrap img{height:88px}
-  .fds-tagline{margin-bottom:32px}
-  .fds-portal-wrap{padding:44px 20px 36px;justify-content:flex-start}
+/* ── Mobile ───────────────────────────────────────── */
+@media(max-width:860px){
+  .portal-cards{flex-direction:column;align-items:center;max-width:420px;gap:14px}
+  .pcard{max-width:100%;width:100%;flex-direction:row;text-align:left;padding:24px 24px;gap:20px;align-items:flex-start}
+  .pcard-icon{width:58px;height:58px;border-radius:16px;margin-bottom:0;flex-shrink:0;margin-top:2px}
+  .pcard-content{flex:1;display:flex;flex-direction:column}
+  .pcard-title,.pcard-sub,.pcard-desc{text-align:left}
+  .pcard-btn{width:auto;align-self:flex-start}
+  .portal-logo{height:96px}
+  .portal-tagline{margin-bottom:36px}
+  .portal-page{padding:40px 16px 36px}
 }
-
 @media(max-width:480px){
-  .fds-logo-wrap img{height:72px}
-  .fds-tagline h1{font-size:1.5rem}
-  .fds-card{flex-direction:column;align-items:center;text-align:center}
-  .fds-card-title,.fds-card-sub,.fds-card-desc{text-align:center}
-  .fds-card-btn{width:100%}
+  .portal-logo{height:80px}
+  .portal-tagline h1{font-size:1.4rem}
+  .pcard{flex-direction:column;align-items:center;text-align:center}
+  .pcard-title,.pcard-sub,.pcard-desc{text-align:center}
+  .pcard-btn{width:100%}
+  .pcard-desc{display:none}
 }
 </style>
 
 <div class="fds-block">
-<div class="fds-portal-wrap">
+<div class="portal-page">
 
-  <!-- Logo — big, centered -->
-  <div class="fds-logo-wrap">
-    <img
-      src="https://assets.zyrosite.com/V9huRYqxhZWbrM0f/fds-online-logo-28-ODynkWIP4gQDp52I.png"
-      alt="FDS Institut"
-      loading="eager"
-    />
-  </div>
+  <!-- Logo -->
+  <img
+    class="portal-logo"
+    src="https://assets.zyrosite.com/V9huRYqxhZWbrM0f/fds-online-logo-28-ODynkWIP4gQDp52I.png"
+    alt="FDS Institut"
+    loading="eager"
+  />
 
   <!-- Tagline -->
-  <div class="fds-tagline">
+  <div class="portal-tagline">
     <h1>Learn German. Change Your Life.</h1>
     <p>Choose your programme</p>
   </div>
 
-  <!-- Portal Cards -->
-  <div class="fds-cards">
+  <!-- Cards -->
+  <div class="portal-cards">
 
     <!-- Algeria -->
-    <a class="fds-card" href="https://fdsinstitut.online/dz" target="_blank" rel="noopener">
-      <span class="fds-card-icon">🇩🇿</span>
-      <div class="fds-card-content">
-        <p class="fds-card-title">Cours d'allemand · Algérie</p>
-        <p class="fds-card-sub">A1 → C2 · Tarifs DA · CCP / Edahabia</p>
-        <p class="fds-card-desc">Programme complet en ligne. Cours en groupe, autonome ou intensif.</p>
-        <span class="fds-card-btn">Commencer →</span>
+    <a class="pcard pcard--orange" href="https://fdsinstitut.online/dz" target="_blank" rel="noopener">
+      <div class="pcard-icon">
+        <!-- Algeria flag-inspired pin SVG -->
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="4" width="14" height="28" rx="2" fill="#006233"/>
+          <rect x="18" y="4" width="14" height="28" rx="2" fill="#fff"/>
+          <path d="M20 13a5 5 0 1 1-4 8 4 4 0 1 0 0-8z" fill="#D21034"/>
+          <polygon points="19,15 20,18 23,18 20.5,20 21.5,23 19,21 16.5,23 17.5,20 15,18 18,18" fill="#D21034" transform="scale(0.7) translate(8,7)"/>
+        </svg>
+      </div>
+      <div class="pcard-content">
+        <p class="pcard-title">Cours d'allemand · Algérie</p>
+        <p class="pcard-sub">A1 → C2 · Tarifs DA · CCP / Edahabia</p>
+        <p class="pcard-desc">Programme complet en ligne. Cours en groupe, autonome ou intensif avec paiement local.</p>
+        <span class="pcard-btn">Commencer →</span>
       </div>
     </a>
 
     <!-- Global -->
-    <a class="fds-card" href="https://fdsinstitut.online/global" target="_blank" rel="noopener">
-      <span class="fds-card-icon">🌍</span>
-      <div class="fds-card-content">
-        <p class="fds-card-title">German Courses · Worldwide</p>
-        <p class="fds-card-sub">A1 → C2 · EUR · Card / PayPal</p>
-        <p class="fds-card-desc">Live online classes with certified teachers. Group, self-paced or intensive.</p>
-        <span class="fds-card-btn">Get started →</span>
+    <a class="pcard pcard--orange" href="https://fdsinstitut.online/global" target="_blank" rel="noopener">
+      <div class="pcard-icon">
+        <!-- Globe SVG -->
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="18" cy="18" r="14" stroke="#fff" stroke-width="2.5" fill="none"/>
+          <ellipse cx="18" cy="18" rx="6" ry="14" stroke="#fff" stroke-width="2" fill="none"/>
+          <line x1="4" y1="18" x2="32" y2="18" stroke="#fff" stroke-width="2"/>
+          <path d="M6 11h24M6 25h24" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="pcard-content">
+        <p class="pcard-title">German Courses · Worldwide</p>
+        <p class="pcard-sub">A1 → C2 · EUR · Card / PayPal</p>
+        <p class="pcard-desc">Live online classes with certified teachers. Group, self-paced or intensive tracks.</p>
+        <span class="pcard-btn">Get started →</span>
       </div>
     </a>
 
     <!-- Medical -->
-    <a class="fds-card" href="https://fdsinstitut.online/medical" target="_blank" rel="noopener">
-      <span class="fds-card-icon">🩺</span>
-      <div class="fds-card-content">
-        <p class="fds-card-title">Medical German · Doctors &amp; Nurses</p>
-        <p class="fds-card-sub">FSP · Approbation · Pflege · Hueber</p>
-        <p class="fds-card-desc">Specialized German for healthcare professionals. B1 → C1 tracks.</p>
-        <span class="fds-card-btn">Learn more →</span>
+    <a class="pcard pcard--blue" href="https://fdsinstitut.online/medical" target="_blank" rel="noopener">
+      <div class="pcard-icon">
+        <!-- Medical cross SVG -->
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="14" y="4" width="8" height="28" rx="4" fill="#fff"/>
+          <rect x="4" y="14" width="28" height="8" rx="4" fill="#fff"/>
+          <circle cx="26" cy="26" r="6" fill="#0891B2"/>
+          <path d="M23 26h6M26 23v6" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="pcard-content">
+        <p class="pcard-title">Medical German · Doctors &amp; Nurses</p>
+        <p class="pcard-sub">FSP · Approbation · Pflege · Hueber</p>
+        <p class="pcard-desc">Specialized German for healthcare professionals. B1 → C1 tracks with certified Hueber curriculum.</p>
+        <span class="pcard-btn">Learn more →</span>
       </div>
     </a>
 
   </div>
 
   <!-- Fintiba Partner -->
-  <div class="fds-partner">
-    <span class="fds-partner-label">Official Partner</span>
-    <a class="fds-partner-link" href="https://partner.fintiba.com/FDS" target="_blank" rel="noopener">
-      <img src="https://assets.zyrosite.com/V9huRYqxhZWbrM0f/_fintiba-logo-colour-pfcy5JuSRtvMGJdi.png" alt="Fintiba" loading="lazy"/>
+  <div class="portal-partner">
+    <span class="portal-partner-label">Official Partner</span>
+    <a class="portal-partner-link" href="https://partner.fintiba.com/FDS" target="_blank" rel="noopener">
+      <img src="https://assets.zyrosite.com/V9huRYqxhZWbrM0f/_fintiba-logo-colour-pfcy5JuSRtvMGJdi.png" alt="Fintiba"/>
     </a>
   </div>
 
   <!-- Footer -->
-  <div class="fds-footer">
+  <div class="portal-footer">
     &copy; 2025 FDS Institut &nbsp;&middot;&nbsp;
     <a href="mailto:online@fdsinstitut.com">online@fdsinstitut.com</a>
     &nbsp;&middot;&nbsp;
