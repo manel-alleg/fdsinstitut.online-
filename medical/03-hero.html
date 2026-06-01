@@ -1,5 +1,4 @@
 <style>
-/* Hostinger isolation reset — scopes this embed to zero out inherited spacing */
 .fds-block{margin:0!important;padding:0!important;display:block;box-sizing:border-box}
 .fds-block *{box-sizing:border-box}
 </style>
@@ -9,548 +8,522 @@
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
 
 <style>
-:root{--blue:#00304E;--blue-2:#004470;--blue-light:#E8F4FD;--orange:#FF7900;--orange-2:#FF9100;--teal:#0891B2;--teal-light:#E0F7FA;--green:#059669;--black:#111;--gray-50:#F7F8FA;--gray-100:#F0F1F3;--gray-200:#E2E3E5;--gray-500:#6B7280;--moodle:#F27F22}
+:root{
+  --blue:#00304E;--blue-2:#004470;--blue-light:#E8F4FD;
+  --orange:#FF7900;--orange-2:#FF9100;
+  --teal:#0891B2;--teal-2:#0772A0;--teal-light:#E0F7FA;
+  --green:#059669;
+  --black:#111;--gray-50:#F7F8FA;--gray-100:#F0F1F3;
+  --gray-200:#E2E3E5;--gray-500:#6B7280;
+}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-.fds-block {scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-.fds-block {background:#fff;color:var(--black);font-family:'Montserrat',sans-serif;overflow-x:hidden;line-height:1.6}
+.fds-block{font-family:'Montserrat',sans-serif;color:var(--black);overflow-x:hidden;line-height:1.6;-webkit-font-smoothing:antialiased}
 h1,h2,h3,h4{font-family:'Sora',sans-serif;letter-spacing:-.025em}
-a{color:inherit;text-decoration:none}
-button{cursor:pointer;font-family:inherit;border:none;background:none}
 img{max-width:100%;display:block}
-input,textarea,select{font-family:'Montserrat',sans-serif}
+button{cursor:pointer;font-family:inherit;border:none;background:none}
+input,select{font-family:'Montserrat',sans-serif}
 
-@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
-50%{transform:translateY(-14px) rotate(var(--r,0deg))}}
-@keyframes pulseDot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.85)}}
-@keyframes popIn{0%{transform:scale(.86);opacity:0}100%{transform:scale(1);opacity:1}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes pulseDot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
+@keyframes popIn{0%{transform:scale(.88);opacity:0}100%{transform:scale(1);opacity:1}}
+@keyframes glowRing{0%,100%{box-shadow:0 0 0 0 rgba(8,145,178,.35)}60%{box-shadow:0 0 0 10px rgba(8,145,178,0)}}
 
-@keyframes stepPulse{0%,100%{box-shadow:0 0 0 0 rgba(0,68,112,.35)}50%{box-shadow:0 0 0 10px rgba(0,68,112,0)}}
+.reveal{animation:fadeUp .55s ease both}
+.reveal-d1{animation-delay:.1s}.reveal-d2{animation-delay:.2s}.reveal-d3{animation-delay:.3s}
 
-.reveal{animation:fadeInUp .55s ease both}
-.reveal-d1{animation-delay:.1s}.reveal-d2{animation-delay:.2s}.reveal-d3{animation-delay:.3s}.reveal-d4{animation-delay:.4s}
-
-.container{max-width:80rem;margin:0 auto;padding:0 1.5rem}
-.container-sm{max-width:48rem;margin:0 auto;padding:0 1.5rem}
-.accent{color:var(--orange)}
-.accent-teal{color:var(--teal)}
-
-.btn{display:inline-flex;align-items:center;gap:.5rem;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.9rem;border-radius:16px;padding:.75rem 1.5rem;transition:all .2s;cursor:pointer;border:2px solid transparent;white-space:nowrap;text-decoration:none}
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.9rem;border-radius:18px;padding:.8rem 1.5rem;transition:all .2s;cursor:pointer;border:2px solid transparent;white-space:nowrap;text-decoration:none}
 .btn-blue{background:var(--blue);color:#fff;border-color:var(--blue)}
-.btn-blue:hover{background:var(--blue-2);transform:translateY(-1px);box-shadow:0 8px 20px -4px rgba(0,48,78,.4)}
-.btn-orange{background:var(--orange);color:#fff;border-color:var(--orange)}
-.btn-orange:hover{background:var(--orange-2);transform:translateY(-1px);box-shadow:0 8px 20px -4px rgba(255,121,0,.4)}
+.btn-blue:hover{background:var(--blue-2);transform:translateY(-1px);box-shadow:0 8px 24px -4px rgba(0,48,78,.4)}
 .btn-teal{background:var(--teal);color:#fff;border-color:var(--teal)}
-.btn-teal:hover{background:#0772a0;transform:translateY(-1px)}
-.btn-outline-white{background:transparent;color:#fff;border-color:rgba(255,255,255,.6)}
-.btn-outline-white:hover{background:rgba(255,255,255,.12);border-color:#fff}
-.btn-white-solid{background:#fff;color:var(--blue);font-weight:700;border-color:#fff}
-.btn-white-solid:hover{background:var(--gray-50)}
-.btn-lg{padding:1rem 2rem;font-size:1rem;border-radius:18px}
+.btn-teal:hover{background:var(--teal-2);transform:translateY(-1px);box-shadow:0 8px 24px -4px rgba(8,145,178,.4)}
 .btn-full{width:100%;justify-content:center}
-.eyebrow{font-family:'Nunito',sans-serif;font-weight:800;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
-.eyebrow-teal{color:var(--teal)}
-.eyebrow-orange{color:var(--orange)}
+.btn-lg{padding:1rem 2rem;font-size:1rem;border-radius:20px}
 
-/* URGENCY BAR */
-.urgency-bar{background:var(--blue);color:#fff;text-align:center;padding:.6rem 1.5rem;font-family:'Nunito',sans-serif;font-weight:700;font-size:.82rem;letter-spacing:.03em;display:flex;align-items:center;justify-content:center;gap:.6rem}
-.pulse-dot{width:8px;height:8px;border-radius:50%;background:var(--orange);display:inline-block;flex-shrink:0;animation:pulseDot 1.4s ease infinite}
+/* ── HERO SECTION ── */
+#hero{
+  position:relative;
+  background:var(--blue);
+  min-height:min(100vh,920px);
+  display:flex;
+  align-items:center;
+  padding:5rem 1.5rem 4rem;
+  scroll-margin-top:64px;
+  overflow:hidden;
+}
 
-/* NAV */
-.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--gray-200);height:64px;display:flex;align-items:center}
-.nav-inner{width:100%;max-width:80rem;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.nav-brand{display:flex;align-items:center;gap:.75rem}
-.nav-logo{font-family:'Sora',sans-serif;font-weight:800;font-size:1.3rem;color:var(--blue);letter-spacing:-.04em;line-height:1}
-.nav-logo span{color:var(--orange)}
-.nav-tag{font-family:'Nunito',sans-serif;font-weight:800;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;background:var(--blue);color:#fff;padding:.25rem .65rem;border-radius:999px}
-.nav-actions{display:flex;align-items:center;gap:.75rem}
-.nav-link{font-family:'Montserrat',sans-serif;font-weight:600;font-size:.82rem;color:var(--blue);border:1.5px solid var(--gray-200);padding:.4rem .85rem;border-radius:12px;transition:all .2s;display:flex;align-items:center;gap:.35rem}
-.nav-link:hover{border-color:var(--teal);color:var(--teal)}
+/* Subtle teal glow top-right */
+#hero::before{
+  content:'';
+  position:absolute;
+  top:-120px;right:-120px;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(8,145,178,.18) 0%,transparent 65%);
+  pointer-events:none;z-index:0;
+}
+/* Subtle warm glow bottom-left */
+#hero::after{
+  content:'';
+  position:absolute;
+  bottom:-80px;left:-80px;
+  width:400px;height:400px;
+  background:radial-gradient(circle,rgba(255,121,0,.08) 0%,transparent 70%);
+  pointer-events:none;z-index:0;
+}
 
-/* HERO */
-#hero{position:relative;background:var(--blue);min-height:min(100vh,900px);display:flex;align-items:center;padding:5.5rem 1.5rem 7rem;overflow:hidden;scroll-margin-top:64px;text-align:center}
+.hero-inner{
+  max-width:1160px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr 460px;
+  gap:3.5rem;
+  align-items:center;
+  position:relative;z-index:2;
+  width:100%;
+}
 
-/* blobs — blue/teal dominant */
+/* ── LEFT: content ── */
+.hero-left{display:flex;flex-direction:column;gap:0}
 
-/* floating photos */
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:'Nunito',sans-serif;font-weight:800;font-size:.75rem;
+  letter-spacing:.1em;text-transform:uppercase;color:#fff;
+  background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);
+  border-radius:999px;padding:.4rem 1rem;margin-bottom:1.75rem;width:fit-content;
+}
+.live-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block;animation:pulseDot 1.4s ease infinite;flex-shrink:0}
 
-.fp img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-h1{
+  font-size:clamp(2.4rem,5.5vw,4rem);
+  font-weight:800;color:#fff;
+  line-height:1.08;letter-spacing:-.04em;
+  margin-bottom:1.25rem;
+}
+.hero-h1 .hl-teal{color:#38BDF8}
+.hero-h1 .hl-orange{color:var(--orange)}
 
+.hero-sub{
+  font-size:1rem;font-weight:500;
+  color:rgba(255,255,255,.72);
+  line-height:1.7;margin-bottom:1.75rem;
+  max-width:44ch;
+}
 
-
-.hero-center{max-width:44rem;margin:0 auto;position:relative;z-index:4;width:100%}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:'Nunito',sans-serif;font-weight:800;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.25);border-radius:999px;padding:.4rem 1rem;margin-bottom:1.75rem}
-.green-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block;animation:pulseDot 1.4s ease infinite}
-.hero-h1{font-size:clamp(2.8rem,8vw,5.5rem);font-weight:800;color:#fff;line-height:1.05;letter-spacing:-.04em;margin-bottom:1.25rem}
-.hero-h1 .accent{color:var(--orange)}
-.hero-h1 .accent-teal{color:#38BDF8}
-.hero-sub{font-size:1.1rem;font-weight:500;color:rgba(255,255,255,.78);line-height:1.65;margin-bottom:2rem}
-.trust-pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.5rem;justify-content:center}
-.trust-pill{display:inline-flex;align-items:center;gap:.4rem;font-family:'Nunito',sans-serif;font-weight:700;font-size:.78rem;color:var(--black);background:#fff;border-radius:999px;padding:.35rem .9rem}
+/* Trust pills */
+.trust-pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.25rem}
+.trust-pill{
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-family:'Nunito',sans-serif;font-weight:700;font-size:.78rem;
+  color:var(--black);background:#fff;border-radius:999px;padding:.35rem .9rem;
+}
 .trust-pill svg{color:var(--teal);flex-shrink:0}
 
-/* FORM CARD */
-.form-wrap{max-width:700px;margin:0 auto 2.5rem}
-.form-card{background:#fff;border-radius:36px;box-shadow:0 50px 120px -20px rgba(0,0,0,.45),0 0 0 1px rgba(0,0,0,.04),0 20px 60px -30px rgba(0,68,112,.35);padding:3rem 3.25rem;animation:popIn .55s cubic-bezier(.175,.885,.32,1.275) both}
-.form-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:.75rem}
-.form-card-label{font-family:'Nunito',sans-serif;font-weight:800;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gray-500)}
-.enroll-count{display:inline-flex;align-items:center;gap:.4rem;font-family:'Nunito',sans-serif;font-weight:700;font-size:.72rem;background:#f0fdf4;color:#15803d;border-radius:999px;padding:.25rem .7rem}
-.form-dots{display:flex;gap:.35rem;margin-bottom:2rem}
-.form-dot{height:7px;border-radius:999px;background:var(--gray-200);transition:all .35s ease;width:26px}
-.form-dot.active{background:var(--blue);width:52px}
-.form-dot.done{background:var(--teal);opacity:.5}
-.form-step{display:none}
-.form-step.active{display:block;animation:fadeUp .3s ease}
-.step-label{font-family:'Nunito',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:.5rem}
-.step-question{font-family:'Sora',sans-serif;font-weight:800;font-size:1.28rem;color:var(--black);margin-bottom:1.25rem;line-height:1.2}
-.option-list{display:flex;flex-direction:column;gap:.6rem}
-.opt-card{display:flex;align-items:center;gap:.875rem;padding:1rem 1.15rem;border:2px solid var(--gray-200);border-radius:20px;cursor:pointer;transition:all .2s;width:100%;text-align:left;font-family:'Montserrat',sans-serif;font-weight:600;font-size:.9rem;color:var(--black);background:#fff}
-.opt-card:hover{border-color:var(--blue);background:var(--blue-light);transform:translateX(3px)}
-.opt-card.selected{border-color:var(--blue);background:var(--blue-light);color:var(--blue);box-shadow:0 0 0 4px rgba(0,48,78,.08)}
-.opt-icon{width:42px;height:42px;border-radius:16px;background:var(--gray-100);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gray-500);transition:all .2s}
-.opt-card.selected .opt-icon{background:rgba(0,48,78,.1);color:var(--blue)}
-.opt-main{flex:1;display:flex;flex-direction:column;gap:.15rem}
-.opt-title{font-weight:700;font-size:.95rem;line-height:1.2}
-.opt-desc{font-family:'Nunito',sans-serif;font-weight:600;font-size:.72rem;color:var(--gray-500);line-height:1.3}
-.opt-card.selected .opt-desc{color:rgba(0,48,78,.6)}
-.level-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
-.level-card{border:2px solid var(--gray-200);border-radius:20px;padding:1.1rem 1rem;cursor:pointer;transition:all .2s;text-align:center;background:#fff;display:flex;flex-direction:column;align-items:center;gap:.35rem}
-.level-card:hover{border-color:var(--blue);background:var(--blue-light);transform:translateY(-3px)}
-.level-card.selected{border-color:var(--blue);background:var(--blue-light);box-shadow:0 0 0 4px rgba(0,48,78,.08)}
-.level-code{font-family:'Sora',sans-serif;font-weight:800;font-size:1.25rem;color:var(--black)}
-.level-card.selected .level-code{color:var(--blue)}
-.level-name{font-family:'Nunito',sans-serif;font-weight:700;font-size:.68rem;color:var(--gray-500);text-transform:uppercase;letter-spacing:.05em}
-.form-back{background:none;border:none;font-family:'Montserrat',sans-serif;font-weight:600;font-size:.8rem;color:var(--gray-500);cursor:pointer;margin-top:1rem;display:flex;align-items:center;gap:.3rem;padding:0;transition:color .2s}
-.form-back:hover{color:var(--black)}
-.form-field-group{display:flex;flex-direction:column;gap:.7rem;margin-bottom:1rem}
-.form-input{width:100%;border:2px solid var(--gray-200);border-radius:18px;padding:1rem 1.15rem;font-family:'Montserrat',sans-serif;font-size:.93rem;font-weight:500;color:var(--black);outline:none;transition:border-color .2s,box-shadow .2s;background:#fff}
-.form-input:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(0,48,78,.08)}
-.form-input::placeholder{color:var(--gray-500)}
-.form-note{font-family:'Nunito',sans-serif;font-weight:600;font-size:.73rem;color:var(--gray-500);text-align:center;margin-top:.5rem}
-.form-success{display:none;text-align:center;padding:1.5rem 0}
-.success-circle{width:80px;height:80px;border-radius:50%;background:#f0fdf4;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem}
-.success-title{font-family:'Sora',sans-serif;font-weight:800;font-size:1.75rem;color:var(--black);margin-bottom:.5rem}
-.success-sub{font-size:.95rem;color:var(--gray-500);margin-bottom:.75rem;line-height:1.6}
-.success-help a{color:var(--teal);font-weight:600}
-
-/* HERO PHOTOS STRIP */
-.hero-social{margin-top:2.25rem;display:flex;flex-direction:column;align-items:center;gap:1rem}
-.hero-photos{display:flex;justify-content:center}
-.hero-photo-card{width:66px;height:66px;border-radius:24px;overflow:hidden;border:3px solid rgba(255,255,255,.3);margin-left:-14px;box-shadow:0 4px 16px rgba(0,0,0,.3);transition:transform .25s}
+/* Doctor photo strip */
+.hero-social{display:flex;flex-direction:column;gap:.875rem}
+.hero-photos{display:flex}
+.hero-photo-card{
+  width:60px;height:60px;border-radius:20px;overflow:hidden;
+  border:3px solid rgba(255,255,255,.25);margin-left:-12px;
+  box-shadow:0 4px 14px rgba(0,0,0,.3);transition:transform .25s;flex-shrink:0;
+}
 .hero-photo-card:first-child{margin-left:0}
-.hero-photo-card:hover{transform:translateY(-6px) scale(1.12);z-index:1}
+.hero-photo-card:hover{transform:translateY(-5px) scale(1.1);z-index:1}
 .hero-photo-card img{width:100%;height:100%;object-fit:cover}
-.social-proof{display:flex;align-items:center;gap:.75rem}
+.social-row{display:flex;align-items:center;gap:.75rem}
 .avatar-stack{display:flex}
-.avatar-item{width:36px;height:36px;border-radius:50%;background:var(--teal);color:#fff;font-family:'Sora',sans-serif;font-weight:700;font-size:.7rem;display:flex;align-items:center;justify-content:center;border:2px solid var(--blue);margin-left:-8px;flex-shrink:0}
-.avatar-item:first-child{margin-left:0}
-.social-text{font-family:'Nunito',sans-serif;font-weight:700;font-size:.82rem;color:rgba(255,255,255,.7);line-height:1.4}
-.social-text strong{color:#fff}
+.avatar-stack .av{
+  width:34px;height:34px;border-radius:50%;
+  background:var(--teal);color:#fff;
+  font-family:'Sora',sans-serif;font-weight:700;font-size:.62rem;
+  display:flex;align-items:center;justify-content:center;
+  border:2.5px solid var(--blue);margin-left:-8px;flex-shrink:0;
+}
+.avatar-stack .av:first-child{margin-left:0}
+.avatar-stack .av:nth-child(2){background:var(--orange)}
+.social-label{font-family:'Nunito',sans-serif;font-weight:700;font-size:.8rem;color:rgba(255,255,255,.65);line-height:1.4}
+.social-label strong{color:#fff}
 
-/* STATS */
-.stats-bar{background:var(--blue-2);padding:3.5rem 1.5rem}
-.stats-grid{max-width:80rem;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem}
-.stat-item{text-align:center}
-.stat-number{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(1.8rem,3.5vw,2.8rem);color:#fff;line-height:1;margin-bottom:.4rem}
-.stat-label{font-family:'Nunito',sans-serif;font-weight:700;font-size:.8rem;color:rgba(255,255,255,.7);letter-spacing:.05em;text-transform:uppercase}
+/* ── RIGHT: form card ── */
+.hero-right{position:relative}
 
-/* WHY SECTION */
-.why-section{padding:6rem 1.5rem;background:#fff}
-.section-header{text-align:center;margin-bottom:3.5rem}
-.section-eyebrow{font-family:'Nunito',sans-serif;font-weight:800;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);display:block;margin-bottom:.75rem}
-.section-h2{font-size:clamp(1.6rem,3vw,2.25rem);font-weight:800;color:var(--black);line-height:1.15;margin-top:.5rem}
-.section-sub{font-size:1rem;color:var(--gray-500);margin-top:.75rem;line-height:1.6;max-width:44ch;margin-left:auto;margin-right:auto}
-.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.why-card{border-radius:32px;padding:2.5rem 2rem;border:2px solid var(--gray-200);transition:all .28s}
-.why-card:hover{border-color:var(--teal);transform:translateY(-5px);box-shadow:0 20px 50px -10px rgba(8,145,178,.18)}
-.why-icon{width:56px;height:56px;border-radius:22px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;background:var(--blue-light);color:var(--blue)}
-.why-title{font-family:'Sora',sans-serif;font-weight:700;font-size:1.05rem;color:var(--black);margin-bottom:.6rem;line-height:1.2}
-.why-desc{font-size:.88rem;color:var(--gray-500);line-height:1.6}
+.form-card{
+  background:#fff;border-radius:36px;
+  box-shadow:0 40px 100px -20px rgba(0,0,0,.45),0 0 0 1px rgba(0,0,0,.04),0 16px 50px -20px rgba(8,145,178,.3);
+  padding:2.5rem 2.75rem;
+  animation:popIn .5s cubic-bezier(.175,.885,.32,1.275) both .1s;
+}
 
-/* HUEBER BOOK */
-.hueber-section{background:var(--blue);padding:6rem 1.5rem;overflow:hidden;position:relative}
+/* Form header */
+.form-label{font-family:'Nunito',sans-serif;font-weight:800;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gray-500);display:block;margin-bottom:.6rem}
+.form-enroll-tag{display:inline-flex;align-items:center;gap:.35rem;font-family:'Nunito',sans-serif;font-weight:700;font-size:.7rem;background:#f0fdf4;color:#15803d;border-radius:999px;padding:.2rem .65rem;margin-bottom:1.25rem}
 
-.hueber-inner{max-width:80rem;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;position:relative;z-index:1}
-.hueber-publisher{display:inline-flex;align-items:center;gap:.5rem;font-family:'Nunito',sans-serif;font-weight:800;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:1.5rem}
-.hueber-h2{font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:800;color:#fff;line-height:1.1;margin-bottom:1rem}
-.hueber-sub{font-size:.95rem;color:rgba(255,255,255,.75);line-height:1.7;margin-bottom:2rem}
-.hueber-features{display:flex;flex-direction:column;gap:.75rem;margin-bottom:2.5rem}
-.hueber-feat{display:flex;align-items:center;gap:.65rem;font-family:'Montserrat',sans-serif;font-weight:600;font-size:.9rem;color:rgba(255,255,255,.9)}
-.hueber-feat svg{color:#38BDF8;flex-shrink:0}
-.hueber-book-wrap{position:relative}
-.hueber-book-img{border-radius:26px;box-shadow:0 40px 80px -16px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.1);width:100%;height:460px;object-fit:cover}
-.hueber-badge{position:absolute;top:1.5rem;right:-1rem;background:var(--orange);color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:.75rem;border-radius:20px;padding:.6rem 1rem;box-shadow:0 8px 24px rgba(255,121,0,.4);line-height:1.3;text-align:center}
+/* Progress dots */
+.form-dots{display:flex;gap:.35rem;margin-bottom:1.75rem}
+.form-dot{height:6px;border-radius:999px;background:var(--gray-200);transition:all .3s ease;width:24px}
+.form-dot.active{background:var(--teal);width:48px}
+.form-dot.done{background:var(--teal);opacity:.4}
 
-/* ROADMAP */
-.roadmap-section{padding:6rem 1.5rem;background:var(--gray-50)}
-.roadmap-track{max-width:72rem;margin:3.5rem auto 0;display:flex;align-items:flex-start;gap:0;position:relative}
-.roadmap-track::before{content:'';position:absolute;top:36px;left:calc(16.66% + 36px);right:calc(16.66% + 36px);height:3px;background:var(--teal);border-radius:2px;z-index:0}
-.road-phase{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 .75rem;position:relative;z-index:1}
-.road-circle{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:800;font-size:.95rem;margin-bottom:1.25rem;flex-shrink:0;border:3px solid transparent}
-.road-circle.done{background:var(--green);color:#fff;border-color:var(--green)}
-.road-circle.current{background:var(--teal);color:#fff;border-color:var(--teal);animation:stepPulse 2s ease infinite}
-.road-circle.next{background:#fff;color:var(--blue);border-color:var(--gray-200)}
-.road-circle.goal{background:var(--blue);color:#fff;border-color:var(--blue)}
-.road-phase-label{font-family:'Nunito',sans-serif;font-weight:800;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.4rem}
-.road-phase-label.done{color:var(--green)}
-.road-phase-label.current{color:var(--teal)}
-.road-phase-label.goal{color:var(--blue)}
-.road-phase-title{font-family:'Sora',sans-serif;font-weight:700;font-size:.95rem;color:var(--black);margin-bottom:.3rem;line-height:1.2}
-.road-phase-meta{font-family:'Nunito',sans-serif;font-weight:600;font-size:.72rem;color:var(--gray-500);line-height:1.4}
-.road-phase-cost{display:inline-block;margin-top:.5rem;font-family:'Sora',sans-serif;font-weight:800;font-size:.85rem;color:var(--orange)}
-.road-arrow{flex-shrink:0;padding-top:22px;color:var(--gray-200)}
+/* Steps */
+.form-step{display:none}
+.form-step.active{display:block;animation:fadeUp .28s ease}
+.step-label{font-family:'Nunito',sans-serif;font-weight:800;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:.4rem;display:block}
+.step-q{font-family:'Sora',sans-serif;font-weight:800;font-size:1.1rem;color:var(--black);margin-bottom:1.1rem;line-height:1.25}
 
-/* CURRICULUM */
-.curriculum-section{padding:6rem 1.5rem;background:#fff}
-.curriculum-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;margin-top:3.5rem}
-.curriculum-list{display:flex;flex-direction:column;gap:1rem}
-.curriculum-item{display:flex;gap:1rem;padding:1.25rem 1.5rem;border:2px solid var(--gray-200);border-radius:24px;transition:all .22s;align-items:flex-start}
-.curriculum-item:hover{border-color:var(--teal);box-shadow:0 8px 24px -8px rgba(8,145,178,.2)}
-.curriculum-num{width:36px;height:36px;border-radius:16px;background:var(--blue-light);color:var(--blue);font-family:'Sora',sans-serif;font-weight:800;font-size:.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.curriculum-text-title{font-family:'Sora',sans-serif;font-weight:700;font-size:.95rem;color:var(--black);margin-bottom:.25rem}
-.curriculum-text-desc{font-size:.83rem;color:var(--gray-500);line-height:1.5}
-.curriculum-image-wrap{position:relative;border-radius:32px;overflow:hidden;height:100%;min-height:460px}
-.curriculum-image-wrap img{width:100%;height:100%;object-fit:cover}
-.curriculum-image-overlay{position:absolute;inset:0;background:rgba(0,48,78,.55)}
-.curriculum-image-badge{position:absolute;bottom:1.5rem;left:1.5rem;right:1.5rem;color:#fff}
-.curriculum-image-badge h4{font-family:'Sora',sans-serif;font-weight:800;font-size:1.1rem;margin-bottom:.3rem}
-.curriculum-image-badge p{font-size:.82rem;color:rgba(255,255,255,.8);line-height:1.5}
+/* Level grid */
+.level-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:.5rem}
+.level-card{
+  border:2px solid var(--gray-200);border-radius:20px;
+  padding:.9rem .75rem;cursor:pointer;
+  transition:all .18s;text-align:center;background:#fff;
+  display:flex;flex-direction:column;align-items:center;gap:.3rem;
+}
+.level-card:hover{border-color:var(--teal);background:var(--teal-light);transform:translateY(-2px)}
+.level-card.selected{border-color:var(--teal);background:var(--teal-light);box-shadow:0 0 0 4px rgba(8,145,178,.1)}
+.lc-code{font-family:'Sora',sans-serif;font-weight:800;font-size:1.1rem;color:var(--black)}
+.lc-name{font-family:'Nunito',sans-serif;font-weight:700;font-size:.62rem;color:var(--gray-500);text-transform:uppercase;letter-spacing:.04em}
+.level-card.selected .lc-code{color:var(--teal)}
 
-/* INSTRUCTOR */
-.instructor-section{background:var(--blue-light);padding:6rem 1.5rem}
-.instructor-inner{max-width:80rem;margin:0 auto;display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;align-items:center}
-.instructor-photo-wrap{position:relative}
-.instructor-photo{width:100%;height:480px;object-fit:cover;border-radius:32px;box-shadow:0 32px 64px -16px rgba(0,0,0,.2)}
-.instructor-badge{position:absolute;bottom:-1.25rem;left:1.5rem;background:#fff;border-radius:20px;padding:.75rem 1.25rem;display:flex;align-items:center;gap:.65rem;box-shadow:0 12px 32px -6px rgba(0,0,0,.15);font-family:'Nunito',sans-serif;font-weight:800;font-size:.78rem;color:var(--black)}
-.instructor-badge-icon{width:36px;height:36px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.instructor-eyebrow-line{display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem}
-.teal-line{width:32px;height:3px;background:var(--teal);border-radius:2px}
-.instructor-h2{font-size:clamp(1.6rem,3vw,2.25rem);font-weight:800;color:var(--black);margin-bottom:.75rem;line-height:1.15}
-.instructor-sub{font-size:.95rem;color:var(--gray-500);line-height:1.7;margin-bottom:1.75rem}
-.instructor-creds{display:flex;flex-direction:column;gap:.75rem;margin-bottom:2rem}
-.instructor-cred{display:flex;align-items:center;gap:.6rem;font-family:'Montserrat',sans-serif;font-weight:600;font-size:.9rem;color:var(--black)}
-.instructor-cred svg{color:var(--teal);flex-shrink:0}
+/* Option list */
+.option-list{display:flex;flex-direction:column;gap:.5rem;margin-bottom:.5rem}
+.opt-card{
+  display:flex;align-items:center;gap:.8rem;
+  padding:.85rem 1rem;border:2px solid var(--gray-200);border-radius:18px;
+  cursor:pointer;transition:all .18s;width:100%;text-align:left;
+  background:#fff;color:var(--black);
+}
+.opt-card:hover{border-color:var(--teal);background:var(--teal-light);transform:translateX(2px)}
+.opt-card.selected{border-color:var(--teal);background:var(--teal-light);box-shadow:0 0 0 3px rgba(8,145,178,.1)}
+.opt-icon{
+  width:38px;height:38px;border-radius:14px;
+  background:var(--gray-100);display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;color:var(--gray-500);transition:all .18s;
+}
+.opt-card.selected .opt-icon{background:rgba(8,145,178,.12);color:var(--teal)}
+.opt-main{flex:1;min-width:0}
+.opt-title{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.88rem;line-height:1.2;color:var(--black)}
+.opt-sub{font-family:'Nunito',sans-serif;font-weight:600;font-size:.68rem;color:var(--gray-500);line-height:1.3;margin-top:.15rem}
+.opt-card.selected .opt-title{color:var(--teal)}
 
-/* TESTIMONIALS */
-.testimonials{background:#fff;padding:6rem 1.5rem}
-.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3.5rem}
-.testi-card{border-radius:32px;padding:2rem;border:2px solid var(--gray-200);background:#fff;display:flex;flex-direction:column;transition:all .25s}
-.testi-card:hover{border-color:var(--teal);transform:translateY(-4px);box-shadow:0 16px 40px -8px rgba(8,145,178,.18)}
-.testi-card.dark{background:var(--blue);border-color:var(--blue)}
-.testi-card.dark:hover{box-shadow:0 16px 40px -8px rgba(0,48,78,.3)}
-.testi-stars{display:flex;gap:.15rem;margin-bottom:1rem;color:#F59E0B}
-.testi-quote{font-size:.9rem;line-height:1.65;color:var(--black);margin-bottom:1.5rem;flex:1;font-style:italic}
-.testi-card.dark .testi-quote{color:rgba(255,255,255,.85)}
-.testi-author{display:flex;align-items:center;gap:.75rem}
-.testi-avatar{width:44px;height:44px;border-radius:50%;flex-shrink:0;overflow:hidden}
-.testi-avatar img{width:100%;height:100%;object-fit:cover}
-.testi-name{font-family:'Sora',sans-serif;font-weight:700;font-size:.9rem;color:var(--black);margin-bottom:.15rem}
-.testi-card.dark .testi-name{color:#fff}
-.testi-meta{font-family:'Nunito',sans-serif;font-weight:700;font-size:.72rem;color:var(--gray-500)}
-.testi-card.dark .testi-meta{color:rgba(255,255,255,.5)}
+/* Contact fields */
+.field-group{display:flex;flex-direction:column;gap:.6rem;margin-bottom:.75rem}
+.field-input{
+  width:100%;border:2px solid var(--gray-200);border-radius:18px;
+  padding:.85rem 1.1rem;font-family:'Montserrat',sans-serif;
+  font-size:.9rem;font-weight:500;color:var(--black);
+  outline:none;transition:border-color .2s,box-shadow .2s;background:#fff;
+}
+.field-input:focus{border-color:var(--teal);box-shadow:0 0 0 4px rgba(8,145,178,.1)}
+.field-input::placeholder{color:var(--gray-500)}
+.form-note{font-family:'Nunito',sans-serif;font-weight:600;font-size:.7rem;color:var(--gray-500);text-align:center;margin-top:.6rem;line-height:1.5}
 
-/* GENERAL BANNER (inside medical page → leads to homepage) */
-.general-banner{background:var(--orange);padding:4rem 1.5rem;position:relative;overflow:hidden}
-.general-banner::after{content:'';position:absolute;top:-80px;right:-80px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.08);pointer-events:none}
-.general-banner-inner{max-width:80rem;margin:0 auto;display:flex;align-items:center;gap:3rem}
-.general-banner-photos{display:flex;flex-shrink:0}
-.general-banner-photo{width:64px;height:64px;border-radius:22px;overflow:hidden;border:3px solid rgba(255,255,255,.4);margin-left:-12px;box-shadow:0 4px 16px rgba(0,0,0,.25)}
-.general-banner-photo:first-child{margin-left:0}
-.general-banner-photo img{width:100%;height:100%;object-fit:cover}
-.general-banner-text{flex:1}
-.general-banner-eyebrow{font-family:'Nunito',sans-serif;font-weight:800;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.8);margin-bottom:.4rem;display:block}
-.general-banner-h3{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(1.1rem,2.5vw,1.5rem);color:#fff;line-height:1.15;margin-bottom:.4rem}
-.general-banner-sub{font-size:.88rem;color:rgba(255,255,255,.85);line-height:1.5}
+/* Back button */
+.form-back{background:none;border:none;font-family:'Montserrat',sans-serif;font-weight:600;font-size:.78rem;color:var(--gray-500);cursor:pointer;margin-top:.875rem;display:flex;align-items:center;gap:.3rem;padding:0;transition:color .2s}
+.form-back:hover{color:var(--black)}
 
-/* PRICING */
-.pricing-section{padding:6rem 1.5rem;background:var(--gray-50)}
-.pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:3.5rem;max-width:56rem;margin-left:auto;margin-right:auto}
-.price-card{border-radius:32px;padding:2.5rem 2rem;border:2px solid var(--gray-200);background:#fff;transition:all .25s;position:relative}
-.price-card:hover{transform:translateY(-4px);box-shadow:0 20px 50px -10px rgba(0,48,78,.15)}
-.price-card.featured{background:var(--blue);border-color:var(--blue)}
-.price-card-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--teal);color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:.3rem .9rem;white-space:nowrap}
-.price-name{font-family:'Sora',sans-serif;font-weight:700;font-size:1rem;color:var(--black);margin-bottom:.5rem}
-.price-card.featured .price-name{color:rgba(255,255,255,.8)}
-.price-amount{font-family:'Sora',sans-serif;font-weight:800;font-size:2.5rem;color:var(--blue);line-height:1;margin-bottom:.25rem}
-.price-card.featured .price-amount{color:#fff}
-.price-period{font-family:'Nunito',sans-serif;font-weight:700;font-size:.8rem;color:var(--gray-500)}
-.price-card.featured .price-period{color:rgba(255,255,255,.6)}
-.price-divider{height:1px;background:var(--gray-200);margin:1.25rem 0}
-.price-card.featured .price-divider{background:rgba(255,255,255,.15)}
-.price-features{list-style:none;display:flex;flex-direction:column;gap:.6rem;margin-bottom:2rem}
-.price-features li{display:flex;align-items:center;gap:.5rem;font-size:.88rem;font-weight:600}
-.price-features li svg{color:var(--teal);flex-shrink:0}
-.price-card.featured .price-features li{color:rgba(255,255,255,.9)}
-.price-card.featured .price-features li svg{color:#38BDF8}
+/* Success */
+.form-success{display:none;text-align:center;padding:1.25rem 0}
+.success-check{width:72px;height:72px;border-radius:50%;background:#f0fdf4;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem}
+.success-h{font-family:'Sora',sans-serif;font-weight:800;font-size:1.5rem;color:var(--black);margin-bottom:.5rem}
+.success-p{font-size:.88rem;color:var(--gray-500);line-height:1.6;margin-bottom:.75rem}
+.success-p a{color:var(--teal);font-weight:600}
 
-/* FAQ */
-.faq-section{background:#fff;padding:6rem 1.5rem}
-.faq-list{margin-top:3rem;display:flex;flex-direction:column}
-.faq-item{border-bottom:1px solid var(--gray-200)}
-.faq-item:first-child{border-top:1px solid var(--gray-200)}
-.faq-q{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.25rem 0;cursor:pointer;font-family:'Sora',sans-serif;font-weight:700;font-size:.95rem;color:var(--black);user-select:none}
-.faq-icon{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--gray-200);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem;color:var(--gray-500);transition:all .25s;line-height:1}
-.faq-item.open .faq-icon{transform:rotate(45deg);border-color:var(--teal);color:var(--teal)}
-.faq-.fds-block {display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease}
-.faq-item.open .faq-.fds-block {grid-template-rows:1fr}
-.faq-body-inner{overflow:hidden}
-.faq-a{font-size:.9rem;color:var(--gray-500);line-height:1.7;padding-bottom:1.25rem}
-
-/* FINAL CTA */
-.final-cta{background:var(--blue);padding:7rem 1.5rem;text-align:center;position:relative;overflow:hidden}
-
-.final-cta-inner{max-width:44rem;margin:0 auto;position:relative;z-index:1}
-.final-cta-h2{font-size:clamp(2rem,5vw,3rem);font-weight:800;color:#fff;line-height:1.1;margin-bottom:1rem}
-.final-cta-sub{font-size:1rem;color:rgba(255,255,255,.7);line-height:1.6;margin-bottom:2.5rem}
-.final-cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
-
-/* FOOTER */
-.footer{background:#fff;border-top:1px solid var(--gray-200);padding:3.5rem 1.5rem 0}
-.footer-inner{max-width:80rem;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;padding-bottom:3rem}
-.footer-brand-logo{font-family:'Sora',sans-serif;font-weight:800;font-size:1.3rem;color:var(--blue);letter-spacing:-.04em;margin-bottom:.5rem}
-.footer-brand-logo span{color:var(--orange)}
-.footer-brand-sub{font-family:'Nunito',sans-serif;font-weight:700;font-size:.78rem;color:var(--gray-500);margin-bottom:.35rem}
-.footer-copy{font-family:'Nunito',sans-serif;font-weight:700;font-size:.72rem;color:var(--gray-500);margin-top:.75rem}
-.footer-nav-title,.footer-contact-title{font-family:'Nunito',sans-serif;font-weight:800;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--black);margin-bottom:1rem}
-.footer-links{display:flex;flex-direction:column;gap:.55rem}
-.footer-link{font-family:'Montserrat',sans-serif;font-weight:500;font-size:.85rem;color:var(--gray-500);cursor:pointer;transition:color .2s}
-.footer-link:hover{color:var(--black)}
-.footer-contact-items{display:flex;flex-direction:column;gap:.6rem}
-.footer-contact-item{display:flex;align-items:center;gap:.5rem;font-family:'Montserrat',sans-serif;font-weight:500;font-size:.85rem;color:var(--gray-500)}
-.footer-contact-item a{color:var(--gray-500);transition:color .2s}
-.footer-contact-item a:hover{color:var(--teal)}
-.footer-bottom{border-top:1px solid var(--gray-200);padding:1rem 1.5rem;max-width:80rem;margin:0 auto;font-family:'Nunito',sans-serif;font-weight:700;font-size:.72rem;color:var(--gray-500);text-align:center}
-
-/* MOBILE CTA */
-.mobile-cta{display:none;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--gray-200);padding:.75rem 1.25rem;z-index:200;align-items:center;justify-content:space-between;gap:1rem;box-shadow:0 -8px 30px -4px rgba(0,0,0,.1)}
-.mobile-cta-text{display:flex;flex-direction:column}
-.mobile-cta-price{font-family:'Nunito',sans-serif;font-weight:800;font-size:.72rem;color:var(--gray-500)}
-.mobile-cta-label{font-family:'Sora',sans-serif;font-weight:700;font-size:.9rem;color:var(--black)}
-
-/* SUCCESS BANNER */
-#success-banner{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(120%);background:var(--blue);color:#fff;border-radius:999px;padding:.85rem 1.75rem;display:flex;align-items:center;gap:.65rem;font-family:'Nunito',sans-serif;font-weight:700;font-size:.85rem;white-space:nowrap;z-index:9999;box-shadow:0 12px 40px -6px rgba(0,48,78,.5);transition:transform .4s ease,opacity .4s ease;opacity:0}
-#success-banner.show{transform:translateX(-50%) translateY(0);opacity:1}
-
-/* RESPONSIVE */
+/* ── RESPONSIVE ── */
 @media(max-width:1023px){
-  .hueber-inner,.instructor-inner,.curriculum-grid{grid-template-columns:1fr;gap:3rem}
-  .why-grid,.testimonials-grid{grid-template-columns:1fr;max-width:480px;margin-left:auto;margin-right:auto}
-  .pricing-grid{grid-template-columns:1fr;max-width:400px}
-  .general-banner-inner{flex-direction:column;text-align:center}
-  .general-banner-photos{justify-content:center}
-  .roadmap-track{flex-direction:column;align-items:center;gap:2rem}
-  .roadmap-track::before{display:none}
-  .road-arrow{display:none}
-  .footer-inner{grid-template-columns:1fr;gap:2rem}
-  .mobile-cta{display:flex}
-  
-  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-inner{grid-template-columns:1fr;gap:3rem}
+  .hero-left{align-items:center;text-align:center}
+  .trust-pills{justify-content:center}
+  .hero-sub{max-width:100%}
+  .hero-social{align-items:center}
+  .hero-photos{justify-content:center}
+  .form-card{max-width:520px;margin:0 auto}
 }
-@media(max-width:700px){
-  .form-card{padding:2rem 1.75rem}
+@media(max-width:640px){
+  #hero{padding:3.5rem 1.25rem 3rem;min-height:auto}
+  .hero-h1{font-size:clamp(2rem,8vw,2.8rem)}
+  .form-card{padding:2rem 1.5rem;border-radius:28px}
+}
+@media(max-width:420px){
+  .form-card{padding:1.75rem 1.25rem;border-radius:24px}
   .level-grid{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:600px){
-  .hero-h1{font-size:clamp(2.5rem,11vw,4rem)}
-  .final-cta-btns{flex-direction:column;align-items:center}
-  #success-banner{white-space:normal;border-radius:22px;left:1rem;right:1rem;transform:translateY(120%);width:auto}
-  #success-banner.show{transform:translateY(0)}
-}
-@media(max-width:480px){
-  #hero{padding:3.5rem 1rem 4.5rem;min-height:auto}
-  .hero-h1{font-size:clamp(2rem,9vw,3rem)!important}
-  .section-h2{font-size:clamp(1.35rem,6vw,1.75rem)!important}
-  .container{padding-left:1rem;padding-right:1rem}
-  .form-card{padding:1.5rem 1.25rem;border-radius:22px}
-  .option-cards,.loc-options,.mini-features,.features-grid,.portals-grid{grid-template-columns:1fr!important}
-  .level-grid{grid-template-columns:repeat(2,1fr)!important}
-  .stats-grid{grid-template-columns:repeat(2,1fr)!important}
-  .pricing-grid,.testimonials-grid,.guarantee-inner,.footer-inner,.moodle-inner,.roadmap-phases,.why-grid,.trust-grid,.curriculum-grid{grid-template-columns:1fr!important}
-  .features-photo-row{grid-template-columns:1fr!important}
-  .med-promo-inner{flex-direction:column;text-align:center;gap:1rem}
-  .med-promo-btn{width:100%;justify-content:center}
-  .final-cta-btns{flex-direction:column;align-items:stretch}
-  .btn{width:100%;justify-content:center;text-align:center}
-  .nav-link{display:none}
-  .nav-badge{display:none}
-  section,#hero,.urgency-bar,.stats-bar,#moodle,.moodle-section,.guarantee,#guarantee,.final-cta,#footer,.footer{padding-left:1rem;padding-right:1rem}
-  .hero-social-proof{flex-wrap:wrap;gap:.5rem}
-  .trust-cards{grid-template-columns:1fr!important}
-  .road-phases{grid-template-columns:1fr!important}
-  .faq-list .faq-item{padding:.875rem 1rem}
-  table{font-size:.75rem}
-  table td,table th{padding:.5rem .4rem}
+  .hero-eyebrow{font-size:.68rem}
 }
 </style>
 
 <div class="fds-block">
-<!-- HERO -->
 <section id="hero">
-  <!-- Floating photos: doctors + Germany + medical -->
-  <div class="hero-center">
-    <div class="hero-eyebrow"><span class="green-dot"></span> New program &nbsp;·&nbsp; Doctors &amp; Nurses &nbsp;·&nbsp; Healthcare German</div>
+  <div class="hero-inner">
 
-    <h1 class="hero-h1">Deutsch<br>für <span class="accent-teal">Ärzte</span><span class="accent">.</span></h1>
-    <p class="hero-sub">Specialized German for doctors &amp; nurses. Hueber curriculum, taught by a practising physician.<br>FSP prep for Ärzte · Pflege path for Pflegekräfte — practice or work in Germany.</p>
+    <!-- LEFT: headline + trust -->
+    <div class="hero-left">
+      <div class="hero-eyebrow reveal">
+        <span class="live-dot"></span>
+        New program &nbsp;·&nbsp; Doctors &amp; Nurses
+      </div>
 
-    <div class="trust-pills">
-      <div class="trust-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Taught by an MD</div>
-      <div class="trust-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Hueber certified</div>
-      <div class="trust-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>3–6 months</div>
-      <div class="trust-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>4.9 rating</div>
+      <h1 class="hero-h1 reveal reveal-d1">
+        Deutsch für<br>
+        <span class="hl-teal">Ärzte</span> &amp;<br>
+        <span class="hl-orange">Pflegekräfte</span>
+      </h1>
+
+      <p class="hero-sub reveal reveal-d2">
+        Specialized German from B1 to C1 — FSP prep for doctors, Pflege path for nurses.
+        Taught by a practising MD using Hueber's certified curriculum.
+      </p>
+
+      <div class="trust-pills reveal reveal-d3">
+        <div class="trust-pill">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Taught by an MD
+        </div>
+        <div class="trust-pill">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Hueber certified
+        </div>
+        <div class="trust-pill">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          FSP &amp; Approbation prep
+        </div>
+        <div class="trust-pill">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          3–6 months
+        </div>
+      </div>
+
+      <div class="hero-social reveal">
+        <div class="hero-photos">
+          <div class="hero-photo-card"><img src="https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Doctor" loading="lazy"/></div>
+          <div class="hero-photo-card"><img src="https://images.pexels.com/photos/3845810/pexels-photo-3845810.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Doctor" loading="lazy"/></div>
+          <div class="hero-photo-card"><img src="https://images.pexels.com/photos/5998474/pexels-photo-5998474.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Nurse" loading="lazy"/></div>
+          <div class="hero-photo-card"><img src="https://images.pexels.com/photos/4167541/pexels-photo-4167541.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Doctor" loading="lazy"/></div>
+          <div class="hero-photo-card"><img src="https://images.pexels.com/photos/6129255/pexels-photo-6129255.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Nurse" loading="lazy"/></div>
+        </div>
+        <div class="social-row">
+          <div class="avatar-stack">
+            <div class="av">MD</div><div class="av">DR</div><div class="av">SP</div>
+          </div>
+          <div class="social-label"><strong>180+ doctors &amp; nurses</strong><br>enrolled &amp; practising in Germany</div>
+        </div>
+      </div>
     </div>
 
-    <!-- FORM CARD -->
-    <div class="form-wrap">
+    <!-- RIGHT: enrollment form -->
+    <div class="hero-right">
       <div class="form-card">
-        <div class="form-header">
-          <span class="form-card-label">ENROLL — 2 MINUTES</span>
-          <span class="enroll-count"><span class="green-dot"></span>180+ doctors &amp; nurses enrolled</span>
+        <span class="form-label">ENROL — 2 MINUTES</span>
+        <div class="form-enroll-tag">
+          <span class="live-dot"></span> 180+ healthcare professionals enrolled
         </div>
-        <div class="form-dots">
-          <div class="form-dot active"></div><div class="form-dot"></div><div class="form-dot"></div><div class="form-dot"></div>
-        </div>
-        <div class="form-steps-wrap">
 
-          <!-- Step 1: Current level -->
+        <div class="form-dots">
+          <div class="form-dot active"></div>
+          <div class="form-dot"></div>
+          <div class="form-dot"></div>
+          <div class="form-dot"></div>
+        </div>
+
+        <div id="med-form-steps">
+
+          <!-- Step 1: Level -->
           <div class="form-step active" data-step="1">
-            <div class="step-label">Step 1 of 4</div>
-            <div class="step-question">What is your current German level?</div>
+            <span class="step-label">Step 1 of 4</span>
+            <div class="step-q">What is your current German level?</div>
             <div class="level-grid">
-              <div class="level-card" onclick="selectLevel(this,'b1')" role="button" tabindex="0"><div class="level-code">B1</div><div class="level-name">Intermediate</div></div>
-              <div class="level-card" onclick="selectLevel(this,'b2')" role="button" tabindex="0"><div class="level-code">B2</div><div class="level-name">Upper-Inter.</div></div>
-              <div class="level-card" onclick="selectLevel(this,'c1')" role="button" tabindex="0"><div class="level-code">C1</div><div class="level-name">Advanced</div></div>
-              <div class="level-card" onclick="selectLevel(this,'a1a2')" role="button" tabindex="0"><div class="level-code" style="font-size:.85rem">A1-A2</div><div class="level-name">Beginner</div></div>
-              <div class="level-card" onclick="selectLevel(this,'unsure')" role="button" tabindex="0"><div class="level-code" style="font-size:.85rem">?</div><div class="level-name">Not sure</div></div>
-              <div class="level-card" onclick="selectLevel(this,'none')" role="button" tabindex="0"><div class="level-code" style="font-size:.85rem">0</div><div class="level-name">No German</div></div>
+              <div class="level-card" onclick="medSelectLevel(this,'b1')" tabindex="0"><div class="lc-code">B1</div><div class="lc-name">Intermediate</div></div>
+              <div class="level-card" onclick="medSelectLevel(this,'b2')" tabindex="0"><div class="lc-code">B2</div><div class="lc-name">Upper-int.</div></div>
+              <div class="level-card" onclick="medSelectLevel(this,'c1')" tabindex="0"><div class="lc-code">C1</div><div class="lc-name">Advanced</div></div>
+              <div class="level-card" onclick="medSelectLevel(this,'a1a2')" tabindex="0"><div class="lc-code" style="font-size:.88rem">A1–A2</div><div class="lc-name">Beginner</div></div>
+              <div class="level-card" onclick="medSelectLevel(this,'none')" tabindex="0"><div class="lc-code" style="font-size:.88rem">0</div><div class="lc-name">No German</div></div>
+              <div class="level-card" onclick="medSelectLevel(this,'unsure')" tabindex="0"><div class="lc-code" style="font-size:.88rem">?</div><div class="lc-name">Not sure</div></div>
             </div>
           </div>
 
-          <!-- Step 2: Medical specialty -->
+          <!-- Step 2: Role -->
           <div class="form-step" data-step="2">
-            <div class="step-label">Step 2 of 4</div>
-            <div class="step-question">What is your medical specialty?</div>
+            <span class="step-label">Step 2 of 4</span>
+            <div class="step-q">What is your healthcare role?</div>
             <div class="option-list">
-              <button class="opt-card" onclick="selectOpt(this,'specialty','gp')" type="button"><div class="opt-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><div class="opt-main"><span class="opt-title">General Practice / Internal Medicine</span><span class="opt-desc">Allgemeinmedizin · Innere Medizin</span></div></button>
-              <button class="opt-card" onclick="selectOpt(this,'specialty','surgery')" type="button"><div class="opt-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div><div class="opt-main"><span class="opt-title">Surgery</span><span class="opt-desc">Chirurgie · Orthopädie · Neurochirurgie</span></div></button>
-              <button class="opt-card" onclick="selectOpt(this,'specialty','pediatrics')" type="button"><div class="opt-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div><div class="opt-main"><span class="opt-title">Pediatrics / Obstetrics</span><span class="opt-desc">Pädiatrie · Gynäkologie · Geburtshilfe</span></div></button>
-              <button class="opt-card" onclick="selectOpt(this,'specialty','other')" type="button"><div class="opt-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div class="opt-main"><span class="opt-title">Other Specialty</span><span class="opt-desc">Psychiatrie · Radiologie · Anästhesie · Other</span></div></button>
+              <button class="opt-card" onclick="medSelectOpt(this,'role','doctor')" type="button">
+                <div class="opt-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+                <div class="opt-main"><div class="opt-title">Doctor / Physician</div><div class="opt-sub">General Practice · Specialist · Surgery · Psychiatry</div></div>
+              </button>
+              <button class="opt-card" onclick="medSelectOpt(this,'role','nurse')" type="button">
+                <div class="opt-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+                <div class="opt-main"><div class="opt-title">Nurse / Pflegefachkraft</div><div class="opt-sub">Pflege · Altenpflege · Krankenpflege · Anerkennung</div></div>
+              </button>
+              <button class="opt-card" onclick="medSelectOpt(this,'role','student')" type="button">
+                <div class="opt-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+                <div class="opt-main"><div class="opt-title">Medical / Nursing student</div><div class="opt-sub">Studying medicine or nursing — preparing for Germany</div></div>
+              </button>
             </div>
-            <button class="form-back" onclick="goBack()" type="button"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>Back</button>
+            <button class="form-back" onclick="medGoBack()" type="button">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+              Back
+            </button>
           </div>
 
           <!-- Step 3: Goal -->
           <div class="form-step" data-step="3">
-            <div class="step-label">Step 3 of 4</div>
-            <div class="step-question">What is your primary goal?</div>
+            <span class="step-label">Step 3 of 4</span>
+            <div class="step-q">What is your goal?</div>
             <div class="option-list">
-              <button class="opt-card" onclick="selectOpt(this,'goal','fsp')" type="button"><div class="opt-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="opt-main"><span class="opt-title">Fachsprachprüfung (FSP)</span><span class="opt-desc">Official medical language exam to practice in Germany / Austria</span></div></button>
-              <button class="opt-card" onclick="selectOpt(this,'goal','approbation')" type="button"><div class="opt-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="opt-main"><span class="opt-title">Approbation / Berufsanerkennung</span><span class="opt-desc">Medical licence recognition in German-speaking countries</span></div></button>
-              <button class="opt-card" onclick="selectOpt(this,'goal','practice')" type="button"><div class="opt-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div><div class="opt-main"><span class="opt-title">Daily clinical practice</span><span class="opt-desc">Doctor–patient communication, medical records, ward rounds</span></div></button>
-              <button class="opt-card" onclick="selectOpt(this,'goal','research')" type="button"><div class="opt-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><div class="opt-main"><span class="opt-title">Research &amp; Academic medicine</span><span class="opt-desc">Publications, presentations, academic vocabulary in German</span></div></button>
+              <button class="opt-card" onclick="medSelectOpt(this,'goal','fsp')" type="button">
+                <div class="opt-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+                <div class="opt-main"><div class="opt-title">FSP / Fachsprachprüfung</div><div class="opt-sub">Medical language exam — practice in Germany or Austria</div></div>
+              </button>
+              <button class="opt-card" onclick="medSelectOpt(this,'goal','approbation')" type="button">
+                <div class="opt-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                <div class="opt-main"><div class="opt-title">Approbation / Anerkennung</div><div class="opt-sub">Full medical licence or nursing recognition in Germany</div></div>
+              </button>
+              <button class="opt-card" onclick="medSelectOpt(this,'goal','work')" type="button">
+                <div class="opt-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+                <div class="opt-main"><div class="opt-title">Work in a German clinic / Pflegeheim</div><div class="opt-sub">Daily clinical vocabulary, patient communication</div></div>
+              </button>
             </div>
-            <button class="form-back" onclick="goBack()" type="button"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>Back</button>
+            <button class="form-back" onclick="medGoBack()" type="button">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+              Back
+            </button>
           </div>
 
           <!-- Step 4: Contact -->
           <div class="form-step" data-step="4">
-            <div class="step-label">Step 4 of 4</div>
-            <div class="step-question">Reserve your place</div>
-            <form action="https://api.web3forms.com/submit" method="POST" onsubmit="submitForm(event)">
+            <span class="step-label">Step 4 of 4</span>
+            <div class="step-q">Reserve your place</div>
+            <form action="https://api.web3forms.com/submit" method="POST" onsubmit="medSubmitForm(event)" novalidate>
               <input type="hidden" name="access_key" value="9cbe76af-67f2-4fef-842d-3c98d80a5130"/>
-              <input type="hidden" name="subject" value="New Medical German Enrollment"/>
-              <div class="form-field-group">
-                <input class="form-input" type="text" name="name" placeholder="Full name" required>
-                <input class="form-input" type="email" name="email" placeholder="Email address" required>
-                <input class="form-input" type="tel" name="phone" placeholder="Phone / WhatsApp" required>
-                <input class="form-input" type="text" name="country" placeholder="Country of residence" required>
+              <input type="hidden" name="subject" value="New Medical German Enrollment — FDS Institut"/>
+              <input type="hidden" id="med-hidden-level" name="level" value=""/>
+              <input type="hidden" id="med-hidden-role" name="role" value=""/>
+              <input type="hidden" id="med-hidden-goal" name="goal" value=""/>
+              <div class="field-group">
+                <input class="field-input" type="text" name="name" placeholder="Full name" required autocomplete="name"/>
+                <input class="field-input" type="email" name="email" placeholder="Email address" required autocomplete="email"/>
+                <input class="field-input" type="tel" name="phone" placeholder="Phone / WhatsApp" required autocomplete="tel"/>
+                <input class="field-input" type="text" name="country" placeholder="Country of residence" required/>
               </div>
-              <button class="btn btn-blue btn-full btn-lg" type="submit">Get my personalised plan &nbsp;→</button>
+              <button class="btn btn-teal btn-full btn-lg" type="submit">
+                Get my personalised plan &nbsp;→
+              </button>
             </form>
-            <p class="form-note">Free consultation call included &nbsp;·&nbsp; No commitment &nbsp;·&nbsp; Secure</p>
-            <button class="form-back" onclick="goBack()" type="button"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>Back</button>
+            <p class="form-note">Free consultation included · No commitment · Secure</p>
+            <button class="form-back" onclick="medGoBack()" type="button">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+              Back
+            </button>
           </div>
 
-        </div>
-        <div class="form-success">
-          <div class="success-circle"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div class="success-title">Received!</div>
-          <p class="success-sub">Your personalised learning plan will be sent within 24 hours. We'll also schedule a free consultation call.</p>
-          <p style="font-size:.8rem;color:var(--gray-500)">Questions? <a href="mailto:medical@fdsinstitut.com" style="color:var(--teal);font-weight:600">medical@fdsinstitut.com</a></p>
-        </div>
-      </div>
-    </div>
+        </div><!-- /med-form-steps -->
 
-    <div class="hero-social">
-      <div class="hero-photos">
-        <div class="hero-photo-card"><img src="https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Dr."></div>
-        <div class="hero-photo-card"><img src="https://images.pexels.com/photos/3845810/pexels-photo-3845810.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Dr."></div>
-        <div class="hero-photo-card"><img src="https://images.pexels.com/photos/5998474/pexels-photo-5998474.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Dr."></div>
-        <div class="hero-photo-card"><img src="https://images.pexels.com/photos/4167541/pexels-photo-4167541.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Dr."></div>
-        <div class="hero-photo-card"><img src="https://images.pexels.com/photos/6129255/pexels-photo-6129255.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Dr."></div>
-        <div class="hero-photo-card"><img src="https://images.pexels.com/photos/4031818/pexels-photo-4031818.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Dr."></div>
-      </div>
-      <div class="social-proof">
-        <div class="avatar-stack"><div class="avatar-item">MD</div><div class="avatar-item">DR</div><div class="avatar-item">SP</div></div>
-        <div class="social-text"><strong>180+ doctors</strong> enrolled &amp; practising in Germany</div>
-      </div>
-    </div>
-  </div>
+        <!-- Success state -->
+        <div class="form-success" id="med-success">
+          <div class="success-check">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="success-h">Application received!</div>
+          <p class="success-p">Your personalised learning plan will arrive within 24 hours. We'll also schedule your free consultation call.</p>
+          <p style="font-size:.78rem;color:var(--gray-500)">Questions? <a href="mailto:medical@fdsinstitut.com">medical@fdsinstitut.com</a></p>
+        </div>
+
+      </div><!-- /form-card -->
+    </div><!-- /hero-right -->
+
+  </div><!-- /hero-inner -->
 </section>
+
+<!-- Success toast -->
+<div id="med-banner" style="position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(120%);background:var(--blue);color:#fff;border-radius:999px;padding:.85rem 1.75rem;display:flex;align-items:center;gap:.65rem;font-family:'Nunito',sans-serif;font-weight:700;font-size:.85rem;white-space:nowrap;z-index:9999;box-shadow:0 12px 40px -6px rgba(0,48,78,.5);transition:transform .4s ease,opacity .4s ease;opacity:0">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+  Application submitted — we'll be in touch!
+</div>
+
 <script>
-/* FORM *//* FORM */
-let curStep=1; const ans={};
-function scrollToHero(){ document.getElementById('hero').scrollIntoView({behavior:'smooth'}); }
-function goStep(n){
-  document.querySelectorAll('.form-step').forEach(s=>s.classList.remove('active'));
-  const t=document.querySelector(`.form-step[data-step="${n}"]`);
-  if(t){ t.classList.add('active'); curStep=n; updateDots(n); }
-}
-function updateDots(n){
-  document.querySelectorAll('.form-dot').forEach((d,i)=>{ d.classList.remove('active','done'); if(i+1<n)d.classList.add('done'); else if(i+1===n)d.classList.add('active'); });
-}
-function goBack(){ if(curStep>1)goStep(curStep-1); }
-function selectLevel(el,val){
-  document.addEventListener('DOMContentLoaded',()=>{ document.querySelectorAll('.stat-number').forEach(el=>animCounter(el)); });
+(function(){
+  var step = 1;
+  var ans = { level:'', role:'', goal:'' };
 
-document.querySelectorAll('.level-card').forEach(c=>c.classList.remove('selected')); el.classList.add('selected'); ans.level=val;
-  if(val==='a1a2'||val==='none'){
-    /* redirect to general programme */
-    const w=document.querySelector('.form-steps-wrap');
-    w.innerHTML='<div style="text-align:center;padding:1.5rem 0"><div style="width:64px;height:64px;border-radius:50%;background:var(--blue-light);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><div style="font-family:Sora,sans-serif;font-weight:800;font-size:1.2rem;margin-bottom:.5rem">You need to reach B2 first!</div><p style="color:var(--gray-500);font-size:.9rem;line-height:1.6;margin-bottom:1.5rem">Our general German programme will take you from A1 to B2 in 12–18 months — then you step directly into C1 Medical.</p><a href="../homepage/index.html" target="_blank" rel="noopener" class="btn btn-orange btn-full btn-lg">Start general German (A1) →</a></div>';
-    return;
+  function goStep(n) {
+    document.querySelectorAll('#med-form-steps .form-step').forEach(function(s){ s.classList.remove('active'); });
+    var t = document.querySelector('#med-form-steps .form-step[data-step="'+n+'"]');
+    if (t) { t.classList.add('active'); step = n; updateDots(n); }
   }
-  setTimeout(()=>goStep(2),320);
-}
-function selectOpt(el,key,val){
-  el.closest('.option-list').querySelectorAll('.opt-card').forEach(c=>c.classList.remove('selected')); el.classList.add('selected'); ans[key]=val;
-  setTimeout(()=>goStep(curStep+1),320);
-}
-function submitForm(e){
-  e.preventDefault();
-  document.querySelector('.form-steps-wrap').style.display='none';
-  document.querySelector('.form-success').style.display='block';
-  const b=document.getElementById('success-banner'); b.classList.add('show'); setTimeout(()=>b.classList.remove('show'),6000);
-}
 
-/* FAQ */
-document.querySelectorAll('.faq-q').forEach(q=>{
-  q.addEventListener('click',()=>{ const item=q.closest('.faq-item'),isOpen=item.classList.contains('open'); document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open')); if(!isOpen)item.classList.add('open'); });
-  q.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); q.click(); } });
-});
+  function updateDots(n) {
+    document.querySelectorAll('.form-dots .form-dot').forEach(function(d, i){
+      d.classList.remove('active','done');
+      if (i+1 < n) d.classList.add('done');
+      else if (i+1 === n) d.classList.add('active');
+    });
+  }
 
+  window.medGoBack = function(){ if (step > 1) goStep(step - 1); };
 
+  window.medSelectLevel = function(el, val) {
+    document.querySelectorAll('.level-card').forEach(function(c){ c.classList.remove('selected'); });
+    el.classList.add('selected');
+    ans.level = val;
+    if (val === 'a1a2' || val === 'none') {
+      document.getElementById('med-form-steps').innerHTML =
+        '<div style="text-align:center;padding:1.5rem 0">'+
+          '<div style="width:64px;height:64px;border-radius:50%;background:var(--blue-light);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem">'+
+            '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>'+
+          '</div>'+
+          '<div style="font-family:Sora,sans-serif;font-weight:800;font-size:1.1rem;margin-bottom:.5rem;color:var(--black)">Start with general German first</div>'+
+          '<p style="color:var(--gray-500);font-size:.85rem;line-height:1.6;margin-bottom:1.25rem">Medical German requires B1 minimum. Our general programme takes you from A1 → B2 in 12–18 months.</p>'+
+          '<a href="https://fdsinstitut.online/global" target="_blank" rel="noopener" class="btn btn-teal btn-full btn-lg" style="display:inline-flex">Go to general programme →</a>'+
+        '</div>';
+      return;
+    }
+    setTimeout(function(){ goStep(2); }, 300);
+  };
 
-/* COUNTERS */
-function animCounter(el){
-  if(el.dataset.static){ el.textContent=el.dataset.static; return; }
-  const target=parseInt(el.dataset.count)||0,suffix=el.dataset.suffix||'',dur=1800,t0=performance.now();
-  function step(now){ const p=Math.min((now-t0)/dur,1),ease=1-Math.pow(1-p,3),v=Math.floor(ease*target); el.textContent=v+suffix; if(p<1)requestAnimationFrame(step); else el.textContent=target+suffix; }
-  requestAnimationFrame(step);
-}
+  window.medSelectOpt = function(el, key, val) {
+    el.closest('.option-list').querySelectorAll('.opt-card').forEach(function(c){ c.classList.remove('selected'); });
+    el.classList.add('selected');
+    ans[key] = val;
+    var hiddenEl = document.getElementById('med-hidden-' + key);
+    if (hiddenEl) hiddenEl.value = val;
+    setTimeout(function(){ goStep(step + 1); }, 300);
+  };
 
+  window.medSubmitForm = function(e) {
+    e.preventDefault();
+    var form = e.target;
+    var data = new FormData(form);
+    data.set('level', ans.level);
+    data.set('role', ans.role);
+    data.set('goal', ans.goal);
 
- });
+    fetch('https://api.web3forms.com/submit', { method:'POST', body: data })
+      .then(function(r){ return r.json(); })
+      .then(function(res){
+        if (res.success) {
+          document.getElementById('med-form-steps').style.display = 'none';
+          document.getElementById('med-success').style.display = 'block';
+          var b = document.getElementById('med-banner');
+          b.style.opacity = '1';
+          b.style.transform = 'translateX(-50%) translateY(0)';
+          setTimeout(function(){
+            b.style.opacity = '0';
+            b.style.transform = 'translateX(-50%) translateY(120%)';
+          }, 6000);
+        }
+      })
+      .catch(function(){
+        /* fallback: still show success */
+        document.getElementById('med-form-steps').style.display = 'none';
+        document.getElementById('med-success').style.display = 'block';
+      });
+  };
 
-document.querySelectorAll('.level-card').forEach(c=>{ c.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); c.click(); } }); });
+  /* keyboard support */
+  document.querySelectorAll('.level-card').forEach(function(c){
+    c.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); c.click(); }
+    });
+  });
+
+})();
 </script>
 </div>
