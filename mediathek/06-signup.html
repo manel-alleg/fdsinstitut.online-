@@ -1,0 +1,530 @@
+<style>
+.fds-block{margin:0!important;padding:0!important;display:block;box-sizing:border-box}
+.fds-block *{box-sizing:border-box}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --orange:#FF7900;
+  --blue:#00304E;
+  --teal:#0891B2;
+  --black:#111;
+  --gray-50:#F7F8FA;
+  --gray-100:#F0F1F3;
+  --gray-200:#E2E3E5;
+  --gray-500:#6B7280;
+}
+#fds-signup{
+  font-family:'Montserrat',sans-serif;
+  background:var(--gray-50);
+  padding:5rem 1.5rem;
+  color:var(--black);
+}
+#fds-signup .sg-header{
+  text-align:center;
+  margin-bottom:3rem;
+}
+#fds-signup .sg-eyebrow{
+  font-family:'Nunito',sans-serif;
+  font-weight:700;
+  font-size:.75rem;
+  letter-spacing:.15em;
+  color:var(--teal);
+  text-transform:uppercase;
+  margin:0 0 .75rem;
+}
+#fds-signup .sg-h2{
+  font-family:'Sora',sans-serif;
+  font-weight:700;
+  font-size:clamp(1.75rem,4vw,2.5rem);
+  color:var(--blue);
+  margin:0 0 1rem;
+  line-height:1.2;
+}
+#fds-signup .sg-sub{
+  font-size:.95rem;
+  color:var(--gray-500);
+  margin:0 auto;
+  max-width:480px;
+  line-height:1.6;
+}
+#fds-signup .sg-layout{
+  display:flex;
+  gap:1.75rem;
+  max-width:960px;
+  margin:0 auto;
+  align-items:flex-start;
+}
+#fds-signup .sg-form-col{
+  flex:1;
+  min-width:0;
+}
+#fds-signup .sg-sidebar{
+  width:280px;
+  flex-shrink:0;
+}
+@media(max-width:780px){
+  #fds-signup .sg-layout{flex-direction:column;}
+  #fds-signup .sg-sidebar{width:100%;}
+}
+/* Form card */
+#fds-signup .sg-card{
+  background:#fff;
+  border-radius:36px;
+  padding:2.5rem;
+  box-shadow:0 4px 32px rgba(0,0,0,.09),0 1px 4px rgba(0,0,0,.04);
+}
+/* Progress dots */
+#fds-signup .sg-progress{
+  display:flex;
+  gap:.5rem;
+  justify-content:center;
+  margin-bottom:2rem;
+}
+#fds-signup .sg-dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:var(--gray-200);
+  transition:background .25s,transform .25s;
+}
+#fds-signup .sg-dot.active{
+  background:var(--orange);
+  transform:scale(1.25);
+}
+#fds-signup .sg-dot.done{
+  background:var(--teal);
+}
+/* Step title */
+#fds-signup .sg-step-title{
+  font-family:'Sora',sans-serif;
+  font-weight:700;
+  font-size:1.05rem;
+  color:var(--blue);
+  margin:0 0 1.25rem;
+}
+/* Steps */
+#fds-signup .sg-step{display:none;}
+#fds-signup .sg-step.visible{display:block;}
+/* Option cards (step 1) */
+#fds-signup .sg-options{
+  display:flex;
+  flex-direction:column;
+  gap:.75rem;
+}
+#fds-signup .sg-option{
+  border:2px solid var(--gray-200);
+  border-radius:16px;
+  padding:1rem 1.25rem;
+  cursor:pointer;
+  transition:border-color .2s,background .2s;
+  display:flex;
+  flex-direction:column;
+  gap:.2rem;
+}
+#fds-signup .sg-option:hover{
+  border-color:var(--orange);
+  background:rgba(255,121,0,.03);
+}
+#fds-signup .sg-option.selected{
+  border-color:var(--orange);
+  background:rgba(255,121,0,.06);
+}
+#fds-signup .sg-option-name{
+  font-family:'Sora',sans-serif;
+  font-weight:700;
+  font-size:.92rem;
+  color:var(--blue);
+}
+#fds-signup .sg-option-meta{
+  font-family:'Nunito',sans-serif;
+  font-size:.75rem;
+  color:var(--gray-500);
+  font-weight:600;
+}
+/* Date pills (step 2) */
+#fds-signup .sg-dates{
+  display:flex;
+  gap:.75rem;
+  flex-wrap:wrap;
+  margin-bottom:1.5rem;
+}
+#fds-signup .sg-date{
+  border:2px solid var(--gray-200);
+  border-radius:16px;
+  padding:.7rem 1.2rem;
+  cursor:pointer;
+  font-family:'Nunito',sans-serif;
+  font-weight:700;
+  font-size:.85rem;
+  color:var(--blue);
+  background:#fff;
+  transition:border-color .2s,background .2s,color .2s;
+}
+#fds-signup .sg-date:hover{
+  border-color:var(--orange);
+}
+#fds-signup .sg-date.selected{
+  border-color:var(--orange);
+  background:rgba(255,121,0,.08);
+  color:var(--orange);
+}
+/* Inputs (step 3) */
+#fds-signup .sg-fields{
+  display:flex;
+  flex-direction:column;
+  gap:.85rem;
+  margin-bottom:1.25rem;
+}
+#fds-signup .sg-field label{
+  font-family:'Nunito',sans-serif;
+  font-weight:700;
+  font-size:.75rem;
+  color:var(--gray-500);
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  display:block;
+  margin-bottom:.3rem;
+}
+#fds-signup .sg-field input,
+#fds-signup .sg-field select{
+  width:100%;
+  padding:.75rem 1rem;
+  border:2px solid var(--gray-200);
+  border-radius:16px;
+  font-family:'Montserrat',sans-serif;
+  font-size:.9rem;
+  color:var(--black);
+  outline:none;
+  background:#fff;
+  transition:border-color .2s;
+  appearance:none;
+  -webkit-appearance:none;
+}
+#fds-signup .sg-field input:focus,
+#fds-signup .sg-field select:focus{
+  border-color:var(--teal);
+}
+#fds-signup .sg-select-wrap{position:relative;}
+#fds-signup .sg-select-wrap::after{
+  content:'▾';
+  position:absolute;
+  right:1rem;
+  top:50%;
+  transform:translateY(-50%);
+  pointer-events:none;
+  color:var(--gray-500);
+}
+#fds-signup .sg-note{
+  font-family:'Nunito',sans-serif;
+  font-size:.73rem;
+  color:var(--gray-500);
+  text-align:center;
+  margin:.75rem 0 0;
+  line-height:1.6;
+}
+/* Buttons */
+#fds-signup .btn-teal{
+  background:var(--teal);
+  color:#fff;
+  border:none;
+  border-radius:16px;
+  padding:.85rem 1.5rem;
+  font-family:'Sora',sans-serif;
+  font-weight:700;
+  font-size:.9rem;
+  cursor:pointer;
+  transition:opacity .2s,transform .15s;
+}
+#fds-signup .btn-orange{
+  background:var(--orange);
+  color:#fff;
+  border:none;
+  border-radius:16px;
+  padding:.85rem 1.5rem;
+  font-family:'Sora',sans-serif;
+  font-weight:700;
+  font-size:.9rem;
+  cursor:pointer;
+  transition:opacity .2s,transform .15s;
+}
+#fds-signup .btn-full{width:100%;}
+#fds-signup .btn-teal:hover,
+#fds-signup .btn-orange:hover{opacity:.9;transform:translateY(-1px);}
+#fds-signup .btn-back{
+  background:none;
+  border:none;
+  color:var(--gray-500);
+  font-family:'Nunito',sans-serif;
+  font-weight:700;
+  font-size:.82rem;
+  cursor:pointer;
+  padding:0;
+  margin-bottom:1rem;
+  display:flex;
+  align-items:center;
+  gap:.3rem;
+}
+#fds-signup .btn-back:hover{color:var(--blue);}
+/* Success */
+#fds-signup .sg-success{
+  display:none;
+  text-align:center;
+  padding:2rem 0;
+}
+#fds-signup .sg-success .success-icon{
+  font-size:3rem;
+  margin-bottom:1rem;
+  display:block;
+}
+#fds-signup .sg-success h3{
+  font-family:'Sora',sans-serif;
+  font-weight:700;
+  font-size:1.2rem;
+  color:var(--blue);
+  margin:0 0 .5rem;
+}
+#fds-signup .sg-success p{
+  font-size:.88rem;
+  color:var(--gray-500);
+  margin:0;
+  line-height:1.5;
+}
+/* Sidebar */
+#fds-signup .sg-info-card{
+  background:#fff;
+  border-radius:26px;
+  border:2px solid var(--orange);
+  padding:1.75rem;
+  box-shadow:0 4px 20px rgba(0,0,0,.07);
+}
+#fds-signup .sg-info-title{
+  font-family:'Sora',sans-serif;
+  font-weight:700;
+  font-size:1rem;
+  color:var(--orange);
+  margin:0 0 1.25rem;
+}
+#fds-signup .sg-info-items{
+  display:flex;
+  flex-direction:column;
+  gap:1rem;
+}
+#fds-signup .sg-info-item{
+  display:flex;
+  gap:.75rem;
+  align-items:flex-start;
+}
+#fds-signup .sg-info-emoji{
+  font-size:1.1rem;
+  flex-shrink:0;
+  margin-top:.05rem;
+}
+#fds-signup .sg-info-label{
+  font-family:'Nunito',sans-serif;
+  font-weight:700;
+  font-size:.73rem;
+  color:var(--gray-500);
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  margin:0 0 .15rem;
+}
+#fds-signup .sg-info-value{
+  font-family:'Montserrat',sans-serif;
+  font-size:.83rem;
+  color:var(--black);
+  margin:0;
+  line-height:1.4;
+}
+</style>
+
+<div class="fds-block" id="fds-signup">
+  <div class="sg-header">
+    <p class="sg-eyebrow">INSCRIPTION</p>
+    <h2 class="sg-h2">Inscris-toi à une activité</h2>
+    <p class="sg-sub">Choisis ton activité et réserve ta place en 2 minutes.</p>
+  </div>
+
+  <div class="sg-layout">
+
+    <!-- LEFT: multi-step form -->
+    <div class="sg-form-col">
+      <div class="sg-card">
+
+        <!-- Progress dots -->
+        <div class="sg-progress" id="sg-progress">
+          <div class="sg-dot active" id="dot-1"></div>
+          <div class="sg-dot" id="dot-2"></div>
+          <div class="sg-dot" id="dot-3"></div>
+        </div>
+
+        <!-- STEP 1 -->
+        <div class="sg-step visible" id="sg-step-1">
+          <p class="sg-step-title">Quelle activité ?</p>
+          <div class="sg-options">
+            <div class="sg-option" data-val="deutsch" onclick="sgSelectActivity(this)">
+              <span class="sg-option-name">Sprachcafé / LinguaRad</span>
+              <span class="sg-option-meta">Deutsch · chaque semaine</span>
+            </div>
+            <div class="sg-option" data-val="english" onclick="sgSelectActivity(this)">
+              <span class="sg-option-name">SpeEasy / Kinderkreis</span>
+              <span class="sg-option-meta">English · bilingue</span>
+            </div>
+            <div class="sg-option" data-val="culturel" onclick="sgSelectActivity(this)">
+              <span class="sg-option-name">Filmabend / Lese Ecke / Manga Club</span>
+              <span class="sg-option-meta">Culturel · libre</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="sg-step" id="sg-step-2">
+          <button class="btn-back" onclick="sgGoStep(1)">← Retour</button>
+          <p class="sg-step-title">Quand ?</p>
+          <div class="sg-dates">
+            <div class="sg-date" onclick="sgSelectDate(this)">Lundi 16 Juin</div>
+            <div class="sg-date" onclick="sgSelectDate(this)">Jeudi 19 Juin</div>
+            <div class="sg-date" onclick="sgSelectDate(this)">Samedi 21 Juin</div>
+          </div>
+          <button class="btn-teal btn-full" onclick="sgGoStep(3)" id="sg-btn-next2" disabled style="opacity:.5;cursor:default;">Continuer →</button>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="sg-step" id="sg-step-3">
+          <button class="btn-back" onclick="sgGoStep(2)">← Retour</button>
+          <p class="sg-step-title">Tes infos</p>
+          <form class="sg-fields" id="sg-final-form" novalidate>
+            <div class="sg-field">
+              <label for="sg-prenom">Prénom *</label>
+              <input type="text" id="sg-prenom" name="prenom" placeholder="Votre prénom" required/>
+            </div>
+            <div class="sg-field">
+              <label for="sg-email">Email *</label>
+              <input type="email" id="sg-email" name="email" placeholder="votre@email.com" required/>
+            </div>
+            <div class="sg-field">
+              <label for="sg-niveau">Niveau d'allemand</label>
+              <div class="sg-select-wrap">
+                <select id="sg-niveau" name="niveau">
+                  <option value="" disabled selected>Choisir…</option>
+                  <option value="debutant">Débutant</option>
+                  <option value="a1a2">A1 – A2</option>
+                  <option value="b1b2">B1 – B2</option>
+                  <option value="c1c2">C1 – C2</option>
+                  <option value="na">Non applicable</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="btn-orange btn-full">Confirmer l'inscription →</button>
+          </form>
+          <p class="sg-note">Confirmation par email · Annulation gratuite · 8 min requis</p>
+        </div>
+
+        <!-- SUCCESS -->
+        <div class="sg-success" id="sg-success">
+          <span class="success-icon">✅</span>
+          <h3>Inscription confirmée !</h3>
+          <p>Tu recevras un email de confirmation sous peu.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RIGHT: sidebar -->
+    <div class="sg-sidebar">
+      <div class="sg-info-card">
+        <p class="sg-info-title">Infos pratiques</p>
+        <div class="sg-info-items">
+          <div class="sg-info-item">
+            <span class="sg-info-emoji">📍</span>
+            <div>
+              <p class="sg-info-label">Adresse</p>
+              <p class="sg-info-value">Mediathek FDS, Annaba, Algérie</p>
+            </div>
+          </div>
+          <div class="sg-info-item">
+            <span class="sg-info-emoji">🕐</span>
+            <div>
+              <p class="sg-info-label">Horaires</p>
+              <p class="sg-info-value">Lun–Sam 9h – 20h</p>
+            </div>
+          </div>
+          <div class="sg-info-item">
+            <span class="sg-info-emoji">📞</span>
+            <div>
+              <p class="sg-info-label">Contact</p>
+              <p class="sg-info-value">kultur@fdsinstitut.com</p>
+            </div>
+          </div>
+          <div class="sg-info-item">
+            <span class="sg-info-emoji">⚡</span>
+            <div>
+              <p class="sg-info-label">Rappel</p>
+              <p class="sg-info-value">Activité confirmée dès 8 inscrits</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  var currentStep=1;
+  var selectedActivity=null;
+  var selectedDate=null;
+
+  window.sgSelectActivity=function(el){
+    var opts=document.querySelectorAll('#fds-signup .sg-option');
+    opts.forEach(function(o){o.classList.remove('selected');});
+    el.classList.add('selected');
+    selectedActivity=el.getAttribute('data-val');
+    setTimeout(function(){sgGoStep(2);},300);
+  };
+
+  window.sgSelectDate=function(el){
+    var dates=document.querySelectorAll('#fds-signup .sg-date');
+    dates.forEach(function(d){d.classList.remove('selected');});
+    el.classList.add('selected');
+    selectedDate=el.textContent.trim();
+    var btn=document.getElementById('sg-btn-next2');
+    if(btn){btn.disabled=false;btn.style.opacity='1';btn.style.cursor='pointer';}
+  };
+
+  window.sgGoStep=function(n){
+    currentStep=n;
+    for(var i=1;i<=3;i++){
+      var step=document.getElementById('sg-step-'+i);
+      var dot=document.getElementById('dot-'+i);
+      if(step){step.classList.toggle('visible',i===n);}
+      if(dot){
+        dot.classList.toggle('active',i===n);
+        dot.classList.toggle('done',i<n);
+      }
+    }
+  };
+
+  var finalForm=document.getElementById('sg-final-form');
+  if(finalForm){
+    finalForm.addEventListener('submit',function(e){
+      e.preventDefault();
+      var prenom=document.getElementById('sg-prenom').value.trim();
+      var email=document.getElementById('sg-email').value.trim();
+      if(!prenom||!email)return;
+      for(var i=1;i<=3;i++){
+        var step=document.getElementById('sg-step-'+i);
+        if(step)step.classList.remove('visible');
+        var dot=document.getElementById('dot-'+i);
+        if(dot){dot.classList.remove('active');dot.classList.add('done');}
+      }
+      document.getElementById('sg-progress').style.display='none';
+      var success=document.getElementById('sg-success');
+      if(success)success.style.display='block';
+    });
+  }
+})();
+</script>

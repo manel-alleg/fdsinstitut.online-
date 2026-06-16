@@ -1,0 +1,452 @@
+<style>
+.fds-block{margin:0!important;padding:0!important;display:block;box-sizing:border-box}
+.fds-block *{box-sizing:border-box}
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"/>
+
+<style>
+:root {
+  --orange: #FF7900;
+  --blue: #00304E;
+  --teal: #0891B2;
+  --black: #111;
+  --gray-50: #F7F8FA;
+  --gray-100: #F0F1F3;
+  --gray-200: #E2E3E5;
+  --gray-500: #6B7280;
+}
+
+.fds-block .mh-hero {
+  position: relative;
+  min-height: 100vh;
+  background-color: var(--blue);
+  overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  align-items: center;
+  padding: 5rem 1.5rem;
+}
+
+.fds-block .mh-hero::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle at center, rgba(8,145,178,0.25) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.fds-block .mh-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: -80px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle at center, rgba(255,121,0,0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.fds-block .mh-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* LEFT COLUMN */
+.fds-block .mh-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.fds-block .mh-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 999px;
+  padding: .45rem 1.1rem;
+  width: fit-content;
+  font-family: 'Nunito', sans-serif;
+  font-size: .8rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: .04em;
+}
+
+.fds-block .mh-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.fds-block .mh-pulse::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: rgba(74,222,128,0.4);
+  animation: mh-pulse 2s ease-in-out infinite;
+}
+
+@keyframes mh-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.6); opacity: 0; }
+}
+
+.fds-block .mh-headline {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+}
+
+.fds-block .mh-h1-line1 {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(2.6rem, 5vw, 4rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.fds-block .mh-h1-line2 {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(2.6rem, 5vw, 4rem);
+  font-weight: 800;
+  color: var(--orange);
+  line-height: 1.1;
+  margin: 0;
+}
+
+.fds-block .mh-h1-line3 {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(2.6rem, 5vw, 4rem);
+  font-weight: 800;
+  color: var(--teal);
+  line-height: 1.1;
+  margin: 0;
+}
+
+.fds-block .mh-sub {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.65;
+  max-width: 480px;
+  margin: 0;
+}
+
+.fds-block .mh-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .65rem;
+}
+
+.fds-block .mh-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  background: rgba(255,255,255,0.95);
+  color: var(--black);
+  font-family: 'Nunito', sans-serif;
+  font-size: .82rem;
+  font-weight: 700;
+  padding: .45rem 1rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.fds-block .mh-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.fds-block .mh-btn-orange {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: var(--orange);
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: .95rem;
+  font-weight: 700;
+  padding: .85rem 1.8rem;
+  border-radius: 18px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background .2s, transform .15s;
+  letter-spacing: .01em;
+}
+
+.fds-block .mh-btn-orange:hover {
+  background: #e06800;
+  transform: translateY(-1px);
+}
+
+.fds-block .mh-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: transparent;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: .95rem;
+  font-weight: 700;
+  padding: .85rem 1.8rem;
+  border-radius: 18px;
+  border: 2px solid rgba(255,255,255,0.45);
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color .2s, background .2s, transform .15s;
+  letter-spacing: .01em;
+}
+
+.fds-block .mh-btn-outline:hover {
+  border-color: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.06);
+  transform: translateY(-1px);
+}
+
+/* RIGHT COLUMN — glass card */
+.fds-block .mh-glass-card {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 28px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.fds-block .mh-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  margin-bottom: 2rem;
+}
+
+.fds-block .mh-stat {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+}
+
+.fds-block .mh-stat-number {
+  font-family: 'Sora', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--orange);
+  line-height: 1;
+}
+
+.fds-block .mh-stat-label {
+  font-family: 'Nunito', sans-serif;
+  font-size: .78rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.7);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.fds-block .mh-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.15);
+  margin-bottom: 1.6rem;
+}
+
+.fds-block .mh-next-label {
+  font-family: 'Nunito', sans-serif;
+  font-size: .75rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  margin-bottom: .9rem;
+}
+
+.fds-block .mh-activity-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 1.1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+}
+
+.fds-block .mh-activity-row1 {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+
+.fds-block .mh-teal-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--teal);
+  flex-shrink: 0;
+}
+
+.fds-block .mh-activity-title {
+  font-family: 'Sora', sans-serif;
+  font-size: .95rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.fds-block .mh-activity-sub {
+  font-family: 'Montserrat', sans-serif;
+  font-size: .8rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.65);
+  padding-left: 1.4rem;
+}
+
+.fds-block .mh-activity-date {
+  font-family: 'Nunito', sans-serif;
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--orange);
+  padding-left: 1.4rem;
+  letter-spacing: .02em;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .fds-block .mh-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .fds-block .mh-hero {
+    min-height: auto;
+    padding: 4rem 1.25rem 3.5rem;
+  }
+
+  .fds-block .mh-glass-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .fds-block .mh-stats {
+    flex-direction: row;
+    gap: 0;
+    justify-content: space-around;
+  }
+
+  .fds-block .mh-stat {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 520px) {
+  .fds-block .mh-ctas {
+    flex-direction: column;
+  }
+
+  .fds-block .mh-btn-orange,
+  .fds-block .mh-btn-outline {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .fds-block .mh-stats {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .fds-block .mh-stat {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+</style>
+
+<div class="fds-block">
+  <section class="mh-hero">
+    <div class="mh-container">
+
+      <!-- LEFT -->
+      <div class="mh-left">
+        <span class="mh-badge">
+          <span class="mh-pulse"></span>
+          📍 Annaba · Algérie
+        </span>
+
+        <div class="mh-headline">
+          <h1 class="mh-h1-line1">Mediathek FDS</h1>
+          <h1 class="mh-h1-line2">Ta bibliothèque.</h1>
+          <h1 class="mh-h1-line3">Ton espace.</h1>
+        </div>
+
+        <p class="mh-sub">Un espace calme et ouvert — bibliothèque, cinéma, salle d'étude. Rejoins notre communauté culturelle.</p>
+
+        <div class="mh-pills">
+          <span class="mh-pill">📚 Bibliothèque</span>
+          <span class="mh-pill">🎬 Cinéma</span>
+          <span class="mh-pill">🏛️ Espace study</span>
+        </div>
+
+        <div class="mh-ctas">
+          <a href="#" class="mh-btn-orange">Explorer la bibliothèque</a>
+          <a href="#" class="mh-btn-outline">Réserver l'espace</a>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="mh-glass-card">
+        <div class="mh-stats">
+          <div class="mh-stat">
+            <span class="mh-stat-number">500+</span>
+            <span class="mh-stat-label">livres disponibles</span>
+          </div>
+          <div class="mh-stat">
+            <span class="mh-stat-number">12</span>
+            <span class="mh-stat-label">projections par an</span>
+          </div>
+          <div class="mh-stat">
+            <span class="mh-stat-number">6</span>
+            <span class="mh-stat-label">clubs actifs</span>
+          </div>
+        </div>
+
+        <div class="mh-divider"></div>
+
+        <p class="mh-next-label">Prochaine activité</p>
+
+        <div class="mh-activity-card">
+          <div class="mh-activity-row1">
+            <span class="mh-teal-dot"></span>
+            <span class="mh-activity-title">Sprachcafé</span>
+          </div>
+          <p class="mh-activity-sub">Rituel und Tradition</p>
+          <p class="mh-activity-date">Lundi · 13h30</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>

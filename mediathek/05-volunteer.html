@@ -1,0 +1,315 @@
+<style>
+.fds-block{margin:0!important;padding:0!important;display:block;box-sizing:border-box}
+.fds-block *{box-sizing:border-box}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --orange:#FF7900;
+  --blue:#00304E;
+  --teal:#0891B2;
+  --purple:#7C3AED;
+  --black:#111;
+  --gray-50:#F7F8FA;
+  --gray-200:#E2E3E5;
+  --gray-500:#6B7280;
+}
+#fds-vol{
+  font-family:'Montserrat',sans-serif;
+  background:var(--blue);
+  padding:5rem 1.5rem;
+  color:#fff;
+}
+#fds-vol .vol-header{
+  text-align:center;
+  margin-bottom:3rem;
+}
+#fds-vol .vol-eyebrow{
+  font-family:'Nunito',sans-serif;
+  font-weight:700;
+  font-size:.75rem;
+  letter-spacing:.15em;
+  color:var(--teal);
+  text-transform:uppercase;
+  margin:0 0 .75rem;
+}
+#fds-vol .vol-h2{
+  font-family:'Sora',sans-serif;
+  font-weight:700;
+  font-size:clamp(1.75rem,4vw,2.5rem);
+  color:#fff;
+  margin:0 0 1rem;
+  line-height:1.2;
+}
+#fds-vol .vol-sub{
+  font-size:.95rem;
+  color:rgba(255,255,255,.7);
+  margin:0 auto;
+  max-width:520px;
+  line-height:1.6;
+}
+#fds-vol .vol-roles{
+  display:flex;
+  gap:1.25rem;
+  justify-content:center;
+  max-width:900px;
+  margin:0 auto 2rem;
+  flex-wrap:wrap;
+}
+#fds-vol .role-card{
+  background:#fff;
+  border-radius:28px;
+  padding:2rem;
+  box-shadow:0 8px 32px rgba(0,0,0,.18);
+  flex:1;
+  min-width:220px;
+  max-width:280px;
+  display:flex;
+  flex-direction:column;
+  gap:1rem;
+}
+#fds-vol .role-icon{
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.5rem;
+  flex-shrink:0;
+}
+#fds-vol .role-name{
+  font-family:'Sora',sans-serif;
+  font-weight:700;
+  font-size:1rem;
+  color:var(--blue);
+  margin:0;
+  line-height:1.3;
+}
+#fds-vol .role-desc{
+  font-size:.85rem;
+  color:var(--gray-500);
+  margin:0;
+  line-height:1.5;
+}
+#fds-vol .role-tags{
+  display:flex;
+  gap:.5rem;
+  flex-wrap:wrap;
+  margin-top:auto;
+}
+#fds-vol .role-tag{
+  font-family:'Nunito',sans-serif;
+  font-weight:700;
+  font-size:.68rem;
+  padding:.22rem .6rem;
+  border-radius:999px;
+  background:var(--gray-50,#F7F8FA);
+  color:var(--gray-500);
+  border:1px solid var(--gray-200);
+}
+#fds-vol .vol-wip{
+  text-align:center;
+  color:rgba(255,255,255,.7);
+  font-size:.88rem;
+  margin:0 auto 2rem;
+  max-width:480px;
+  line-height:1.6;
+}
+#fds-vol .vol-cta-card{
+  background:#fff;
+  border-radius:24px;
+  padding:2rem;
+  max-width:480px;
+  margin:0 auto;
+  box-shadow:0 8px 40px rgba(0,0,0,.18);
+}
+#fds-vol .vol-cta-title{
+  font-family:'Sora',sans-serif;
+  font-weight:700;
+  font-size:1.15rem;
+  color:var(--blue);
+  margin:0 0 1.25rem;
+  text-align:center;
+}
+#fds-vol .vol-form{
+  display:flex;
+  flex-direction:column;
+  gap:.85rem;
+}
+#fds-vol .vol-form label{
+  font-family:'Nunito',sans-serif;
+  font-weight:700;
+  font-size:.78rem;
+  color:var(--gray-500);
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  display:block;
+  margin-bottom:.3rem;
+}
+#fds-vol .vol-form input,
+#fds-vol .vol-form select{
+  width:100%;
+  padding:.75rem 1rem;
+  border:2px solid var(--gray-200);
+  border-radius:16px;
+  font-family:'Montserrat',sans-serif;
+  font-size:.9rem;
+  color:var(--black);
+  outline:none;
+  background:#fff;
+  transition:border-color .2s;
+  appearance:none;
+  -webkit-appearance:none;
+}
+#fds-vol .vol-form input:focus,
+#fds-vol .vol-form select:focus{
+  border-color:var(--orange);
+}
+#fds-vol .vol-select-wrap{
+  position:relative;
+}
+#fds-vol .vol-select-wrap::after{
+  content:'▾';
+  position:absolute;
+  right:1rem;
+  top:50%;
+  transform:translateY(-50%);
+  pointer-events:none;
+  color:var(--gray-500);
+  font-size:.9rem;
+}
+#fds-vol .btn-orange{
+  background:var(--orange);
+  color:#fff;
+  border:none;
+  border-radius:16px;
+  padding:.9rem 1.5rem;
+  font-family:'Sora',sans-serif;
+  font-weight:700;
+  font-size:.95rem;
+  cursor:pointer;
+  width:100%;
+  letter-spacing:.02em;
+  transition:opacity .2s,transform .15s;
+}
+#fds-vol .btn-orange:hover{
+  opacity:.9;
+  transform:translateY(-1px);
+}
+#fds-vol .vol-success{
+  display:none;
+  text-align:center;
+  padding:1.5rem 0;
+}
+#fds-vol .vol-success .success-icon{
+  font-size:2.5rem;
+  margin-bottom:.75rem;
+}
+#fds-vol .vol-success p{
+  font-family:'Sora',sans-serif;
+  font-weight:700;
+  font-size:1rem;
+  color:var(--blue);
+  margin:0;
+}
+@media(max-width:680px){
+  #fds-vol .vol-roles{flex-direction:column;align-items:center;}
+  #fds-vol .role-card{max-width:100%;}
+}
+</style>
+
+<div class="fds-block" id="fds-vol">
+  <div class="vol-header">
+    <p class="vol-eyebrow">BÉNÉVOLAT</p>
+    <h2 class="vol-h2">Rejoins l'équipe Mediathek</h2>
+    <p class="vol-sub">Tu veux contribuer à la vie culturelle de la Mediathek ? Le programme bénévolat est fait pour toi.</p>
+  </div>
+
+  <div class="vol-roles">
+
+    <div class="role-card">
+      <div class="role-icon" style="background:var(--orange);">📚</div>
+      <p class="role-name">Bibliothécaire bénévole</p>
+      <p class="role-desc">Gestion des livres, accueil, inventaire</p>
+      <div class="role-tags">
+        <span class="role-tag">2h/semaine</span>
+        <span class="role-tag">Tous niveaux</span>
+      </div>
+    </div>
+
+    <div class="role-card">
+      <div class="role-icon" style="background:var(--teal);">🎭</div>
+      <p class="role-name">Animateur d'activité</p>
+      <p class="role-desc">Animer un club, atelier ou Sprachcafé</p>
+      <div class="role-tags">
+        <span class="role-tag">1h/session</span>
+        <span class="role-tag">Bilingue préféré</span>
+      </div>
+    </div>
+
+    <div class="role-card">
+      <div class="role-icon" style="background:var(--purple);">🎬</div>
+      <p class="role-name">Coordinateur événements</p>
+      <p class="role-desc">Organiser Filmabend, projections, sorties</p>
+      <div class="role-tags">
+        <span class="role-tag">Flexible</span>
+        <span class="role-tag">Créatif</span>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="vol-wip">⚠️ Programme en cours d'élaboration — manifestez votre intérêt dès maintenant.</p>
+
+  <div class="vol-cta-card">
+    <div id="vol-form-wrap">
+      <p class="vol-cta-title">Exprimer mon intérêt</p>
+      <form class="vol-form" id="vol-form" novalidate>
+        <div>
+          <label for="vol-prenom">Prénom</label>
+          <input type="text" id="vol-prenom" name="prenom" placeholder="Votre prénom" required/>
+        </div>
+        <div>
+          <label for="vol-email">Email</label>
+          <input type="email" id="vol-email" name="email" placeholder="votre@email.com" required/>
+        </div>
+        <div>
+          <label for="vol-role">Rôle souhaité</label>
+          <div class="vol-select-wrap">
+            <select id="vol-role" name="role" required>
+              <option value="" disabled selected>Choisir un rôle…</option>
+              <option value="bibliothécaire">Bibliothécaire</option>
+              <option value="animateur">Animateur</option>
+              <option value="coordinateur">Coordinateur</option>
+              <option value="autre">Autre</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn-orange">Envoyer →</button>
+      </form>
+    </div>
+    <div class="vol-success" id="vol-success">
+      <div class="success-icon">✅</div>
+      <p>Merci ! Nous vous contacterons dès le lancement du programme.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var form=document.getElementById('vol-form');
+  if(!form)return;
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var prenom=document.getElementById('vol-prenom').value.trim();
+    var email=document.getElementById('vol-email').value.trim();
+    var role=document.getElementById('vol-role').value;
+    if(!prenom||!email||!role)return;
+    document.getElementById('vol-form-wrap').style.display='none';
+    document.getElementById('vol-success').style.display='block';
+  });
+})();
+</script>

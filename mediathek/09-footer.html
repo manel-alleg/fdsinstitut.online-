@@ -1,0 +1,172 @@
+<style>
+.fds-block{margin:0!important;padding:0!important;display:block;box-sizing:border-box}
+.fds-block *{box-sizing:border-box}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --orange: #FF7900;
+  --blue: #00304E;
+  --teal: #0891B2;
+  --black: #111;
+  --gray-50: #F7F8FA;
+  --gray-200: #E2E3E5;
+  --gray-500: #6B7280;
+}
+
+.ft-section {
+  background: #0f172a;
+  padding: 3rem 1.5rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.ft-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* LOGO */
+.ft-logo {
+  display: block;
+  margin: 0 auto 0.9rem auto;
+  height: 40px;
+  width: auto;
+}
+
+/* MEDIATHEK NAME */
+.ft-name {
+  font-family: 'Sora', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #fff;
+  margin: 0 0 0.65rem 0;
+  line-height: 1.3;
+}
+
+/* ADDRESS / CONTACT */
+.ft-contact {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  font-size: 0.82rem;
+  color: var(--gray-500);
+  margin: 0 0 1.5rem 0;
+  line-height: 1.5;
+}
+
+.ft-contact a {
+  color: var(--gray-500);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.ft-contact a:hover {
+  color: var(--orange);
+  border-bottom-color: var(--orange);
+}
+
+/* DIVIDER */
+.ft-hr {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  margin: 0 0 1.25rem 0;
+}
+
+/* LINKS ROW */
+.ft-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.5rem;
+  margin: 0 0 1.25rem 0;
+}
+
+.ft-link {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+
+.ft-link:hover {
+  color: rgba(255,255,255,0.9);
+}
+
+.ft-link--current {
+  color: #fff;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.ft-link-sep {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.25);
+  user-select: none;
+}
+
+/* COPYRIGHT */
+.ft-copy {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.3);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+  .ft-section {
+    padding: 2.25rem 1.25rem;
+  }
+  .ft-links {
+    gap: 0.25rem 0.4rem;
+  }
+}
+</style>
+
+<div class="fds-block">
+  <footer class="ft-section">
+    <div class="ft-inner">
+
+      <!-- LOGO -->
+      <img
+        class="ft-logo"
+        src="https://assets.zyrosite.com/V9huRYqxhZWbrM0f/fds-online-logo-28-ODynkWIP4gQDp52I.png"
+        alt="FDS Institut logo"
+        height="40"
+        loading="lazy"
+      />
+
+      <!-- MEDIATHEK NAME -->
+      <p class="ft-name">Mediathek FDS</p>
+
+      <!-- ADDRESS + CONTACT -->
+      <p class="ft-contact">
+        📍 Annaba, Algérie&nbsp;·&nbsp;<a href="mailto:kultur@fdsinstitut.com">kultur@fdsinstitut.com</a>
+      </p>
+
+      <!-- DIVIDER -->
+      <hr class="ft-hr"/>
+
+      <!-- LINKS ROW -->
+      <nav class="ft-links" aria-label="Navigation pied de page">
+        <a class="ft-link" href="https://fdsinstitut.online" target="_blank" rel="noopener">fdsinstitut.online ↗</a>
+        <span class="ft-link-sep" aria-hidden="true">·</span>
+        <span class="ft-link">Cours d'allemand</span>
+        <span class="ft-link-sep" aria-hidden="true">·</span>
+        <span class="ft-link ft-link--current" aria-current="page">Mediathek</span>
+      </nav>
+
+      <!-- COPYRIGHT -->
+      <p class="ft-copy">© 2025–2026 FDS Institut · Tous droits réservés</p>
+
+    </div>
+  </footer>
+</div>
