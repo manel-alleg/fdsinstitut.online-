@@ -6,223 +6,247 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"/>
 <style>
-:root {
-  --orange: #FF7900;
-  --blue: #00304E;
-  --teal: #0891B2;
-  --black: #111;
-  --gray-50: #F7F8FA;
-  --gray-200: #E2E3E5;
-  --gray-500: #6B7280;
+:root{
+  --orange:#FF7900;
+  --blue:#00304E;
+  --teal:#0891B2;
+  --black:#111;
+  --gray-50:#F7F8FA;
+  --gray-200:#E2E3E5;
+  --gray-500:#6B7280;
 }
 
-.br-section {
-  background: #fff;
-  padding: 5rem 1.5rem;
-  font-family: 'Montserrat', sans-serif;
+/* ── Section wrapper ── */
+.fds-block .br-section{
+  background:#FFF8F0;
+  padding:5rem 1.5rem;
+  font-family:'Montserrat',sans-serif;
 }
 
-.br-inner {
-  max-width: 900px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: start;
+.fds-block .br-inner{
+  max-width:900px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:3rem;
+  align-items:start;
 }
 
-/* LEFT COLUMN */
-.br-eyebrow {
-  display: inline-block;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 800;
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
-  color: var(--orange);
-  text-transform: uppercase;
-  margin-bottom: 0.75rem;
+/* ── LEFT COLUMN ── */
+.fds-block .br-eyebrow{
+  display:inline-block;
+  font-family:'Nunito',sans-serif;
+  font-weight:800;
+  font-size:.75rem;
+  letter-spacing:.14em;
+  color:var(--orange);
+  text-transform:uppercase;
+  margin-bottom:.75rem;
 }
 
-.br-h2 {
-  font-family: 'Sora', sans-serif;
-  font-weight: 700;
-  font-size: clamp(1.6rem, 3vw, 2.1rem);
-  color: var(--blue);
-  margin: 0 0 1rem 0;
-  line-height: 1.25;
+.fds-block .br-h2{
+  font-family:'Sora',sans-serif;
+  font-weight:800;
+  font-size:clamp(1.8rem,3.5vw,2.4rem);
+  color:var(--blue);
+  margin:0 0 1rem 0;
+  line-height:1.2;
 }
 
-.br-desc {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.95rem;
-  color: var(--gray-500);
-  line-height: 1.7;
-  margin: 0 0 2rem 0;
+.fds-block .br-desc{
+  font-family:'Montserrat',sans-serif;
+  font-size:.95rem;
+  color:var(--gray-500);
+  line-height:1.7;
+  margin:0 0 2rem 0;
 }
 
-.br-info-cards {
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
+/* ── Info cards ── */
+.fds-block .br-info-cards{
+  display:flex;
+  flex-direction:column;
+  gap:.85rem;
 }
 
-.br-info-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  background: var(--gray-50);
-  border-radius: 16px;
-  padding: 0.85rem 1rem;
-  border: 1px solid var(--gray-200);
+.fds-block .br-info-card{
+  display:flex;
+  align-items:flex-start;
+  gap:.9rem;
+  background:#fff;
+  border-radius:16px;
+  padding:1rem 1.2rem;
+  border-left:3px solid transparent;
+  box-shadow:0 2px 12px rgba(0,0,0,.05);
+  transition:box-shadow .2s,transform .15s;
+}
+.fds-block .br-info-card:hover{
+  box-shadow:0 4px 18px rgba(0,0,0,.09);
+  transform:translateX(2px);
 }
 
-.br-info-card-icon {
-  font-size: 1.2rem;
-  flex-shrink: 0;
-  line-height: 1;
-  margin-top: 1px;
+.fds-block .br-info-card--teal{
+  border-left-color:var(--teal);
+}
+.fds-block .br-info-card--green{
+  border-left-color:#059669;
+}
+.fds-block .br-info-card--orange{
+  border-left-color:var(--orange);
 }
 
-.br-info-card-text {
-  font-family: 'Nunito', sans-serif;
-  font-weight: 700;
-  font-size: 0.85rem;
-  color: var(--blue);
-  line-height: 1.4;
+.fds-block .br-info-card-icon{
+  font-size:1.5rem;
+  flex-shrink:0;
+  line-height:1;
+  margin-top:1px;
 }
 
-/* RIGHT COLUMN — FORM CARD */
-.br-form-card {
-  background: #fff;
-  border-radius: 28px;
-  border: 2px solid var(--orange);
-  padding: 2.5rem;
-  box-shadow: 0 8px 40px rgba(255,121,0,0.12), 0 2px 12px rgba(0,48,78,0.07);
+.fds-block .br-info-card-text{
+  font-family:'Nunito',sans-serif;
+  font-weight:700;
+  font-size:.86rem;
+  color:var(--blue);
+  line-height:1.45;
+  padding-top:.1rem;
 }
 
-.br-form-heading {
-  font-family: 'Sora', sans-serif;
-  font-weight: 700;
-  font-size: 1rem;
-  color: var(--blue);
-  margin: 0 0 1.5rem 0;
+/* ── RIGHT COLUMN — FORM CARD ── */
+.fds-block .br-form-card{
+  background:#fff;
+  border-radius:32px;
+  border-top:4px solid var(--orange);
+  padding:2.5rem;
+  box-shadow:0 8px 40px rgba(0,0,0,.10);
 }
 
-.br-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+.fds-block .br-form-heading{
+  font-family:'Sora',sans-serif;
+  font-weight:800;
+  font-size:1.05rem;
+  color:var(--orange);
+  margin:0 0 1.5rem 0;
 }
 
-.br-label {
-  display: block;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 700;
-  font-size: 0.78rem;
-  color: var(--blue);
-  margin-bottom: 0.35rem;
-  letter-spacing: 0.03em;
+.fds-block .br-form{
+  display:flex;
+  flex-direction:column;
+  gap:1rem;
 }
 
-.br-label span {
-  color: var(--orange);
-  margin-left: 2px;
+.fds-block .br-label{
+  display:block;
+  font-family:'Nunito',sans-serif;
+  font-weight:700;
+  font-size:.7rem;
+  color:var(--blue);
+  margin-bottom:.35rem;
+  letter-spacing:.09em;
+  text-transform:uppercase;
 }
 
-.br-input,
-.br-select,
-.br-textarea {
-  width: 100%;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.9rem;
-  color: var(--black);
-  background: var(--gray-50);
-  border: 1.5px solid var(--gray-200);
-  border-radius: 16px;
-  padding: 0.7rem 1rem;
-  outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  appearance: none;
-  -webkit-appearance: none;
+.fds-block .br-label span{
+  color:var(--orange);
+  margin-left:2px;
 }
 
-.br-select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 1rem center;
-  padding-right: 2.5rem;
-  cursor: pointer;
+.fds-block .br-input,
+.fds-block .br-select,
+.fds-block .br-textarea{
+  width:100%;
+  font-family:'Montserrat',sans-serif;
+  font-size:.9rem;
+  color:var(--black);
+  background:var(--gray-50);
+  border:2px solid var(--gray-200);
+  border-radius:14px;
+  padding:.75rem 1rem;
+  outline:none;
+  transition:border-color .2s,box-shadow .2s,background .2s;
+  appearance:none;
+  -webkit-appearance:none;
 }
 
-.br-input:focus,
-.br-select:focus,
-.br-textarea:focus {
-  border-color: var(--orange);
-  box-shadow: 0 0 0 3px rgba(255,121,0,0.12);
-  background: #fff;
+.fds-block .br-select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7280' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 1rem center;
+  background-color:var(--gray-50);
+  padding-right:2.5rem;
+  cursor:pointer;
 }
 
-.br-textarea {
-  resize: vertical;
-  min-height: 80px;
+.fds-block .br-input:focus,
+.fds-block .br-select:focus,
+.fds-block .br-textarea:focus{
+  border-color:var(--orange);
+  box-shadow:0 0 0 4px rgba(255,121,0,.13);
+  background:#fff;
 }
 
-.br-btn-orange {
-  width: 100%;
-  background: var(--orange);
-  color: #fff;
-  font-family: 'Sora', sans-serif;
-  font-weight: 700;
-  font-size: 0.95rem;
-  border: none;
-  border-radius: 16px;
-  padding: 0.85rem 1.5rem;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-  letter-spacing: 0.01em;
-  margin-top: 0.25rem;
+.fds-block .br-textarea{
+  resize:vertical;
+  min-height:84px;
 }
 
-.br-btn-orange:hover {
-  background: #e56b00;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(255,121,0,0.35);
+/* ── Submit button ── */
+.fds-block .br-btn-orange{
+  width:100%;
+  background:var(--orange);
+  color:#fff;
+  font-family:'Nunito',sans-serif;
+  font-weight:800;
+  font-size:.95rem;
+  border:none;
+  border-radius:999px;
+  padding:.9rem 1.75rem;
+  cursor:pointer;
+  transition:background .2s,transform .15s,box-shadow .2s,opacity .2s;
+  letter-spacing:.01em;
+  margin-top:.25rem;
+}
+.fds-block .br-btn-orange:hover:not(:disabled){
+  background:#e56b00;
+  transform:translateY(-1px);
+  box-shadow:0 6px 24px rgba(255,121,0,.35);
+}
+.fds-block .br-btn-orange:active{
+  transform:translateY(0);
+}
+.fds-block .br-btn-orange:disabled{
+  opacity:.6;
+  cursor:default;
 }
 
-.br-btn-orange:active {
-  transform: translateY(0);
+/* ── Success banner ── */
+.fds-block .br-success{
+  display:none;
+  background:#f0fdf4;
+  border:1.5px solid #86efac;
+  border-radius:16px;
+  padding:1.1rem 1.3rem;
+  font-family:'Nunito',sans-serif;
+  font-weight:700;
+  font-size:.9rem;
+  color:#166534;
+  line-height:1.55;
+  margin-top:.5rem;
+  text-align:center;
+}
+.fds-block .br-success.visible{
+  display:block;
 }
 
-.br-success {
-  display: none;
-  background: #f0fdf4;
-  border: 1.5px solid #86efac;
-  border-radius: 16px;
-  padding: 1rem 1.2rem;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 700;
-  font-size: 0.9rem;
-  color: #166534;
-  line-height: 1.5;
-  margin-top: 0.5rem;
-  text-align: center;
-}
-
-.br-success.visible {
-  display: block;
-}
-
-/* RESPONSIVE */
-@media (max-width: 700px) {
-  .br-section {
-    padding: 3rem 1.25rem;
+/* ── Responsive ── */
+@media(max-width:700px){
+  .fds-block .br-section{
+    padding:3rem 1.25rem;
   }
-  .br-inner {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+  .fds-block .br-inner{
+    grid-template-columns:1fr;
+    gap:2rem;
   }
-  .br-form-card {
-    padding: 1.75rem 1.25rem;
+  .fds-block .br-form-card{
+    padding:1.75rem 1.25rem;
   }
 }
 </style>
@@ -238,15 +262,15 @@
         <p class="br-desc">Tu as un livre en tête qui manque à notre collection&nbsp;? Soumets ta suggestion — on l'étudie chaque mois.</p>
 
         <div class="br-info-cards">
-          <div class="br-info-card">
+          <div class="br-info-card br-info-card--teal">
             <span class="br-info-card-icon">📬</span>
             <span class="br-info-card-text">Suggestions examinées chaque mois</span>
           </div>
-          <div class="br-info-card">
+          <div class="br-info-card br-info-card--green">
             <span class="br-info-card-icon">✅</span>
             <span class="br-info-card-text">Livres approuvés commandés sous 30 jours</span>
           </div>
-          <div class="br-info-card">
+          <div class="br-info-card br-info-card--orange">
             <span class="br-info-card-icon">🏆</span>
             <span class="br-info-card-text">Ton nom apparaît dans le catalogue si accepté</span>
           </div>
