@@ -5,520 +5,1148 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@600;700;800&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet"/>
 
 <style>
-:root {
-  --orange: #FF7900;
-  --blue: #00304E;
-  --teal: #0891B2;
-  --black: #111;
-  --gray-50: #F7F8FA;
-  --gray-100: #F0F1F3;
-  --gray-200: #E2E3E5;
-  --gray-500: #6B7280;
+:root{
+  --orange:#FF7900;
+  --orange-lt:rgba(255,121,0,.1);
+  --blue:#00304E;
+  --teal:#0891B2;
+  --teal-lt:rgba(8,145,178,.1);
+  --black:#111;
+  --cream:#FFFCF7;
+  --gray-50:#F7F8FA;
+  --gray-200:#E2E3E5;
+  --gray-500:#6B7280;
 }
 
-.fds-block .ml-section {
-  background: #ffffff;
-  padding: 5rem 1.5rem;
-  font-family: 'Montserrat', sans-serif;
+.fds-block .lib-wrap{
+  background:var(--cream);
+  padding:5rem 1.5rem 5.5rem;
+  font-family:'Montserrat',sans-serif;
 }
 
-.fds-block .ml-inner {
-  max-width: 1200px;
-  margin: 0 auto;
+/* ── HEADER ─────────────────────────────── */
+.fds-block .lib-head{
+  text-align:center;
+  margin-bottom:2.8rem;
+}
+.fds-block .lib-emoji{
+  font-size:3.2rem;
+  line-height:1;
+  display:block;
+  margin-bottom:.8rem;
+  filter:drop-shadow(0 4px 12px rgba(255,121,0,.22));
+  animation:libFloat 3.5s ease-in-out infinite;
+}
+@keyframes libFloat{
+  0%,100%{transform:translateY(0) rotate(-2deg)}
+  50%{transform:translateY(-8px) rotate(2deg)}
+}
+.fds-block .lib-eyebrow{
+  display:inline-block;
+  font-family:'Nunito',sans-serif;
+  font-size:.75rem;
+  font-weight:800;
+  color:var(--teal);
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  margin-bottom:.7rem;
+}
+.fds-block .lib-h2{
+  font-family:'Sora',sans-serif;
+  font-size:clamp(1.9rem,4vw,2.7rem);
+  font-weight:800;
+  color:var(--blue);
+  line-height:1.15;
+  margin:0 0 .7rem;
+}
+.fds-block .lib-h2 em{
+  font-style:normal;
+  color:var(--orange);
+}
+.fds-block .lib-sub{
+  font-size:.9rem;
+  font-weight:500;
+  color:var(--gray-500);
+  max-width:480px;
+  margin:0 auto;
+  line-height:1.7;
 }
 
-/* HEADER */
-.fds-block .ml-header {
-  text-align: center;
-  margin-bottom: 3rem;
+/* ── SEARCH BAR ─────────────────────────── */
+.fds-block .lib-search-zone{
+  max-width:660px;
+  margin:0 auto 1.8rem;
+}
+.fds-block .lib-search-box{
+  position:relative;
+  display:flex;
+  align-items:center;
+  background:#fff;
+  border:2px solid var(--gray-200);
+  border-radius:999px;
+  box-shadow:0 4px 24px rgba(0,0,0,.07);
+  transition:border-color .2s,box-shadow .2s;
+  overflow:hidden;
+}
+.fds-block .lib-search-box:focus-within{
+  border-color:var(--orange);
+  box-shadow:0 4px 28px rgba(255,121,0,.18);
+}
+.fds-block .lib-search-icon{
+  padding:0 0 0 1.3rem;
+  font-size:1.1rem;
+  flex-shrink:0;
+  pointer-events:none;
+  line-height:1;
+}
+.fds-block .lib-search-input{
+  flex:1;
+  border:none;
+  outline:none;
+  background:transparent;
+  padding:.95rem 1rem .95rem .6rem;
+  font-family:'Montserrat',sans-serif;
+  font-size:.95rem;
+  font-weight:500;
+  color:var(--black);
+}
+.fds-block .lib-search-input::placeholder{color:var(--gray-500);font-weight:400}
+.fds-block .lib-search-clear{
+  padding:0 1.1rem;
+  background:none;
+  border:none;
+  font-size:1.1rem;
+  cursor:pointer;
+  color:var(--gray-500);
+  display:none;
+  line-height:1;
+}
+.fds-block .lib-search-clear.visible{display:block}
+
+/* ── CATEGORY PILLS ─────────────────────── */
+.fds-block .lib-cats{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.55rem;
+  justify-content:center;
+  margin-bottom:2.5rem;
+}
+.fds-block .lib-cat-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:.38rem;
+  padding:.5rem 1.15rem;
+  border-radius:999px;
+  border:2px solid var(--gray-200);
+  background:#fff;
+  color:var(--black);
+  font-family:'Nunito',sans-serif;
+  font-size:.82rem;
+  font-weight:800;
+  cursor:pointer;
+  transition:all .18s;
+  user-select:none;
+  line-height:1;
+}
+.fds-block .lib-cat-pill:hover{border-color:var(--orange);color:var(--orange);background:#fff8f2}
+.fds-block .lib-cat-pill.active{background:var(--orange);border-color:var(--orange);color:#fff;box-shadow:0 4px 14px rgba(255,121,0,.32)}
+.fds-block .lib-cat-pill .pill-ico{font-size:.95rem}
+
+/* ── HINT SCREEN (before search) ────────── */
+.fds-block .lib-hint{
+  text-align:center;
+  padding:3.5rem 1rem 2rem;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:1rem;
+}
+.fds-block .lib-hint-art{
+  display:flex;
+  gap:-.5rem;
+  margin-bottom:.5rem;
+}
+.fds-block .lib-hint-book{
+  width:44px;
+  height:64px;
+  border-radius:3px 8px 8px 3px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:2px 3px 10px rgba(0,0,0,.12);
+  transform-origin:bottom center;
+  transition:transform .3s;
+  font-size:1.3rem;
+  line-height:1;
+}
+.fds-block .lib-hint-art:hover .lib-hint-book:nth-child(1){transform:rotate(-8deg) translateY(-4px)}
+.fds-block .lib-hint-art:hover .lib-hint-book:nth-child(2){transform:translateY(-8px)}
+.fds-block .lib-hint-art:hover .lib-hint-book:nth-child(3){transform:rotate(8deg) translateY(-4px)}
+.fds-block .lib-hint-art:hover .lib-hint-book:nth-child(4){transform:rotate(12deg) translateY(-2px)}
+.fds-block .lib-hint-art:hover .lib-hint-book:nth-child(5){transform:rotate(-10deg) translateY(-5px)}
+.fds-block .lib-hint-text{
+  font-family:'Sora',sans-serif;
+  font-size:1.05rem;
+  font-weight:700;
+  color:var(--blue);
+}
+.fds-block .lib-hint-sub{
+  font-size:.82rem;
+  color:var(--gray-500);
+  font-weight:500;
 }
 
-.fds-block .ml-eyebrow {
-  display: inline-block;
-  font-family: 'Nunito', sans-serif;
-  font-size: .78rem;
-  font-weight: 800;
-  color: var(--teal);
-  letter-spacing: .15em;
-  text-transform: uppercase;
-  margin-bottom: .8rem;
+/* ── BOOK GRID ──────────────────────────── */
+.fds-block .lib-grid-wrap{display:none}
+.fds-block .lib-grid-wrap.active{display:block}
+
+.fds-block .lib-results-bar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  margin-bottom:1.4rem;
+  padding:0 .3rem;
+}
+.fds-block .lib-results-count{
+  font-family:'Nunito',sans-serif;
+  font-size:.82rem;
+  font-weight:700;
+  color:var(--gray-500);
+}
+.fds-block .lib-results-count strong{color:var(--blue)}
+
+.fds-block .lib-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:1.2rem;
 }
 
-.fds-block .ml-h2 {
-  font-family: 'Sora', sans-serif;
-  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
-  font-weight: 800;
-  color: var(--blue);
-  line-height: 1.2;
-  margin: 0 0 .8rem;
+/* ── BOOK CARD ──────────────────────────── */
+.fds-block .lib-card{
+  background:#fff;
+  border-radius:20px;
+  display:flex;
+  overflow:hidden;
+  box-shadow:0 2px 14px rgba(0,0,0,.07);
+  transition:transform .22s,box-shadow .22s;
+  border:1.5px solid rgba(0,0,0,.05);
+  animation:cardSlideIn .4s ease both;
+}
+.fds-block .lib-card.hidden{display:none}
+@keyframes cardSlideIn{
+  from{opacity:0;transform:translateY(18px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.fds-block .lib-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 10px 32px rgba(0,0,0,.13);
+}
+.fds-block .lib-card-spine{
+  width:10px;
+  flex-shrink:0;
+  border-radius:0;
+}
+.fds-block .lib-card-body{
+  flex:1;
+  padding:.9rem 1rem .85rem 1rem;
+  display:flex;
+  flex-direction:column;
+  gap:.28rem;
+}
+.fds-block .lib-card-cat{
+  font-family:'Nunito',sans-serif;
+  font-size:.68rem;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  display:flex;
+  align-items:center;
+  gap:.3rem;
+}
+.fds-block .lib-card-title{
+  font-family:'Sora',sans-serif;
+  font-size:.88rem;
+  font-weight:700;
+  color:var(--blue);
+  line-height:1.3;
+  margin:0;
+}
+.fds-block .lib-card-author{
+  font-family:'Montserrat',sans-serif;
+  font-size:.75rem;
+  font-weight:500;
+  color:var(--gray-500);
+  margin:0;
+}
+.fds-block .lib-card-foot{
+  margin-top:auto;
+  padding-top:.5rem;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.fds-block .lib-avail{
+  display:inline-flex;
+  align-items:center;
+  gap:.32rem;
+  font-family:'Nunito',sans-serif;
+  font-size:.72rem;
+  font-weight:800;
+}
+.fds-block .lib-avail-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.fds-block .lib-avail.dispo .lib-avail-dot{background:#22c55e}
+.fds-block .lib-avail.dispo{color:#16a34a}
+.fds-block .lib-avail.empr .lib-avail-dot{background:var(--orange)}
+.fds-block .lib-avail.empr{color:#c05500}
+.fds-block .lib-card-level{
+  font-family:'Nunito',sans-serif;
+  font-size:.65rem;
+  font-weight:800;
+  color:#fff;
+  background:var(--blue);
+  padding:.18rem .5rem;
+  border-radius:6px;
+  letter-spacing:.05em;
 }
 
-.fds-block .ml-sub {
-  font-size: .95rem;
-  font-weight: 500;
-  color: var(--gray-500);
-  max-width: 520px;
-  margin: 0 auto;
-  line-height: 1.65;
+/* ── NO RESULTS ─────────────────────────── */
+.fds-block .lib-no-results{
+  display:none;
+  text-align:center;
+  padding:3.5rem 1rem;
+  font-family:'Nunito',sans-serif;
+  font-size:1rem;
+  font-weight:700;
+  color:var(--gray-500);
 }
 
-/* SEARCH BAR */
-.fds-block .ml-search-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
+/* ── FOOTER NOTE ────────────────────────── */
+.fds-block .lib-footer-note{
+  margin-top:2.8rem;
+  background:linear-gradient(135deg,var(--blue) 0%,#004470 100%);
+  border-radius:22px;
+  padding:1.8rem 2rem;
+  display:flex;
+  align-items:center;
+  gap:1.5rem;
+  flex-wrap:wrap;
+  max-width:820px;
+  margin-left:auto;
+  margin-right:auto;
 }
-
-.fds-block .ml-search-box {
-  position: relative;
-  width: 100%;
-  max-width: 600px;
+.fds-block .lib-footer-note-ico{font-size:2.5rem;flex-shrink:0}
+.fds-block .lib-footer-note-text{flex:1;min-width:200px}
+.fds-block .lib-footer-note-text p{
+  font-family:'Sora',sans-serif;
+  font-size:1rem;
+  font-weight:700;
+  color:#fff;
+  margin:0 0 .3rem;
 }
-
-.fds-block .ml-search-icon {
-  position: absolute;
-  left: 1.1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--gray-500);
-  font-size: 1.05rem;
-  pointer-events: none;
+.fds-block .lib-footer-note-text span{
+  font-family:'Montserrat',sans-serif;
+  font-size:.82rem;
+  font-weight:400;
+  color:rgba(255,255,255,.65);
 }
-
-.fds-block .ml-search-input {
-  width: 100%;
-  padding: .85rem 1.2rem .85rem 2.9rem;
-  border: 1.5px solid var(--gray-200);
-  border-radius: 18px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: .9rem;
-  font-weight: 500;
-  color: var(--black);
-  background: var(--gray-50);
-  outline: none;
-  transition: border-color .2s, box-shadow .2s;
+.fds-block .lib-footer-note-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:.45rem;
+  padding:.72rem 1.5rem;
+  background:var(--orange);
+  color:#fff;
+  border:none;
+  border-radius:999px;
+  font-family:'Nunito',sans-serif;
+  font-size:.88rem;
+  font-weight:800;
+  text-decoration:none;
+  cursor:pointer;
+  transition:background .2s,transform .2s;
+  white-space:nowrap;
 }
+.fds-block .lib-footer-note-btn:hover{background:#FF9100;transform:scale(1.04)}
 
-.fds-block .ml-search-input:focus {
-  border-color: var(--teal);
-  box-shadow: 0 0 0 3px rgba(8,145,178,0.12);
-  background: #fff;
+/* ── RESPONSIVE ─────────────────────────── */
+@media(max-width:700px){
+  .fds-block .lib-wrap{padding:3.5rem 1.1rem 4rem}
+  .fds-block .lib-grid{grid-template-columns:1fr}
+  .fds-block .lib-footer-note{flex-direction:column;text-align:center;gap:1rem;padding:1.5rem 1.2rem}
+  .fds-block .lib-footer-note-btn{width:100%;justify-content:center}
 }
-
-.fds-block .ml-search-input::placeholder {
-  color: var(--gray-500);
-  font-weight: 400;
-}
-
-/* FILTER PILLS */
-.fds-block .ml-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .55rem;
-  justify-content: center;
-  margin-bottom: 2.5rem;
-}
-
-.fds-block .ml-filter-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: .3rem;
-  padding: .45rem 1.05rem;
-  border-radius: 999px;
-  border: 1.5px solid var(--gray-200);
-  background: #fff;
-  color: var(--black);
-  font-family: 'Nunito', sans-serif;
-  font-size: .8rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all .18s;
-  user-select: none;
-}
-
-.fds-block .ml-filter-pill:hover {
-  border-color: var(--orange);
-  color: var(--orange);
-}
-
-.fds-block .ml-filter-pill.active {
-  background: var(--orange);
-  border-color: var(--orange);
-  color: #fff;
-}
-
-/* BOOK GRID */
-.fds-block .ml-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.4rem;
-}
-
-.fds-block .ml-book-card {
-  background: #fff;
-  border: 1.5px solid var(--gray-100);
-  border-radius: 26px;
-  overflow: hidden;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-  transition: transform .2s, box-shadow .2s;
-  display: flex;
-  flex-direction: column;
-}
-
-.fds-block .ml-book-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 28px rgba(0,0,0,0.11);
-}
-
-.fds-block .ml-book-card.hidden {
-  display: none;
-}
-
-.fds-block .ml-spine {
-  height: 80px;
-  display: flex;
-  align-items: flex-end;
-  padding: .8rem 1.1rem;
-  position: relative;
-  flex-shrink: 0;
-}
-
-.fds-block .ml-spine-label {
-  font-family: 'Sora', sans-serif;
-  font-size: .65rem;
-  font-weight: 700;
-  color: rgba(255,255,255,0.7);
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-
-.fds-block .ml-book-body {
-  padding: 1rem 1.1rem 1.2rem;
-  display: flex;
-  flex-direction: column;
-  gap: .4rem;
-  flex: 1;
-}
-
-.fds-block .ml-book-title {
-  font-family: 'Sora', sans-serif;
-  font-size: .9rem;
-  font-weight: 700;
-  color: var(--blue);
-  line-height: 1.3;
-  margin: 0;
-}
-
-.fds-block .ml-book-author {
-  font-family: 'Nunito', sans-serif;
-  font-size: .75rem;
-  font-weight: 600;
-  color: var(--gray-500);
-  margin: 0;
-}
-
-.fds-block .ml-book-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: .5rem;
-  flex-wrap: wrap;
-  margin-top: auto;
-  padding-top: .5rem;
-}
-
-.fds-block .ml-cat-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: .25rem .7rem;
-  border-radius: 999px;
-  font-family: 'Nunito', sans-serif;
-  font-size: .7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .05em;
-}
-
-.fds-block .ml-cat-badge.teal { background: rgba(8,145,178,0.12); color: var(--teal); }
-.fds-block .ml-cat-badge.orange { background: rgba(255,121,0,0.12); color: var(--orange); }
-.fds-block .ml-cat-badge.blue { background: rgba(0,48,78,0.1); color: var(--blue); }
-.fds-block .ml-cat-badge.purple { background: rgba(124,58,237,0.12); color: #7C3AED; }
-.fds-block .ml-cat-badge.brown { background: rgba(146,64,14,0.1); color: #92400E; }
-.fds-block .ml-cat-badge.red { background: rgba(220,38,38,0.1); color: #DC2626; }
-.fds-block .ml-cat-badge.green { background: rgba(5,150,105,0.12); color: #059669; }
-
-.fds-block .ml-avail {
-  display: inline-flex;
-  align-items: center;
-  gap: .35rem;
-  font-family: 'Nunito', sans-serif;
-  font-size: .7rem;
-  font-weight: 700;
-}
-
-.fds-block .ml-avail-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.fds-block .ml-avail.disponible .ml-avail-dot { background: #22c55e; }
-.fds-block .ml-avail.disponible { color: #16a34a; }
-.fds-block .ml-avail.emprunte .ml-avail-dot { background: var(--orange); }
-.fds-block .ml-avail.emprunte { color: #c05500; }
-
-/* NO RESULTS */
-.fds-block .ml-no-results {
-  display: none;
-  grid-column: 1 / -1;
-  text-align: center;
-  padding: 3rem 1rem;
-  color: var(--gray-500);
-  font-family: 'Nunito', sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-}
-
-/* RESPONSIVE */
-@media (max-width: 1024px) {
-  .fds-block .ml-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 720px) {
-  .fds-block .ml-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .fds-block .ml-section {
-    padding: 3.5rem 1.25rem;
-  }
-}
-
-@media (max-width: 420px) {
-  .fds-block .ml-grid {
-    grid-template-columns: 1fr;
-  }
+@media(max-width:480px){
+  .fds-block .lib-h2{font-size:1.6rem}
+  .fds-block .lib-hint-book{width:36px;height:52px}
+  .fds-block .lib-grid{grid-template-columns:1fr}
 }
 </style>
 
 <div class="fds-block">
-  <section class="ml-section">
-    <div class="ml-inner">
+<section class="lib-wrap">
+<div style="max-width:1100px;margin:0 auto">
 
-      <!-- HEADER -->
-      <div class="ml-header">
-        <span class="ml-eyebrow">Bibliothèque</span>
-        <h2 class="ml-h2">Explore notre collection</h2>
-        <p class="ml-sub">500+ ouvrages en allemand, français et anglais. Littérature, sciences, langue, art.</p>
-      </div>
+  <!-- HEADER -->
+  <div class="lib-head">
+    <span class="lib-emoji">📚</span>
+    <span class="lib-eyebrow">Bibliothèque · Médiathèque FDS</span>
+    <h2 class="lib-h2">Cherche. Découvre. <em>Lis.</em></h2>
+    <p class="lib-sub">500+ ouvrages disponibles — langue, littérature, manga, sciences, art. Tape le titre ou choisis une catégorie pour explorer.</p>
+  </div>
 
-      <!-- SEARCH -->
-      <div class="ml-search-wrap">
-        <div class="ml-search-box">
-          <span class="ml-search-icon">🔍</span>
-          <input
-            id="ml-search"
-            class="ml-search-input"
-            type="text"
-            placeholder="Rechercher un livre, auteur…"
-            autocomplete="off"
-          />
-        </div>
-      </div>
-
-      <!-- FILTERS -->
-      <div class="ml-filters" id="ml-filters">
-        <button class="ml-filter-pill active" data-cat="all">Tous</button>
-        <button class="ml-filter-pill" data-cat="Littérature">Littérature</button>
-        <button class="ml-filter-pill" data-cat="Langue">Langue</button>
-        <button class="ml-filter-pill" data-cat="Sciences">Sciences</button>
-        <button class="ml-filter-pill" data-cat="Art">Art</button>
-        <button class="ml-filter-pill" data-cat="Histoire">Histoire</button>
-        <button class="ml-filter-pill" data-cat="Manga">Manga</button>
-      </div>
-
-      <!-- BOOK GRID -->
-      <div class="ml-grid" id="ml-grid">
-
-        <!-- 1 -->
-        <div class="ml-book-card" data-title="Der Prozess" data-author="Franz Kafka" data-cat="Littérature">
-          <div class="ml-spine" style="background:#00304E;">
-            <span class="ml-spine-label">Littérature</span>
-          </div>
-          <div class="ml-book-body">
-            <p class="ml-book-title">Der Prozess</p>
-            <p class="ml-book-author">Franz Kafka</p>
-            <div class="ml-book-footer">
-              <span class="ml-cat-badge blue">Littérature</span>
-              <span class="ml-avail disponible"><span class="ml-avail-dot"></span>Disponible</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 2 -->
-        <div class="ml-book-card" data-title="Tschick" data-author="Wolfgang Herrndorf" data-cat="Littérature">
-          <div class="ml-spine" style="background:#FF7900;">
-            <span class="ml-spine-label">Littérature</span>
-          </div>
-          <div class="ml-book-body">
-            <p class="ml-book-title">Tschick</p>
-            <p class="ml-book-author">Wolfgang Herrndorf</p>
-            <div class="ml-book-footer">
-              <span class="ml-cat-badge orange">Littérature</span>
-              <span class="ml-avail disponible"><span class="ml-avail-dot"></span>Disponible</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 3 -->
-        <div class="ml-book-card" data-title="Menschen im Beruf - Medizin" data-author="Hueber" data-cat="Langue">
-          <div class="ml-spine" style="background:#0891B2;">
-            <span class="ml-spine-label">Langue</span>
-          </div>
-          <div class="ml-book-body">
-            <p class="ml-book-title">Menschen im Beruf — Medizin</p>
-            <p class="ml-book-author">Hueber</p>
-            <div class="ml-book-footer">
-              <span class="ml-cat-badge teal">Langue</span>
-              <span class="ml-avail emprunte"><span class="ml-avail-dot"></span>Emprunté</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 4 -->
-        <div class="ml-book-card" data-title="Deutsch als Fremdsprache A2" data-author="Hueber" data-cat="Langue">
-          <div class="ml-spine" style="background:#0891B2;">
-            <span class="ml-spine-label">Langue</span>
-          </div>
-          <div class="ml-book-body">
-            <p class="ml-book-title">Deutsch als Fremdsprache A2</p>
-            <p class="ml-book-author">Hueber</p>
-            <div class="ml-book-footer">
-              <span class="ml-cat-badge teal">Langue</span>
-              <span class="ml-avail disponible"><span class="ml-avail-dot"></span>Disponible</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 5 -->
-        <div class="ml-book-card" data-title="Dune" data-author="Frank Herbert" data-cat="Sciences">
-          <div class="ml-spine" style="background:#7C3AED;">
-            <span class="ml-spine-label">Sci-Fi</span>
-          </div>
-          <div class="ml-book-body">
-            <p class="ml-book-title">Dune</p>
-            <p class="ml-book-author">Frank Herbert</p>
-            <div class="ml-book-footer">
-              <span class="ml-cat-badge purple">Sciences-Fiction</span>
-              <span class="ml-avail disponible"><span class="ml-avail-dot"></span>Disponible</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 6 -->
-        <div class="ml-book-card" data-title="Sapiens" data-author="Yuval Noah Harari" data-cat="Histoire">
-          <div class="ml-spine" style="background:#92400E;">
-            <span class="ml-spine-label">Histoire</span>
-          </div>
-          <div class="ml-book-body">
-            <p class="ml-book-title">Sapiens</p>
-            <p class="ml-book-author">Yuval Noah Harari</p>
-            <div class="ml-book-footer">
-              <span class="ml-cat-badge brown">Histoire</span>
-              <span class="ml-avail disponible"><span class="ml-avail-dot"></span>Disponible</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 7 -->
-        <div class="ml-book-card" data-title="Naruto Vol.1" data-author="Masashi Kishimoto" data-cat="Manga">
-          <div class="ml-spine" style="background:#DC2626;">
-            <span class="ml-spine-label">Manga</span>
-          </div>
-          <div class="ml-book-body">
-            <p class="ml-book-title">Naruto Vol.1</p>
-            <p class="ml-book-author">Masashi Kishimoto</p>
-            <div class="ml-book-footer">
-              <span class="ml-cat-badge red">Manga</span>
-              <span class="ml-avail emprunte"><span class="ml-avail-dot"></span>Emprunté</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 8 -->
-        <div class="ml-book-card" data-title="Vincent et moi" data-author="Marie-Francine Hébert" data-cat="Art">
-          <div class="ml-spine" style="background:#059669;">
-            <span class="ml-spine-label">Art</span>
-          </div>
-          <div class="ml-book-body">
-            <p class="ml-book-title">Vincent et moi</p>
-            <p class="ml-book-author">Marie-Francine Hébert</p>
-            <div class="ml-book-footer">
-              <span class="ml-cat-badge green">Art</span>
-              <span class="ml-avail disponible"><span class="ml-avail-dot"></span>Disponible</span>
-            </div>
-          </div>
-        </div>
-
-        <p class="ml-no-results" id="ml-no-results">Aucun résultat trouvé.</p>
-      </div>
-
+  <!-- SEARCH -->
+  <div class="lib-search-zone">
+    <div class="lib-search-box" id="libSearchBox">
+      <span class="lib-search-icon">🔍</span>
+      <input
+        id="libSearchInput"
+        class="lib-search-input"
+        type="text"
+        placeholder="Recherche un titre, auteur, niveau…"
+        autocomplete="off"
+        autocorrect="off"
+        spellcheck="false"
+      />
+      <button class="lib-search-clear" id="libClearBtn" aria-label="Effacer">✕</button>
     </div>
-  </section>
+  </div>
+
+  <!-- CATEGORY PILLS -->
+  <div class="lib-cats" id="libCats">
+    <button class="lib-cat-pill" data-cat="Langue">
+      <span class="pill-ico">🇩🇪</span> Langue
+    </button>
+    <button class="lib-cat-pill" data-cat="Littérature">
+      <span class="pill-ico">✍️</span> Littérature
+    </button>
+    <button class="lib-cat-pill" data-cat="Manga">
+      <span class="pill-ico">🎌</span> Manga
+    </button>
+    <button class="lib-cat-pill" data-cat="Sciences">
+      <span class="pill-ico">🔬</span> Sciences
+    </button>
+    <button class="lib-cat-pill" data-cat="Histoire">
+      <span class="pill-ico">🏛️</span> Histoire
+    </button>
+    <button class="lib-cat-pill" data-cat="Art">
+      <span class="pill-ico">🎨</span> Art &amp; Cinéma
+    </button>
+    <button class="lib-cat-pill" data-cat="Jeunesse">
+      <span class="pill-ico">🌟</span> Jeunesse
+    </button>
+    <button class="lib-cat-pill" data-cat="Médecine">
+      <span class="pill-ico">⚕️</span> Médecine
+    </button>
+  </div>
+
+  <!-- HINT STATE (shown before any search) -->
+  <div class="lib-hint" id="libHint">
+    <div class="lib-hint-art">
+      <div class="lib-hint-book" style="background:#FF7900;">📖</div>
+      <div class="lib-hint-book" style="background:#00304E;">📗</div>
+      <div class="lib-hint-book" style="background:#0891B2;">📘</div>
+      <div class="lib-hint-book" style="background:#7C3AED;">📙</div>
+      <div class="lib-hint-book" style="background:#DC2626;">📕</div>
+    </div>
+    <p class="lib-hint-text">Notre collection t'attend ✨</p>
+    <p class="lib-hint-sub">Tape un mot ou choisis une catégorie ci-dessus pour voir les livres disponibles</p>
+  </div>
+
+  <!-- RESULTS GRID -->
+  <div class="lib-grid-wrap" id="libGridWrap">
+    <div class="lib-results-bar">
+      <span class="lib-results-count" id="libCount"><strong>0</strong> résultats</span>
+    </div>
+    <div class="lib-grid" id="libGrid">
+
+      <!-- ═══════════ LANGUE ═══════════ -->
+      <div class="lib-card" data-title="Schritte International 1" data-author="Hueber Verlag" data-cat="Langue" data-level="A1">
+        <div class="lib-card-spine" style="background:#0891B2"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#0891B2">🇩🇪 Langue</span>
+          <p class="lib-card-title">Schritte International 1</p>
+          <p class="lib-card-author">Hueber Verlag</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail dispo"><span class="lib-avail-dot"></span>Disponible</span>
+            <span class="lib-card-level">A1</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="Schritte International 2" data-author="Hueber Verlag" data-cat="Langue" data-level="A1">
+        <div class="lib-card-spine" style="background:#0891B2"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#0891B2">🇩🇪 Langue</span>
+          <p class="lib-card-title">Schritte International 2</p>
+          <p class="lib-card-author">Hueber Verlag</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail dispo"><span class="lib-avail-dot"></span>Disponible</span>
+            <span class="lib-card-level">A1</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="Schritte International 3" data-author="Hueber Verlag" data-cat="Langue" data-level="A2">
+        <div class="lib-card-spine" style="background:#0891B2"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#0891B2">🇩🇪 Langue</span>
+          <p class="lib-card-title">Schritte International 3</p>
+          <p class="lib-card-author">Hueber Verlag</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail empr"><span class="lib-avail-dot"></span>Emprunté</span>
+            <span class="lib-card-level">A2</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="Menschen A1 Kursbuch" data-author="Hueber Verlag" data-cat="Langue" data-level="A1">
+        <div class="lib-card-spine" style="background:#0891B2"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#0891B2">🇩🇪 Langue</span>
+          <p class="lib-card-title">Menschen A1 — Kursbuch</p>
+          <p class="lib-card-author">Hueber Verlag</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail dispo"><span class="lib-avail-dot"></span>Disponible</span>
+            <span class="lib-card-level">A1</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="Menschen B1 Kursbuch" data-author="Hueber Verlag" data-cat="Langue" data-level="B1">
+        <div class="lib-card-spine" style="background:#0891B2"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#0891B2">🇩🇪 Langue</span>
+          <p class="lib-card-title">Menschen B1 — Kursbuch</p>
+          <p class="lib-card-author">Hueber Verlag</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail dispo"><span class="lib-avail-dot"></span>Disponible</span>
+            <span class="lib-card-level">B1</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="Mittelpunkt B2 Lehrbuch" data-author="Klett Verlag" data-cat="Langue" data-level="B2">
+        <div class="lib-card-spine" style="background:#004470"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#004470">🇩🇪 Langue</span>
+          <p class="lib-card-title">Mittelpunkt B2 — Lehrbuch</p>
+          <p class="lib-card-author">Klett Verlag</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail empr"><span class="lib-avail-dot"></span>Emprunté</span>
+            <span class="lib-card-level">B2</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="Mittelpunkt C1 Lehrbuch" data-author="Klett Verlag" data-cat="Langue" data-level="C1">
+        <div class="lib-card-spine" style="background:#004470"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#004470">🇩🇪 Langue</span>
+          <p class="lib-card-title">Mittelpunkt C1 — Lehrbuch</p>
+          <p class="lib-card-author">Klett Verlag</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail dispo"><span class="lib-avail-dot"></span>Disponible</span>
+            <span class="lib-card-level">C1</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="DaF Kompakt A1-B1" data-author="Klett Verlag" data-cat="Langue" data-level="A1-B1">
+        <div class="lib-card-spine" style="background:#00304E"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#00304E">🇩🇪 Langue</span>
+          <p class="lib-card-title">DaF Kompakt A1–B1</p>
+          <p class="lib-card-author">Klett Verlag</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail dispo"><span class="lib-avail-dot"></span>Disponible</span>
+            <span class="lib-card-level">A1–B1</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="Deutsch Grammatik A1-B2" data-author="Hueber Verlag" data-cat="Langue" data-level="A1-B2">
+        <div class="lib-card-spine" style="background:#0891B2"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#0891B2">🇩🇪 Langue</span>
+          <p class="lib-card-title">Deutsch Grammatik A1–B2</p>
+          <p class="lib-card-author">Hueber Verlag</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail dispo"><span class="lib-avail-dot"></span>Disponible</span>
+            <span class="lib-card-level">A1–B2</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="Menschen im Beruf Medizin" data-author="Hueber Verlag" data-cat="Langue" data-level="B2">
+        <div class="lib-card-spine" style="background:#0891B2"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#0891B2">🇩🇪 Langue</span>
+          <p class="lib-card-title">Menschen im Beruf — Medizin</p>
+          <p class="lib-card-author">Hueber Verlag</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail empr"><span class="lib-avail-dot"></span>Emprunté</span>
+            <span class="lib-card-level">B2</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="Sprechen Sie Deutsch" data-author="Polyglott Verlag" data-cat="Langue" data-level="A2">
+        <div class="lib-card-spine" style="background:#0891B2"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#0891B2">🇩🇪 Langue</span>
+          <p class="lib-card-title">Sprechen Sie Deutsch?</p>
+          <p class="lib-card-author">Polyglott Verlag</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail dispo"><span class="lib-avail-dot"></span>Disponible</span>
+            <span class="lib-card-level">A2</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="Wortschatz Intensivtrainer B1" data-author="Hueber Verlag" data-cat="Langue" data-level="B1">
+        <div class="lib-card-spine" style="background:#0891B2"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#0891B2">🇩🇪 Langue</span>
+          <p class="lib-card-title">Wortschatz Intensivtrainer B1</p>
+          <p class="lib-card-author">Hueber Verlag</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail dispo"><span class="lib-avail-dot"></span>Disponible</span>
+            <span class="lib-card-level">B1</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════ LITTÉRATURE ═══════════ -->
+      <div class="lib-card" data-title="Der Prozess" data-author="Franz Kafka" data-cat="Littérature">
+        <div class="lib-card-spine" style="background:#00304E"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#00304E">✍️ Littérature</span>
+          <p class="lib-card-title">Der Prozess</p>
+          <p class="lib-card-author">Franz Kafka</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail dispo"><span class="lib-avail-dot"></span>Disponible</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="Die Verwandlung" data-author="Franz Kafka" data-cat="Littérature">
+        <div class="lib-card-spine" style="background:#00304E"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#00304E">✍️ Littérature</span>
+          <p class="lib-card-title">Die Verwandlung</p>
+          <p class="lib-card-author">Franz Kafka</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail dispo"><span class="lib-avail-dot"></span>Disponible</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="Tschick" data-author="Wolfgang Herrndorf" data-cat="Littérature">
+        <div class="lib-card-spine" style="background:#FF7900"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#FF7900">✍️ Littérature</span>
+          <p class="lib-card-title">Tschick</p>
+          <p class="lib-card-author">Wolfgang Herrndorf</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail empr"><span class="lib-avail-dot"></span>Emprunté</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="Der Vorleser" data-author="Bernhard Schlink" data-cat="Littérature">
+        <div class="lib-card-spine" style="background:#00304E"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#00304E">✍️ Littérature</span>
+          <p class="lib-card-title">Der Vorleser</p>
+          <p class="lib-card-author">Bernhard Schlink</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail dispo"><span class="lib-avail-dot"></span>Disponible</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="Faust" data-author="Johann Wolfgang von Goethe" data-cat="Littérature">
+        <div class="lib-card-spine" style="background:#92400E"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#92400E">✍️ Littérature</span>
+          <p class="lib-card-title">Faust</p>
+          <p class="lib-card-author">Goethe</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail dispo"><span class="lib-avail-dot"></span>Disponible</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="Die Leiden des jungen Werthers" data-author="Johann Wolfgang von Goethe" data-cat="Littérature">
+        <div class="lib-card-spine" style="background:#92400E"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#92400E">✍️ Littérature</span>
+          <p class="lib-card-title">Die Leiden des jungen Werthers</p>
+          <p class="lib-card-author">Goethe</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail dispo"><span class="lib-avail-dot"></span>Disponible</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="Demian" data-author="Hermann Hesse" data-cat="Littérature">
+        <div class="lib-card-spine" style="background:#059669"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#059669">✍️ Littérature</span>
+          <p class="lib-card-title">Demian</p>
+          <p class="lib-card-author">Hermann Hesse</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail empr"><span class="lib-avail-dot"></span>Emprunté</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="Homo Faber" data-author="Max Frisch" data-cat="Littérature">
+        <div class="lib-card-spine" style="background:#00304E"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#00304E">✍️ Littérature</span>
+          <p class="lib-card-title">Homo Faber</p>
+          <p class="lib-card-author">Max Frisch</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail dispo"><span class="lib-avail-dot"></span>Disponible</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="Steppenwolf" data-author="Hermann Hesse" data-cat="Littérature">
+        <div class="lib-card-spine" style="background:#059669"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#059669">✍️ Littérature</span>
+          <p class="lib-card-title">Steppenwolf</p>
+          <p class="lib-card-author">Hermann Hesse</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail dispo"><span class="lib-avail-dot"></span>Disponible</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="Die Blechtrommel" data-author="Günter Grass" data-cat="Littérature">
+        <div class="lib-card-spine" style="background:#7C3AED"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#7C3AED">✍️ Littérature</span>
+          <p class="lib-card-title">Die Blechtrommel</p>
+          <p class="lib-card-author">Günter Grass</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail dispo"><span class="lib-avail-dot"></span>Disponible</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════ MANGA ═══════════ -->
+      <div class="lib-card" data-title="Naruto Vol.1" data-author="Masashi Kishimoto" data-cat="Manga">
+        <div class="lib-card-spine" style="background:#DC2626"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#DC2626">🎌 Manga</span>
+          <p class="lib-card-title">Naruto Vol.1 (DE)</p>
+          <p class="lib-card-author">Masashi Kishimoto</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail empr"><span class="lib-avail-dot"></span>Emprunté</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="Naruto Vol.2" data-author="Masashi Kishimoto" data-cat="Manga">
+        <div class="lib-card-spine" style="background:#DC2626"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#DC2626">🎌 Manga</span>
+          <p class="lib-card-title">Naruto Vol.2 (DE)</p>
+          <p class="lib-card-author">Masashi Kishimoto</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail dispo"><span class="lib-avail-dot"></span>Disponible</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="Death Note Vol.1" data-author="Tsugumi Ohba" data-cat="Manga">
+        <div class="lib-card-spine" style="background:#111"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#111">🎌 Manga</span>
+          <p class="lib-card-title">Death Note Vol.1 (DE)</p>
+          <p class="lib-card-author">Tsugumi Ohba</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail dispo"><span class="lib-avail-dot"></span>Disponible</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="Attack on Titan Vol.1" data-author="Hajime Isayama" data-cat="Manga">
+        <div class="lib-card-spine" style="background:#92400E"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#92400E">🎌 Manga</span>
+          <p class="lib-card-title">Attack on Titan Vol.1 (DE)</p>
+          <p class="lib-card-author">Hajime Isayama</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail empr"><span class="lib-avail-dot"></span>Emprunté</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="My Hero Academia Vol.1" data-author="Kōhei Horikoshi" data-cat="Manga">
+        <div class="lib-card-spine" style="background:#1D4ED8"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#1D4ED8">🎌 Manga</span>
+          <p class="lib-card-title">My Hero Academia Vol.1 (DE)</p>
+          <p class="lib-card-author">Kōhei Horikoshi</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail dispo"><span class="lib-avail-dot"></span>Disponible</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="Dragon Ball Vol.1" data-author="Akira Toriyama" data-cat="Manga">
+        <div class="lib-card-spine" style="background:#DC2626"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#DC2626">🎌 Manga</span>
+          <p class="lib-card-title">Dragon Ball Vol.1 (DE)</p>
+          <p class="lib-card-author">Akira Toriyama</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail dispo"><span class="lib-avail-dot"></span>Disponible</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="One Piece Vol.1" data-author="Eiichiro Oda" data-cat="Manga">
+        <div class="lib-card-spine" style="background:#FF7900"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#FF7900">🎌 Manga</span>
+          <p class="lib-card-title">One Piece Vol.1 (DE)</p>
+          <p class="lib-card-author">Eiichiro Oda</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail empr"><span class="lib-avail-dot"></span>Emprunté</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════ SCIENCES ═══════════ -->
+      <div class="lib-card" data-title="Eine kurze Geschichte der Zeit" data-author="Stephen Hawking" data-cat="Sciences">
+        <div class="lib-card-spine" style="background:#1D4ED8"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#1D4ED8">🔬 Sciences</span>
+          <p class="lib-card-title">Eine kurze Geschichte der Zeit</p>
+          <p class="lib-card-author">Stephen Hawking</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail dispo"><span class="lib-avail-dot"></span>Disponible</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="Dune" data-author="Frank Herbert" data-cat="Sciences">
+        <div class="lib-card-spine" style="background:#7C3AED"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#7C3AED">🔬 Sci-Fi</span>
+          <p class="lib-card-title">Dune</p>
+          <p class="lib-card-author">Frank Herbert</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail dispo"><span class="lib-avail-dot"></span>Disponible</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="Der Schwarm" data-author="Frank Schätzing" data-cat="Sciences">
+        <div class="lib-card-spine" style="background:#0891B2"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#0891B2">🔬 Sci-Fi</span>
+          <p class="lib-card-title">Der Schwarm</p>
+          <p class="lib-card-author">Frank Schätzing</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail empr"><span class="lib-avail-dot"></span>Emprunté</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════ HISTOIRE ═══════════ -->
+      <div class="lib-card" data-title="Sapiens" data-author="Yuval Noah Harari" data-cat="Histoire">
+        <div class="lib-card-spine" style="background:#92400E"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#92400E">🏛️ Histoire</span>
+          <p class="lib-card-title">Sapiens</p>
+          <p class="lib-card-author">Yuval Noah Harari</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail dispo"><span class="lib-avail-dot"></span>Disponible</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="Deutschland. Eine Reise" data-author="Dieter Richter" data-cat="Histoire">
+        <div class="lib-card-spine" style="background:#00304E"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#00304E">🏛️ Histoire</span>
+          <p class="lib-card-title">Deutschland. Eine Reise</p>
+          <p class="lib-card-author">Dieter Richter</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail dispo"><span class="lib-avail-dot"></span>Disponible</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="Homo Deus" data-author="Yuval Noah Harari" data-cat="Histoire">
+        <div class="lib-card-spine" style="background:#059669"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#059669">🏛️ Histoire</span>
+          <p class="lib-card-title">Homo Deus</p>
+          <p class="lib-card-author">Yuval Noah Harari</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail dispo"><span class="lib-avail-dot"></span>Disponible</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════ ART & CINÉMA ═══════════ -->
+      <div class="lib-card" data-title="Bauhaus Geschichte und Einfluss" data-author="Frank Whitford" data-cat="Art">
+        <div class="lib-card-spine" style="background:#FF7900"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#FF7900">🎨 Art &amp; Cinéma</span>
+          <p class="lib-card-title">Bauhaus — Geschichte und Einfluss</p>
+          <p class="lib-card-author">Frank Whitford</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail dispo"><span class="lib-avail-dot"></span>Disponible</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="Das Kino der Weimarer Republik" data-author="Lotte Eisner" data-cat="Art">
+        <div class="lib-card-spine" style="background:#7C3AED"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#7C3AED">🎨 Art &amp; Cinéma</span>
+          <p class="lib-card-title">Das Kino der Weimarer Republik</p>
+          <p class="lib-card-author">Lotte Eisner</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail dispo"><span class="lib-avail-dot"></span>Disponible</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="Vincent et moi" data-author="Marie-Francine Hébert" data-cat="Art">
+        <div class="lib-card-spine" style="background:#059669"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#059669">🎨 Art &amp; Cinéma</span>
+          <p class="lib-card-title">Vincent et moi</p>
+          <p class="lib-card-author">Marie-Francine Hébert</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail dispo"><span class="lib-avail-dot"></span>Disponible</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════ JEUNESSE ═══════════ -->
+      <div class="lib-card" data-title="Die Schule der magischen Tiere" data-author="Margit Auer" data-cat="Jeunesse">
+        <div class="lib-card-spine" style="background:#FF7900"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#FF7900">🌟 Jeunesse</span>
+          <p class="lib-card-title">Die Schule der magischen Tiere</p>
+          <p class="lib-card-author">Margit Auer</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail dispo"><span class="lib-avail-dot"></span>Disponible</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="Das kleine Gespenst" data-author="Otfried Preußler" data-cat="Jeunesse">
+        <div class="lib-card-spine" style="background:#1D4ED8"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#1D4ED8">🌟 Jeunesse</span>
+          <p class="lib-card-title">Das kleine Gespenst</p>
+          <p class="lib-card-author">Otfried Preußler</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail dispo"><span class="lib-avail-dot"></span>Disponible</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="Der Struwwelpeter" data-author="Heinrich Hoffmann" data-cat="Jeunesse">
+        <div class="lib-card-spine" style="background:#DC2626"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#DC2626">🌟 Jeunesse</span>
+          <p class="lib-card-title">Der Struwwelpeter</p>
+          <p class="lib-card-author">Heinrich Hoffmann</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail dispo"><span class="lib-avail-dot"></span>Disponible</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="Pinocchio auf Deutsch" data-author="Carlo Collodi" data-cat="Jeunesse">
+        <div class="lib-card-spine" style="background:#059669"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#059669">🌟 Jeunesse</span>
+          <p class="lib-card-title">Pinocchio (Deutsche Edition)</p>
+          <p class="lib-card-author">Carlo Collodi</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail empr"><span class="lib-avail-dot"></span>Emprunté</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════ MÉDECINE ═══════════ -->
+      <div class="lib-card" data-title="Medizinische Terminologie" data-author="Thieme Verlag" data-cat="Médecine">
+        <div class="lib-card-spine" style="background:#0891B2"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#0891B2">⚕️ Médecine</span>
+          <p class="lib-card-title">Medizinische Terminologie</p>
+          <p class="lib-card-author">Thieme Verlag</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail dispo"><span class="lib-avail-dot"></span>Disponible</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="Krankheitslehre für MFA" data-author="Georg Thieme" data-cat="Médecine">
+        <div class="lib-card-spine" style="background:#0891B2"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#0891B2">⚕️ Médecine</span>
+          <p class="lib-card-title">Krankheitslehre für MFA</p>
+          <p class="lib-card-author">Georg Thieme</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail empr"><span class="lib-avail-dot"></span>Emprunté</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lib-card" data-title="Deutsch für Pflegeberufe" data-author="Hueber Verlag" data-cat="Médecine" data-level="B1-B2">
+        <div class="lib-card-spine" style="background:#0891B2"></div>
+        <div class="lib-card-body">
+          <span class="lib-card-cat" style="color:#0891B2">⚕️ Médecine</span>
+          <p class="lib-card-title">Deutsch für Pflegeberufe</p>
+          <p class="lib-card-author">Hueber Verlag</p>
+          <div class="lib-card-foot">
+            <span class="lib-avail dispo"><span class="lib-avail-dot"></span>Disponible</span>
+            <span class="lib-card-level">B1–B2</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- No results message -->
+      <p class="lib-no-results" id="libNoResults">📭 Aucun résultat — essaie un autre mot !</p>
+    </div>
+  </div>
+
+  <!-- FOOTER NOTE -->
+  <div class="lib-footer-note">
+    <span class="lib-footer-note-ico">📬</span>
+    <div class="lib-footer-note-text">
+      <p>Tu ne trouves pas ce que tu cherches ?</p>
+      <span>Suggère un livre et on l'ajoute à notre catalogue — la communauté grandit grâce à toi !</span>
+    </div>
+    <a class="lib-footer-note-btn" href="#book-request">Suggérer un livre →</a>
+  </div>
+
+</div>
+</section>
 </div>
 
 <script>
-(function() {
-  var searchInput = document.getElementById('ml-search');
-  var filtersEl = document.getElementById('ml-filters');
-  var grid = document.getElementById('ml-grid');
-  var noResults = document.getElementById('ml-no-results');
-  var activeCategory = 'all';
+(function(){
+  var searchInput = document.getElementById('libSearchInput');
+  var clearBtn    = document.getElementById('libClearBtn');
+  var catPills    = document.getElementById('libCats');
+  var hint        = document.getElementById('libHint');
+  var gridWrap    = document.getElementById('libGridWrap');
+  var grid        = document.getElementById('libGrid');
+  var countEl     = document.getElementById('libCount');
+  var noResults   = document.getElementById('libNoResults');
+
+  var activeCategory = null;
+  var searchQuery = '';
+  var isActive = false;
+
+  function activate() {
+    if (!isActive) {
+      isActive = true;
+      hint.style.display = 'none';
+      gridWrap.classList.add('active');
+    }
+  }
+
+  function deactivate() {
+    if (!searchQuery && !activeCategory) {
+      isActive = false;
+      hint.style.display = '';
+      gridWrap.classList.remove('active');
+    }
+  }
+
+  function updateClearBtn() {
+    clearBtn.classList.toggle('visible', searchQuery.length > 0);
+  }
 
   function applyFilters() {
-    var query = searchInput.value.toLowerCase().trim();
-    var cards = grid.querySelectorAll('.ml-book-card');
-    var anyVisible = false;
+    var cards = grid.querySelectorAll('.lib-card');
+    var visible = 0;
 
     cards.forEach(function(card) {
-      var title = card.getAttribute('data-title').toLowerCase();
-      var author = card.getAttribute('data-author').toLowerCase();
-      var cat = card.getAttribute('data-cat');
+      var title  = (card.getAttribute('data-title')  || '').toLowerCase();
+      var author = (card.getAttribute('data-author') || '').toLowerCase();
+      var cat    = card.getAttribute('data-cat');
+      var level  = (card.getAttribute('data-level')  || '').toLowerCase();
 
-      var matchSearch = !query || title.indexOf(query) !== -1 || author.indexOf(query) !== -1;
-      var matchCat = activeCategory === 'all' || cat === activeCategory;
+      var matchSearch = !searchQuery
+        || title.indexOf(searchQuery)  !== -1
+        || author.indexOf(searchQuery) !== -1
+        || level.indexOf(searchQuery)  !== -1;
+
+      var matchCat = !activeCategory || cat === activeCategory;
 
       if (matchSearch && matchCat) {
         card.classList.remove('hidden');
-        anyVisible = true;
+        visible++;
       } else {
         card.classList.add('hidden');
       }
     });
 
-    noResults.style.display = anyVisible ? 'none' : 'block';
+    countEl.innerHTML = '<strong>' + visible + '</strong> résultat' + (visible !== 1 ? 's' : '');
+    noResults.style.display = visible === 0 ? 'block' : 'none';
   }
 
-  searchInput.addEventListener('keyup', applyFilters);
-  searchInput.addEventListener('input', applyFilters);
+  searchInput.addEventListener('input', function() {
+    searchQuery = this.value.toLowerCase().trim();
+    updateClearBtn();
+    if (searchQuery) {
+      activate();
+      applyFilters();
+    } else if (!activeCategory) {
+      deactivate();
+    } else {
+      applyFilters();
+    }
+  });
 
-  filtersEl.addEventListener('click', function(e) {
-    var pill = e.target.closest('.ml-filter-pill');
+  clearBtn.addEventListener('click', function() {
+    searchInput.value = '';
+    searchQuery = '';
+    updateClearBtn();
+    if (!activeCategory) deactivate();
+    else applyFilters();
+    searchInput.focus();
+  });
+
+  catPills.addEventListener('click', function(e) {
+    var pill = e.target.closest('.lib-cat-pill');
     if (!pill) return;
-    filtersEl.querySelectorAll('.ml-filter-pill').forEach(function(p) {
-      p.classList.remove('active');
-    });
-    pill.classList.add('active');
-    activeCategory = pill.getAttribute('data-cat');
-    applyFilters();
+
+    var cat = pill.getAttribute('data-cat');
+
+    if (activeCategory === cat) {
+      pill.classList.remove('active');
+      activeCategory = null;
+      if (!searchQuery) deactivate();
+      else applyFilters();
+    } else {
+      catPills.querySelectorAll('.lib-cat-pill').forEach(function(p){ p.classList.remove('active'); });
+      pill.classList.add('active');
+      activeCategory = cat;
+      activate();
+      applyFilters();
+    }
   });
 })();
 </script>
