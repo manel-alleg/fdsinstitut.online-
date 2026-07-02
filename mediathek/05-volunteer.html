@@ -4,220 +4,269 @@
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"/>
 <style>
-:root{
-  --orange:#FF7900;
-  --blue:#00304E;
-  --teal:#0891B2;
-  --purple:#7C3AED;
-  --black:#111;
-  --gray-50:#F7F8FA;
-  --gray-200:#E2E3E5;
-  --gray-500:#6B7280;
-}
-#fds-vol{
+.fds-block #fds-vol{
   font-family:'Montserrat',sans-serif;
-  background:var(--blue);
+  background: radial-gradient(ellipse at 70% 20%, rgba(8,145,178,0.12) 0%, transparent 60%), #00304E;
   padding:5rem 1.5rem;
   color:#fff;
 }
-#fds-vol .vol-header{
+.fds-block .vol-header{
   text-align:center;
   margin-bottom:3rem;
 }
-#fds-vol .vol-eyebrow{
+.fds-block .vol-eyebrow{
   font-family:'Nunito',sans-serif;
-  font-weight:700;
-  font-size:.75rem;
-  letter-spacing:.15em;
-  color:var(--teal);
+  font-weight:800;
+  font-size:.72rem;
+  letter-spacing:.18em;
+  color:#0891B2;
   text-transform:uppercase;
-  margin:0 0 .75rem;
+  margin:0 0 .9rem;
+  display:inline-block;
 }
-#fds-vol .vol-h2{
+.fds-block .vol-h2{
   font-family:'Sora',sans-serif;
-  font-weight:700;
-  font-size:clamp(1.75rem,4vw,2.5rem);
+  font-weight:800;
+  font-size:clamp(2rem,4.5vw,3rem);
   color:#fff;
   margin:0 0 1rem;
-  line-height:1.2;
+  line-height:1.15;
 }
-#fds-vol .vol-sub{
+.fds-block .vol-sub{
   font-size:.95rem;
   color:rgba(255,255,255,.7);
   margin:0 auto;
   max-width:520px;
-  line-height:1.6;
+  line-height:1.65;
 }
-#fds-vol .vol-roles{
+.fds-block .vol-roles{
   display:flex;
   gap:1.25rem;
   justify-content:center;
-  max-width:900px;
+  max-width:920px;
   margin:0 auto 2rem;
   flex-wrap:wrap;
 }
-#fds-vol .role-card{
-  background:#fff;
-  border-radius:28px;
-  padding:2rem;
-  box-shadow:0 8px 32px rgba(0,0,0,.18);
+.fds-block .role-card{
+  border-radius:32px;
+  padding:2rem 1.75rem;
   flex:1;
-  min-width:220px;
-  max-width:280px;
+  min-width:230px;
+  max-width:290px;
   display:flex;
   flex-direction:column;
   gap:1rem;
+  transition:transform .2s,box-shadow .2s;
 }
-#fds-vol .role-icon{
-  width:52px;
-  height:52px;
+.fds-block .role-card:hover{
+  transform:translateY(-4px);
+}
+.fds-block .role-card-biblio{
+  background:rgba(255,121,0,.1);
+  border:1.5px solid rgba(255,121,0,.25);
+  box-shadow:0 8px 32px rgba(0,0,0,.2);
+}
+.fds-block .role-card-anim{
+  background:rgba(8,145,178,.1);
+  border:1.5px solid rgba(8,145,178,.25);
+  box-shadow:0 8px 32px rgba(0,0,0,.2);
+}
+.fds-block .role-card-coord{
+  background:rgba(124,58,237,.1);
+  border:1.5px solid rgba(124,58,237,.25);
+  box-shadow:0 8px 32px rgba(0,0,0,.2);
+}
+.fds-block .role-icon{
+  width:60px;
+  height:60px;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:1.5rem;
+  font-size:1.65rem;
   flex-shrink:0;
 }
-#fds-vol .role-name{
+.fds-block .role-icon-biblio{
+  background:rgba(255,121,0,.2);
+  border:1.5px solid rgba(255,121,0,.4);
+}
+.fds-block .role-icon-anim{
+  background:rgba(8,145,178,.2);
+  border:1.5px solid rgba(8,145,178,.4);
+}
+.fds-block .role-icon-coord{
+  background:rgba(124,58,237,.2);
+  border:1.5px solid rgba(124,58,237,.4);
+}
+.fds-block .role-name{
   font-family:'Sora',sans-serif;
-  font-weight:700;
-  font-size:1rem;
-  color:var(--blue);
+  font-weight:800;
+  font-size:1.05rem;
+  color:#fff;
   margin:0;
-  line-height:1.3;
+  line-height:1.25;
 }
-#fds-vol .role-desc{
-  font-size:.85rem;
-  color:var(--gray-500);
+.fds-block .role-desc{
+  font-size:.875rem;
+  color:rgba(255,255,255,.7);
   margin:0;
-  line-height:1.5;
+  line-height:1.55;
 }
-#fds-vol .role-tags{
+.fds-block .role-tags{
   display:flex;
-  gap:.5rem;
+  gap:.45rem;
   flex-wrap:wrap;
   margin-top:auto;
 }
-#fds-vol .role-tag{
+.fds-block .role-tag{
   font-family:'Nunito',sans-serif;
   font-weight:700;
   font-size:.68rem;
-  padding:.22rem .6rem;
+  padding:.24rem .65rem;
   border-radius:999px;
-  background:var(--gray-50,#F7F8FA);
-  color:var(--gray-500);
-  border:1px solid var(--gray-200);
+  background:rgba(255,255,255,.1);
+  color:rgba(255,255,255,.8);
+  border:1px solid rgba(255,255,255,.18);
+  letter-spacing:.02em;
 }
-#fds-vol .vol-wip{
-  text-align:center;
-  color:rgba(255,255,255,.7);
-  font-size:.88rem;
-  margin:0 auto 2rem;
-  max-width:480px;
-  line-height:1.6;
-}
-#fds-vol .vol-cta-card{
-  background:#fff;
-  border-radius:24px;
-  padding:2rem;
-  max-width:480px;
-  margin:0 auto;
-  box-shadow:0 8px 40px rgba(0,0,0,.18);
-}
-#fds-vol .vol-cta-title{
-  font-family:'Sora',sans-serif;
-  font-weight:700;
-  font-size:1.15rem;
-  color:var(--blue);
-  margin:0 0 1.25rem;
-  text-align:center;
-}
-#fds-vol .vol-form{
+.fds-block .vol-wip{
   display:flex;
-  flex-direction:column;
-  gap:.85rem;
-}
-#fds-vol .vol-form label{
+  align-items:flex-start;
+  gap:.6rem;
+  background:rgba(245,158,11,.1);
+  border:1.5px solid rgba(245,158,11,.3);
+  border-radius:16px;
+  padding:.9rem 1.2rem;
+  max-width:560px;
+  margin:0 auto 2.5rem;
   font-family:'Nunito',sans-serif;
   font-weight:700;
-  font-size:.78rem;
-  color:var(--gray-500);
-  letter-spacing:.04em;
+  font-size:.85rem;
+  color:rgba(245,158,11,.95);
+  line-height:1.5;
+}
+.fds-block .vol-wip-icon{
+  font-size:1.1rem;
+  flex-shrink:0;
+  line-height:1.4;
+}
+.fds-block .vol-cta-card{
+  background:#fff;
+  border-radius:0 0 32px 32px;
+  border-top:4px solid #FF7900;
+  border-radius:32px;
+  padding:2.25rem 2rem;
+  max-width:480px;
+  margin:0 auto;
+  box-shadow:0 16px 60px rgba(0,0,0,.3), 0 4px 16px rgba(0,0,0,.15);
+}
+.fds-block .vol-cta-title{
+  font-family:'Sora',sans-serif;
+  font-weight:800;
+  font-size:1.2rem;
+  color:#FF7900;
+  margin:0 0 1.5rem;
+  text-align:center;
+}
+.fds-block .vol-form{
+  display:flex;
+  flex-direction:column;
+  gap:.9rem;
+}
+.fds-block .vol-form label{
+  font-family:'Nunito',sans-serif;
+  font-weight:800;
+  font-size:.75rem;
+  color:#00304E;
+  letter-spacing:.05em;
   text-transform:uppercase;
   display:block;
   margin-bottom:.3rem;
 }
-#fds-vol .vol-form input,
-#fds-vol .vol-form select{
+.fds-block .vol-form input,
+.fds-block .vol-form select{
   width:100%;
   padding:.75rem 1rem;
-  border:2px solid var(--gray-200);
-  border-radius:16px;
+  border:2px solid #E2E3E5;
+  border-radius:14px;
   font-family:'Montserrat',sans-serif;
   font-size:.9rem;
-  color:var(--black);
+  color:#111;
   outline:none;
-  background:#fff;
-  transition:border-color .2s;
+  background:#F7F8FA;
+  transition:border-color .2s,box-shadow .2s,background .2s;
   appearance:none;
   -webkit-appearance:none;
 }
-#fds-vol .vol-form input:focus,
-#fds-vol .vol-form select:focus{
-  border-color:var(--orange);
+.fds-block .vol-form input:focus,
+.fds-block .vol-form select:focus{
+  border-color:#FF7900;
+  box-shadow:0 0 0 3px rgba(255,121,0,.15);
+  background:#fff;
 }
-#fds-vol .vol-select-wrap{
+.fds-block .vol-select-wrap{
   position:relative;
 }
-#fds-vol .vol-select-wrap::after{
-  content:'▾';
+.fds-block .vol-select-wrap::after{
+  content:'';
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-size:12px 8px;
+  width:12px;
+  height:8px;
   position:absolute;
   right:1rem;
   top:50%;
   transform:translateY(-50%);
   pointer-events:none;
-  color:var(--gray-500);
-  font-size:.9rem;
 }
-#fds-vol .btn-orange{
-  background:var(--orange);
+.fds-block .btn-orange{
+  background:#FF7900;
   color:#fff;
   border:none;
-  border-radius:16px;
-  padding:.9rem 1.5rem;
-  font-family:'Sora',sans-serif;
-  font-weight:700;
-  font-size:.95rem;
+  border-radius:999px;
+  padding:.9rem 1.75rem;
+  font-family:'Nunito',sans-serif;
+  font-weight:800;
+  font-size:1rem;
   cursor:pointer;
   width:100%;
   letter-spacing:.02em;
-  transition:opacity .2s,transform .15s;
+  transition:opacity .2s,transform .15s,box-shadow .2s;
+  margin-top:.25rem;
 }
-#fds-vol .btn-orange:hover{
-  opacity:.9;
-  transform:translateY(-1px);
+.fds-block .btn-orange:hover{
+  opacity:.92;
+  transform:translateY(-2px);
+  box-shadow:0 8px 24px rgba(255,121,0,.4);
 }
-#fds-vol .vol-success{
+.fds-block .btn-orange:active{
+  transform:translateY(0);
+}
+.fds-block .vol-success{
   display:none;
   text-align:center;
-  padding:1.5rem 0;
+  padding:1.75rem 0;
 }
-#fds-vol .vol-success .success-icon{
-  font-size:2.5rem;
+.fds-block .vol-success .success-icon{
+  font-size:2.75rem;
   margin-bottom:.75rem;
+  display:block;
 }
-#fds-vol .vol-success p{
+.fds-block .vol-success p{
   font-family:'Sora',sans-serif;
   font-weight:700;
   font-size:1rem;
-  color:var(--blue);
+  color:#00304E;
   margin:0;
+  line-height:1.5;
 }
 @media(max-width:680px){
-  #fds-vol .vol-roles{flex-direction:column;align-items:center;}
-  #fds-vol .role-card{max-width:100%;}
+  .fds-block .vol-roles{flex-direction:column;align-items:center;}
+  .fds-block .role-card{max-width:100%;min-width:0;}
+  .fds-block #fds-vol{padding:3.5rem 1.25rem;}
 }
 </style>
 
@@ -230,8 +279,8 @@
 
   <div class="vol-roles">
 
-    <div class="role-card">
-      <div class="role-icon" style="background:var(--orange);">📚</div>
+    <div class="role-card role-card-biblio">
+      <div class="role-icon role-icon-biblio">📚</div>
       <p class="role-name">Bibliothécaire bénévole</p>
       <p class="role-desc">Gestion des livres, accueil, inventaire</p>
       <div class="role-tags">
@@ -240,8 +289,8 @@
       </div>
     </div>
 
-    <div class="role-card">
-      <div class="role-icon" style="background:var(--teal);">🎭</div>
+    <div class="role-card role-card-anim">
+      <div class="role-icon role-icon-anim">🎭</div>
       <p class="role-name">Animateur d'activité</p>
       <p class="role-desc">Animer un club, atelier ou Sprachcafé</p>
       <div class="role-tags">
@@ -250,8 +299,8 @@
       </div>
     </div>
 
-    <div class="role-card">
-      <div class="role-icon" style="background:var(--purple);">🎬</div>
+    <div class="role-card role-card-coord">
+      <div class="role-icon role-icon-coord">🎬</div>
       <p class="role-name">Coordinateur événements</p>
       <p class="role-desc">Organiser Filmabend, projections, sorties</p>
       <div class="role-tags">
@@ -262,7 +311,10 @@
 
   </div>
 
-  <p class="vol-wip">⚠️ Programme en cours d'élaboration — manifestez votre intérêt dès maintenant.</p>
+  <div class="vol-wip">
+    <span class="vol-wip-icon">⚠️</span>
+    <span>Programme en cours d'élaboration — manifestez votre intérêt dès maintenant.</span>
+  </div>
 
   <div class="vol-cta-card">
     <div id="vol-form-wrap">
@@ -292,7 +344,7 @@
       </form>
     </div>
     <div class="vol-success" id="vol-success">
-      <div class="success-icon">✅</div>
+      <span class="success-icon">✅</span>
       <p>Merci ! Nous vous contacterons dès le lancement du programme.</p>
     </div>
   </div>
