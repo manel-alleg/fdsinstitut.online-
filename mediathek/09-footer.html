@@ -7,18 +7,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"/>
 
 <style>
-/* === FOOTER VARIABLES === */
-.fds-block .ft-section {
-  --orange: #FF7900;
-  --blue: #00304E;
-  --teal: #0891B2;
-}
-
 /* === FOOTER SECTION === */
 .fds-block .ft-section {
   background: #0D1B2A;
   border-top: 4px solid #FF7900;
-  padding: 3.2rem 1.5rem 2.5rem;
+  padding: 2.5rem 1.5rem;
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -36,7 +29,7 @@
 .fds-block .ft-logo {
   display: block;
   margin: 0 auto 1rem auto;
-  height: 48px;
+  height: 44px;
   width: auto;
 }
 
@@ -44,7 +37,7 @@
 .fds-block .ft-name {
   font-family: 'Sora', sans-serif;
   font-weight: 800;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   color: #fff;
   margin: 0 0 1.4rem 0;
   line-height: 1.3;
@@ -57,28 +50,29 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: .55rem;
-  margin: 0 0 1.7rem 0;
+  gap: .5rem;
+  margin: 0 0 1.6rem 0;
 }
 
 .fds-block .ft-pill {
   display: inline-flex;
   align-items: center;
   gap: .4rem;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.07);
   border: 1px solid rgba(255,255,255,0.12);
   border-radius: 999px;
-  padding: .45rem 1rem;
+  padding: .4rem 1rem;
   font-family: 'Nunito', sans-serif;
-  font-size: .8rem;
+  font-size: .78rem;
   font-weight: 700;
-  color: rgba(255,255,255,0.88);
+  color: rgba(255,255,255,0.75);
   white-space: nowrap;
+  text-decoration: none;
   transition: background .2s, border-color .2s;
 }
 
 .fds-block .ft-pill:hover {
-  background: rgba(255,255,255,0.13);
+  background: rgba(255,255,255,0.12);
   border-color: rgba(255,255,255,0.22);
 }
 
@@ -87,20 +81,20 @@
   text-decoration: none;
 }
 
-.fds-block .ft-pill--teal a,
-.fds-block .ft-pill--teal {
-  color: #5DC9E2;
-}
-
 .fds-block .ft-pill--teal {
   background: rgba(8,145,178,0.12);
   border-color: rgba(8,145,178,0.25);
+  color: #5DC9E2;
+}
+
+.fds-block .ft-pill--teal a {
+  color: #5DC9E2;
 }
 
 /* DIVIDER */
 .fds-block .ft-hr {
   border: none;
-  border-top: 1px solid rgba(255,255,255,0.1);
+  border-top: 1px solid rgba(255,255,255,0.08);
   width: 100%;
   margin: 0 0 1.3rem 0;
 }
@@ -112,7 +106,7 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: .25rem .4rem;
-  margin: 0 0 1.3rem 0;
+  margin: 0 0 1.2rem 0;
 }
 
 .fds-block .ft-link {
@@ -130,7 +124,7 @@
 }
 
 .fds-block .ft-link--current {
-  color: #FF7900;
+  color: #0891B2;
   font-weight: 700;
   pointer-events: none;
 }
@@ -146,7 +140,7 @@
   font-family: 'Nunito', sans-serif;
   font-weight: 600;
   font-size: .72rem;
-  color: rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.35);
   margin: 0;
   line-height: 1.5;
 }
@@ -160,7 +154,7 @@
   .fds-block .ft-pills {
     flex-direction: column;
     align-items: center;
-    gap: .45rem;
+    gap: .4rem;
   }
 
   .fds-block .ft-pill {
@@ -184,7 +178,7 @@
         class="ft-logo"
         src="https://assets.zyrosite.com/V9huRYqxhZWbrM0f/fds-online-logo-28-ODynkWIP4gQDp52I.png"
         alt="FDS Institut logo"
-        height="48"
+        height="44"
         loading="lazy"
       />
 
@@ -194,8 +188,8 @@
       <!-- CONTACT PILLS -->
       <div class="ft-pills">
         <span class="ft-pill">📍 Annaba, Algérie</span>
-        <span class="ft-pill ft-pill--teal"><a href="mailto:kultur@fdsinstitut.com">✉️ kultur@fdsinstitut.com</a></span>
-        <span class="ft-pill"><a href="https://fdsinstitut.online" target="_blank" rel="noopener">🌐 fdsinstitut.online</a></span>
+        <a class="ft-pill ft-pill--teal" href="mailto:kultur@fdsinstitut.com">✉️ kultur@fdsinstitut.com</a>
+        <a class="ft-pill" href="https://fdsinstitut.online" target="_blank" rel="noopener">🌐 fdsinstitut.online</a>
       </div>
 
       <!-- DIVIDER -->

@@ -17,35 +17,11 @@
 }
 
 .fds-block .ms-section {
-  background: var(--blue);
-  padding: 5rem 1.5rem;
+  background: #00304E;
+  padding: 3.5rem 1.5rem;
   font-family: 'Montserrat', sans-serif;
   position: relative;
   overflow: hidden;
-}
-
-/* Subtle background decoration */
-.fds-block .ms-section::before {
-  content: '';
-  position: absolute;
-  top: -120px;
-  right: -120px;
-  width: 420px;
-  height: 420px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(8,145,178,0.18) 0%, transparent 70%);
-  pointer-events: none;
-}
-.fds-block .ms-section::after {
-  content: '';
-  position: absolute;
-  bottom: -80px;
-  left: -80px;
-  width: 320px;
-  height: 320px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,121,0,0.12) 0%, transparent 70%);
-  pointer-events: none;
 }
 
 .fds-block .ms-inner {
@@ -71,14 +47,14 @@
   font-family: 'Nunito', sans-serif;
   font-size: .78rem;
   font-weight: 800;
-  color: var(--teal);
+  color: #0891B2;
   letter-spacing: .18em;
   text-transform: uppercase;
 }
 
 .fds-block .ms-h2 {
   font-family: 'Sora', sans-serif;
-  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-size: clamp(2rem, 4vw, 2.8rem);
   font-weight: 800;
   color: #ffffff;
   line-height: 1.15;
@@ -108,20 +84,20 @@
 }
 
 .fds-block .ms-feature-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.55rem;
+  font-size: 1.45rem;
   flex-shrink: 0;
 }
 
-.fds-block .ms-feature-icon.icon-teal   { background: var(--teal);   box-shadow: 0 6px 20px rgba(8,145,178,0.40); }
-.fds-block .ms-feature-icon.icon-orange { background: var(--orange);  box-shadow: 0 6px 20px rgba(255,121,0,0.40); }
-.fds-block .ms-feature-icon.icon-purple { background: var(--purple);  box-shadow: 0 6px 20px rgba(124,58,237,0.40); }
-.fds-block .ms-feature-icon.icon-amber  { background: var(--amber);   box-shadow: 0 6px 20px rgba(245,158,11,0.40); }
+.fds-block .ms-feature-icon.icon-teal   { background: #0891B2; box-shadow: 0 6px 20px rgba(8,145,178,0.35); }
+.fds-block .ms-feature-icon.icon-orange { background: #FF7900; box-shadow: 0 6px 20px rgba(255,121,0,0.35); }
+.fds-block .ms-feature-icon.icon-purple { background: #7C3AED; box-shadow: 0 6px 20px rgba(124,58,237,0.35); }
+.fds-block .ms-feature-icon.icon-amber  { background: #F59E0B; box-shadow: 0 6px 20px rgba(245,158,11,0.35); }
 
 .fds-block .ms-feature-text {
   display: flex;
@@ -144,12 +120,23 @@
   line-height: 1.55;
 }
 
+/* Photo strip — inside left column, below features */
+.fds-block .ms-photo-strip {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-top: 1rem;
+  display: block;
+}
+
 /* ── RIGHT — form card ── */
 .fds-block .ms-form-card {
   background: #ffffff;
-  border-radius: 32px;
-  padding: 2.5rem;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.40);
+  border-radius: 20px;
+  border-top: 4px solid #FF7900;
+  padding: 2rem;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.35);
   position: sticky;
   top: 2rem;
 }
@@ -158,7 +145,7 @@
   font-family: 'Sora', sans-serif;
   font-size: 1.35rem;
   font-weight: 800;
-  color: var(--orange);
+  color: #FF7900;
   margin: 0 0 .35rem;
 }
 
@@ -181,7 +168,7 @@
   width: 100%;
   padding: .85rem 1.15rem;
   border: 1.5px solid #E2E3E5;
-  border-radius: 16px;
+  border-radius: 10px;
   font-family: 'Montserrat', sans-serif;
   font-size: .875rem;
   font-weight: 500;
@@ -195,8 +182,8 @@
 
 .fds-block .ms-input:focus,
 .fds-block .ms-textarea:focus {
-  border-color: var(--teal);
-  box-shadow: 0 0 0 4px rgba(8,145,178,0.14);
+  border-color: #FF7900;
+  box-shadow: 0 0 0 4px rgba(255,121,0,0.14);
   background: #fff;
 }
 
@@ -218,9 +205,9 @@
 .fds-block .ms-btn-submit {
   width: 100%;
   padding: 1rem 1.5rem;
-  border-radius: 999px;
+  border-radius: 12px;
   border: none;
-  background: var(--orange);
+  background: #FF7900;
   color: #fff;
   font-family: 'Nunito', sans-serif;
   font-size: 1rem;
@@ -272,7 +259,7 @@
   font-family: 'Sora', sans-serif;
   font-size: 1.35rem;
   font-weight: 800;
-  color: var(--teal);
+  color: #0891B2;
   margin: 0;
 }
 
@@ -294,23 +281,23 @@
 
   .fds-block .ms-form-card {
     position: static;
-  }
-
-  /* Dashed orange divider between features and form on mobile */
-  .fds-block .ms-form-card {
-    border-top: 2px dashed rgba(255,121,0,0.45);
-    padding-top: 2.5rem;
+    border-top: 4px solid #FF7900;
   }
 
   .fds-block .ms-section {
     padding: 3.5rem 1.25rem;
+  }
+
+  .fds-block .ms-photo-strip {
+    height: 180px;
+    margin-top: 1rem;
   }
 }
 
 @media (max-width: 480px) {
   .fds-block .ms-form-card {
     padding: 1.75rem 1.25rem;
-    border-radius: 24px;
+    border-radius: 16px;
   }
 }
 </style>
@@ -363,6 +350,13 @@
           </div>
 
         </div>
+
+        <img
+          class="ms-photo-strip"
+          src="https://images.unsplash.com/photo-1568667256549-094345857637?auto=format&fit=crop&w=700&q=80"
+          alt="Intérieur de bibliothèque"
+          loading="lazy"
+        />
       </div>
 
       <!-- RIGHT FORM CARD -->
