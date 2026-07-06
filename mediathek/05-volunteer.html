@@ -20,6 +20,7 @@
   margin:0 auto;
   align-items:start;
 }
+
 /* ── LEFT COLUMN ── */
 .fds-block .vol-left{
   display:flex;
@@ -56,14 +57,15 @@
   flex-direction:column;
   gap:.8rem;
 }
-/* Role cards — white bg, horizontal row */
+
+/* Role cards — white bg, horizontal layout */
 .fds-block .role-card{
   background:#fff;
-  border-radius:16px;
-  padding:1.25rem 1.5rem;
+  border-radius:10px;
+  padding:1.1rem 1.25rem;
   display:flex;
   align-items:center;
-  gap:1.1rem;
+  gap:1rem;
   transition:transform .2s,box-shadow .2s;
 }
 .fds-block .role-card:hover{
@@ -71,13 +73,12 @@
   box-shadow:0 8px 28px rgba(0,0,0,.18);
 }
 .fds-block .role-icon{
-  width:52px;
-  height:52px;
-  border-radius:14px;
+  width:48px;
+  height:48px;
+  border-radius:10px;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:1.45rem;
   flex-shrink:0;
 }
 .fds-block .role-icon-biblio{ background:#FF7900; }
@@ -88,12 +89,12 @@
   min-width:0;
   display:flex;
   flex-direction:column;
-  gap:.35rem;
+  gap:.3rem;
 }
 .fds-block .role-name{
   font-family:'Sora',sans-serif;
   font-weight:700;
-  font-size:.95rem;
+  font-size:.93rem;
   color:#00304E;
   margin:0;
   line-height:1.25;
@@ -101,7 +102,7 @@
 .fds-block .role-desc{
   font-family:'Montserrat',sans-serif;
   font-weight:400;
-  font-size:.82rem;
+  font-size:.81rem;
   color:#6B7280;
   margin:0;
   line-height:1.5;
@@ -110,42 +111,42 @@
   display:flex;
   gap:.4rem;
   flex-wrap:wrap;
+  margin-top:.15rem;
 }
 .fds-block .role-tag{
   font-family:'Nunito',sans-serif;
   font-weight:700;
   font-size:.67rem;
   padding:.2rem .55rem;
-  border-radius:8px;
+  border-radius:999px;
   background:rgba(0,48,78,.08);
   color:#00304E;
   letter-spacing:.02em;
 }
-/* Amber notice */
+
+/* Amber WIP notice — subtle */
 .fds-block .vol-wip{
   display:flex;
-  align-items:flex-start;
-  gap:.6rem;
-  background:rgba(245,158,11,.1);
-  border:1.5px solid rgba(245,158,11,.3);
-  border-radius:12px;
-  padding:.85rem 1.1rem;
-  font-family:'Nunito',sans-serif;
-  font-weight:700;
-  font-size:.82rem;
-  color:rgba(245,158,11,.95);
+  align-items:center;
+  gap:.55rem;
+  background:rgba(245,158,11,.08);
+  border:1px solid rgba(245,158,11,.25);
+  border-radius:8px;
+  padding:.65rem .9rem;
+  font-family:'Montserrat',sans-serif;
+  font-weight:500;
+  font-size:.8rem;
+  color:rgba(245,158,11,.9);
   line-height:1.5;
 }
-.fds-block .vol-wip-icon{
-  font-size:1rem;
+.fds-block .vol-wip svg{
   flex-shrink:0;
-  line-height:1.45;
 }
+
 /* ── RIGHT COLUMN ── */
-.fds-block .vol-right{}
 .fds-block .vol-cta-card{
   background:#fff;
-  border-radius:20px;
+  border-radius:12px;
   border-top:4px solid #FF7900;
   padding:2rem 1.75rem;
   box-shadow:0 12px 48px rgba(0,0,0,.25);
@@ -178,7 +179,7 @@
   width:100%;
   padding:.72rem 1rem;
   border:1.5px solid #E5E7EB;
-  border-radius:12px;
+  border-radius:8px;
   font-family:'Montserrat',sans-serif;
   font-size:.88rem;
   color:#111;
@@ -214,7 +215,7 @@
   background:#FF7900;
   color:#fff;
   border:none;
-  border-radius:12px;
+  border-radius:10px;
   padding:.9rem 1.75rem;
   font-family:'Nunito',sans-serif;
   font-weight:800;
@@ -233,15 +234,22 @@
 .fds-block .btn-orange:active{
   transform:translateY(0);
 }
+
+/* Success state */
 .fds-block .vol-success{
   display:none;
   text-align:center;
   padding:1.75rem 0;
 }
 .fds-block .vol-success .success-icon{
-  font-size:2.75rem;
-  margin-bottom:.75rem;
-  display:block;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto .85rem;
+  width:52px;
+  height:52px;
+  background:rgba(34,197,94,.1);
+  border-radius:50%;
 }
 .fds-block .vol-success p{
   font-family:'Sora',sans-serif;
@@ -251,6 +259,7 @@
   margin:0;
   line-height:1.5;
 }
+
 @media(max-width:900px){
   .fds-block .vol-grid{
     grid-template-columns:1fr;
@@ -275,7 +284,9 @@
       <div class="vol-roles">
 
         <div class="role-card">
-          <div class="role-icon role-icon-biblio">📚</div>
+          <div class="role-icon role-icon-biblio">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+          </div>
           <div class="role-body">
             <p class="role-name">Bibliothécaire bénévole</p>
             <p class="role-desc">Gestion des livres, accueil, inventaire</p>
@@ -287,7 +298,9 @@
         </div>
 
         <div class="role-card">
-          <div class="role-icon role-icon-anim">🎭</div>
+          <div class="role-icon role-icon-anim">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
           <div class="role-body">
             <p class="role-name">Animateur d'activité</p>
             <p class="role-desc">Animer un club, atelier ou Sprachcafé</p>
@@ -299,7 +312,9 @@
         </div>
 
         <div class="role-card">
-          <div class="role-icon role-icon-coord">🎬</div>
+          <div class="role-icon role-icon-coord">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+          </div>
           <div class="role-body">
             <p class="role-name">Coordinateur événements</p>
             <p class="role-desc">Organiser Filmabend, projections, sorties</p>
@@ -313,7 +328,7 @@
       </div>
 
       <div class="vol-wip">
-        <span class="vol-wip-icon">⚠️</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(245,158,11,.9)" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
         <span>Programme en cours d'élaboration — manifestez votre intérêt dès maintenant.</span>
       </div>
     </div>
@@ -348,7 +363,9 @@
           </form>
         </div>
         <div class="vol-success" id="vol-success">
-          <span class="success-icon">✅</span>
+          <span class="success-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </span>
           <p>Merci ! Nous vous contacterons dès le lancement du programme.</p>
         </div>
       </div>

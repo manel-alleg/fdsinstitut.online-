@@ -268,7 +268,7 @@
 /* ── BOOK CARD ──────────────────────────── */
 .fds-block .lib-card{
   background:#fff;
-  border-radius:18px;
+  border-radius:10px;
   display:flex;
   overflow:hidden;
   box-shadow:0 1px 10px rgba(0,0,0,.06);
@@ -367,7 +367,7 @@
 /* ── FOOTER NOTE ────────────────────────── */
 .fds-block .lib-footer-note{
   margin-top:2rem;
-  background:linear-gradient(135deg,var(--blue) 0%,#004470 100%);
+  background:#00304E;
   border-radius:18px;
   padding:1.4rem 1.8rem;
   display:flex;
@@ -378,7 +378,7 @@
   margin-left:auto;
   margin-right:auto;
 }
-.fds-block .lib-footer-note-ico{font-size:2rem;flex-shrink:0}
+.fds-block .lib-footer-note-ico{flex-shrink:0;line-height:1;display:flex;align-items:center}
 .fds-block .lib-footer-note-text{flex:1;min-width:180px}
 .fds-block .lib-footer-note-text p{
   font-family:'Sora',sans-serif;
@@ -435,7 +435,7 @@
   <!-- HEADER -->
   <div class="lib-head">
     <span class="lib-eyebrow">Bibliothèque · Médiathèque FDS</span>
-    <h2 class="lib-h2"><span class="lib-emoji">📚</span> Cherche. Découvre. <em>Lis.</em></h2>
+    <h2 class="lib-h2">Cherche. Découvre. <em>Lis.</em></h2>
     <p class="lib-sub">500+ ouvrages disponibles — langue, littérature, manga, sciences, art. Tape le titre ou choisis une catégorie.</p>
   </div>
 
@@ -458,30 +458,14 @@
 
   <!-- CATEGORY PILLS -->
   <div class="lib-cats" id="libCats">
-    <button class="lib-cat-pill" data-cat="Langue">
-      <span class="pill-ico">🇩🇪</span> Langue
-    </button>
-    <button class="lib-cat-pill" data-cat="Littérature">
-      <span class="pill-ico">✍️</span> Littérature
-    </button>
-    <button class="lib-cat-pill" data-cat="Manga">
-      <span class="pill-ico">🎌</span> Manga
-    </button>
-    <button class="lib-cat-pill" data-cat="Sciences">
-      <span class="pill-ico">🔬</span> Sciences
-    </button>
-    <button class="lib-cat-pill" data-cat="Histoire">
-      <span class="pill-ico">🏛️</span> Histoire
-    </button>
-    <button class="lib-cat-pill" data-cat="Art">
-      <span class="pill-ico">🎨</span> Art &amp; Cinéma
-    </button>
-    <button class="lib-cat-pill" data-cat="Jeunesse">
-      <span class="pill-ico">🌟</span> Jeunesse
-    </button>
-    <button class="lib-cat-pill" data-cat="Médecine">
-      <span class="pill-ico">⚕️</span> Médecine
-    </button>
+    <button class="lib-cat-pill" data-cat="Langue">Langue</button>
+    <button class="lib-cat-pill" data-cat="Littérature">Littérature</button>
+    <button class="lib-cat-pill" data-cat="Manga">Manga</button>
+    <button class="lib-cat-pill" data-cat="Sciences">Sciences</button>
+    <button class="lib-cat-pill" data-cat="Histoire">Histoire</button>
+    <button class="lib-cat-pill" data-cat="Art">Art &amp; Cinéma</button>
+    <button class="lib-cat-pill" data-cat="Jeunesse">Jeunesse</button>
+    <button class="lib-cat-pill" data-cat="Médecine">Médecine</button>
   </div>
 
   <!-- LEVEL PILLS -->
@@ -497,11 +481,11 @@
   <!-- HINT STATE (shown before any search) -->
   <div class="lib-hint" id="libHint">
     <div class="lib-hint-art">
-      <div class="lib-hint-book" style="background:#FF7900;">📖</div>
-      <div class="lib-hint-book" style="background:#00304E;">📗</div>
-      <div class="lib-hint-book" style="background:#0891B2;">📘</div>
-      <div class="lib-hint-book" style="background:#7C3AED;">📙</div>
-      <div class="lib-hint-book" style="background:#DC2626;">📕</div>
+      <div class="lib-hint-book" style="background:#FF7900;"></div>
+      <div class="lib-hint-book" style="background:#00304E;"></div>
+      <div class="lib-hint-book" style="background:#0891B2;"></div>
+      <div class="lib-hint-book" style="background:#7C3AED;"></div>
+      <div class="lib-hint-book" style="background:#DC2626;"></div>
     </div>
     <div class="lib-hint-inner">
       <p class="lib-hint-text">Tape pour découvrir notre catalogue →</p>
@@ -520,7 +504,7 @@
       <div class="lib-card" data-title="Schritte International 1" data-author="Hueber Verlag" data-cat="Langue" data-level="A1">
         <div class="lib-card-spine" style="background:#0891B2"></div>
         <div class="lib-card-body">
-          <span class="lib-card-cat" style="color:#0891B2">🇩🇪 Langue</span>
+          <span class="lib-card-cat" style="color:#0891B2">Langue</span>
           <p class="lib-card-title">Schritte International 1</p>
           <p class="lib-card-author">Hueber Verlag</p>
           <div class="lib-card-foot">
@@ -533,7 +517,7 @@
       <div class="lib-card" data-title="Schritte International 2" data-author="Hueber Verlag" data-cat="Langue" data-level="A1">
         <div class="lib-card-spine" style="background:#0891B2"></div>
         <div class="lib-card-body">
-          <span class="lib-card-cat" style="color:#0891B2">🇩🇪 Langue</span>
+          <span class="lib-card-cat" style="color:#0891B2">Langue</span>
           <p class="lib-card-title">Schritte International 2</p>
           <p class="lib-card-author">Hueber Verlag</p>
           <div class="lib-card-foot">
@@ -546,7 +530,7 @@
       <div class="lib-card" data-title="Schritte International 3" data-author="Hueber Verlag" data-cat="Langue" data-level="A2">
         <div class="lib-card-spine" style="background:#0891B2"></div>
         <div class="lib-card-body">
-          <span class="lib-card-cat" style="color:#0891B2">🇩🇪 Langue</span>
+          <span class="lib-card-cat" style="color:#0891B2">Langue</span>
           <p class="lib-card-title">Schritte International 3</p>
           <p class="lib-card-author">Hueber Verlag</p>
           <div class="lib-card-foot">
@@ -559,7 +543,7 @@
       <div class="lib-card" data-title="Menschen A1 Kursbuch" data-author="Hueber Verlag" data-cat="Langue" data-level="A1">
         <div class="lib-card-spine" style="background:#0891B2"></div>
         <div class="lib-card-body">
-          <span class="lib-card-cat" style="color:#0891B2">🇩🇪 Langue</span>
+          <span class="lib-card-cat" style="color:#0891B2">Langue</span>
           <p class="lib-card-title">Menschen A1 — Kursbuch</p>
           <p class="lib-card-author">Hueber Verlag</p>
           <div class="lib-card-foot">
@@ -572,7 +556,7 @@
       <div class="lib-card" data-title="Menschen B1 Kursbuch" data-author="Hueber Verlag" data-cat="Langue" data-level="B1">
         <div class="lib-card-spine" style="background:#0891B2"></div>
         <div class="lib-card-body">
-          <span class="lib-card-cat" style="color:#0891B2">🇩🇪 Langue</span>
+          <span class="lib-card-cat" style="color:#0891B2">Langue</span>
           <p class="lib-card-title">Menschen B1 — Kursbuch</p>
           <p class="lib-card-author">Hueber Verlag</p>
           <div class="lib-card-foot">
@@ -585,7 +569,7 @@
       <div class="lib-card" data-title="Mittelpunkt B2 Lehrbuch" data-author="Klett Verlag" data-cat="Langue" data-level="B2">
         <div class="lib-card-spine" style="background:#004470"></div>
         <div class="lib-card-body">
-          <span class="lib-card-cat" style="color:#004470">🇩🇪 Langue</span>
+          <span class="lib-card-cat" style="color:#004470">Langue</span>
           <p class="lib-card-title">Mittelpunkt B2 — Lehrbuch</p>
           <p class="lib-card-author">Klett Verlag</p>
           <div class="lib-card-foot">
@@ -598,7 +582,7 @@
       <div class="lib-card" data-title="Mittelpunkt C1 Lehrbuch" data-author="Klett Verlag" data-cat="Langue" data-level="C1">
         <div class="lib-card-spine" style="background:#004470"></div>
         <div class="lib-card-body">
-          <span class="lib-card-cat" style="color:#004470">🇩🇪 Langue</span>
+          <span class="lib-card-cat" style="color:#004470">Langue</span>
           <p class="lib-card-title">Mittelpunkt C1 — Lehrbuch</p>
           <p class="lib-card-author">Klett Verlag</p>
           <div class="lib-card-foot">
@@ -611,7 +595,7 @@
       <div class="lib-card" data-title="DaF Kompakt A1-B1" data-author="Klett Verlag" data-cat="Langue" data-level="A1-B1">
         <div class="lib-card-spine" style="background:#00304E"></div>
         <div class="lib-card-body">
-          <span class="lib-card-cat" style="color:#00304E">🇩🇪 Langue</span>
+          <span class="lib-card-cat" style="color:#00304E">Langue</span>
           <p class="lib-card-title">DaF Kompakt A1–B1</p>
           <p class="lib-card-author">Klett Verlag</p>
           <div class="lib-card-foot">
@@ -624,7 +608,7 @@
       <div class="lib-card" data-title="Deutsch Grammatik A1-B2" data-author="Hueber Verlag" data-cat="Langue" data-level="A1-B2">
         <div class="lib-card-spine" style="background:#0891B2"></div>
         <div class="lib-card-body">
-          <span class="lib-card-cat" style="color:#0891B2">🇩🇪 Langue</span>
+          <span class="lib-card-cat" style="color:#0891B2">Langue</span>
           <p class="lib-card-title">Deutsch Grammatik A1–B2</p>
           <p class="lib-card-author">Hueber Verlag</p>
           <div class="lib-card-foot">
@@ -637,7 +621,7 @@
       <div class="lib-card" data-title="Menschen im Beruf Medizin" data-author="Hueber Verlag" data-cat="Langue" data-level="B2">
         <div class="lib-card-spine" style="background:#0891B2"></div>
         <div class="lib-card-body">
-          <span class="lib-card-cat" style="color:#0891B2">🇩🇪 Langue</span>
+          <span class="lib-card-cat" style="color:#0891B2">Langue</span>
           <p class="lib-card-title">Menschen im Beruf — Medizin</p>
           <p class="lib-card-author">Hueber Verlag</p>
           <div class="lib-card-foot">
@@ -650,7 +634,7 @@
       <div class="lib-card" data-title="Sprechen Sie Deutsch" data-author="Polyglott Verlag" data-cat="Langue" data-level="A2">
         <div class="lib-card-spine" style="background:#0891B2"></div>
         <div class="lib-card-body">
-          <span class="lib-card-cat" style="color:#0891B2">🇩🇪 Langue</span>
+          <span class="lib-card-cat" style="color:#0891B2">Langue</span>
           <p class="lib-card-title">Sprechen Sie Deutsch?</p>
           <p class="lib-card-author">Polyglott Verlag</p>
           <div class="lib-card-foot">
@@ -663,7 +647,7 @@
       <div class="lib-card" data-title="Wortschatz Intensivtrainer B1" data-author="Hueber Verlag" data-cat="Langue" data-level="B1">
         <div class="lib-card-spine" style="background:#0891B2"></div>
         <div class="lib-card-body">
-          <span class="lib-card-cat" style="color:#0891B2">🇩🇪 Langue</span>
+          <span class="lib-card-cat" style="color:#0891B2">Langue</span>
           <p class="lib-card-title">Wortschatz Intensivtrainer B1</p>
           <p class="lib-card-author">Hueber Verlag</p>
           <div class="lib-card-foot">
@@ -798,7 +782,7 @@
       <div class="lib-card" data-title="Naruto Vol.1" data-author="Masashi Kishimoto" data-cat="Manga">
         <div class="lib-card-spine" style="background:#DC2626"></div>
         <div class="lib-card-body">
-          <span class="lib-card-cat" style="color:#DC2626">🎌 Manga</span>
+          <span class="lib-card-cat" style="color:#DC2626">Manga</span>
           <p class="lib-card-title">Naruto Vol.1 (DE)</p>
           <p class="lib-card-author">Masashi Kishimoto</p>
           <div class="lib-card-foot">
@@ -810,7 +794,7 @@
       <div class="lib-card" data-title="Naruto Vol.2" data-author="Masashi Kishimoto" data-cat="Manga">
         <div class="lib-card-spine" style="background:#DC2626"></div>
         <div class="lib-card-body">
-          <span class="lib-card-cat" style="color:#DC2626">🎌 Manga</span>
+          <span class="lib-card-cat" style="color:#DC2626">Manga</span>
           <p class="lib-card-title">Naruto Vol.2 (DE)</p>
           <p class="lib-card-author">Masashi Kishimoto</p>
           <div class="lib-card-foot">
@@ -822,7 +806,7 @@
       <div class="lib-card" data-title="Death Note Vol.1" data-author="Tsugumi Ohba" data-cat="Manga">
         <div class="lib-card-spine" style="background:#111"></div>
         <div class="lib-card-body">
-          <span class="lib-card-cat" style="color:#111">🎌 Manga</span>
+          <span class="lib-card-cat" style="color:#111">Manga</span>
           <p class="lib-card-title">Death Note Vol.1 (DE)</p>
           <p class="lib-card-author">Tsugumi Ohba</p>
           <div class="lib-card-foot">
@@ -834,7 +818,7 @@
       <div class="lib-card" data-title="Attack on Titan Vol.1" data-author="Hajime Isayama" data-cat="Manga">
         <div class="lib-card-spine" style="background:#92400E"></div>
         <div class="lib-card-body">
-          <span class="lib-card-cat" style="color:#92400E">🎌 Manga</span>
+          <span class="lib-card-cat" style="color:#92400E">Manga</span>
           <p class="lib-card-title">Attack on Titan Vol.1 (DE)</p>
           <p class="lib-card-author">Hajime Isayama</p>
           <div class="lib-card-foot">
@@ -846,7 +830,7 @@
       <div class="lib-card" data-title="My Hero Academia Vol.1" data-author="Kōhei Horikoshi" data-cat="Manga">
         <div class="lib-card-spine" style="background:#1D4ED8"></div>
         <div class="lib-card-body">
-          <span class="lib-card-cat" style="color:#1D4ED8">🎌 Manga</span>
+          <span class="lib-card-cat" style="color:#1D4ED8">Manga</span>
           <p class="lib-card-title">My Hero Academia Vol.1 (DE)</p>
           <p class="lib-card-author">Kōhei Horikoshi</p>
           <div class="lib-card-foot">
@@ -858,7 +842,7 @@
       <div class="lib-card" data-title="Dragon Ball Vol.1" data-author="Akira Toriyama" data-cat="Manga">
         <div class="lib-card-spine" style="background:#DC2626"></div>
         <div class="lib-card-body">
-          <span class="lib-card-cat" style="color:#DC2626">🎌 Manga</span>
+          <span class="lib-card-cat" style="color:#DC2626">Manga</span>
           <p class="lib-card-title">Dragon Ball Vol.1 (DE)</p>
           <p class="lib-card-author">Akira Toriyama</p>
           <div class="lib-card-foot">
@@ -870,7 +854,7 @@
       <div class="lib-card" data-title="One Piece Vol.1" data-author="Eiichiro Oda" data-cat="Manga">
         <div class="lib-card-spine" style="background:#FF7900"></div>
         <div class="lib-card-body">
-          <span class="lib-card-cat" style="color:#FF7900">🎌 Manga</span>
+          <span class="lib-card-cat" style="color:#FF7900">Manga</span>
           <p class="lib-card-title">One Piece Vol.1 (DE)</p>
           <p class="lib-card-author">Eiichiro Oda</p>
           <div class="lib-card-foot">
@@ -883,7 +867,7 @@
       <div class="lib-card" data-title="Eine kurze Geschichte der Zeit" data-author="Stephen Hawking" data-cat="Sciences">
         <div class="lib-card-spine" style="background:#1D4ED8"></div>
         <div class="lib-card-body">
-          <span class="lib-card-cat" style="color:#1D4ED8">🔬 Sciences</span>
+          <span class="lib-card-cat" style="color:#1D4ED8">Sciences</span>
           <p class="lib-card-title">Eine kurze Geschichte der Zeit</p>
           <p class="lib-card-author">Stephen Hawking</p>
           <div class="lib-card-foot">
@@ -895,7 +879,7 @@
       <div class="lib-card" data-title="Dune" data-author="Frank Herbert" data-cat="Sciences">
         <div class="lib-card-spine" style="background:#7C3AED"></div>
         <div class="lib-card-body">
-          <span class="lib-card-cat" style="color:#7C3AED">🔬 Sci-Fi</span>
+          <span class="lib-card-cat" style="color:#7C3AED">Sci-Fi</span>
           <p class="lib-card-title">Dune</p>
           <p class="lib-card-author">Frank Herbert</p>
           <div class="lib-card-foot">
@@ -907,7 +891,7 @@
       <div class="lib-card" data-title="Der Schwarm" data-author="Frank Schätzing" data-cat="Sciences">
         <div class="lib-card-spine" style="background:#0891B2"></div>
         <div class="lib-card-body">
-          <span class="lib-card-cat" style="color:#0891B2">🔬 Sci-Fi</span>
+          <span class="lib-card-cat" style="color:#0891B2">Sci-Fi</span>
           <p class="lib-card-title">Der Schwarm</p>
           <p class="lib-card-author">Frank Schätzing</p>
           <div class="lib-card-foot">
@@ -920,7 +904,7 @@
       <div class="lib-card" data-title="Sapiens" data-author="Yuval Noah Harari" data-cat="Histoire">
         <div class="lib-card-spine" style="background:#92400E"></div>
         <div class="lib-card-body">
-          <span class="lib-card-cat" style="color:#92400E">🏛️ Histoire</span>
+          <span class="lib-card-cat" style="color:#92400E">Histoire</span>
           <p class="lib-card-title">Sapiens</p>
           <p class="lib-card-author">Yuval Noah Harari</p>
           <div class="lib-card-foot">
@@ -932,7 +916,7 @@
       <div class="lib-card" data-title="Deutschland. Eine Reise" data-author="Dieter Richter" data-cat="Histoire">
         <div class="lib-card-spine" style="background:#00304E"></div>
         <div class="lib-card-body">
-          <span class="lib-card-cat" style="color:#00304E">🏛️ Histoire</span>
+          <span class="lib-card-cat" style="color:#00304E">Histoire</span>
           <p class="lib-card-title">Deutschland. Eine Reise</p>
           <p class="lib-card-author">Dieter Richter</p>
           <div class="lib-card-foot">
@@ -944,7 +928,7 @@
       <div class="lib-card" data-title="Homo Deus" data-author="Yuval Noah Harari" data-cat="Histoire">
         <div class="lib-card-spine" style="background:#059669"></div>
         <div class="lib-card-body">
-          <span class="lib-card-cat" style="color:#059669">🏛️ Histoire</span>
+          <span class="lib-card-cat" style="color:#059669">Histoire</span>
           <p class="lib-card-title">Homo Deus</p>
           <p class="lib-card-author">Yuval Noah Harari</p>
           <div class="lib-card-foot">
@@ -957,7 +941,7 @@
       <div class="lib-card" data-title="Bauhaus Geschichte und Einfluss" data-author="Frank Whitford" data-cat="Art">
         <div class="lib-card-spine" style="background:#FF7900"></div>
         <div class="lib-card-body">
-          <span class="lib-card-cat" style="color:#FF7900">🎨 Art &amp; Cinéma</span>
+          <span class="lib-card-cat" style="color:#FF7900">Art &amp; Cinéma</span>
           <p class="lib-card-title">Bauhaus — Geschichte und Einfluss</p>
           <p class="lib-card-author">Frank Whitford</p>
           <div class="lib-card-foot">
@@ -969,7 +953,7 @@
       <div class="lib-card" data-title="Das Kino der Weimarer Republik" data-author="Lotte Eisner" data-cat="Art">
         <div class="lib-card-spine" style="background:#7C3AED"></div>
         <div class="lib-card-body">
-          <span class="lib-card-cat" style="color:#7C3AED">🎨 Art &amp; Cinéma</span>
+          <span class="lib-card-cat" style="color:#7C3AED">Art &amp; Cinéma</span>
           <p class="lib-card-title">Das Kino der Weimarer Republik</p>
           <p class="lib-card-author">Lotte Eisner</p>
           <div class="lib-card-foot">
@@ -981,7 +965,7 @@
       <div class="lib-card" data-title="Vincent et moi" data-author="Marie-Francine Hébert" data-cat="Art">
         <div class="lib-card-spine" style="background:#059669"></div>
         <div class="lib-card-body">
-          <span class="lib-card-cat" style="color:#059669">🎨 Art &amp; Cinéma</span>
+          <span class="lib-card-cat" style="color:#059669">Art &amp; Cinéma</span>
           <p class="lib-card-title">Vincent et moi</p>
           <p class="lib-card-author">Marie-Francine Hébert</p>
           <div class="lib-card-foot">
@@ -994,7 +978,7 @@
       <div class="lib-card" data-title="Die Schule der magischen Tiere" data-author="Margit Auer" data-cat="Jeunesse">
         <div class="lib-card-spine" style="background:#FF7900"></div>
         <div class="lib-card-body">
-          <span class="lib-card-cat" style="color:#FF7900">🌟 Jeunesse</span>
+          <span class="lib-card-cat" style="color:#FF7900">Jeunesse</span>
           <p class="lib-card-title">Die Schule der magischen Tiere</p>
           <p class="lib-card-author">Margit Auer</p>
           <div class="lib-card-foot">
@@ -1006,7 +990,7 @@
       <div class="lib-card" data-title="Das kleine Gespenst" data-author="Otfried Preußler" data-cat="Jeunesse">
         <div class="lib-card-spine" style="background:#1D4ED8"></div>
         <div class="lib-card-body">
-          <span class="lib-card-cat" style="color:#1D4ED8">🌟 Jeunesse</span>
+          <span class="lib-card-cat" style="color:#1D4ED8">Jeunesse</span>
           <p class="lib-card-title">Das kleine Gespenst</p>
           <p class="lib-card-author">Otfried Preußler</p>
           <div class="lib-card-foot">
@@ -1018,7 +1002,7 @@
       <div class="lib-card" data-title="Der Struwwelpeter" data-author="Heinrich Hoffmann" data-cat="Jeunesse">
         <div class="lib-card-spine" style="background:#DC2626"></div>
         <div class="lib-card-body">
-          <span class="lib-card-cat" style="color:#DC2626">🌟 Jeunesse</span>
+          <span class="lib-card-cat" style="color:#DC2626">Jeunesse</span>
           <p class="lib-card-title">Der Struwwelpeter</p>
           <p class="lib-card-author">Heinrich Hoffmann</p>
           <div class="lib-card-foot">
@@ -1030,7 +1014,7 @@
       <div class="lib-card" data-title="Pinocchio auf Deutsch" data-author="Carlo Collodi" data-cat="Jeunesse">
         <div class="lib-card-spine" style="background:#059669"></div>
         <div class="lib-card-body">
-          <span class="lib-card-cat" style="color:#059669">🌟 Jeunesse</span>
+          <span class="lib-card-cat" style="color:#059669">Jeunesse</span>
           <p class="lib-card-title">Pinocchio (Deutsche Edition)</p>
           <p class="lib-card-author">Carlo Collodi</p>
           <div class="lib-card-foot">
@@ -1043,7 +1027,7 @@
       <div class="lib-card" data-title="Medizinische Terminologie" data-author="Thieme Verlag" data-cat="Médecine">
         <div class="lib-card-spine" style="background:#0891B2"></div>
         <div class="lib-card-body">
-          <span class="lib-card-cat" style="color:#0891B2">⚕️ Médecine</span>
+          <span class="lib-card-cat" style="color:#0891B2">Médecine</span>
           <p class="lib-card-title">Medizinische Terminologie</p>
           <p class="lib-card-author">Thieme Verlag</p>
           <div class="lib-card-foot">
@@ -1055,7 +1039,7 @@
       <div class="lib-card" data-title="Krankheitslehre für MFA" data-author="Georg Thieme" data-cat="Médecine">
         <div class="lib-card-spine" style="background:#0891B2"></div>
         <div class="lib-card-body">
-          <span class="lib-card-cat" style="color:#0891B2">⚕️ Médecine</span>
+          <span class="lib-card-cat" style="color:#0891B2">Médecine</span>
           <p class="lib-card-title">Krankheitslehre für MFA</p>
           <p class="lib-card-author">Georg Thieme</p>
           <div class="lib-card-foot">
@@ -1067,7 +1051,7 @@
       <div class="lib-card" data-title="Deutsch für Pflegeberufe" data-author="Hueber Verlag" data-cat="Médecine" data-level="B1-B2">
         <div class="lib-card-spine" style="background:#0891B2"></div>
         <div class="lib-card-body">
-          <span class="lib-card-cat" style="color:#0891B2">⚕️ Médecine</span>
+          <span class="lib-card-cat" style="color:#0891B2">Médecine</span>
           <p class="lib-card-title">Deutsch für Pflegeberufe</p>
           <p class="lib-card-author">Hueber Verlag</p>
           <div class="lib-card-foot">
@@ -1084,7 +1068,7 @@
 
   <!-- FOOTER NOTE -->
   <div class="lib-footer-note">
-    <span class="lib-footer-note-ico">📬</span>
+    <span class="lib-footer-note-ico"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z"/></svg></span>
     <div class="lib-footer-note-text">
       <p>Tu ne trouves pas ce que tu cherches ?</p>
       <span>Suggère un livre et on l'ajoute à notre catalogue — la communauté grandit grâce à toi !</span>
