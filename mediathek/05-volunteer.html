@@ -8,13 +8,23 @@
 <style>
 .fds-block #fds-vol{
   font-family:'Montserrat',sans-serif;
-  background: radial-gradient(ellipse at 70% 20%, rgba(8,145,178,0.12) 0%, transparent 60%), #00304E;
-  padding:5rem 1.5rem;
+  background:#00304E;
+  padding:3.5rem 1.5rem;
   color:#fff;
 }
-.fds-block .vol-header{
-  text-align:center;
-  margin-bottom:3rem;
+.fds-block .vol-grid{
+  display:grid;
+  grid-template-columns:3fr 2fr;
+  gap:3rem;
+  max-width:1060px;
+  margin:0 auto;
+  align-items:start;
+}
+/* ── LEFT COLUMN ── */
+.fds-block .vol-left{
+  display:flex;
+  flex-direction:column;
+  gap:1.5rem;
 }
 .fds-block .vol-eyebrow{
   font-family:'Nunito',sans-serif;
@@ -23,179 +33,157 @@
   letter-spacing:.18em;
   color:#0891B2;
   text-transform:uppercase;
-  margin:0 0 .9rem;
+  margin:0;
   display:inline-block;
 }
 .fds-block .vol-h2{
   font-family:'Sora',sans-serif;
   font-weight:800;
-  font-size:clamp(2rem,4.5vw,3rem);
+  font-size:clamp(2rem,4vw,2.8rem);
   color:#fff;
-  margin:0 0 1rem;
+  margin:0;
   line-height:1.15;
 }
 .fds-block .vol-sub{
-  font-size:.95rem;
-  color:rgba(255,255,255,.7);
-  margin:0 auto;
-  max-width:520px;
+  font-size:.93rem;
+  color:rgba(255,255,255,.70);
+  margin:0;
+  max-width:420px;
   line-height:1.65;
 }
 .fds-block .vol-roles{
   display:flex;
-  gap:1.25rem;
-  justify-content:center;
-  max-width:920px;
-  margin:0 auto 2rem;
-  flex-wrap:wrap;
-}
-.fds-block .role-card{
-  border-radius:32px;
-  padding:2rem 1.75rem;
-  flex:1;
-  min-width:230px;
-  max-width:290px;
-  display:flex;
   flex-direction:column;
-  gap:1rem;
+  gap:.8rem;
+}
+/* Role cards — white bg, horizontal row */
+.fds-block .role-card{
+  background:#fff;
+  border-radius:16px;
+  padding:1.25rem 1.5rem;
+  display:flex;
+  align-items:center;
+  gap:1.1rem;
   transition:transform .2s,box-shadow .2s;
 }
 .fds-block .role-card:hover{
-  transform:translateY(-4px);
-}
-.fds-block .role-card-biblio{
-  background:rgba(255,121,0,.1);
-  border:1.5px solid rgba(255,121,0,.25);
-  box-shadow:0 8px 32px rgba(0,0,0,.2);
-}
-.fds-block .role-card-anim{
-  background:rgba(8,145,178,.1);
-  border:1.5px solid rgba(8,145,178,.25);
-  box-shadow:0 8px 32px rgba(0,0,0,.2);
-}
-.fds-block .role-card-coord{
-  background:rgba(124,58,237,.1);
-  border:1.5px solid rgba(124,58,237,.25);
-  box-shadow:0 8px 32px rgba(0,0,0,.2);
+  transform:translateY(-2px);
+  box-shadow:0 8px 28px rgba(0,0,0,.18);
 }
 .fds-block .role-icon{
-  width:60px;
-  height:60px;
-  border-radius:50%;
+  width:52px;
+  height:52px;
+  border-radius:14px;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:1.65rem;
+  font-size:1.45rem;
   flex-shrink:0;
 }
-.fds-block .role-icon-biblio{
-  background:rgba(255,121,0,.2);
-  border:1.5px solid rgba(255,121,0,.4);
-}
-.fds-block .role-icon-anim{
-  background:rgba(8,145,178,.2);
-  border:1.5px solid rgba(8,145,178,.4);
-}
-.fds-block .role-icon-coord{
-  background:rgba(124,58,237,.2);
-  border:1.5px solid rgba(124,58,237,.4);
+.fds-block .role-icon-biblio{ background:#FF7900; }
+.fds-block .role-icon-anim{   background:#0891B2; }
+.fds-block .role-icon-coord{  background:#7C3AED; }
+.fds-block .role-body{
+  flex:1;
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  gap:.35rem;
 }
 .fds-block .role-name{
   font-family:'Sora',sans-serif;
-  font-weight:800;
-  font-size:1.05rem;
-  color:#fff;
+  font-weight:700;
+  font-size:.95rem;
+  color:#00304E;
   margin:0;
   line-height:1.25;
 }
 .fds-block .role-desc{
-  font-size:.875rem;
-  color:rgba(255,255,255,.7);
+  font-family:'Montserrat',sans-serif;
+  font-weight:400;
+  font-size:.82rem;
+  color:#6B7280;
   margin:0;
-  line-height:1.55;
+  line-height:1.5;
 }
 .fds-block .role-tags{
   display:flex;
-  gap:.45rem;
+  gap:.4rem;
   flex-wrap:wrap;
-  margin-top:auto;
 }
 .fds-block .role-tag{
   font-family:'Nunito',sans-serif;
   font-weight:700;
-  font-size:.68rem;
-  padding:.24rem .65rem;
-  border-radius:999px;
-  background:rgba(255,255,255,.1);
-  color:rgba(255,255,255,.8);
-  border:1px solid rgba(255,255,255,.18);
+  font-size:.67rem;
+  padding:.2rem .55rem;
+  border-radius:8px;
+  background:rgba(0,48,78,.08);
+  color:#00304E;
   letter-spacing:.02em;
 }
+/* Amber notice */
 .fds-block .vol-wip{
   display:flex;
   align-items:flex-start;
   gap:.6rem;
   background:rgba(245,158,11,.1);
   border:1.5px solid rgba(245,158,11,.3);
-  border-radius:16px;
-  padding:.9rem 1.2rem;
-  max-width:560px;
-  margin:0 auto 2.5rem;
+  border-radius:12px;
+  padding:.85rem 1.1rem;
   font-family:'Nunito',sans-serif;
   font-weight:700;
-  font-size:.85rem;
+  font-size:.82rem;
   color:rgba(245,158,11,.95);
   line-height:1.5;
 }
 .fds-block .vol-wip-icon{
-  font-size:1.1rem;
+  font-size:1rem;
   flex-shrink:0;
-  line-height:1.4;
+  line-height:1.45;
 }
+/* ── RIGHT COLUMN ── */
+.fds-block .vol-right{}
 .fds-block .vol-cta-card{
   background:#fff;
-  border-radius:0 0 32px 32px;
+  border-radius:20px;
   border-top:4px solid #FF7900;
-  border-radius:32px;
-  padding:2.25rem 2rem;
-  max-width:480px;
-  margin:0 auto;
-  box-shadow:0 16px 60px rgba(0,0,0,.3), 0 4px 16px rgba(0,0,0,.15);
+  padding:2rem 1.75rem;
+  box-shadow:0 12px 48px rgba(0,0,0,.25);
 }
 .fds-block .vol-cta-title{
   font-family:'Sora',sans-serif;
   font-weight:800;
-  font-size:1.2rem;
+  font-size:.95rem;
   color:#FF7900;
-  margin:0 0 1.5rem;
+  margin:0 0 1.4rem;
   text-align:center;
 }
 .fds-block .vol-form{
   display:flex;
   flex-direction:column;
-  gap:.9rem;
+  gap:.85rem;
 }
 .fds-block .vol-form label{
   font-family:'Nunito',sans-serif;
   font-weight:800;
-  font-size:.75rem;
+  font-size:.72rem;
   color:#00304E;
   letter-spacing:.05em;
   text-transform:uppercase;
   display:block;
-  margin-bottom:.3rem;
+  margin-bottom:.28rem;
 }
 .fds-block .vol-form input,
 .fds-block .vol-form select{
   width:100%;
-  padding:.75rem 1rem;
-  border:2px solid #E2E3E5;
-  border-radius:14px;
+  padding:.72rem 1rem;
+  border:1.5px solid #E5E7EB;
+  border-radius:12px;
   font-family:'Montserrat',sans-serif;
-  font-size:.9rem;
+  font-size:.88rem;
   color:#111;
   outline:none;
-  background:#F7F8FA;
+  background:#F9FAFB;
   transition:border-color .2s,box-shadow .2s,background .2s;
   appearance:none;
   -webkit-appearance:none;
@@ -203,7 +191,7 @@
 .fds-block .vol-form input:focus,
 .fds-block .vol-form select:focus{
   border-color:#FF7900;
-  box-shadow:0 0 0 3px rgba(255,121,0,.15);
+  box-shadow:0 0 0 3px rgba(255,121,0,.14);
   background:#fff;
 }
 .fds-block .vol-select-wrap{
@@ -226,7 +214,7 @@
   background:#FF7900;
   color:#fff;
   border:none;
-  border-radius:999px;
+  border-radius:12px;
   padding:.9rem 1.75rem;
   font-family:'Nunito',sans-serif;
   font-weight:800;
@@ -263,90 +251,109 @@
   margin:0;
   line-height:1.5;
 }
-@media(max-width:680px){
-  .fds-block .vol-roles{flex-direction:column;align-items:center;}
-  .fds-block .role-card{max-width:100%;min-width:0;}
-  .fds-block #fds-vol{padding:3.5rem 1.25rem;}
+@media(max-width:900px){
+  .fds-block .vol-grid{
+    grid-template-columns:1fr;
+    gap:2.25rem;
+  }
+  .fds-block .vol-sub{max-width:100%;}
+}
+@media(max-width:480px){
+  .fds-block #fds-vol{padding:3rem 1.25rem;}
 }
 </style>
 
 <div class="fds-block" id="fds-vol">
-  <div class="vol-header">
-    <p class="vol-eyebrow">BÉNÉVOLAT</p>
-    <h2 class="vol-h2">Rejoins l'équipe Mediathek</h2>
-    <p class="vol-sub">Tu veux contribuer à la vie culturelle de la Mediathek ? Le programme bénévolat est fait pour toi.</p>
-  </div>
+  <div class="vol-grid">
 
-  <div class="vol-roles">
+    <!-- LEFT COLUMN -->
+    <div class="vol-left">
+      <p class="vol-eyebrow">BÉNÉVOLAT</p>
+      <h2 class="vol-h2">Rejoins l'équipe</h2>
+      <p class="vol-sub">Tu veux contribuer à la vie culturelle de la Mediathek ? Le programme bénévolat est fait pour toi.</p>
 
-    <div class="role-card role-card-biblio">
-      <div class="role-icon role-icon-biblio">📚</div>
-      <p class="role-name">Bibliothécaire bénévole</p>
-      <p class="role-desc">Gestion des livres, accueil, inventaire</p>
-      <div class="role-tags">
-        <span class="role-tag">2h/semaine</span>
-        <span class="role-tag">Tous niveaux</span>
-      </div>
-    </div>
+      <div class="vol-roles">
 
-    <div class="role-card role-card-anim">
-      <div class="role-icon role-icon-anim">🎭</div>
-      <p class="role-name">Animateur d'activité</p>
-      <p class="role-desc">Animer un club, atelier ou Sprachcafé</p>
-      <div class="role-tags">
-        <span class="role-tag">1h/session</span>
-        <span class="role-tag">Bilingue préféré</span>
-      </div>
-    </div>
-
-    <div class="role-card role-card-coord">
-      <div class="role-icon role-icon-coord">🎬</div>
-      <p class="role-name">Coordinateur événements</p>
-      <p class="role-desc">Organiser Filmabend, projections, sorties</p>
-      <div class="role-tags">
-        <span class="role-tag">Flexible</span>
-        <span class="role-tag">Créatif</span>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="vol-wip">
-    <span class="vol-wip-icon">⚠️</span>
-    <span>Programme en cours d'élaboration — manifestez votre intérêt dès maintenant.</span>
-  </div>
-
-  <div class="vol-cta-card">
-    <div id="vol-form-wrap">
-      <p class="vol-cta-title">Exprimer mon intérêt</p>
-      <form class="vol-form" id="vol-form" novalidate>
-        <div>
-          <label for="vol-prenom">Prénom</label>
-          <input type="text" id="vol-prenom" name="prenom" placeholder="Votre prénom" required/>
-        </div>
-        <div>
-          <label for="vol-email">Email</label>
-          <input type="email" id="vol-email" name="email" placeholder="votre@email.com" required/>
-        </div>
-        <div>
-          <label for="vol-role">Rôle souhaité</label>
-          <div class="vol-select-wrap">
-            <select id="vol-role" name="role" required>
-              <option value="" disabled selected>Choisir un rôle…</option>
-              <option value="bibliothécaire">Bibliothécaire</option>
-              <option value="animateur">Animateur</option>
-              <option value="coordinateur">Coordinateur</option>
-              <option value="autre">Autre</option>
-            </select>
+        <div class="role-card">
+          <div class="role-icon role-icon-biblio">📚</div>
+          <div class="role-body">
+            <p class="role-name">Bibliothécaire bénévole</p>
+            <p class="role-desc">Gestion des livres, accueil, inventaire</p>
+            <div class="role-tags">
+              <span class="role-tag">2h/semaine</span>
+              <span class="role-tag">Tous niveaux</span>
+            </div>
           </div>
         </div>
-        <button type="submit" class="btn-orange">Envoyer →</button>
-      </form>
+
+        <div class="role-card">
+          <div class="role-icon role-icon-anim">🎭</div>
+          <div class="role-body">
+            <p class="role-name">Animateur d'activité</p>
+            <p class="role-desc">Animer un club, atelier ou Sprachcafé</p>
+            <div class="role-tags">
+              <span class="role-tag">1h/session</span>
+              <span class="role-tag">Bilingue préféré</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="role-card">
+          <div class="role-icon role-icon-coord">🎬</div>
+          <div class="role-body">
+            <p class="role-name">Coordinateur événements</p>
+            <p class="role-desc">Organiser Filmabend, projections, sorties</p>
+            <div class="role-tags">
+              <span class="role-tag">Flexible</span>
+              <span class="role-tag">Créatif</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="vol-wip">
+        <span class="vol-wip-icon">⚠️</span>
+        <span>Programme en cours d'élaboration — manifestez votre intérêt dès maintenant.</span>
+      </div>
     </div>
-    <div class="vol-success" id="vol-success">
-      <span class="success-icon">✅</span>
-      <p>Merci ! Nous vous contacterons dès le lancement du programme.</p>
+
+    <!-- RIGHT COLUMN -->
+    <div class="vol-right">
+      <div class="vol-cta-card">
+        <div id="vol-form-wrap">
+          <p class="vol-cta-title">Exprimer mon intérêt</p>
+          <form class="vol-form" id="vol-form" novalidate>
+            <div>
+              <label for="vol-prenom">Prénom</label>
+              <input type="text" id="vol-prenom" name="prenom" placeholder="Votre prénom" required/>
+            </div>
+            <div>
+              <label for="vol-email">Email</label>
+              <input type="email" id="vol-email" name="email" placeholder="votre@email.com" required/>
+            </div>
+            <div>
+              <label for="vol-role">Rôle souhaité</label>
+              <div class="vol-select-wrap">
+                <select id="vol-role" name="role" required>
+                  <option value="" disabled selected>Choisir un rôle…</option>
+                  <option value="bibliothécaire">Bibliothécaire</option>
+                  <option value="animateur">Animateur</option>
+                  <option value="coordinateur">Coordinateur</option>
+                  <option value="autre">Autre</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="btn-orange">Envoyer →</button>
+          </form>
+        </div>
+        <div class="vol-success" id="vol-success">
+          <span class="success-icon">✅</span>
+          <p>Merci ! Nous vous contacterons dès le lancement du programme.</p>
+        </div>
+      </div>
     </div>
+
   </div>
 </div>
 
