@@ -7,318 +7,290 @@
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"/>
 
 <style>
-.fds-block {
-  --orange: #FF7900;
-  --blue:   #00304E;
-  --teal:   #0891B2;
-  --cream:  #FFF8F0;
-  --amber:  #F59E0B;
-}
+/* ===== FDS Activities Calendar — June 2026 ===== */
 
-/* ── SECTION WRAPPER ── */
 .fds-block .act-section {
-  background: var(--cream);
-  padding: 5rem 1.5rem;
+  padding: 3.5rem 1.5rem;
+  background: #F8FAFC;
   font-family: 'Montserrat', sans-serif;
-  color: #111;
 }
 
-/* ── MONTHLY THEME BANNER (TOP) ── */
-.fds-block .act-theme-banner {
-  max-width: 900px;
-  margin: 0 auto 3.5rem;
-  background: linear-gradient(135deg, var(--orange) 0%, #C05600 100%);
-  border-radius: 999px;
-  padding: 1.1rem 2.5rem;
-  text-align: center;
-  box-shadow: 0 8px 32px rgba(255,121,0,0.35);
-  position: relative;
-  overflow: hidden;
-}
-
-.fds-block .act-theme-banner::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.10) 0%, transparent 60%);
-  border-radius: 999px;
-  pointer-events: none;
-}
-
-.fds-block .act-theme-banner p {
-  font-family: 'Sora', sans-serif;
-  font-weight: 800;
-  font-size: clamp(.9rem, 2.2vw, 1.15rem);
-  color: #fff;
-  margin: 0;
-  letter-spacing: .01em;
-  position: relative;
-  z-index: 1;
-}
-
-/* ── HEADER ── */
-.fds-block .act-header {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
+/* ---- Section Header ---- */
 .fds-block .act-eyebrow {
-  font-family: 'Nunito', sans-serif;
-  font-weight: 800;
-  font-size: .78rem;
-  letter-spacing: .18em;
-  color: var(--teal);
-  text-transform: uppercase;
-  margin: 0 0 .75rem;
   display: block;
-}
-
-.fds-block .act-h2 {
-  font-family: 'Sora', sans-serif;
-  font-weight: 800;
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  color: var(--blue);
-  margin: 0 0 1rem;
-  line-height: 1.2;
-}
-
-.fds-block .act-sub {
-  font-size: .95rem;
-  color: #6B7280;
-  margin: 0 auto;
-  line-height: 1.6;
-  max-width: 560px;
-}
-
-.fds-block .act-sub strong {
-  color: var(--blue);
-  font-weight: 700;
-}
-
-/* ── GRID ── */
-.fds-block .act-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-@media (max-width: 900px) {
-  .fds-block .act-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 580px) {
-  .fds-block .act-grid { grid-template-columns: 1fr; }
-}
-
-/* ── CARD ── */
-.fds-block .act-card {
-  background: #fff;
-  border-radius: 28px;
-  box-shadow: 0 4px 24px rgba(0,0,0,.07), 0 1px 4px rgba(0,0,0,.04);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: transform .22s cubic-bezier(.34,1.56,.64,1), box-shadow .22s ease;
-}
-
-.fds-block .act-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 50px rgba(0,0,0,.16);
-}
-
-/* ── COLORED TOP SECTION ── */
-.fds-block .act-card-top {
-  height: 72px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  position: relative;
-}
-
-.fds-block .act-icon {
-  font-size: 1.9rem;
-  line-height: 1;
-  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.18));
-}
-
-/* ── CARD BODY ── */
-.fds-block .act-card-body {
-  padding: 1.35rem 1.4rem 1.4rem;
-  display: flex;
-  flex-direction: column;
-  gap: .6rem;
-  flex: 1;
-}
-
-/* ── DAY CHIP ── */
-.fds-block .act-day-chip {
-  display: inline-block;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 800;
-  font-size: .7rem;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: #fff;
-  padding: .28rem .75rem;
-  border-radius: 999px;
-  align-self: flex-start;
-}
-
-/* ── ACTIVITY NAME ── */
-.fds-block .act-name {
-  font-family: 'Sora', sans-serif;
-  font-weight: 700;
-  font-size: 1.05rem;
-  color: var(--blue);
-  margin: 0;
-  line-height: 1.3;
-}
-
-/* ── TOPIC ── */
-.fds-block .act-topic {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
-  font-size: .84rem;
-  color: #6B7280;
-  margin: 0;
-  line-height: 1.45;
-  font-style: italic;
-}
-
-/* ── TIME ── */
-.fds-block .act-time {
+  text-align: center;
   font-family: 'Nunito', sans-serif;
   font-weight: 800;
   font-size: .75rem;
-  color: var(--orange);
-  margin: 0;
-  letter-spacing: .03em;
+  letter-spacing: .14em;
   text-transform: uppercase;
+  color: #0891B2;
+  margin-bottom: .75rem;
 }
 
-/* ── FOOTER ── */
-.fds-block .act-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: .5rem;
-  margin-top: auto;
-  padding-top: .5rem;
-  border-top: 1px solid #F0F1F3;
-}
-
-/* ── LANGUAGE BADGES ── */
-.fds-block .act-badge {
-  font-family: 'Nunito', sans-serif;
-  font-weight: 800;
-  font-size: .7rem;
-  padding: .32rem .85rem;
-  border-radius: 999px;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-}
-
-.fds-block .badge-deutsch { background: rgba(0,48,78,.13);   color: var(--blue); }
-.fds-block .badge-english { background: rgba(8,145,178,.14); color: #0369A1; }
-.fds-block .badge-frde    { background: rgba(124,58,237,.13);color: #6D28D9; }
-.fds-block .badge-libre   { background: rgba(5,150,105,.12); color: #065F46; }
-
-/* ── LOCATION ── */
-.fds-block .act-location {
-  font-family: 'Nunito', sans-serif;
-  font-size: .7rem;
-  color: #9CA3AF;
-  font-weight: 700;
-}
-
-/* ── PROJECT DAY BANNER (BOTTOM) ── */
-.fds-block .act-project-banner {
-  max-width: 1100px;
-  margin: 3rem auto 1.25rem;
-  background: linear-gradient(135deg, var(--orange) 0%, var(--amber) 100%);
-  border-radius: 24px;
-  padding: 2rem 2.5rem;
+.fds-block .act-heading {
   text-align: center;
-  color: #fff;
-  box-shadow: 0 10px 40px rgba(255,121,0,0.30);
-  position: relative;
-  overflow: hidden;
-}
-
-.fds-block .act-project-banner::before {
-  content: '';
-  position: absolute;
-  top: -40px;
-  right: -40px;
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.10);
-  pointer-events: none;
-}
-.fds-block .act-project-banner::after {
-  content: '';
-  position: absolute;
-  bottom: -30px;
-  left: -30px;
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.08);
-  pointer-events: none;
-}
-
-.fds-block .act-project-banner p {
   font-family: 'Sora', sans-serif;
   font-weight: 800;
-  font-size: clamp(1rem, 2.5vw, 1.25rem);
-  margin: 0;
-  letter-spacing: .01em;
-  position: relative;
-  z-index: 1;
+  font-size: 2rem;
+  color: #00304E;
+  margin: 0 0 1rem;
+  line-height: 1.15;
 }
 
-.fds-block .act-project-banner span {
-  display: block;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
-  font-size: .88rem;
-  color: rgba(255,255,255,0.85);
-  margin-top: .5rem;
-  position: relative;
-  z-index: 1;
-}
-
-/* ── NOTE ── */
-.fds-block .act-note {
-  max-width: 1100px;
-  margin: 0 auto;
-  text-align: center;
-  font-size: .82rem;
-  color: #9CA3AF;
+.fds-block .act-theme-pill {
+  display: table;
+  margin: 0 auto 2rem;
+  background: #FF7900;
+  color: #fff;
   font-family: 'Nunito', sans-serif;
-  font-weight: 600;
-  padding: 1rem 1.5rem;
-  border-radius: 12px;
-  background: rgba(0,0,0,0.03);
+  font-weight: 700;
+  font-size: .9rem;
+  padding: .45rem 1.25rem;
+  border-radius: 999px;
+  text-align: center;
 }
 
-/* Mobile theme banner adjustment */
-@media (max-width: 580px) {
-  .fds-block .act-theme-banner {
-    border-radius: 20px;
-    padding: 1rem 1.5rem;
-  }
+/* ---- Calendar Grid ---- */
+.fds-block .cal-grid {
+  display: grid;
+  grid-template-rows: auto;
+  border: 1px solid #E2E8F0;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.fds-block .cal-header-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background: #00304E;
+}
+
+.fds-block .cal-day-header {
+  padding: .6rem;
+  text-align: center;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: .72rem;
+  color: rgba(255,255,255,.85);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.fds-block .cal-week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  border-top: 1px solid #E2E8F0;
+}
+
+.fds-block .cal-day {
+  min-height: 90px;
+  padding: .4rem;
+  border-left: 1px solid #E2E8F0;
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+}
+
+.fds-block .cal-day:first-child {
+  border-left: none;
+}
+
+.fds-block .cal-empty {
+  background: #FAFAFA;
+}
+
+.fds-block .cal-day.weekend {
+  background: #FAFBFE;
+}
+
+.fds-block .cal-empty.weekend {
+  background: #F4F6FA;
+}
+
+.fds-block .cal-date {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: .75rem;
+  color: #64748B;
+  padding: .15rem .3rem;
+  align-self: flex-start;
+  line-height: 1;
+}
+
+.fds-block .cal-event {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: .65rem;
+  padding: .2rem .45rem;
+  border-radius: 5px;
+  color: #fff;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: default;
+  display: block;
+}
+
+.fds-block .cal-event-special {
+  font-weight: 800;
+  font-size: .7rem;
+  white-space: normal;
+  letter-spacing: .01em;
+}
+
+.fds-block .cal-more {
+  font-family: 'Nunito', sans-serif;
+  font-size: .6rem;
+  color: #94A3B8;
+  font-weight: 700;
+  padding: .05rem .3rem;
+  align-self: flex-start;
+}
+
+/* ---- Legend ---- */
+.fds-block .act-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem .75rem;
+  justify-content: center;
+  margin: 1.5rem auto 0;
+  max-width: 1000px;
+}
+
+.fds-block .act-legend-item {
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: .72rem;
+  color: #374151;
+}
+
+.fds-block .act-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+/* ---- Note ---- */
+.fds-block .act-note {
+  display: table;
+  margin: 1.25rem auto 0;
+  border: 1.5px solid #F59E0B;
+  color: #92400E;
+  background: #FFFBEB;
+  font-family: 'Montserrat', sans-serif;
+  font-size: .75rem;
+  font-weight: 500;
+  padding: .35rem 1rem;
+  border-radius: 999px;
+  text-align: center;
+}
+
+/* ---- Mobile list view (<=480px) ---- */
+.fds-block .cal-mobile-list {
+  display: none;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.fds-block .cal-mobile-week {
+  margin-bottom: 1.25rem;
+}
+
+.fds-block .cal-mobile-week-label {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: .7rem;
+  color: #94A3B8;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  padding: .35rem .6rem;
+  background: #F1F5F9;
+  border-radius: 6px;
+  margin-bottom: .5rem;
+}
+
+.fds-block .cal-mobile-day {
+  display: flex;
+  align-items: flex-start;
+  gap: .5rem;
+  padding: .45rem .5rem;
+  border-left: 3px solid #E2E8F0;
+  margin-bottom: .35rem;
+}
+
+.fds-block .cal-mobile-date {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: .8rem;
+  color: #00304E;
+  min-width: 3rem;
+  padding-top: .15rem;
+}
+
+.fds-block .cal-mobile-events {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .25rem;
+}
+
+/* ---- Responsive: shrink cells at <=600px ---- */
+@media (max-width: 600px) {
   .fds-block .act-section {
-    padding: 3rem 1rem;
+    padding: 2.5rem 1rem;
   }
-  .fds-block .act-project-banner {
-    padding: 1.5rem 1.25rem;
-    border-radius: 20px;
+  .fds-block .act-heading {
+    font-size: 1.45rem;
+  }
+  .fds-block .act-theme-pill {
+    font-size: .78rem;
+    padding: .4rem 1rem;
+  }
+  .fds-block .cal-day {
+    min-height: 60px;
+    padding: .25rem .2rem;
+    gap: .15rem;
+  }
+  .fds-block .cal-date {
+    font-size: .65rem;
+    padding: .1rem .2rem;
+  }
+  .fds-block .cal-event {
+    font-size: .6rem;
+    padding: .15rem .25rem;
+  }
+  .fds-block .cal-event .ev-text {
+    display: none;
+  }
+  .fds-block .cal-event-special .ev-text {
+    display: none;
+  }
+  .fds-block .cal-day-header {
+    font-size: .58rem;
+    padding: .4rem .15rem;
+    letter-spacing: .04em;
+  }
+  .fds-block .cal-more {
+    font-size: .55rem;
+  }
+}
+
+/* ---- <=480px: hide grid, show list ---- */
+@media (max-width: 480px) {
+  .fds-block .cal-grid {
+    display: none;
+  }
+  .fds-block .cal-mobile-list {
+    display: block;
   }
 }
 </style>
@@ -326,184 +298,388 @@
 <div class="fds-block">
   <section class="act-section">
 
-    <!-- MONTHLY THEME BANNER — TOP -->
-    <div class="act-theme-banner">
-      <p>🎭 Thème de juin : "Mensch — L'Être Humain"</p>
+    <!-- ===== Section Header ===== -->
+    <span class="act-eyebrow">CALENDRIER · JUIN 2026</span>
+    <h2 class="act-heading">Programme du mois</h2>
+    <span class="act-theme-pill">🎭 Thème : "Mensch — L'Être Humain"</span>
+
+    <!-- ===== Calendar Grid (Google Calendar style) ===== -->
+    <div class="cal-grid">
+
+      <!-- Day headers -->
+      <div class="cal-header-row">
+        <div class="cal-day-header">Dim</div>
+        <div class="cal-day-header">Lun</div>
+        <div class="cal-day-header">Mar</div>
+        <div class="cal-day-header">Mer</div>
+        <div class="cal-day-header">Jeu</div>
+        <div class="cal-day-header">Ven</div>
+        <div class="cal-day-header">Sam</div>
+      </div>
+
+      <!-- Week 1: [blank Sun] Mon 1  Tue 2  Wed 3  Thu 4  Fri 5  Sat 6 -->
+      <div class="cal-week">
+        <div class="cal-day cal-empty weekend"></div>
+        <div class="cal-day">
+          <span class="cal-date">1</span>
+          <span class="cal-event" style="background:#00304E" title="Sprachcafe 13h30">&#9749; <span class="ev-text">Sprachcafé</span></span>
+        </div>
+        <div class="cal-day">
+          <span class="cal-date">2</span>
+          <span class="cal-event" style="background:#FF7900" title="Kinderkreis">&#129490; <span class="ev-text">Kinderkreis</span></span>
+        </div>
+        <div class="cal-day">
+          <span class="cal-date">3</span>
+        </div>
+        <div class="cal-day">
+          <span class="cal-date">4</span>
+          <span class="cal-event" style="background:#0891B2" title="SpeEasy">&#128483; <span class="ev-text">SpeEasy</span></span>
+        </div>
+        <div class="cal-day">
+          <span class="cal-date">5</span>
+          <span class="cal-event" style="background:#7C3AED" title="LinguaRad">&#128690; <span class="ev-text">LinguaRad</span></span>
+          <span class="cal-event" style="background:#001A2C" title="Filmabend soir">&#127916; <span class="ev-text">Filmabend</span></span>
+        </div>
+        <div class="cal-day weekend">
+          <span class="cal-date">6</span>
+          <span class="cal-event" style="background:#059669" title="Lese Ecke">&#128218; <span class="ev-text">Lese Ecke</span></span>
+          <span class="cal-event" style="background:#DC2626" title="Manga Club">&#127988; <span class="ev-text">Manga Club</span></span>
+        </div>
+      </div>
+
+      <!-- Week 2: Sun 7  Mon 8  Tue 9  Wed 10  Thu 11  Fri 12  Sat 13 -->
+      <div class="cal-week">
+        <div class="cal-day weekend">
+          <span class="cal-date">7</span>
+          <span class="cal-event" style="background:#92400E" title="Horen Ecke">&#127911; <span class="ev-text">Hören Ecke</span></span>
+        </div>
+        <div class="cal-day">
+          <span class="cal-date">8</span>
+          <span class="cal-event" style="background:#00304E" title="Sprachcafe 13h30">&#9749; <span class="ev-text">Sprachcafé</span></span>
+        </div>
+        <div class="cal-day">
+          <span class="cal-date">9</span>
+          <span class="cal-event" style="background:#FF7900" title="Kinderkreis">&#129490; <span class="ev-text">Kinderkreis</span></span>
+        </div>
+        <div class="cal-day">
+          <span class="cal-date">10</span>
+        </div>
+        <div class="cal-day">
+          <span class="cal-date">11</span>
+          <span class="cal-event" style="background:#0891B2" title="SpeEasy">&#128483; <span class="ev-text">SpeEasy</span></span>
+          <span class="cal-event" style="background:#0891B2" title="Sprachcafe am Strand">&#127958; <span class="ev-text">am Strand</span></span>
+        </div>
+        <div class="cal-day">
+          <span class="cal-date">12</span>
+          <span class="cal-event" style="background:#7C3AED" title="LinguaRad">&#128690; <span class="ev-text">LinguaRad</span></span>
+          <span class="cal-event" style="background:#001A2C" title="Filmabend soir">&#127916; <span class="ev-text">Filmabend</span></span>
+        </div>
+        <div class="cal-day weekend">
+          <span class="cal-date">13</span>
+          <span class="cal-event" style="background:#059669" title="Lese Ecke">&#128218; <span class="ev-text">Lese Ecke</span></span>
+          <span class="cal-event" style="background:#DC2626" title="Manga Club">&#127988; <span class="ev-text">Manga Club</span></span>
+        </div>
+      </div>
+
+      <!-- Week 3: Sun 14  Mon 15  Tue 16  Wed 17  Thu 18  Fri 19  Sat 20 -->
+      <div class="cal-week">
+        <div class="cal-day weekend">
+          <span class="cal-date">14</span>
+          <span class="cal-event" style="background:#92400E" title="Horen Ecke">&#127911; <span class="ev-text">Hören Ecke</span></span>
+        </div>
+        <div class="cal-day">
+          <span class="cal-date">15</span>
+          <span class="cal-event" style="background:#00304E" title="Sprachcafe 13h30">&#9749; <span class="ev-text">Sprachcafé</span></span>
+        </div>
+        <div class="cal-day">
+          <span class="cal-date">16</span>
+          <span class="cal-event" style="background:#FF7900" title="Kinderkreis">&#129490; <span class="ev-text">Kinderkreis</span></span>
+        </div>
+        <div class="cal-day">
+          <span class="cal-date">17</span>
+        </div>
+        <div class="cal-day">
+          <span class="cal-date">18</span>
+          <span class="cal-event" style="background:#0891B2" title="SpeEasy">&#128483; <span class="ev-text">SpeEasy</span></span>
+        </div>
+        <div class="cal-day">
+          <span class="cal-date">19</span>
+          <span class="cal-event" style="background:#7C3AED" title="LinguaRad">&#128690; <span class="ev-text">LinguaRad</span></span>
+          <span class="cal-event" style="background:#001A2C" title="Filmabend soir">&#127916; <span class="ev-text">Filmabend</span></span>
+        </div>
+        <div class="cal-day weekend">
+          <span class="cal-date">20</span>
+          <span class="cal-event" style="background:#059669" title="Lese Ecke">&#128218; <span class="ev-text">Lese Ecke</span></span>
+          <span class="cal-event" style="background:#DC2626" title="Manga Club">&#127988; <span class="ev-text">Manga Club</span></span>
+        </div>
+      </div>
+
+      <!-- Week 4: Sun 21  Mon 22  Tue 23  Wed 24  Thu 25  Fri 26  Sat 27 -->
+      <div class="cal-week">
+        <div class="cal-day weekend">
+          <span class="cal-date">21</span>
+          <span class="cal-event" style="background:#92400E" title="Horen Ecke">&#127911; <span class="ev-text">Hören Ecke</span></span>
+        </div>
+        <div class="cal-day">
+          <span class="cal-date">22</span>
+          <span class="cal-event" style="background:#00304E" title="Sprachcafe 13h30">&#9749; <span class="ev-text">Sprachcafé</span></span>
+        </div>
+        <div class="cal-day">
+          <span class="cal-date">23</span>
+          <span class="cal-event" style="background:#FF7900" title="Kinderkreis">&#129490; <span class="ev-text">Kinderkreis</span></span>
+        </div>
+        <div class="cal-day">
+          <span class="cal-date">24</span>
+        </div>
+        <div class="cal-day">
+          <span class="cal-date">25</span>
+          <span class="cal-event" style="background:#0891B2" title="SpeEasy">&#128483; <span class="ev-text">SpeEasy</span></span>
+          <span class="cal-event" style="background:#0891B2" title="Sprachcafe am Strand">&#127958; <span class="ev-text">am Strand</span></span>
+        </div>
+        <div class="cal-day">
+          <span class="cal-date">26</span>
+          <span class="cal-event" style="background:#7C3AED" title="LinguaRad">&#128690; <span class="ev-text">LinguaRad</span></span>
+          <span class="cal-event" style="background:#001A2C" title="Filmabend soir">&#127916; <span class="ev-text">Filmabend</span></span>
+        </div>
+        <!-- Sat 27: 3 events — show 2 visible + +1 indicator -->
+        <div class="cal-day weekend">
+          <span class="cal-date">27</span>
+          <span class="cal-event cal-event-special" style="background:#F59E0B;color:#111" title="Project Day">&#127881; <span class="ev-text">Project Day</span></span>
+          <span class="cal-event" style="background:#059669" title="Lese Ecke">&#128218; <span class="ev-text">Lese Ecke</span></span>
+          <span class="cal-more">+1</span>
+        </div>
+      </div>
+
+      <!-- Week 5: Sun 28  Mon 29  Tue 30  [blank x4] -->
+      <div class="cal-week">
+        <div class="cal-day weekend">
+          <span class="cal-date">28</span>
+          <span class="cal-event" style="background:#92400E" title="Horen Ecke">&#127911; <span class="ev-text">Hören Ecke</span></span>
+        </div>
+        <div class="cal-day">
+          <span class="cal-date">29</span>
+          <span class="cal-event" style="background:#00304E" title="Sprachcafe 13h30">&#9749; <span class="ev-text">Sprachcafé</span></span>
+        </div>
+        <div class="cal-day">
+          <span class="cal-date">30</span>
+          <span class="cal-event" style="background:#FF7900" title="Kinderkreis">&#129490; <span class="ev-text">Kinderkreis</span></span>
+        </div>
+        <div class="cal-day cal-empty"></div>
+        <div class="cal-day cal-empty"></div>
+        <div class="cal-day cal-empty"></div>
+        <div class="cal-day cal-empty weekend"></div>
+      </div>
+
+    </div><!-- /cal-grid -->
+
+    <!-- ===== Mobile List View (<=480px) ===== -->
+    <div class="cal-mobile-list">
+
+      <div class="cal-mobile-week">
+        <div class="cal-mobile-week-label">Semaine 1 — 1–6 juin</div>
+        <div class="cal-mobile-day">
+          <span class="cal-mobile-date">Lun 1</span>
+          <div class="cal-mobile-events">
+            <span class="cal-event" style="background:#00304E">&#9749; Sprachcafé 13h30</span>
+          </div>
+        </div>
+        <div class="cal-mobile-day">
+          <span class="cal-mobile-date">Mar 2</span>
+          <div class="cal-mobile-events">
+            <span class="cal-event" style="background:#FF7900">&#129490; Kinderkreis</span>
+          </div>
+        </div>
+        <div class="cal-mobile-day">
+          <span class="cal-mobile-date">Jeu 4</span>
+          <div class="cal-mobile-events">
+            <span class="cal-event" style="background:#0891B2">&#128483; SpeEasy</span>
+          </div>
+        </div>
+        <div class="cal-mobile-day">
+          <span class="cal-mobile-date">Ven 5</span>
+          <div class="cal-mobile-events">
+            <span class="cal-event" style="background:#7C3AED">&#128690; LinguaRad</span>
+            <span class="cal-event" style="background:#001A2C">&#127916; Filmabend soir</span>
+          </div>
+        </div>
+        <div class="cal-mobile-day">
+          <span class="cal-mobile-date">Sam 6</span>
+          <div class="cal-mobile-events">
+            <span class="cal-event" style="background:#059669">&#128218; Lese Ecke</span>
+            <span class="cal-event" style="background:#DC2626">&#127988; Manga Club</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cal-mobile-week">
+        <div class="cal-mobile-week-label">Semaine 2 — 7–13 juin</div>
+        <div class="cal-mobile-day">
+          <span class="cal-mobile-date">Dim 7</span>
+          <div class="cal-mobile-events">
+            <span class="cal-event" style="background:#92400E">&#127911; Hören Ecke</span>
+          </div>
+        </div>
+        <div class="cal-mobile-day">
+          <span class="cal-mobile-date">Lun 8</span>
+          <div class="cal-mobile-events">
+            <span class="cal-event" style="background:#00304E">&#9749; Sprachcafé 13h30</span>
+          </div>
+        </div>
+        <div class="cal-mobile-day">
+          <span class="cal-mobile-date">Mar 9</span>
+          <div class="cal-mobile-events">
+            <span class="cal-event" style="background:#FF7900">&#129490; Kinderkreis</span>
+          </div>
+        </div>
+        <div class="cal-mobile-day">
+          <span class="cal-mobile-date">Jeu 11</span>
+          <div class="cal-mobile-events">
+            <span class="cal-event" style="background:#0891B2">&#128483; SpeEasy</span>
+            <span class="cal-event" style="background:#0891B2">&#127958; Sprachcafé am Strand</span>
+          </div>
+        </div>
+        <div class="cal-mobile-day">
+          <span class="cal-mobile-date">Ven 12</span>
+          <div class="cal-mobile-events">
+            <span class="cal-event" style="background:#7C3AED">&#128690; LinguaRad</span>
+            <span class="cal-event" style="background:#001A2C">&#127916; Filmabend soir</span>
+          </div>
+        </div>
+        <div class="cal-mobile-day">
+          <span class="cal-mobile-date">Sam 13</span>
+          <div class="cal-mobile-events">
+            <span class="cal-event" style="background:#059669">&#128218; Lese Ecke</span>
+            <span class="cal-event" style="background:#DC2626">&#127988; Manga Club</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cal-mobile-week">
+        <div class="cal-mobile-week-label">Semaine 3 — 14–20 juin</div>
+        <div class="cal-mobile-day">
+          <span class="cal-mobile-date">Dim 14</span>
+          <div class="cal-mobile-events">
+            <span class="cal-event" style="background:#92400E">&#127911; Hören Ecke</span>
+          </div>
+        </div>
+        <div class="cal-mobile-day">
+          <span class="cal-mobile-date">Lun 15</span>
+          <div class="cal-mobile-events">
+            <span class="cal-event" style="background:#00304E">&#9749; Sprachcafé 13h30</span>
+          </div>
+        </div>
+        <div class="cal-mobile-day">
+          <span class="cal-mobile-date">Mar 16</span>
+          <div class="cal-mobile-events">
+            <span class="cal-event" style="background:#FF7900">&#129490; Kinderkreis</span>
+          </div>
+        </div>
+        <div class="cal-mobile-day">
+          <span class="cal-mobile-date">Jeu 18</span>
+          <div class="cal-mobile-events">
+            <span class="cal-event" style="background:#0891B2">&#128483; SpeEasy</span>
+          </div>
+        </div>
+        <div class="cal-mobile-day">
+          <span class="cal-mobile-date">Ven 19</span>
+          <div class="cal-mobile-events">
+            <span class="cal-event" style="background:#7C3AED">&#128690; LinguaRad</span>
+            <span class="cal-event" style="background:#001A2C">&#127916; Filmabend soir</span>
+          </div>
+        </div>
+        <div class="cal-mobile-day">
+          <span class="cal-mobile-date">Sam 20</span>
+          <div class="cal-mobile-events">
+            <span class="cal-event" style="background:#059669">&#128218; Lese Ecke</span>
+            <span class="cal-event" style="background:#DC2626">&#127988; Manga Club</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cal-mobile-week">
+        <div class="cal-mobile-week-label">Semaine 4 — 21–27 juin</div>
+        <div class="cal-mobile-day">
+          <span class="cal-mobile-date">Dim 21</span>
+          <div class="cal-mobile-events">
+            <span class="cal-event" style="background:#92400E">&#127911; Hören Ecke</span>
+          </div>
+        </div>
+        <div class="cal-mobile-day">
+          <span class="cal-mobile-date">Lun 22</span>
+          <div class="cal-mobile-events">
+            <span class="cal-event" style="background:#00304E">&#9749; Sprachcafé 13h30</span>
+          </div>
+        </div>
+        <div class="cal-mobile-day">
+          <span class="cal-mobile-date">Mar 23</span>
+          <div class="cal-mobile-events">
+            <span class="cal-event" style="background:#FF7900">&#129490; Kinderkreis</span>
+          </div>
+        </div>
+        <div class="cal-mobile-day">
+          <span class="cal-mobile-date">Jeu 25</span>
+          <div class="cal-mobile-events">
+            <span class="cal-event" style="background:#0891B2">&#128483; SpeEasy</span>
+            <span class="cal-event" style="background:#0891B2">&#127958; Sprachcafé am Strand</span>
+          </div>
+        </div>
+        <div class="cal-mobile-day">
+          <span class="cal-mobile-date">Ven 26</span>
+          <div class="cal-mobile-events">
+            <span class="cal-event" style="background:#7C3AED">&#128690; LinguaRad</span>
+            <span class="cal-event" style="background:#001A2C">&#127916; Filmabend soir</span>
+          </div>
+        </div>
+        <div class="cal-mobile-day">
+          <span class="cal-mobile-date">Sam 27</span>
+          <div class="cal-mobile-events">
+            <span class="cal-event cal-event-special" style="background:#F59E0B;color:#111">&#127881; Project Day</span>
+            <span class="cal-event" style="background:#059669">&#128218; Lese Ecke</span>
+            <span class="cal-event" style="background:#DC2626">&#127988; Manga Club</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cal-mobile-week">
+        <div class="cal-mobile-week-label">Semaine 5 — 28–30 juin</div>
+        <div class="cal-mobile-day">
+          <span class="cal-mobile-date">Dim 28</span>
+          <div class="cal-mobile-events">
+            <span class="cal-event" style="background:#92400E">&#127911; Hören Ecke</span>
+          </div>
+        </div>
+        <div class="cal-mobile-day">
+          <span class="cal-mobile-date">Lun 29</span>
+          <div class="cal-mobile-events">
+            <span class="cal-event" style="background:#00304E">&#9749; Sprachcafé 13h30</span>
+          </div>
+        </div>
+        <div class="cal-mobile-day">
+          <span class="cal-mobile-date">Mar 30</span>
+          <div class="cal-mobile-events">
+            <span class="cal-event" style="background:#FF7900">&#129490; Kinderkreis</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /cal-mobile-list -->
+
+    <!-- ===== Activity Legend ===== -->
+    <div class="act-legend">
+      <div class="act-legend-item"><span class="act-legend-dot" style="background:#00304E"></span>Sprachcafé ☕</div>
+      <div class="act-legend-item"><span class="act-legend-dot" style="background:#0891B2"></span>SpeEasy 🗣️</div>
+      <div class="act-legend-item"><span class="act-legend-dot" style="background:#0891B2;outline:2px dashed #0891B2;outline-offset:2px"></span>Sprachcafé am Strand 🏖️</div>
+      <div class="act-legend-item"><span class="act-legend-dot" style="background:#FF7900"></span>Kinderkreis 🧒</div>
+      <div class="act-legend-item"><span class="act-legend-dot" style="background:#7C3AED"></span>LinguaRad 🚲</div>
+      <div class="act-legend-item"><span class="act-legend-dot" style="background:#001A2C"></span>Filmabend 🎬</div>
+      <div class="act-legend-item"><span class="act-legend-dot" style="background:#059669"></span>Lese Ecke 📖</div>
+      <div class="act-legend-item"><span class="act-legend-dot" style="background:#DC2626"></span>Manga Club 🎌</div>
+      <div class="act-legend-item"><span class="act-legend-dot" style="background:#92400E"></span>Hören Ecke 🎧</div>
+      <div class="act-legend-item"><span class="act-legend-dot" style="background:#F59E0B"></span>Project Day 🎉</div>
     </div>
 
-    <!-- SECTION HEADER -->
-    <div class="act-header">
-      <span class="act-eyebrow">ACTIVITÉS · JUIN 2026</span>
-      <h2 class="act-h2">Calendrier des activités</h2>
-      <p class="act-sub">Rejoins nos clubs et ateliers chaque semaine à la <strong>Mediathek FDS · Annaba</strong></p>
-    </div>
-
-    <!-- ACTIVITY GRID -->
-    <div class="act-grid">
-
-      <!-- 1. Sprachcafé -->
-      <div class="act-card">
-        <div class="act-card-top" style="background:#00304E;">
-          <span class="act-icon">☕</span>
-        </div>
-        <div class="act-card-body">
-          <span class="act-day-chip" style="background:#00304E;">Lundi</span>
-          <p class="act-name">Sprachcafé</p>
-          <p class="act-topic">"Rituel und Tradition im Menschenleben"</p>
-          <p class="act-time">13h30 – 15h30</p>
-          <div class="act-footer">
-            <span class="act-badge badge-deutsch">Deutsch</span>
-            <span class="act-location">📍 Mediathek FDS · Annaba</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 2. SpeEasy -->
-      <div class="act-card">
-        <div class="act-card-top" style="background:#0891B2;">
-          <span class="act-icon">🗣️</span>
-        </div>
-        <div class="act-card-body">
-          <span class="act-day-chip" style="background:#0891B2;">Jeudi</span>
-          <p class="act-name">SpeEasy</p>
-          <p class="act-topic">"Have you seen my childhood?"</p>
-          <p class="act-time">&nbsp;</p>
-          <div class="act-footer">
-            <span class="act-badge badge-english">English</span>
-            <span class="act-location">📍 Mediathek FDS · Annaba</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 3. Kinderkreis -->
-      <div class="act-card">
-        <div class="act-card-top" style="background:#FF7900;">
-          <span class="act-icon">🧒</span>
-        </div>
-        <div class="act-card-body">
-          <span class="act-day-chip" style="background:#FF7900;">Mardi</span>
-          <p class="act-name">Kinderkreis</p>
-          <p class="act-topic">"International Day of Children"</p>
-          <p class="act-time">&nbsp;</p>
-          <div class="act-footer">
-            <span class="act-badge badge-english">English</span>
-            <span class="act-location">📍 Mediathek FDS · Annaba</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 4. LinguaRad -->
-      <div class="act-card">
-        <div class="act-card-top" style="background:#7C3AED;">
-          <span class="act-icon">🚲</span>
-        </div>
-        <div class="act-card-body">
-          <span class="act-day-chip" style="background:#7C3AED;">Vendredi</span>
-          <p class="act-name">LinguaRad</p>
-          <p class="act-topic">"Strände / Beaches of Annaba"</p>
-          <p class="act-time">&nbsp;</p>
-          <div class="act-footer">
-            <span class="act-badge badge-frde">FR + DE</span>
-            <span class="act-location">📍 Mediathek FDS · Annaba</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 5. Filmabend -->
-      <div class="act-card">
-        <div class="act-card-top" style="background:#00304E;">
-          <span class="act-icon">🎬</span>
-        </div>
-        <div class="act-card-body">
-          <span class="act-day-chip" style="background:#00304E;">Vendredi</span>
-          <p class="act-name">Filmabend</p>
-          <p class="act-topic">"Hidden Figures (Deutsch)"</p>
-          <p class="act-time">Vendredi soir</p>
-          <div class="act-footer">
-            <span class="act-badge badge-deutsch">Deutsch</span>
-            <span class="act-location">📍 Mediathek FDS · Annaba</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 6. Lese Ecke -->
-      <div class="act-card">
-        <div class="act-card-top" style="background:#059669;">
-          <span class="act-icon">📖</span>
-        </div>
-        <div class="act-card-body">
-          <span class="act-day-chip" style="background:#059669;">Samedi</span>
-          <p class="act-name">Lese Ecke</p>
-          <p class="act-topic">"Märchen unserer Kindheit"</p>
-          <p class="act-time">&nbsp;</p>
-          <div class="act-footer">
-            <span class="act-badge badge-libre">Libre</span>
-            <span class="act-location">📍 Mediathek FDS · Annaba</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 7. Manga & Animé Club -->
-      <div class="act-card">
-        <div class="act-card-top" style="background:#DC2626;">
-          <span class="act-icon">🎌</span>
-        </div>
-        <div class="act-card-body">
-          <span class="act-day-chip" style="background:#DC2626;">Samedi</span>
-          <p class="act-name">Manga &amp; Animé Club</p>
-          <p class="act-topic">"Freithema"</p>
-          <p class="act-time">&nbsp;</p>
-          <div class="act-footer">
-            <span class="act-badge badge-libre">Libre</span>
-            <span class="act-location">📍 Mediathek FDS · Annaba</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 8. Hören Ecke -->
-      <div class="act-card">
-        <div class="act-card-top" style="background:#92400E;">
-          <span class="act-icon">🎧</span>
-        </div>
-        <div class="act-card-body">
-          <span class="act-day-chip" style="background:#92400E;">Dimanche</span>
-          <p class="act-name">Hören Ecke</p>
-          <p class="act-topic">"Podcast und Tipps für Lernen"</p>
-          <p class="act-time">&nbsp;</p>
-          <div class="act-footer">
-            <span class="act-badge badge-libre">Libre</span>
-            <span class="act-location">📍 Mediathek FDS · Annaba</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 9. Sprachcafé am Strand -->
-      <div class="act-card">
-        <div class="act-card-top" style="background:#0891B2;">
-          <span class="act-icon">🏖️</span>
-        </div>
-        <div class="act-card-body">
-          <span class="act-day-chip" style="background:#0891B2;">Jeudi</span>
-          <p class="act-name">Sprachcafé am Strand</p>
-          <p class="act-topic">"Lebensphasen"</p>
-          <p class="act-time">&nbsp;</p>
-          <div class="act-footer">
-            <span class="act-badge badge-deutsch">Deutsch</span>
-            <span class="act-location">📍 Mediathek FDS · Annaba</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- PROJECT DAY BANNER — BOTTOM -->
-    <div class="act-project-banner">
-      <p>🎉 Project Day — Obligatoire pour tous les groupes FDS</p>
-      <span>Une journée commune pour tous les clubs — dates à confirmer par email</span>
-    </div>
-
-    <!-- NOTE -->
-    <p class="act-note">* Inscription requise dès 8 participants confirmés · Lien d'inscription par email</p>
+    <!-- Note -->
+    <span class="act-note">* Inscription requise dès 8 participants confirmés</span>
 
   </section>
 </div>
